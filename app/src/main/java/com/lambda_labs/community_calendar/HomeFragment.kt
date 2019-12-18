@@ -28,7 +28,7 @@ class HomeFragment : Fragment() {
 
         var strings: ArrayList<String> = arrayListOf("Strings", "The Stuff", "Run", "Strings", "The Stuff", "Run")
         strings.add("asdf")
-        
+
         main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
         main_event_recycler.adapter = EventRecycler(strings)
     }
@@ -51,7 +51,7 @@ class HomeFragment : Fragment() {
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-            val title: TextView = view.random_txt
+            val title: TextView = view.txt_event_name
         }
     }
 
