@@ -10,6 +10,14 @@ apply plugin: 'com.apollographql.android'
 // Nav
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+static def domain() {
+    return System.getenv("AUTH0_DOMAIN")
+}
+
+static def client() {
+    return System.getenv("AUTH0_CLIENT_ID")
+}
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -20,6 +28,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        resValue 'string', "client_id", client()
+        resValue 'string', "domain", domain()
+        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "demo"]
     }
     buildTypes {
         release {
@@ -70,6 +81,9 @@ dependencies {
 
     // Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha02'
+
+    // Auth0
+    implementation 'com.auth0.android:auth0:1.19.1'
 
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
