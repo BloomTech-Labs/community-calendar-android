@@ -1,12 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
-<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="100dp"
     android:layout_height="136dp"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:orientation="vertical"
-    app:cardCornerRadius="6dp"
     android:layout_marginEnd="12dp"
-    app:cardBackgroundColor="@android:color/black">
+    android:orientation="vertical"
+    app:cardBackgroundColor="@android:color/black"
+    app:cardCornerRadius="6dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -15,18 +16,20 @@
         <ImageView
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:src="@drawable/base_photo"
+            android:background="@android:color/black"
             android:scaleType="centerCrop"
-            android:background="@android:color/black"/>
+            android:src="@drawable/base_photo" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_featured_name"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_marginBottom="10dp"
             android:text="This will be an event"
             android:textColor="@android:color/white"
             android:textSize="10sp"
-            app:layout_constraintBottom_toBottomOf="parent"/>
+            app:layout_constraintBottom_toBottomOf="parent" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

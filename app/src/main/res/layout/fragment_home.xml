@@ -7,6 +7,17 @@
     android:layout_height="match_parent"
     tools:context=".HomeFragment">
 
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/edit_search_bar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        app:searchHintIcon="@null"
+        android:background="@drawable/rectangle"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:searchIcon="@drawable/search" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_title_featured"
@@ -19,7 +30,20 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/featured_event_recycler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/edit_search_bar" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_see_all"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:fontFamily="@font/poppins_light"
+        android:text="See all"
+        android:textSize="14sp"
+        app:layout_constraintBottom_toTopOf="@id/featured_event_recycler"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/edit_search_bar" />
+
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/featured_event_recycler"

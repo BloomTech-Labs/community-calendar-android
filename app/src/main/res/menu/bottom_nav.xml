@@ -10,22 +10,22 @@
     <item
         android:id="@+id/notification_icon"
         android:title="@string/notifications"
-        android:icon="@drawable/notification_icon" />
+        android:icon="@drawable/notification" />
 
     <item
         android:id="@+id/event_icon"
         android:title="@string/events"
-        android:icon="@drawable/ic_launcher_background"
+        android:icon="@drawable/events"
         app:showAsAction="always"/>
 
     <item
         android:id="@+id/saved_icon"
         android:title="@string/saved"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:icon="@drawable/saved"/>
 
     <item
         android:id="@id/loginFragment"
         android:title="@string/profile"
-        android:icon="@drawable/ic_launcher_background"/>
+        android:icon="@drawable/profile"/>
 
 </menu>
