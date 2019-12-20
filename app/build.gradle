@@ -28,9 +28,10 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
         resValue 'string', "client_id", client()
         resValue 'string', "domain", domain()
-        manifestPlaceholders = [auth0Domain: "@string/com_auth0_domain", auth0Scheme: "demo"]
+        manifestPlaceholders = [auth0Domain: "communitycalendar-staging.auth0.com", auth0Scheme: "demo"]
     }
     buildTypes {
         release {

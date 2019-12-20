@@ -3,7 +3,7 @@
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
     <item
-        android:id="@id/home"
+        android:id="@+id/home"
         android:title="@string/home"
         android:icon="@drawable/home_icon" />
 
@@ -24,8 +24,8 @@
         android:icon="@drawable/saved"/>
 
     <item
-        android:id="@id/loginFragment"
-        android:title="@string/profile"
+        android:id="@+id/loginFragment"
+        android:title="@string/login"
         android:icon="@drawable/profile"/>
 
 </menu>

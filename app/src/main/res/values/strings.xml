@@ -8,6 +8,7 @@
     <string name="events">Events</string>
     <string name="saved">Saved</string>
     <string name="profile">Profile</string>
+    <string name="login">Log In</string>
     <string name="com_auth0_client_id">@string/client_id</string>
     <string name="com_auth0_domain">@string/domain</string>
     <string name="audience">https://communitycalendar-staging.auth0.com/api/v2/</string>
