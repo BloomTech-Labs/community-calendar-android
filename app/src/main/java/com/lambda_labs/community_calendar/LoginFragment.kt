@@ -40,9 +40,10 @@ class LoginFragment : Fragment() {
             .start(mainActivity, object : AuthCallback {
                 override fun onSuccess(credentials: Credentials) {
 
-                    println(credentials.accessToken)
+                    App.sharedPrefs.edit().putString(credentials.accessToken, App.TOKEN_KEY).apply()
+                    App.token = credentials.accessToken
 
-                    mainActivity.runOnUiThread {
+                    mainActivity.apply {
                         val item = mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
                         item.title = getString(R.string.profile)
                     }
@@ -70,7 +71,7 @@ class LoginFragment : Fragment() {
 
                         println("logged out")
 
-                        mainActivity.runOnUiThread {
+                        mainActivity.apply {
                             val item =
                                 mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
                             item.title = getString(R.string.login)
