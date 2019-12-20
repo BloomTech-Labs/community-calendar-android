@@ -8,7 +8,7 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
 
-class MainActivity : AppCompatActivity(), SetInterface {
+class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -25,17 +25,5 @@ class MainActivity : AppCompatActivity(), SetInterface {
     private fun setupBottomNavMenu(navController: NavController) {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav?.setupWithNavController(navController)
-    }
-
-
-    override fun listener(isLoggedIn: Boolean) {
-        //TODO: Look into Coroutines
-        runOnUiThread {
-            val item = bottom_navigation.menu.findItem(R.id.loginFragment)
-            if (isLoggedIn)
-                item.title = getString(R.string.profile)
-            else
-                item.title = getString(R.string.login)
-        }
     }
 }
