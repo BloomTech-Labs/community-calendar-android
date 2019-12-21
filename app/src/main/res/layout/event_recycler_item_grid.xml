@@ -2,58 +2,66 @@
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="183dp"
+    android:layout_width="175dp"
     android:layout_height="162dp"
     app:cardCornerRadius="3dp">
-
-    <!--    TODO: IMAGE VIEW IS SUPPOSE TO HAVE CORNER RADIUS OF 3DP-->
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
-            android:id="@+id/img_event_grid"
-            android:src="@drawable/base_photo"
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/card_event_grid"
             android:layout_width="match_parent"
             android:layout_height="90dp"
-            android:scaleType="centerCrop"
-            app:layout_constraintTop_toTopOf="parent"
+            app:cardCornerRadius="3dp"
+            app:layout_constraintRight_toLeftOf="@+id/txt_event_name_grid"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintRight_toLeftOf="@+id/txt_event_name_grid" />
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/img_event_grid"
+                android:layout_width="match_parent"
+                android:layout_height="90dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/base_photo" />
+
+        </com.google.android.material.card.MaterialCardView>
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_community_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="@font/poppins_light"
             android:text="MISSION DISTRICT"
             android:textSize="10sp"
-            android:fontFamily="@font/poppins_light"
-            app:layout_constraintTop_toBottomOf="@id/img_event_grid"
             app:layout_constraintBottom_toTopOf="@id/txt_event_name_grid"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/card_event_grid" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_event_name_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_semi_bold"
             android:text="Event 1"
             android:textSize="14sp"
-            android:fontFamily="@font/poppins_semi_bold"
-            app:layout_constraintTop_toBottomOf="@id/txt_community_grid"
             app:layout_constraintBottom_toTopOf="@id/txt_event_time_grid"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_community_grid" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_event_time_grid"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="16dp"
+            android:fontFamily="@font/poppins_light"
             android:text="6:00pm - 10:00pm"
             android:textSize="12sp"
-            android:fontFamily="@font/poppins_light"
-            app:layout_constraintTop_toBottomOf="@id/txt_event_name_grid"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintStart_toStartOf="parent" />
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/txt_event_name_grid" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 

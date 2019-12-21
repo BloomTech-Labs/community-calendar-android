@@ -8,4 +8,5 @@
     <string name="events">Events</string>
     <string name="saved">Saved</string>
     <string name="profile">Profile</string>
+    <string name="search_hint">Search</string>
 </resources>
