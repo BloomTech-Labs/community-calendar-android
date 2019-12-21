@@ -10,6 +10,14 @@ apply plugin: 'com.apollographql.android'
 // Nav
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+
+
+
+
+
+
+
+
 android {
     compileSdkVersion 29
     buildToolsVersion "29.0.2"
@@ -20,6 +28,9 @@ android {
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+
+
     }
     buildTypes {
         release {
@@ -71,6 +82,12 @@ dependencies {
     // Material Design
     implementation 'com.google.android.material:material:1.2.0-alpha02'
 
+
+
+
+
+    // Apollo-RX2
+    implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'

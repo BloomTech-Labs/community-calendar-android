@@ -3,6 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.lambda_labs.community_calendar">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
+
     <application
         tools:ignore="GoogleAppIndexingWarning"
         android:allowBackup="true"
