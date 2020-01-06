@@ -44,7 +44,7 @@ class LoginFragment : Fragment() {
                     //App.sharedPrefs.edit().putString(credentials.accessToken, App.TOKEN_KEY).apply()
                     App.token = credentials.accessToken
 
-                    mainActivity.apply {
+                    mainActivity.runOnUiThread {
                         val item = mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
                         item.title = getString(R.string.profile)
                     }
@@ -72,7 +72,7 @@ class LoginFragment : Fragment() {
 
                         println("logged out")
 
-                        mainActivity.apply {
+                        mainActivity.runOnUiThread {
                             val item =
                                 mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
                             item.title = getString(R.string.login)

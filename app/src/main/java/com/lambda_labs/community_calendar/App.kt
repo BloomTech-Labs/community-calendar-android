@@ -4,8 +4,6 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 
-// TODO: Add this App class to manifest, resolve how to handle expired tokens
-
 class App: Application() {
     companion object{
         const val TOKEN_KEY = "token_key"
