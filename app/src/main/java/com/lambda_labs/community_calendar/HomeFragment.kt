@@ -86,6 +86,7 @@ class HomeFragment : Fragment() {
                 events.add(event)
             }
             main_event_recycler.adapter?.notifyDataSetChanged()
+            pb_events.visibility = View.INVISIBLE
         })
     }
 
