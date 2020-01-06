@@ -74,18 +74,24 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.1.0"
 
     // RxJava2
-    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.16"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     // LiveData and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     // Material Design
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
 
     // Auth0
     implementation 'com.auth0.android:auth0:1.19.1'
 
+
+
+
+
+    // Apollo-RX2
+    implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
