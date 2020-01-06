@@ -10,13 +10,13 @@ apply plugin: 'com.apollographql.android'
 // Nav
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+static def domain() {
+    return System.getenv("AUTH0_DOMAIN")
+}
 
-
-
-
-
-
-
+static def client() {
+    return System.getenv("AUTH0_CLIENT_ID")
+}
 
 android {
     compileSdkVersion 29
@@ -29,8 +29,9 @@ android {
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
 
-
-
+        resValue 'string', "client_id", client()
+        resValue 'string', "domain", domain()
+        manifestPlaceholders = [auth0Domain: "communitycalendar-staging.auth0.com", auth0Scheme: "demo"]
     }
     buildTypes {
         release {
@@ -73,14 +74,17 @@ dependencies {
     implementation "androidx.navigation:navigation-ui-ktx:2.1.0"
 
     // RxJava2
-    implementation "io.reactivex.rxjava2:rxjava:2.2.9"
+    implementation "io.reactivex.rxjava2:rxjava:2.2.16"
     implementation "io.reactivex.rxjava2:rxandroid:2.1.1"
 
     // LiveData and ViewModel
     implementation 'androidx.lifecycle:lifecycle-extensions:2.1.0'
 
     // Material Design
-    implementation 'com.google.android.material:material:1.2.0-alpha02'
+    implementation 'com.google.android.material:material:1.2.0-alpha03'
+
+    // Auth0
+    implementation 'com.auth0.android:auth0:1.19.1'
 
 
 

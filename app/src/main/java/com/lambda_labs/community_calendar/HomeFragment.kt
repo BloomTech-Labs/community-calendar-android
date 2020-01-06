@@ -81,7 +81,7 @@ class HomeFragment : Fragment() {
         }
         // Network call through HomeViewMode
         viewModel.getEvents()
-        viewModel.events.observe(this, Observer<List<EventsQuery.Event>> { list ->
+        viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
             }
