@@ -1,0 +1,14 @@
+query Events {
+    events {
+        id
+        title
+        start
+        end
+        event_images{
+          url
+        }
+        locations {
+          name
+        }
+      }
+}
