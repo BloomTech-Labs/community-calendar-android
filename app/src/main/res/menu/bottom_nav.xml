@@ -1,31 +1,28 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu
-    xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:android="http://schemas.android.com/apk/res/android">
     <item
         android:id="@+id/home"
-        android:title="@string/home"
-        android:icon="@drawable/home_icon" />
+        android:icon="@drawable/home_icon"
+        android:title="@string/home" />
 
     <item
         android:id="@+id/notification_icon"
-        android:title="@string/notifications"
-        android:icon="@drawable/notification" />
+        android:icon="@drawable/notification_icon"
+        android:title="@string/notifications" />
 
     <item
         android:id="@+id/event_icon"
-        android:title="@string/events"
-        android:icon="@drawable/events"
-        app:showAsAction="always"/>
+        android:icon="@drawable/events_icon"
+        android:title="@string/events" />
 
     <item
         android:id="@+id/saved_icon"
-        android:title="@string/saved"
-        android:icon="@drawable/saved"/>
+        android:icon="@drawable/saved_icon"
+        android:title="@string/saved" />
 
     <item
         android:id="@+id/loginFragment"
-        android:title="@string/login"
-        android:icon="@drawable/profile"/>
-
+        android:icon="@drawable/profile_icon"
+        android:title="@string/profile" />
 </menu>
