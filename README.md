@@ -38,17 +38,12 @@ Community Calendar is a project aimed to enable communities to better inform the
 
 ### Features
 
--    Feature 1
--    Feature 2
--    Feature 3
--    Feature 4
--    Feature 5
+-    Display & Search Events
+-    RSVP
 
-### Authentication API here
+### Auth0
 
-🚫Replace text below with a description of the API
-
-Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do things A little happy sunlight shining through there. Let all these little things happen. Don't fight them. Learn to use them. Even the worst thing we can do here is good.
+[Auth0](https://auth0.com/docs/libraries/auth0-android) is an authentication API that enables users to connect to the app with existing Google and Facebook accounts.
 
 ### Payment API here
 
@@ -56,11 +51,9 @@ Water's like me. It's laaazy ... Boy, it always looks for the easiest way to do
 
 This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
 
-### Misc API here
+### Apollo-Android
 
-🚫Replace text below with a description of the API
-
-You can do anything your heart can imagine. In life you need colors. This is where you take out all your hostilities and frustrations. It's better than kicking the puppy dog around and all that so. I'm sort of a softy, I couldn't shoot Bambi except with a camera. Trees get lonely too, so we'll give him a little friend. We'll lay all these little funky little things in there.
+[Apollo-Android](https://github.com/apollographql/apollo-android) is a GraphQL compliant client that generates Java and Kotlin models from standard GraphQL queries.
 
 ### Misc API here
 
