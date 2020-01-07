@@ -11,7 +11,7 @@
         android:id="@+id/search_bar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_margin="10dp"
         android:background="@drawable/rectangle"
         android:hint="@string/search_hint"
         app:iconifiedByDefault="false"
@@ -51,7 +51,7 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/featured_event_recycler"
         android:layout_width="match_parent"
-        android:layout_height="136dp"
+        android:layout_height="192dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@id/txt_title_events"
@@ -65,7 +65,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
-        android:layout_marginTop="8dp"
+        android:layout_marginTop="12dp"
         android:fontFamily="@font/butler_bold"
         android:text="Events"
         android:textColor="@android:color/black"
@@ -76,33 +76,35 @@
 
     <ImageView
         android:id="@+id/btn_list"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
-        android:layout_marginEnd="12dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:paddingTop="5dp"
+android:layout_marginEnd="47dp"
+        android:layout_marginTop="6dp"
+        android:scaleType="fitCenter"
         android:fontFamily="@font/poppins_black"
         android:src="@drawable/list_view_selected"
         app:layout_constraintBottom_toTopOf="@id/layout_main_event_filters"
-        app:layout_constraintRight_toLeftOf="@id/btn_grid"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/featured_event_recycler" />
 
     <ImageView
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:layout_marginTop="6dp"
+        android:layout_marginEnd="34dp"
+        android:id="@+id/center_bar"
         android:src="@drawable/grid_and_list_divide"
         app:layout_constraintBottom_toTopOf="@id/layout_main_event_filters"
-        app:layout_constraintLeft_toRightOf="@id/btn_list"
-        app:layout_constraintRight_toLeftOf="@id/btn_grid"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/featured_event_recycler" />
 
     <ImageView
         android:id="@+id/btn_grid"
-        android:layout_width="wrap_content"
-        android:layout_height="20dp"
-        android:layout_marginStart="12dp"
-        android:layout_marginTop="4dp"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:paddingTop="4dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins_black"
         android:src="@drawable/grid_view_unselected"
@@ -116,6 +118,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
+        android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@id/txt_event_date"
         app:layout_constraintStart_toStartOf="parent"
@@ -184,7 +187,6 @@
         app:layout_constraintTop_toBottomOf="@id/layout_main_event_filters" />
 
 
-
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/main_event_recycler"
         android:layout_width="match_parent"
@@ -203,7 +205,7 @@
         android:id="@+id/pb_events"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="@id/main_event_recycler"
-        app:layout_constraintBottom_toBottomOf="@id/main_event_recycler"/>
+        app:layout_constraintBottom_toBottomOf="@id/main_event_recycler"
+        app:layout_constraintTop_toTopOf="@id/main_event_recycler" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
