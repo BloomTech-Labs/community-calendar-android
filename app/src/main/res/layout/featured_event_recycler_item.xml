@@ -2,8 +2,8 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:layout_width="100dp"
-    android:layout_height="136dp"
+    android:layout_width="145dp"
+    android:layout_height="192dp"
     android:layout_marginEnd="12dp"
     android:orientation="vertical"
     app:cardBackgroundColor="@android:color/black"
@@ -19,20 +19,31 @@
             android:layout_height="match_parent"
             android:background="@android:color/black"
             android:scaleType="centerCrop"
-            android:src="@drawable/base_photo" />
+            android:src="@drawable/sample_featured" />
 
         <ImageView
+            android:id="@+id/gradient_top"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:src="@drawable/featured_gradient"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:layout_height="20dp"
+            android:src="@drawable/gradient_top"
+            app:layout_constraintBottom_toTopOf="@id/gradient_bottom"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <ImageView
+            android:id="@+id/gradient_bottom"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:src="@drawable/gradient_bottom"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/gradient_top"
+            app:layout_constraintTop_toTopOf="@id/txt_featured_date" />
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_featured_date"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_light"
             android:text="DECEMBER 20, FRIDAY"
@@ -45,7 +56,7 @@
             android:id="@+id/txt_featured_name"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="12dp"
             android:fontFamily="@font/butler_bold"
             android:text="Tech Talk"
             android:textColor="@android:color/white"
@@ -57,7 +68,7 @@
             android:id="@+id/txt_featured_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="4dp"
+            android:layout_marginStart="12dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_light"
             android:text="6:00pm - 10:00pm"
