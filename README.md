@@ -32,21 +32,17 @@
 
 ## Project Overview
 
-1️⃣ You can find the deployed project at [🚫URL NAME GOES HERE](🚫copy and paste URL here).
+[Vision Doc] (https://www.notion.so/Vision-Problem-Objectives-46b01d5cdbfe428397ca4e1ddb7c4086)
 
-1️⃣ [Trello Board](🚫add link to trello board here)
+[Deployed Project] (at Pending...)
 
-1️⃣ [Product Canvas](🚫add link to product canvas here)
+[Trello Board] (https://trello.com/b/itLFz188/labs19-community-calendar)
 
-1️⃣ [UX Design files](🚫add link to design files here) - 🚫 delete if not applicable
+[Product Canvas] (https://www.notion.so/06de41bdd6124a459140e0b943b648a1?v=a0986751fe6e4fcdaa6782c5f827871d)
 
-🚫 One to two paragraph statement about your product and what it does.
+[Wireframe] (https://www.figma.com/file/rMUTr0Y5UBkm7AhAVCMrfW/Community-Calendar%2C-Nora-Barazanchi%2C-Jan-Patrick-Eliares?node-id=122%3A2)
 
-Quis hendrerit dolor magna eget. Pretium quam vulputate dignissim suspendisse. Ut aliquam purus sit amet luctus venenatis lectus magna fringilla. Orci dapibus ultrices in iaculis nunc sed augue. Euismod in pellentesque massa placerat duis ultricies. Bibendum at varius vel pharetra vel turpis nunc eget lorem. Lectus quam id leo in vitae. Purus sit amet luctus venenatis lectus magna fringilla urna porttitor.
-
-Pharetra vel turpis nunc eget lorem dolor sed viverra ipsum. Donec et odio pellentesque diam volutpat. Id diam maecenas ultricies mi eget mauris. Est pellentesque elit ullamcorper dignissim. Orci dapibus ultrices in iaculis nunc.
-
-![](header.png)
+Community Calendar is a project aimed to enable communities to better inform the community of upcoming events and the community to more easily access information about upcoming events in the community. The Android version is more particularly aimed to provide an interface individuals can use to see upcoming community events.
 
 ### Features
 
