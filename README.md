@@ -26,7 +26,7 @@
 
 [Vision Doc](https://www.notion.so/Vision-Problem-Objectives-46b01d5cdbfe428397ca4e1ddb7c4086)
 
-[Deployed Project](at Pending...)
+[Deployed Project](Pending...)
 
 [Trello Board](https://trello.com/b/itLFz188/labs19-community-calendar)
 
