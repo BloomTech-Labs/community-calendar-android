@@ -1,6 +1,6 @@
 # Community Calendar
 
-1️⃣ You can find the deployed project at [CommCal](http://www.google.com/).
+You can find the deployed project at [CommCal](http://www.google.com/).
 
 ## 3️⃣ Contributors
 
@@ -10,17 +10,7 @@
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TylerBerrett)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/justinbgent)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/heiligbasil)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-berrett) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/justinbgent) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/basilhavens) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
 
-🚫 Optional examples of using badges with links for your tech stack, make sure to change these to fit your project
-
-[![Swift Version][swift-image]][swift-url]
-[![Build Status][travis-image]][travis-url]
-[![License][license-image]][license-url]
-[![Carthage compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![CocoaPods Compatible](https://img.shields.io/cocoapods/v/EZSwiftExtensions.svg)](https://img.shields.io/cocoapods/v/LFAlertController.svg)  
-[![Platform](https://img.shields.io/cocoapods/p/LFAlertController.svg?style=flat)](http://cocoapods.org/pods/LFAlertController)
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
-
-🚫 more info on using badges [here](https://github.com/badges/shields)
+<img src="https://img.shields.io/badge/Android-3.51-green"> <img src="https://img.shields.io/badge/API%20Level-21-orange"> <img src="https://img.shields.io/badge/Kotlin-1.3.61-blue"> [![License][license-image]][license-url] [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
 ## Project Overview
 
