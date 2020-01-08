@@ -4,6 +4,7 @@ import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
 
+// Set this class as our Application class to initialize the user's authentication Token at startup
 class App: Application() {
     companion object{
         const val TOKEN_KEY = "token_key"

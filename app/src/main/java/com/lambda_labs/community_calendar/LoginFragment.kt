@@ -34,16 +34,18 @@ class LoginFragment : Fragment() {
         auth0 = Auth0(mainActivity)
         auth0.isOIDCConformant = true
 
+//        Take user to login page when login or profile button is selected
         WebAuthProvider.login(auth0)
             .withScheme("demo")
             .withAudience(getString(R.string.audience))
             .start(mainActivity, object : AuthCallback {
                 override fun onSuccess(credentials: Credentials) {
 
-                    //Todo: Add App to manifest then uncomment
-                    //App.sharedPrefs.edit().putString(credentials.accessToken, App.TOKEN_KEY).apply()
+//                    Save and store user token when user logs in
+                    App.sharedPrefs.edit().putString(credentials.accessToken, App.TOKEN_KEY).apply()
                     App.token = credentials.accessToken
 
+//                    upon successful login "Log In" nav button changes to the "Profile" button label
                     mainActivity.runOnUiThread {
                         val item = mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
                         item.title = getString(R.string.profile)
@@ -63,6 +65,7 @@ class LoginFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+//        logout user when
         blank_logout.setOnClickListener {
 
             WebAuthProvider.logout(auth0)
@@ -72,6 +75,7 @@ class LoginFragment : Fragment() {
 
                         println("logged out")
 
+//                    upon successful logout "Profile" nav button changes to the "Log In" button label
                         mainActivity.runOnUiThread {
                             val item =
                                 mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
