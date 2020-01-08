@@ -29,8 +29,7 @@ Community Calendar is a project aimed to enable communities to better inform the
 
 ### Features
 
--    Display & Search Events
--    RSVP
+-    Display Events
 
 ### Auth0
 
