@@ -47,33 +47,16 @@ Community Calendar is a project aimed to enable communities to better inform the
 
 ### Payment API here
 
-🚫Replace text below with a description of the API
-
-This is the way you take out your frustrations. Get away from those little Christmas tree things we used to make in school. Isn't it fantastic that you can change your mind and create all these happy things? Everything's not great in life, but we can still find beauty in it.
+TBD
 
 ### Apollo-Android
 
 [Apollo-Android](https://github.com/apollographql/apollo-android) is a GraphQL compliant client that generates Java and Kotlin models from standard GraphQL queries.
 
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-When you do it your way you can go anywhere you choose. Let your heart take you to wherever you want to be. If I paint something, I don't want to have to explain what it is. A tree needs to be your friend if you're going to paint him. That's a son of a gun of a cloud. Even the worst thing we can do here is good.
-
-### Misc API here
-
-🚫Replace text below with a description of the API
-
-Volunteering your time; it pays you and your whole community fantastic dividends. Maybe there's a happy little waterfall happening over here. You can spend all day playing with mountains. We don't have to be committed. We are just playing here. You have freedom here. The only guide is your heart. It's cold, but it's beautiful.
-
 ## Requirements
 
-🚫 These are examples, make sure this matches your project's requirements
-
--   iOS 8.0+
--   Xcode 7.3
--   Cocoa Pods
+-   Android Studio 3.5 and above
+-   Android 5.0 (API level 21) and above
 
 ## Contributing
 
