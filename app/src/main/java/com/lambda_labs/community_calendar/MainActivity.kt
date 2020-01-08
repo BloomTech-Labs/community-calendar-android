@@ -14,14 +14,15 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        Startup navigation component
         val host: NavHostFragment =
             supportFragmentManager.findFragmentById(R.id.nav_host_fragment) as NavHostFragment
 
         val navController = host.navController
-
         setupBottomNavMenu(navController)
     }
 
+//    Setup bottom navigation bar
     private fun setupBottomNavMenu(navController: NavController) {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav?.setupWithNavController(navController)
