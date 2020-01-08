@@ -15,11 +15,14 @@ import io.reactivex.schedulers.Schedulers
 
 class HomeViewModel : ViewModel() {
 
+    // Creates LiveData to be observed on the HomeFragment
     private val _events = MutableLiveData<List<EventsQuery.Event>>()
     val events: LiveData<List<EventsQuery.Event>> = _events
 
+    // Init a global variable to be able to call it from another function
     private var disposable: Disposable? = null
 
+    // Makes GraphQL call through Apollo and threads it using RxJava then sets the Live Data
     fun getEvents() {
         disposable = client().rxQuery(EventsQuery())
             .subscribeOn(Schedulers.io())
@@ -41,6 +44,7 @@ class HomeViewModel : ViewModel() {
 
     }
 
+    // Disposes of the disposable to prevent memory leak
     override fun onCleared() {
         super.onCleared()
         if (disposable != null){
