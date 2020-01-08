@@ -6,12 +6,15 @@ import okhttp3.OkHttpClient
 object ApolloClient {
     fun client(): ApolloClient {
 
+        // Base url of are GraphQL server
         val BASE_URL = "https://ccstaging.herokuapp.com/graphql"
 
+        // Building a OkHttpClient to use with Apollo
         val okHttp = OkHttpClient
             .Builder()
             .build()
 
+        // Returns an ApolloClient to be used to make the API call
         return ApolloClient
             .builder()
             .serverUrl(BASE_URL)
