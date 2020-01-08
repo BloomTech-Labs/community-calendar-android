@@ -1,6 +1,6 @@
 # Community Calendar
 
-You can find the deployed project at [CommCal](http://www.google.com/).
+You can find the deployed project at [CommCal](http://www.google.com/). Code for other teams: [Web frontend](https://github.com/Lambda-School-Labs/community-calendar-fe), [Backend](https://github.com/Lambda-School-Labs/community-calendar-be), and [iOS](https://github.com/Lambda-School-Labs/community-calendar-ios)
 
 ## 3️⃣ Contributors
 
@@ -9,6 +9,7 @@ You can find the deployed project at [CommCal](http://www.google.com/).
 |                      [<img src="https://avatars3.githubusercontent.com/u/53718744" width = "200" />](https://avatars3.githubusercontent.com/u/53718744)                       |                      [<img src="https://avatars0.githubusercontent.com/u/50253022" width = "200" />](https://avatars0.githubusercontent.com/u/50253022)                       |                      [<img src="https://avatars1.githubusercontent.com/u/46427102" width = "200" />](https://avatars1.githubusercontent.com/u/46427102)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-female.png" width = "200" />](https://github.com/)                       |                      [<img src="https://www.dalesjewelers.com/wp-content/uploads/2018/10/placeholder-silhouette-male.png" width = "200" />](https://github.com/)                       |
 |                 [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/TylerBerrett)                 |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/justinbgent)             |           [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/heiligbasil)            |          [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/NandoTheessen)           |            [<img src="https://github.com/favicon.ico" width="15"> ](https://github.com/wvandolah)             |
 | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/tyler-berrett) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/justinbgent) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/in/basilhavens) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) | [ <img src="https://static.licdn.com/sc/h/al2o9zrvru7aqj8e1x2rzsrca" width="15"> ](https://www.linkedin.com/) |
+  
 
 <img src="https://img.shields.io/badge/Android-3.51-green"> <img src="https://img.shields.io/badge/API%20Level-21-orange"> <img src="https://img.shields.io/badge/Kotlin-1.3.61-blue"> [![License][license-image]][license-url] [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=flat-square)](http://makeapullrequest.com)
 
