@@ -87,9 +87,6 @@ dependencies {
     implementation 'com.auth0.android:auth0:1.19.1'
 
 
-
-
-
     // Apollo-RX2
     implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
 
