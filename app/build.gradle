@@ -10,6 +10,9 @@ apply plugin: 'com.apollographql.android'
 // Nav
 apply plugin: "androidx.navigation.safeargs.kotlin"
 
+// Room
+apply plugin: 'kotlin-kapt'
+
 static def domain() {
     return System.getenv("AUTH0_DOMAIN")
 }
@@ -89,6 +92,10 @@ dependencies {
 
     // Apollo-RX2
     implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
+
+    // Room
+    implementation "androidx.room:room-runtime:2.2.3"
+    kapt "androidx.room:room-compiler:2.2.3"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
