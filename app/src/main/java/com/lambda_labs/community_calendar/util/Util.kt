@@ -2,6 +2,7 @@ package com.lambda_labs.community_calendar.util
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 object Util {
 
@@ -43,5 +44,63 @@ object Util {
         val begin = getTime(resultStart)
         val finish = getTime(resultEnd)
         return "$begin - $finish"
+    }
+
+    fun getToday(): Date {
+        return Calendar.getInstance().time
+    }
+
+    fun getTomorrow(): Date {
+        val calender = Calendar.getInstance()
+        calender.add(Calendar.DAY_OF_YEAR, 1)
+        return calender.time
+    }
+
+    fun getWeekendDates(): List<Date>{
+        val thisWeekend = ArrayList<Date>()
+        val calendar = Calendar.getInstance()
+        var dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        var daysAway = -1
+
+        while (dayOfWeek != Calendar.SATURDAY){
+            dayOfWeek++
+            daysAway++
+        }
+
+        // why is sunday the first day of the week
+        if (daysAway == 5) daysAway = -2
+
+        for(j in 0..2){
+            calendar.add(Calendar.DAY_OF_YEAR, daysAway)
+            daysAway = 1
+            thisWeekend.add(calendar.time)
+        }
+        return thisWeekend
+    }
+
+    fun getDisplayDay(date: Date): String {
+        val theDay = Calendar.getInstance()
+        theDay.time = date
+        fun intName(format: String): String{
+            return SimpleDateFormat(format, Locale.getDefault()).format(theDay.time)
+        }
+        val month = intName("MMMM")
+        val dayOfWeek = intName("EEEE")
+        val day = theDay.get(Calendar.DATE)
+        val year = theDay.get(Calendar.YEAR)
+
+        return "$dayOfWeek, $month $day, $year"
+    }
+
+    fun getSearchDate(date: Date): String{
+        val cal = Calendar.getInstance()
+        cal.time = date
+        val year = cal.get(Calendar.YEAR)
+        var day = cal.get(Calendar.DATE).toString()
+        if (day.length == 1) {day = "0$day"}
+        var month = (cal.get(Calendar.MONTH) + 1).toString()
+        if (month.length == 1) {month = "0$month"}
+        return "$year-$month-$day"
+
     }
 }

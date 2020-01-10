@@ -3,7 +3,6 @@ package com.lambda_labs.community_calendar
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
@@ -17,13 +16,16 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.util.Util.displayTime
+import com.lambda_labs.community_calendar.util.Util.getDisplayDay
+import com.lambda_labs.community_calendar.util.Util.getSearchDate
+import com.lambda_labs.community_calendar.util.Util.getToday
+import com.lambda_labs.community_calendar.util.Util.getWeekendDates
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
 import kotlinx.android.synthetic.main.event_recycler_item_list.view.*
 import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
-import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
@@ -42,18 +44,36 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        activity?.let {
+            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
+        }
+
+        // event list
+        val events = ArrayList<EventsQuery.Event>()
+        var filterList = ArrayList<EventsQuery.Event>()
+
+        // Today tab
+        txt_event_date.text = getDisplayDay(getToday())
 
 
-        // ViewModel
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        // Tomorrow tab
+        
+
 
 
 //        Dummy data for recycler views
         val strings: ArrayList<String> = arrayListOf("Strings", "The Stuff", "Run", "Strings", "The Stuff", "Run")
         strings.add("asdf")
 
-        // event list
-        val events = ArrayList<EventsQuery.Event>()
+        // Network call through HomeViewMode
+        viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
+            list.forEach { event ->
+                events.add(event)
+            }
+            filterList.addAll(events.filter { it.start().toString().contains("2019-12-22")})
+            main_event_recycler.adapter?.notifyDataSetChanged()
+            pb_events.visibility = View.INVISIBLE
+        })
 
 //        Setup Featured event recycler
         featured_event_recycler.setHasFixedSize(true)
@@ -63,31 +83,23 @@ class HomeFragment : Fragment() {
 //        Setup General events recycler view in list view format
         main_event_recycler.setHasFixedSize(true)
         main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        main_event_recycler.adapter = EventRecycler(events, false)
+        main_event_recycler.adapter = EventRecycler(filterList, false)
 
 //        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
             btn_grid.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_selected))
             btn_list.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_unselected))
             main_event_recycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-            main_event_recycler.adapter = EventRecycler(events, true)
+            main_event_recycler.adapter = EventRecycler(filterList, true)
         }
 
         btn_list.setOnClickListener {
             btn_grid.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_unselected))
             btn_list.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_selected))
             main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            main_event_recycler.adapter = EventRecycler(events, false)
+            main_event_recycler.adapter = EventRecycler(filterList, false)
         }
-        // Network call through HomeViewMode
-        viewModel.getEvents()
-        viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
-            list.forEach { event ->
-                events.add(event)
-            }
-            main_event_recycler.adapter?.notifyDataSetChanged()
-            pb_events.visibility = View.INVISIBLE
-        })
+
     }
 
 
@@ -136,10 +148,20 @@ class HomeFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val event = events[position]
-            Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
+            event.event_images()?.let {
+                if (it.size > 0) {
+                    Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
+                }
+            }
             holder.eventName.text = event.title()
             holder.eventTime.text = displayTime(event.start(), event.end())
-            holder.eventCommunity.text = event.locations()?.get(0)?.name()
+            event.locations()?.let {
+                if (it.size > 0) {
+                    holder.eventCommunity.text = event.locations()?.get(0)?.name()
+                }
+            }
+
+
 
         }
 
@@ -160,7 +182,4 @@ class HomeFragment : Fragment() {
         mainActivity = context as MainActivity
     }
 
-    override fun onDetach() {
-        super.onDetach()
-    }
 }
