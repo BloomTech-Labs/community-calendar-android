@@ -93,9 +93,10 @@ dependencies {
     // Apollo-RX2
     implementation 'com.apollographql.apollo:apollo-rx2-support:1.2.2'
 
-    // Room
+    // Room & RxJava room
     implementation "androidx.room:room-runtime:2.2.3"
     kapt "androidx.room:room-compiler:2.2.3"
+    implementation "androidx.room:room-rxjava2:2.2.3"
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
     testImplementation 'junit:junit:4.12'
