@@ -133,7 +133,7 @@ class HomeFragment : Fragment() {
             isEmpty()
             main_event_recycler.adapter?.notifyDataSetChanged()
             val year = Calendar.getInstance().get(Calendar.YEAR)
-            txt_event_date.text = "$year"
+            txt_event_date.text = "$year - ${year+1}"
         }
 
 //        Dummy data for recycler views
