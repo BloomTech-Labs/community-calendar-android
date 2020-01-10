@@ -56,10 +56,24 @@ class HomeFragment : Fragment() {
         val events = ArrayList<EventsQuery.Event>()
         val filterList = ArrayList<EventsQuery.Event>()
 
+        // Checks to see if filterList is empty the displays a message if empty
+        fun isEmpty(date: Date = Date()){
+            if(filterList.isNullOrEmpty()) {
+                txt_no_events.visibility = View.VISIBLE
+                var day = "today"
+                if (date.after(getToday())){day = "tomorrow"}
+                val displayText = "There are no events $day :("
+                txt_no_events.text = displayText
+            } else {
+                txt_no_events.visibility = View.INVISIBLE
+            }
+        }
+
         // Used by today tab and tomorrow tab to remove some boiler plate code
         fun changeDay(date: Date) {
             filterList.clear()
             filterList.addAll(events.filter { it.start().toString().contains(getSearchDate(date)) })
+            isEmpty(date)
             main_event_recycler.adapter?.notifyDataSetChanged()
             txt_event_date.text = getDisplayDay(date)
         }
@@ -101,6 +115,7 @@ class HomeFragment : Fragment() {
                     it.start().toString().contains(getSearchDate(date))
                 })
             }
+            isEmpty()
             main_event_recycler.adapter?.notifyDataSetChanged()
             val displayWeekend =
                 "${getDisplayDay(getWeekendDates()[0])} - ${getDisplayDay(getWeekendDates()[2])}"
@@ -115,8 +130,10 @@ class HomeFragment : Fragment() {
                 val eventDate = stringToDate(it.start().toString())
                 eventDate.after(getToday())
             })
+            isEmpty()
             main_event_recycler.adapter?.notifyDataSetChanged()
-            txt_event_date.text = ""
+            val year = Calendar.getInstance().get(Calendar.YEAR)
+            txt_event_date.text = "$year"
         }
 
 //        Dummy data for recycler views
@@ -129,9 +146,7 @@ class HomeFragment : Fragment() {
             list.forEach { event ->
                 events.add(event)
             }
-            filterList.addAll(events.filter {
-                it.start().toString().contains(getSearchDate(getToday()))
-            })
+            changeDay(getToday())
             main_event_recycler.adapter?.notifyDataSetChanged()
             pb_events.visibility = View.INVISIBLE
         })

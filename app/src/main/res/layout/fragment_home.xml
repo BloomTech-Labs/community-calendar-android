@@ -206,4 +206,16 @@
         app:layout_constraintBottom_toBottomOf="@id/main_event_recycler"
         app:layout_constraintTop_toTopOf="@id/main_event_recycler" />
 
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_no_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="@id/main_event_recycler"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+
+
 </androidx.constraintlayout.widget.ConstraintLayout>
