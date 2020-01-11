@@ -4,8 +4,8 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    app:cardCornerRadius="16dp"
-    android:layout_height="match_parent">
+    android:layout_height="match_parent"
+    app:cardCornerRadius="16dp">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
@@ -125,13 +125,16 @@
 
         <Spinner
             android:id="@+id/spinner_fragment_filter_location"
+            style="@android:style/Widget.Material.Spinner.Underlined"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="34dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            android:prompt="@string/search_hint"
+            android:spinnerMode="dialog"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
-
 
         <EditText
             android:id="@+id/edit_text_fragment_filter_area_code"
@@ -139,37 +142,46 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
             android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:hint="area code"
             android:inputType="number"
-            android:textColor="#000000"
+            android:textColor="#C4C4C4"
             android:textSize="14sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_location" />
 
         <Spinner
             android:id="@+id/spinner_fragment_filter_interest"
+            style="@android:style/Widget.Material.Spinner.Underlined"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="7dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_area_code" />
 
         <Spinner
             android:id="@+id/spinner_fragment_filter_date"
+            style="@android:style/Widget.Material.Spinner.Underlined"
             android:layout_width="139dp"
             android:layout_height="24dp"
             android:layout_marginTop="15dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_interest" />
 
         <Spinner
             android:id="@+id/spinner_fragment_filter_category"
+            style="@android:style/Widget.Material.Spinner.Underlined"
             android:layout_width="139dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_date" />
 
