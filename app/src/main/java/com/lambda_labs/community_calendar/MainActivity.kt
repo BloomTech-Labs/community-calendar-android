@@ -3,7 +3,10 @@ package com.lambda_labs.community_calendar
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
+import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
+import androidx.navigation.fragment.findNavController
+import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import kotlinx.android.synthetic.main.activity_main.*
@@ -20,6 +23,12 @@ class MainActivity : AppCompatActivity() {
 
         val navController = host.navController
         setupBottomNavMenu(navController)
+
+        //NavigationUI.(this,findNavController(R.id.nav_host_fragment))
+    }
+
+    override fun onSupportNavigateUp(): Boolean {
+        return findNavController(R.id.nav_host_fragment).navigateUp()
     }
 
 //    Setup bottom navigation bar

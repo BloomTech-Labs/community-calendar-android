@@ -12,8 +12,10 @@ import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.navOptions
+import androidx.navigation.ui.NavigationUI
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -45,16 +47,16 @@ class HomeFragment : Fragment() {
 
         val options = navOptions {
             anim {
-                enter = R.anim.slide_in_right
-                exit = R.anim.slide_out_left
-                popEnter = R.anim.slide_in_left
-                popExit = R.anim.slide_out_right
+                enter = R.anim.slide_bottom_up
+                exit = R.anim.stagnant
+                popEnter = R.anim.stagnant
+                popExit = R.anim.slide_bottom_down
             }
         }
 
         if (txt_see_all != null) {
             txt_see_all.setOnClickListener {
-                findNavController().navigate(R.id.filterFragment, null,options)
+                Navigation.findNavController(it).navigate(R.id.action_home_to_filterFragment, null, options)
             }
         }
 
