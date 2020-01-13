@@ -3,13 +3,13 @@ package com.lambda_labs.community_calendar
 
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -17,6 +17,12 @@ import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.util.Util.displayTime
+import com.lambda_labs.community_calendar.util.Util.getDisplayDay
+import com.lambda_labs.community_calendar.util.Util.getSearchDate
+import com.lambda_labs.community_calendar.util.Util.getToday
+import com.lambda_labs.community_calendar.util.Util.getTomorrow
+import com.lambda_labs.community_calendar.util.Util.getWeekendDates
+import com.lambda_labs.community_calendar.util.Util.stringToDate
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
@@ -42,57 +48,162 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-
-
-        // ViewModel
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-
-
-//        Dummy data for recycler views
-        val strings: ArrayList<String> = arrayListOf("Strings", "The Stuff", "Run", "Strings", "The Stuff", "Run")
-        strings.add("asdf")
+        activity?.let {
+            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
+        }
 
         // event list
         val events = ArrayList<EventsQuery.Event>()
+        val filterList = ArrayList<EventsQuery.Event>()
 
-//        Setup Featured event recycler
-        featured_event_recycler.setHasFixedSize(true)
-        featured_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
-        featured_event_recycler.adapter = FeaturedEventRecycler(strings)
-
-//        Setup General events recycler view in list view format
-        main_event_recycler.setHasFixedSize(true)
-        main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-        main_event_recycler.adapter = EventRecycler(events, false)
-
-//        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
-        btn_grid.setOnClickListener {
-            btn_grid.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_selected))
-            btn_list.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_unselected))
-            main_event_recycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-            main_event_recycler.adapter = EventRecycler(events, true)
+        // Checks to see if filterList is empty the displays a message if empty
+        fun isEmpty(message: String){
+            if(filterList.isNullOrEmpty()) {
+                txt_no_events.visibility = View.VISIBLE
+                val displayText = "There are no events $message :("
+                txt_no_events.text = displayText
+            } else {
+                txt_no_events.visibility = View.INVISIBLE
+            }
         }
 
-        btn_list.setOnClickListener {
-            btn_grid.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_unselected))
-            btn_list.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_selected))
-            main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            main_event_recycler.adapter = EventRecycler(events, false)
+        // Used by today tab and tomorrow tab to remove some boiler plate code
+        fun changeDay(date: Date) {
+            filterList.clear()
+            filterList.addAll(events.filter { it.start().toString().contains(getSearchDate(date)) })
+            main_event_recycler.adapter?.notifyDataSetChanged()
+            txt_event_date.text = getDisplayDay(date)
         }
+
+        // Changes the font to bold of the event date tabs according to what tab was clicked
+        fun changeColor(view: View) {
+            view as MaterialTextView
+            val eventDates = arrayListOf<MaterialTextView>(
+                txt_events_today,
+                txt_events_tomorrow,
+                txt_events_this_weekend,
+                txt_events_all_upcoming
+            )
+            eventDates.forEach {
+                it.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_light)
+            }
+            view.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_semi_bold)
+        }
+
+        // Today tab filters by today events
+        txt_event_date.text = getDisplayDay(getToday())
+        txt_events_today.setOnClickListener {
+            changeColor(it)
+            changeDay(getToday())
+            isEmpty("today")
+        }
+
+        // Tomorrow tab filters by tomorrows events
+        txt_events_tomorrow.setOnClickListener {
+            changeColor(it)
+            changeDay(getTomorrow())
+            isEmpty("tomorrow")
+        }
+
+        // Weekend tab filters by events this weekend
+        txt_events_this_weekend.setOnClickListener {
+            changeColor(it)
+            filterList.clear()
+            getWeekendDates().forEach { date ->
+                filterList.addAll(events.filter {
+                    it.start().toString().contains(getSearchDate(date))
+                })
+            }
+            isEmpty("this weekend")
+            main_event_recycler.adapter?.notifyDataSetChanged()
+            val displayWeekend =
+                "${getDisplayDay(getWeekendDates()[0])} - ${getDisplayDay(getWeekendDates()[2])}"
+            txt_event_date.text = displayWeekend
+        }
+
+        // All upcoming filters by dates after today
+        txt_events_all_upcoming.setOnClickListener {
+            changeColor(it)
+            filterList.clear()
+            filterList.addAll(events.filter {
+                val eventDate = stringToDate(it.start().toString())
+                eventDate.after(getToday())
+            })
+            isEmpty("upcoming")
+            main_event_recycler.adapter?.notifyDataSetChanged()
+            val year = Calendar.getInstance().get(Calendar.YEAR)
+            val yearText = "$year - ${year+1}"
+            txt_event_date.text = yearText
+        }
+
+//        Dummy data for recycler views
+        val strings: ArrayList<String> =
+            arrayListOf("Strings", "The Stuff", "Run", "Strings", "The Stuff", "Run")
+        strings.add("asdf")
+
         // Network call through HomeViewMode
-        viewModel.getEvents()
         viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
             }
+            changeDay(getToday())
+            isEmpty("today")
             main_event_recycler.adapter?.notifyDataSetChanged()
             pb_events.visibility = View.INVISIBLE
         })
+
+//        Setup Featured event recycler
+        featured_event_recycler.setHasFixedSize(true)
+        featured_event_recycler.layoutManager =
+            LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        featured_event_recycler.adapter = FeaturedEventRecycler(strings)
+
+//        Setup General events recycler view in list view format
+        main_event_recycler.setHasFixedSize(true)
+        main_event_recycler.layoutManager =
+            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        main_event_recycler.adapter = EventRecycler(filterList, false)
+
+//        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
+        btn_grid.setOnClickListener {
+            btn_grid.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mainActivity,
+                    R.drawable.grid_view_selected
+                )
+            )
+            btn_list.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mainActivity,
+                    R.drawable.list_view_unselected
+                )
+            )
+            main_event_recycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
+            main_event_recycler.adapter = EventRecycler(filterList, true)
+        }
+
+        btn_list.setOnClickListener {
+            btn_grid.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mainActivity,
+                    R.drawable.grid_view_unselected
+                )
+            )
+            btn_list.setImageDrawable(
+                ContextCompat.getDrawable(
+                    mainActivity,
+                    R.drawable.list_view_selected
+                )
+            )
+            main_event_recycler.layoutManager =
+                LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+            main_event_recycler.adapter = EventRecycler(filterList, false)
+        }
+
     }
 
 
-
-//    Recycler for Featured Events
+    //    Recycler for Featured Events
     inner class FeaturedEventRecycler(private val events: ArrayList<String>) :
         RecyclerView.Adapter<FeaturedEventRecycler.ViewHolder>() {
 
@@ -115,17 +226,20 @@ class HomeFragment : Fragment() {
         }
     }
 
-//    Recycler for General Events
-    inner class EventRecycler(private val events: ArrayList<EventsQuery.Event>, private val isGridViewSelected: Boolean) :
+    //    Recycler for General Events
+    inner class EventRecycler(
+        private val events: ArrayList<EventsQuery.Event>,
+        private val isGridViewSelected: Boolean
+    ) :
         RecyclerView.Adapter<EventRecycler.ViewHolder>() {
 
         override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
             // Switch which layout is inflated based on whether list or grid view is selected
-            val view: View = if (isGridViewSelected){
+            val view: View = if (isGridViewSelected) {
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.event_recycler_item_grid, parent, false)
-            }else{
+            } else {
                 LayoutInflater.from(parent.context)
                     .inflate(R.layout.event_recycler_item_list, parent, false)
             }
@@ -136,31 +250,51 @@ class HomeFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val event = events[position]
-            Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
+            event.event_images()?.let {
+                if (it.size > 0) {
+                    Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
+                }
+            }
             holder.eventName.text = event.title()
             holder.eventTime.text = displayTime(event.start(), event.end())
-            holder.eventCommunity.text = event.locations()?.get(0)?.name()
-
+            event.locations()?.let {
+                if (it.size > 0) {
+                    holder.eventCommunity.text = event.locations()?.get(0)?.name()
+                }
+            }
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
             // Change the variables from the grid's layout or list's layout variables depending up which is selected
-            val eventImage: ImageView = if(isGridViewSelected){ view.img_event_grid } else{ view.img_event }
-            val eventName: MaterialTextView = if(isGridViewSelected){ view.txt_event_name_grid } else{ view.txt_event_name }
-            val eventTime: MaterialTextView = if (isGridViewSelected){ view.txt_event_time_grid } else { view.txt_event_time }
-            val eventCommunity: MaterialTextView = if (isGridViewSelected){ view.txt_community_grid } else { view.txt_community }
+            val eventImage: ImageView = if (isGridViewSelected) {
+                view.img_event_grid
+            } else {
+                view.img_event
+            }
+            val eventName: MaterialTextView = if (isGridViewSelected) {
+                view.txt_event_name_grid
+            } else {
+                view.txt_event_name
+            }
+            val eventTime: MaterialTextView = if (isGridViewSelected) {
+                view.txt_event_time_grid
+            } else {
+                view.txt_event_time
+            }
+            val eventCommunity: MaterialTextView = if (isGridViewSelected) {
+                view.txt_community_grid
+            } else {
+                view.txt_community
+            }
         }
     }
 
-//    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
+    //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
         super.onAttach(context)
 
         mainActivity = context as MainActivity
     }
 
-    override fun onDetach() {
-        super.onDetach()
-    }
 }

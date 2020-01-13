@@ -6,4 +6,4 @@ import java.sql.Date
 import java.sql.Timestamp
 
 @Entity
-data class RecentSearch(val searchText: String, @PrimaryKey(autoGenerate = true)val id: Int/*, val timestamp: Timestamp*/)
+data class RecentSearch(val searchText: String, @PrimaryKey(autoGenerate = true)val id: Int = 0/*, val timestamp: Timestamp*/)

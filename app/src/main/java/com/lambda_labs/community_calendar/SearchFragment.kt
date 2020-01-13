@@ -46,13 +46,14 @@ class SearchFragment : Fragment() {
         viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
 
         searches_recycler.setHasFixedSize(true)
-        searches_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        searches_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
         roomDisposable = viewModel.getRecentSearchList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe{ recentSearches: MutableList<RecentSearch> ->
                 if (recentSearches.isNotEmpty()){
                     searches_recycler.adapter = RecentSearchRecycler(recentSearches)
                 }
+
             }
     }
 

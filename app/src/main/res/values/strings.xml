@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Community Calendar</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="notifications">Notifications</string>
@@ -13,7 +11,10 @@
     <string name="com_auth0_client_id">@string/client_id</string>
     <string name="com_auth0_domain">@string/domain</string>
     <string name="audience">https://communitycalendar-staging.auth0.com/api/v2/</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="today">Today</string>
+    <string name="tomorrow">Tomorrow</string>
+    <string name="this_weekend">This weekend</string>
+    <string name="all_upcoming">All upcoming</string>
+    <string name="see_all">See all</string>
+    <string name="featured">Featured</string>
 </resources>
