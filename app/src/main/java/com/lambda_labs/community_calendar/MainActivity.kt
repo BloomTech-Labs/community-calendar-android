@@ -23,8 +23,6 @@ class MainActivity : AppCompatActivity() {
 
         val navController = host.navController
         setupBottomNavMenu(navController)
-
-        //NavigationUI.(this,findNavController(R.id.nav_host_fragment))
     }
 
     override fun onSupportNavigateUp(): Boolean {
