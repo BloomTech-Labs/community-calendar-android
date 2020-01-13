@@ -57,12 +57,10 @@ class HomeFragment : Fragment() {
         val filterList = ArrayList<EventsQuery.Event>()
 
         // Checks to see if filterList is empty the displays a message if empty
-        fun isEmpty(date: Date = Date()){
+        fun isEmpty(message: String){
             if(filterList.isNullOrEmpty()) {
                 txt_no_events.visibility = View.VISIBLE
-                var day = "today"
-                if (date.after(getToday())){day = "tomorrow"}
-                val displayText = "There are no events $day :("
+                val displayText = "There are no events $message :("
                 txt_no_events.text = displayText
             } else {
                 txt_no_events.visibility = View.INVISIBLE
@@ -73,7 +71,6 @@ class HomeFragment : Fragment() {
         fun changeDay(date: Date) {
             filterList.clear()
             filterList.addAll(events.filter { it.start().toString().contains(getSearchDate(date)) })
-            isEmpty(date)
             main_event_recycler.adapter?.notifyDataSetChanged()
             txt_event_date.text = getDisplayDay(date)
         }
@@ -98,12 +95,14 @@ class HomeFragment : Fragment() {
         txt_events_today.setOnClickListener {
             changeColor(it)
             changeDay(getToday())
+            isEmpty("today")
         }
 
         // Tomorrow tab filters by tomorrows events
         txt_events_tomorrow.setOnClickListener {
             changeColor(it)
             changeDay(getTomorrow())
+            isEmpty("tomorrow")
         }
 
         // Weekend tab filters by events this weekend
@@ -115,7 +114,7 @@ class HomeFragment : Fragment() {
                     it.start().toString().contains(getSearchDate(date))
                 })
             }
-            isEmpty()
+            isEmpty("this weekend")
             main_event_recycler.adapter?.notifyDataSetChanged()
             val displayWeekend =
                 "${getDisplayDay(getWeekendDates()[0])} - ${getDisplayDay(getWeekendDates()[2])}"
@@ -130,10 +129,11 @@ class HomeFragment : Fragment() {
                 val eventDate = stringToDate(it.start().toString())
                 eventDate.after(getToday())
             })
-            isEmpty()
+            isEmpty("upcoming")
             main_event_recycler.adapter?.notifyDataSetChanged()
             val year = Calendar.getInstance().get(Calendar.YEAR)
-            txt_event_date.text = "$year - ${year+1}"
+            val yearText = "$year - ${year+1}"
+            txt_event_date.text = yearText
         }
 
 //        Dummy data for recycler views
@@ -147,6 +147,7 @@ class HomeFragment : Fragment() {
                 events.add(event)
             }
             changeDay(getToday())
+            isEmpty("today")
             main_event_recycler.adapter?.notifyDataSetChanged()
             pb_events.visibility = View.INVISIBLE
         })
