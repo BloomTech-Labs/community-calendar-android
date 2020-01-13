@@ -2,8 +2,22 @@ package com.lambda_labs.community_calendar.util
 
 import java.text.SimpleDateFormat
 import java.util.*
+import kotlin.collections.ArrayList
 
 object Util {
+
+    /*
+        stringToDate function:
+            Takes in a string that is formatted like the format variable
+            then converts it to a date and returns the date
+     */
+
+    fun stringToDate(string: String): Date {
+        val format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
+        val formatDate = SimpleDateFormat(format, Locale.getDefault())
+        formatDate.timeZone = TimeZone.getTimeZone("GMT")
+        return formatDate.parse(string) as Date
+    }
 
     /*
         displayTime function:
@@ -13,11 +27,8 @@ object Util {
 
     fun displayTime(start: Any, end: Any): String {
         // Formats the strings to dates
-        val format = "yyyy-MM-dd'T'HH:mm:ss.SSS'Z'"
-        val formatDate = SimpleDateFormat(format, Locale.getDefault())
-        formatDate.timeZone = TimeZone.getTimeZone("GMT")
-        val resultStart = formatDate.parse(start.toString()) as Date
-        val resultEnd = formatDate.parse(end.toString()) as Date
+        val resultStart = stringToDate(start.toString())
+        val resultEnd = stringToDate(end.toString())
 
         // Gets the time from the date in 12 hour format
         fun getTime(date: Date): String {
@@ -43,5 +54,69 @@ object Util {
         val begin = getTime(resultStart)
         val finish = getTime(resultEnd)
         return "$begin - $finish"
+    }
+
+    // getToday returns today as type Date
+    fun getToday(): Date {
+        return Calendar.getInstance().time
+    }
+
+    // getTomorrow returns tomorrow as type Date
+    fun getTomorrow(): Date {
+        val calender = Calendar.getInstance()
+        calender.add(Calendar.DAY_OF_YEAR, 1)
+        return calender.time
+    }
+
+    // getWeekendDates returns current weeks weekend as a list of three dates
+    fun getWeekendDates(): List<Date> {
+        val thisWeekend = ArrayList<Date>()
+        val calendar = Calendar.getInstance()
+        var dayOfWeek = calendar.get(Calendar.DAY_OF_WEEK)
+        var daysAway = -1
+
+        while (dayOfWeek != Calendar.SATURDAY) {
+            dayOfWeek++
+            daysAway++
+        }
+
+        // why is sunday the first day of the week
+        if (daysAway == 5) daysAway = -2
+
+        for (j in 0..2) {
+            calendar.add(Calendar.DAY_OF_YEAR, daysAway)
+            daysAway = 1
+            thisWeekend.add(calendar.time)
+        }
+        return thisWeekend
+    }
+
+    // Takes in a date and returns it as a string looking like Thursday, January 9, 2020
+    fun getDisplayDay(date: Date): String {
+        val theDay = Calendar.getInstance()
+        theDay.time = date
+        fun intName(format: String): String {
+            return SimpleDateFormat(format, Locale.getDefault()).format(theDay.time)
+        }
+
+        val month = intName("MMMM")
+        val dayOfWeek = intName("EEEE")
+        val day = theDay.get(Calendar.DATE)
+        val year = theDay.get(Calendar.YEAR)
+
+        return "$dayOfWeek, $month $day, $year"
+    }
+
+    // Takes in a date and returns it as a string looking like 2020-01-09
+    fun getSearchDate(date: Date): String {
+        val cal = Calendar.getInstance()
+        cal.time = date
+        val year = cal.get(Calendar.YEAR)
+        var day = cal.get(Calendar.DATE).toString()
+        if (day.length == 1) day = "0$day"
+        var month = (cal.get(Calendar.MONTH) + 1).toString()
+        if (month.length == 1) month = "0$month"
+        return "$year-$month-$day"
+
     }
 }

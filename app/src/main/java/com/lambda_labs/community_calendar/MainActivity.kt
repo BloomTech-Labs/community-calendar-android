@@ -2,6 +2,9 @@ package com.lambda_labs.community_calendar
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.view.View
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
@@ -9,7 +12,9 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import kotlinx.android.synthetic.main.fragment_home.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -23,6 +28,9 @@ class MainActivity : AppCompatActivity() {
 
         val navController = host.navController
         setupBottomNavMenu(navController)
+
+        val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel.getEvents()
     }
 
     override fun onSupportNavigateUp(): Boolean {
