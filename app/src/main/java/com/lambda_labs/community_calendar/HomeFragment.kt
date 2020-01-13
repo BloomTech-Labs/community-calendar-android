@@ -1,17 +1,20 @@
 package com.lambda_labs.community_calendar
 
 
+import EventsQuery
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.Navigation
+import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -200,6 +203,22 @@ class HomeFragment : Fragment() {
             main_event_recycler.adapter = EventRecycler(filterList, false)
         }
 
+        // Associate animations for the Navigation Options when displaying the Filter fragment
+        val options = navOptions {
+            anim {
+                enter = R.anim.slide_bottom_up
+                exit = R.anim.stagnant
+                popEnter = R.anim.stagnant
+                popExit = R.anim.slide_bottom_down
+            }
+        }
+
+        // Show the Filter fragment when the Filter button is pushed
+        if (txt_see_all != null) {
+            txt_see_all.setOnClickListener {
+                Navigation.findNavController(it).navigate(R.id.action_home_to_filterFragment, null, options)
+            }
+        }
     }
 
 
