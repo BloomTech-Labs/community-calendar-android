@@ -76,12 +76,13 @@
         <Spinner
             android:id="@+id/spinner_fragment_filter_location"
             style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="139dp"
+            android:layout_width="189dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="18dp"
+            android:layout_marginTop="14dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#C4C4C4"
-            android:spinnerMode="dialog"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
 
@@ -100,7 +101,7 @@
 
         <EditText
             android:id="@+id/edit_text_fragment_filter_area_code"
-            android:layout_width="139dp"
+            android:layout_width="189dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="5dp"
             android:layout_marginEnd="16dp"
@@ -130,7 +131,7 @@
         <Spinner
             android:id="@+id/spinner_fragment_filter_date"
             style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="139dp"
+            android:layout_width="189dp"
             android:layout_height="24dp"
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
@@ -357,6 +358,20 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_begin="161dp" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/guideline2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            app:layout_constraintGuide_begin="205dp" />
 
 
     </androidx.constraintlayout.widget.ConstraintLayout>
