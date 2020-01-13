@@ -25,7 +25,6 @@ class SearchFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
     private lateinit var viewModel: SearchViewModel
-    private lateinit var roomDisposable: Disposable
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -48,18 +47,10 @@ class SearchFragment : Fragment() {
         searches_recycler.setHasFixedSize(true)
         searches_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
 
-        roomDisposable = viewModel.getRecentSearchList().subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread()).subscribe{ recentSearches: MutableList<RecentSearch> ->
-                if (recentSearches.isNotEmpty()){
-                    searches_recycler.adapter = RecentSearchRecycler(recentSearches)
-                }
-
-            }
-    }
-
-    override fun onDestroy() {
-        roomDisposable.dispose()
-        super.onDestroy()
+        viewModel.getRecentSearches()
+        viewModel.searchList.observe(viewLifecycleOwner, Observer<MutableList<RecentSearch>> { recentSearches ->
+            searches_recycler.adapter = RecentSearchRecycler(recentSearches)
+        })
     }
 
     inner class RecentSearchRecycler(private val recentSearches: MutableList<RecentSearch>) :

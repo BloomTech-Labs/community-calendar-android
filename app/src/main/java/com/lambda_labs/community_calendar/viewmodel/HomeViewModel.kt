@@ -6,7 +6,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.apollographql.apollo.api.Response
 import com.apollographql.apollo.rx2.rxQuery
+import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.apollo.ApolloClient.client
+import com.lambda_labs.community_calendar.model.RecentSearch
 import io.reactivex.Observer
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -42,6 +44,11 @@ class HomeViewModel : ViewModel() {
 
             })
 
+    }
+
+    // For MainActivity, add a Recent Search to room's database
+    fun addRecentSearch(recentSearch: RecentSearch){
+        App.repository.addRecentSearch(recentSearch)
     }
 
     // Disposes of the disposable to prevent memory leak
