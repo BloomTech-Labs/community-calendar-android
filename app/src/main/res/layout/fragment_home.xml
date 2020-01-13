@@ -8,7 +8,7 @@
     tools:context=".HomeFragment">
 
     <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_bar"
+        android:id="@+id/search_bar_fragment_filter"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
@@ -34,7 +34,7 @@
         android:textSize="18sp"
         app:layout_constraintBottom_toTopOf="@id/featured_event_recycler"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_bar" />
+        app:layout_constraintTop_toBottomOf="@id/search_bar_fragment_filter" />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_see_all"
@@ -46,7 +46,7 @@
         android:textSize="14sp"
         app:layout_constraintBottom_toTopOf="@id/featured_event_recycler"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/search_bar" />
+        app:layout_constraintTop_toBottomOf="@id/search_bar_fragment_filter" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/featured_event_recycler"

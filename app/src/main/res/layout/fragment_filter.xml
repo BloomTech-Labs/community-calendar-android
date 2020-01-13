@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!--<LinearLayout
+<?xml version="1.0" encoding="utf-8"?><!--<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
@@ -13,194 +12,352 @@
         android:backgroundTint="#00000000"
         android:orientation="vertical" />-->
 
-    <androidx.cardview.widget.CardView
-        xmlns:android="http://schemas.android.com/apk/res/android"
-        xmlns:app="http://schemas.android.com/apk/res-auto"
-        xmlns:tools="http://schemas.android.com/tools"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:cardCornerRadius="16dp">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        app:cardCornerRadius="16dp">
+        android:orientation="vertical">
 
-        <androidx.constraintlayout.widget.ConstraintLayout
+        <ImageView
+            android:id="@+id/image_view_fragment_filter_cancel"
+            android:layout_width="16dp"
+            android:layout_height="14dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="23dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            app:srcCompat="@drawable/cancel_x" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_header"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="19dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Filters"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/divider_view_fragment_filter_divider"
+            android:layout_width="409dp"
+            android:layout_height="2dp"
+            android:layout_marginTop="56dp"
+            android:background="?android:attr/listDivider"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_title"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="22dp"
+            android:fontFamily="@font/poppins_semi_bold"
+            android:text="Filters"
+            android:textColor="#000000"
+            android:textSize="24sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/divider_view_fragment_filter_divider" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="20dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Location"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
+
+        <Spinner
+            android:id="@+id/spinner_fragment_filter_location"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            android:prompt="@string/search_hint"
+            android:spinnerMode="dialog"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_area_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Area code"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_location" />
+
+        <EditText
+            android:id="@+id/edit_text_fragment_filter_area_code"
+            android:layout_width="139dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="5dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:hint="area code"
+            android:inputType="number"
+            android:textColor="#C4C4C4"
+            android:textSize="14sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_location" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Date"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_area_code" />
+
+        <Spinner
+            android:id="@+id/spinner_fragment_filter_date"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="139dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="3dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_area_code" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_tags"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Tags"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_date" />
+
+        <androidx.appcompat.widget.SearchView
+            android:id="@+id/search_bar_fragment_filter"
             android:layout_width="match_parent"
-            android:layout_height="match_parent"
-            android:orientation="vertical">
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="16dp"
+            android:background="@drawable/rectangle_search_view"
+            android:hint="Search for tags"
+            app:iconifiedByDefault="false"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_tags"
+            app:queryBackground="@android:color/transparent"
+            app:queryHint="Search for tags" />
 
-            <ImageView
-                android:id="@+id/image_view_fragment_filter_cancel"
-                android:layout_width="16dp"
-                android:layout_height="14dp"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="23dp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"
-                app:srcCompat="@drawable/cancel_x" />
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_fragment_filter_added"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/search_bar_fragment_filter">
 
-            <TextView
-                android:id="@+id/text_view_fragment_filter_header"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_fragment_filter_added_tag1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="19dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Filters"
-                android:textColor="#000000"
-                android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <View
-                android:id="@+id/divider_view_fragment_filter_divider"
-                android:layout_width="409dp"
-                android:layout_height="2dp"
-                android:layout_marginTop="56dp"
-                android:background="?android:attr/listDivider"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
-
-            <TextView
-                android:id="@+id/text_view_fragment_filter_title"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
-                android:fontFamily="@font/poppins_medium"
-                android:text="Popular filters"
-                android:textColor="#000000"
-                android:textSize="24sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/divider_view_fragment_filter_divider" />
-
-            <TextView
-                android:id="@+id/text_view_fragment_filter_location"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="36dp"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Location"
-                android:textColor="#000000"
+                android:text="Tech"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#000000"
+                app:chipIconVisible="true"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <TextView
-                android:id="@+id/text_view_fragment_filter_area_code"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_fragment_filter_added_tag2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="17dp"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Area code"
-                android:textColor="#000000"
+                android:text="Entertainment"
+                android:textColor="#FFFFFF"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_location" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#000000"
+                app:chipIconVisible="true"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <TextView
-                android:id="@+id/text_view_fragment_filter_interest"
+        </com.google.android.material.chip.ChipGroup>
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_suggested"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="26dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="Suggested Tags"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/chip_group_fragment_filter_added" />
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_fragment_filter_suggested"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="4dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_suggested">
+
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group_fragment_filter_suggested_tag1"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="17dp"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Interest"
-                android:textColor="#000000"
+                android:text="Tech"
+                android:textColor="#ACAAAA"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_area_code" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#E4E4E4"
+                app:chipIconVisible="true"
+                app:closeIcon="@drawable/ic_add_circle_24dp"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <TextView
-                android:id="@+id/text_view_fragment_filter_date"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group_fragment_filter_suggested_tag2"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="17dp"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Date"
-                android:textColor="#000000"
+                android:text="Music"
+                android:textColor="#ACAAAA"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_interest" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#E4E4E4"
+                app:chipIconVisible="true"
+                app:closeIcon="@drawable/ic_add_circle_24dp"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <TextView
-                android:id="@+id/text_view_fragment_filter_category"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group_fragment_filter_suggested_tag3"
                 android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
-                android:layout_marginTop="17dp"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:text="Category"
-                android:textColor="#000000"
+                android:text="Entertainment"
+                android:textColor="#ACAAAA"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_date" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#E4E4E4"
+                app:chipIconVisible="true"
+                app:closeIcon="@drawable/ic_add_circle_24dp"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <Spinner
-                android:id="@+id/spinner_fragment_filter_location"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="139dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="34dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#C4C4C4"
-                android:prompt="@string/search_hint"
-                android:spinnerMode="dialog"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
-
-            <EditText
-                android:id="@+id/edit_text_fragment_filter_area_code"
-                android:layout_width="139dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="5dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#C4C4C4"
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group_fragment_filter_suggested_tag4"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
                 android:fontFamily="@font/poppins_regular"
-                android:gravity="center"
-                android:hint="area code"
-                android:inputType="number"
-                android:textColor="#C4C4C4"
+                android:text="Family"
+                android:textColor="#ACAAAA"
                 android:textSize="14sp"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_location" />
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#E4E4E4"
+                app:chipIconVisible="true"
+                app:closeIcon="@drawable/ic_add_circle_24dp"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <Spinner
-                android:id="@+id/spinner_fragment_filter_interest"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="139dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="7dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#C4C4C4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_area_code" />
+            <com.google.android.material.chip.Chip
+                android:id="@+id/chip_group_fragment_filter_suggested_tag5"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:checkable="false"
+                android:clickable="false"
+                android:fontFamily="@font/poppins_regular"
+                android:text="Fun"
+                android:textColor="#ACAAAA"
+                android:textSize="14sp"
+                app:checkedIconEnabled="true"
+                app:checkedIconVisible="false"
+                app:chipBackgroundColor="#E4E4E4"
+                app:chipIconVisible="true"
+                app:closeIcon="@drawable/ic_add_circle_24dp"
+                app:closeIconTint="#ACAAAA"
+                app:closeIconVisible="true" />
 
-            <Spinner
-                android:id="@+id/spinner_fragment_filter_date"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="139dp"
-                android:layout_height="24dp"
-                android:layout_marginTop="15dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#C4C4C4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_interest" />
+        </com.google.android.material.chip.ChipGroup>
 
-            <Spinner
-                android:id="@+id/spinner_fragment_filter_category"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="139dp"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="16dp"
-                android:layout_marginEnd="16dp"
-                android:backgroundTint="#C4C4C4"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_date" />
+        <Button
+            android:id="@+id/button_fragment_filter_apply"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="13dp"
+            android:fontFamily="@font/poppins_medium"
+            android:text="Apply"
+            android:textAllCaps="false"
+            android:textSize="14sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
 
-        </androidx.constraintlayout.widget.ConstraintLayout>
 
-    </androidx.cardview.widget.CardView>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-<!--</LinearLayout>-->
+</androidx.cardview.widget.CardView>
+
+    <!--</LinearLayout>-->
