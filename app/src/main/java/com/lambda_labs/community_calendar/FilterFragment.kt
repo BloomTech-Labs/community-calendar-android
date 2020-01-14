@@ -4,15 +4,14 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.AdapterView
 import android.widget.ArrayAdapter
-import android.widget.SpinnerAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
-import androidx.navigation.fragment.findNavController
+import com.lambda_labs.community_calendar.util.DatePickerFragment
+import com.lambda_labs.community_calendar.util.Util
 import kotlinx.android.synthetic.main.fragment_filter.*
 
-class FilterFragment : Fragment()/*, AdapterView.OnItemSelectedListener*/ {
+class FilterFragment : Fragment() {
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -36,10 +35,13 @@ class FilterFragment : Fragment()/*, AdapterView.OnItemSelectedListener*/ {
         ).also { arrayAdapter ->
             arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner_fragment_filter_location.adapter = arrayAdapter
-            /*spinner_fragment_filter_location.onItemSelectedListener = this*/
+        }
+
+        // Show the Date Picker when the date control is engaged
+        text_view_fragment_filter_date_shown.text = Util.getSearchDate(Util.getToday())
+        image_view_fragment_filter_date.setOnClickListener {
+            val datePicker = DatePickerFragment()
+            datePicker.show(fragmentManager!!, "datePicker")
         }
     }
-
-    /*override fun onNothingSelected(parent: AdapterView<*>?) {}
-    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {}*/
 }

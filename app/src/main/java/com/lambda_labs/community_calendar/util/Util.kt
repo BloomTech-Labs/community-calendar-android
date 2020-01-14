@@ -116,7 +116,15 @@ object Util {
         if (day.length == 1) day = "0$day"
         var month = (cal.get(Calendar.MONTH) + 1).toString()
         if (month.length == 1) month = "0$month"
-        return "$year-$month-$day"
 
+        return "$year-$month-$day"
+    }
+
+    // Takes in integer values for the date and then calls another function
+    fun parseDate(year: Int, month: Int, day: Int): String {
+        val cal = Calendar.getInstance()
+        cal.set(year, month, day)
+
+        return getSearchDate(cal.time)
     }
 }
