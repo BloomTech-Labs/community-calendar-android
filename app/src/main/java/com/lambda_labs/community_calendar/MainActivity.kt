@@ -1,16 +1,17 @@
 package com.lambda_labs.community_calendar
 
-import androidx.appcompat.app.AppCompatActivity
+import EventsQuery
 import android.os.Bundle
 import android.view.View
 import android.widget.LinearLayout
+import androidx.appcompat.app.AppCompatActivity
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
@@ -19,6 +20,8 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
+
+
 
 //        Startup navigation component
         val host: NavHostFragment =
@@ -29,6 +32,12 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         viewModel.getEvents()
+        val events = ArrayList<EventsQuery.Event>()
+        viewModel.events.observe(this, Observer<List<EventsQuery.Event>> { list ->
+            list.forEach { event ->
+                events.add(event)
+            }
+        })
 
         // Navigates out of SearchFragment to previous fragment.
         // SearchFragment onDestroy has more logic to wrap this action up.
@@ -51,7 +60,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Adds searches to room db
-        viewModel.addSearchesToDatabase(search_bar)
+        viewModel.searchNSave(search_bar, events)
     }
 
 //    Setup bottom navigation bar

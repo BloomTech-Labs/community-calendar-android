@@ -1,8 +1,6 @@
 package com.lambda_labs.community_calendar.viewmodel
 
 import EventsQuery
-import android.app.Activity
-import android.view.View
 import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
@@ -18,8 +16,9 @@ import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.MainActivity
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.apollo.ApolloClient.client
-import com.lambda_labs.community_calendar.model.RecentSearch
+import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.hideKeyboard
+import com.lambda_labs.community_calendar.util.searchEvents
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
@@ -58,19 +57,24 @@ class HomeViewModel : ViewModel() {
     }
 
     // For MainActivity, add a Recent Search to room's database
-    private fun addRecentSearch(recentSearch: RecentSearch){
+    fun addRecentSearch(search: Search){
         searchDisposable = Schedulers.io().createWorker().schedule {
-            App.repository.addRecentSearch(recentSearch)
+            App.repository.addRecentSearch(search)
         }
     }
 
     // Search actions
-    fun addSearchesToDatabase(searchView: SearchView){
+    fun searchNSave(searchView: SearchView, events: ArrayList<EventsQuery.Event>){
         searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 if (query != null){
                     // Function connects to repository (see above function)
-                    addRecentSearch(RecentSearch(query))
+                    val userSearch = Search(query)
+                    searchEvents(events, userSearch).forEach {
+                        println(it.title())
+                    }
+                    addRecentSearch(userSearch)
+
                 }
                 hideKeyboard(searchView.context as MainActivity)
                 return true

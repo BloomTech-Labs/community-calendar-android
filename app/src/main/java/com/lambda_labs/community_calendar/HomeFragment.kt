@@ -1,28 +1,22 @@
 package com.lambda_labs.community_calendar
 
 
+import EventsQuery
 import android.content.Context
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
+import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
-import com.lambda_labs.community_calendar.util.Util.displayTime
-import com.lambda_labs.community_calendar.util.Util.getDisplayDay
-import com.lambda_labs.community_calendar.util.Util.getSearchDate
-import com.lambda_labs.community_calendar.util.Util.getToday
-import com.lambda_labs.community_calendar.util.Util.getTomorrow
-import com.lambda_labs.community_calendar.util.Util.getWeekendDates
-import com.lambda_labs.community_calendar.util.Util.stringToDate
+import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
