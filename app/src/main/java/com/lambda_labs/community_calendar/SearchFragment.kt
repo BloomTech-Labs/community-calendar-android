@@ -6,13 +6,17 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.LinearLayout
 import android.widget.TextView
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lambda_labs.community_calendar.model.RecentSearch
+import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
+import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 
@@ -49,6 +53,21 @@ class SearchFragment : Fragment() {
         viewModel.searchList.observe(viewLifecycleOwner, Observer<MutableList<RecentSearch>> { recentSearches ->
             searches_recycler.adapter = RecentSearchRecycler(recentSearches)
         })
+    }
+
+    override fun onDestroy() {
+        mainActivity.apply {
+            btn_cancel.visibility = View.GONE
+            search_bar.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
+            val constraintSetHide = ConstraintSet()
+            constraintSetHide.clone(c_layout)
+            constraintSetHide.connect(search_bar.id, ConstraintSet.END, c_layout.id, ConstraintSet.END)
+            constraintSetHide.applyTo(c_layout)
+            hideKeyboard(this)
+            search_bar.clearFocus()
+            search_bar.setQuery("", false)
+        }
+        super.onDestroy()
     }
 
     inner class RecentSearchRecycler(private val recentSearches: MutableList<RecentSearch>) :
