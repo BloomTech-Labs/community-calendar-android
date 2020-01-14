@@ -119,4 +119,9 @@ object Util {
         return "$year-$month-$day"
 
     }
+
+    fun negativeDate(): Date{
+        val date = "1998-03-12T23:00:00.000Z"
+        return stringToDate(date)
+    }
 }
