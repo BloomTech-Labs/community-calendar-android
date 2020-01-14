@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
+import com.google.android.material.chip.Chip
 import com.lambda_labs.community_calendar.util.DatePickerFragment
 import com.lambda_labs.community_calendar.util.Util
 import kotlinx.android.synthetic.main.fragment_filter.*
@@ -43,5 +44,17 @@ class FilterFragment : Fragment() {
             val datePicker = DatePickerFragment()
             datePicker.show(fragmentManager!!, "datePicker")
         }
+
+        // Populate the initial chip tags to be added to the included group
+
+        resources.getStringArray(R.array.tags_added_array).forEach {resourceTag ->
+            val chip: Chip = generateChip(resourceTag)
+            chip_group_fragment_filter_added.addView(chip)
+        }
+
+    }
+
+    private fun generateChip(tagName: String): Chip {
+        TODO("not implemented") //To change body of created functions use File | Settings | File Templates.
     }
 }

@@ -41,4 +41,22 @@
         <item>Downtown</item>
         <item>Corktown - Woodbridge</item>
     </string-array>
+
+    <string-array name="tags_added_array">
+        <item>Tech</item>
+        <item>Entertainment</item>
+        <item>Gardening</item>
+        <item>Sewing</item>
+        <item>Sports</item>
+        <item>Outdoors</item>
+    </string-array>
+
+    <string-array name="tags_suggested_array">
+        <item>Tech</item>
+        <item>Music</item>
+        <item>Entertainment</item>
+        <item>Family</item>
+        <item>Fun</item>
+        <item>Eating</item>
+    </string-array>
 </resources>
