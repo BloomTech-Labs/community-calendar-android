@@ -1,7 +1,5 @@
 <resources>
     <string name="app_name">Community Calendar</string>
-
-    <!-- TODO: Remove or change this placeholder text -->
     <string name="logout">Logout</string>
     <string name="home">Home</string>
     <string name="notifications">Notifications</string>

@@ -34,8 +34,19 @@ import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
-    private lateinit var mainActivity: Context
+    private lateinit var mainActivity: MainActivity
     private lateinit var viewModel: HomeViewModel
+
+    //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
+    override fun onAttach(context: Context) {
+        super.onAttach(context)
+
+        mainActivity = context as MainActivity
+
+        activity?.let {
+            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
+        }
+    }
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -47,10 +58,6 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        activity?.let {
-            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
-        }
 
         // event list
         val events = ArrayList<EventsQuery.Event>()
@@ -153,50 +160,23 @@ class HomeFragment : Fragment() {
         })
 
 //        Setup Featured event recycler
-        featured_event_recycler.setHasFixedSize(true)
-        featured_event_recycler.layoutManager =
-            LinearLayoutManager(activity, RecyclerView.HORIZONTAL, false)
+        viewModel.setupRecyclers(RecyclerView.HORIZONTAL, activity, featured_event_recycler)
         featured_event_recycler.adapter = FeaturedEventRecycler(strings)
 
 //        Setup General events recycler view in list view format
-        main_event_recycler.setHasFixedSize(true)
-        main_event_recycler.layoutManager =
-            LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+        viewModel.setupRecyclers(RecyclerView.VERTICAL, activity, main_event_recycler)
         main_event_recycler.adapter = EventRecycler(filterList, false)
 
 //        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
-            btn_grid.setImageDrawable(
-                ContextCompat.getDrawable(
-                    mainActivity,
-                    R.drawable.grid_view_selected
-                )
-            )
-            btn_list.setImageDrawable(
-                ContextCompat.getDrawable(
-                    mainActivity,
-                    R.drawable.list_view_unselected
-                )
-            )
+            viewModel.selectGridView(mainActivity, btn_grid, btn_list)
             main_event_recycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
             main_event_recycler.adapter = EventRecycler(filterList, true)
         }
 
         btn_list.setOnClickListener {
-            btn_grid.setImageDrawable(
-                ContextCompat.getDrawable(
-                    mainActivity,
-                    R.drawable.grid_view_unselected
-                )
-            )
-            btn_list.setImageDrawable(
-                ContextCompat.getDrawable(
-                    mainActivity,
-                    R.drawable.list_view_selected
-                )
-            )
-            main_event_recycler.layoutManager =
-                LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
+            viewModel.selectListView(mainActivity, btn_grid, btn_list)
+            main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
             main_event_recycler.adapter = EventRecycler(filterList, false)
         }
 
@@ -288,13 +268,6 @@ class HomeFragment : Fragment() {
                 view.txt_community
             }
         }
-    }
-
-    //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
-    override fun onAttach(context: Context) {
-        super.onAttach(context)
-
-        mainActivity = context as MainActivity
     }
 
 }
