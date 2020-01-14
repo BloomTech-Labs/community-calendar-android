@@ -30,7 +30,8 @@ class MainActivity : AppCompatActivity() {
         val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         viewModel.getEvents()
 
-        // All needed
+        // Navigates out of SearchFragment to previous fragment.
+        // SearchFragment onDestroy has more logic to wrap this action up.
         btn_cancel.setOnClickListener {
             navController.navigateUp()
         }
