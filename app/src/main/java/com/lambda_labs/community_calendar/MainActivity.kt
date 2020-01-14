@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
         }
 
         // Checks to see if search bar was selected and navigates accordingly
-        search_bar.setOnQueryTextFocusChangeListener { view, hasFocus ->
+        search_bar.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus && navController.currentDestination?.id != R.id.searchFragment){
                 navController.navigate(R.id.searchFragment)
 
