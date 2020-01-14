@@ -1,22 +1,20 @@
 package com.lambda_labs.community_calendar
 
-
 import android.content.Context
 import android.os.Bundle
 import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.TextView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lambda_labs.community_calendar.model.RecentSearch
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.schedulers.Schedulers
 import kotlinx.android.synthetic.main.fragment_search.*
+import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 
 /**
  * A simple [Fragment] subclass.
@@ -66,8 +64,12 @@ class SearchFragment : Fragment() {
 
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val recentSearch = recentSearches[position]
+
+            holder.searchText.text = recentSearch.searchText
         }
 
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {  }
+        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+            val searchText: TextView = view.search_txt
+        }
     }
 }

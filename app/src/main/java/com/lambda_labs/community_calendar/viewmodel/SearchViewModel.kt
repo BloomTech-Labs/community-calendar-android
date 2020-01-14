@@ -11,18 +11,17 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 class SearchViewModel: ViewModel() {
-    lateinit var disposable: Disposable
+    // Database call will be done in viewmodel
+    private var disposable: Disposable? = null
     private val recentSearchList: MutableLiveData<MutableList<RecentSearch>> = MutableLiveData(
         mutableListOf())
     val searchList: LiveData<MutableList<RecentSearch>> = recentSearchList
 
-    private fun getRecentSearchList(): Flowable<MutableList<RecentSearch>> {
-        return App.repository.getRecentSearchList()
-    }
-
+    // Retrieves searches stored in database and saves them to recentSearchList to pass to searchList for fragment
     fun getRecentSearches(){
-        disposable = getRecentSearchList().subscribeOn(Schedulers.io())
+        disposable = App.repository.getRecentSearchList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe{ recentSearches: MutableList<RecentSearch> ->
+                recentSearchList.value?.clear()
                 recentSearchList.value?.addAll(recentSearches)
             }
     }
@@ -36,7 +35,9 @@ class SearchViewModel: ViewModel() {
     }
 
     override fun onCleared() {
-        disposable.dispose()
+        if (disposable != null){
+            disposable?.dispose()
+        }
         super.onCleared()
     }
 }
