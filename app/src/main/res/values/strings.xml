@@ -20,8 +20,8 @@
     <string name="filter_text_view_header">Filters</string>
     <string name="filter_text_view_title">Filters</string>
     <string name="filter_text_view_location">Location</string>
-    <string name="filter_text_view_area_code">Area code</string>
-    <string name="filter_edit_text_area_code_hint">area code</string>
+    <string name="filter_text_view_zip_code">Zip code</string>
+    <string name="filter_edit_text_zip_code_hint">zip code</string>
     <string name="filter_text_view_date">Date</string>
     <string name="filter_text_view_tags">Tags</string>
     <string name="filter_search_view_hint">Search for tags</string>

@@ -90,20 +90,20 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
 
         <TextView
-            android:id="@+id/text_view_fragment_filter_area_code"
+            android:id="@+id/text_view_fragment_filter_zip_code"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
             android:layout_marginTop="17dp"
             android:fontFamily="@font/poppins_regular"
-            android:text="@string/filter_text_view_area_code"
+            android:text="@string/filter_text_view_zip_code"
             android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_location" />
 
         <EditText
-            android:id="@+id/edit_text_fragment_filter_area_code"
+            android:id="@+id/edit_text_fragment_filter_zip_code"
             android:layout_width="189dp"
             android:layout_height="40dp"
             android:layout_marginTop="5dp"
@@ -111,7 +111,7 @@
             android:backgroundTint="#C4C4C4"
             android:fontFamily="@font/poppins_regular"
             android:gravity="center"
-            android:hint="@string/filter_edit_text_area_code_hint"
+            android:hint="@string/filter_edit_text_zip_code_hint"
             android:inputType="number"
             android:textColor="#000000"
             android:textSize="13sp"
@@ -129,7 +129,7 @@
             android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_area_code" />
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_zip_code" />
 
         <FrameLayout
             android:layout_width="189dp"
@@ -137,7 +137,7 @@
             android:layout_marginTop="3dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_area_code">
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_zip_code">
 
             <TextView
                 android:id="@+id/text_view_fragment_filter_date_shown"
