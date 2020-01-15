@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.os.Bundle
@@ -12,7 +12,8 @@ import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
+import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -30,12 +31,13 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
         setupBottomNavMenu(navController)
 
-        val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        viewModel.getEvents()
+        val viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
+        viewModel.queryEvents()
         val events = ArrayList<EventsQuery.Event>()
-        viewModel.events.observe(this, Observer<List<EventsQuery.Event>> { list ->
+        viewModel.getAllEvents().observe(this, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
+                println(event.title())
             }
         })
 

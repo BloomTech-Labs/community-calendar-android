@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 import android.content.Context
 import android.os.Bundle
@@ -13,6 +13,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel

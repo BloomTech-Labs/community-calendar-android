@@ -7,19 +7,19 @@
 
     <fragment
         android:id="@+id/home"
-        android:name="com.lambda_labs.community_calendar.HomeFragment"
+        android:name="com.lambda_labs.community_calendar.view.HomeFragment"
         android:label="fragment_home"
         tools:layout="@layout/fragment_home" />
 
     <fragment
         android:id="@+id/loginFragment"
-        android:name="com.lambda_labs.community_calendar.LoginFragment"
+        android:name="com.lambda_labs.community_calendar.view.LoginFragment"
         android:label="fragment_login"
         tools:layout="@layout/fragment_login" />
 
     <fragment
         android:id="@+id/searchFragment"
-        android:name="com.lambda_labs.community_calendar.SearchFragment"
+        android:name="com.lambda_labs.community_calendar.view.SearchFragment"
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 

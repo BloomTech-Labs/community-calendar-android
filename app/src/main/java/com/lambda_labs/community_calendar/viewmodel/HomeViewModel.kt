@@ -2,103 +2,21 @@ package com.lambda_labs.community_calendar.viewmodel
 
 import EventsQuery
 import android.widget.ImageView
-import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
-import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.apollographql.apollo.api.Response
-import com.apollographql.apollo.rx2.rxQuery
 import com.lambda_labs.community_calendar.App
-import com.lambda_labs.community_calendar.MainActivity
 import com.lambda_labs.community_calendar.R
-import com.lambda_labs.community_calendar.apollo.ApolloClient.client
-import com.lambda_labs.community_calendar.model.Search
-import com.lambda_labs.community_calendar.util.hideKeyboard
-import com.lambda_labs.community_calendar.util.searchEvents
-import io.reactivex.android.schedulers.AndroidSchedulers
-import io.reactivex.disposables.Disposable
-import io.reactivex.observers.DisposableObserver
-import io.reactivex.schedulers.Schedulers
+import com.lambda_labs.community_calendar.view.MainActivity
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel: ViewModel() {
 
-    // Creates LiveData to be observed on the HomeFragment
-    private val _events = MutableLiveData<List<EventsQuery.Event>>()
-    val events: LiveData<List<EventsQuery.Event>> = _events
-
-    // Init a global variable to be able to call it from another function
-    private var disposable: Disposable? = null
-    private var searchDisposable: Disposable? = null
-
-    // Makes GraphQL call through Apollo and threads it using RxJava then sets the Live Data
-    fun getEvents() {
-        disposable = client().rxQuery(EventsQuery())
-            .subscribeOn(Schedulers.io())
-            .observeOn(AndroidSchedulers.mainThread())
-            .subscribeWith (object: DisposableObserver<Response<EventsQuery.Data>>() {
-                override fun onComplete() {
-
-                }
-
-                override fun onNext(t: Response<EventsQuery.Data>) {
-                    _events.value  = t.data()?.events()
-                }
-
-                override fun onError(e: Throwable) {
-                    println(e.message)
-                }
-
-            })
-
+    fun getAllEvents(): LiveData<List<EventsQuery.Event>> {
+        return App.repository.events
     }
-
-    // For MainActivity, add a Recent Search to room's database
-    fun addRecentSearch(search: Search){
-        searchDisposable = Schedulers.io().createWorker().schedule {
-            App.repository.addRecentSearch(search)
-        }
-    }
-
-    // Search actions
-    fun searchNSave(searchView: SearchView, events: ArrayList<EventsQuery.Event>){
-        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
-            override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null){
-                    // Function connects to repository (see above function)
-                    val userSearch = Search(query)
-                    searchEvents(events, userSearch).forEach {
-                        println(it.title())
-                    }
-                    addRecentSearch(userSearch)
-
-                }
-                hideKeyboard(searchView.context as MainActivity)
-                return true
-            }
-
-            override fun onQueryTextChange(newText: String?): Boolean {
-                return true
-            }
-        })
-    }
-
-    // Disposes of the disposable to prevent memory leak
-    override fun onCleared() {
-        if (disposable != null){
-            disposable?.dispose()
-        }
-        if (searchDisposable != null){
-            searchDisposable?.dispose()
-        }
-        super.onCleared()
-    }
-
-
-    // TODO: Separate viewmodels. Below is for HomeFragment Specific
 
     fun setupRecyclers(orientation: Int, activity: FragmentActivity?, recycler: RecyclerView){
         recycler.setHasFixedSize(true)

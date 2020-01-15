@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 
 import EventsQuery
@@ -16,6 +16,7 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
+import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
@@ -37,9 +38,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
 
-        activity?.let {
-            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
-        }
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -86,9 +85,13 @@ class HomeFragment : Fragment() {
                 txt_events_all_upcoming
             )
             eventDates.forEach {
-                it.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_light)
+                it.typeface = ResourcesCompat.getFont(mainActivity,
+                    R.font.poppins_light
+                )
             }
-            view.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_semi_bold)
+            view.typeface = ResourcesCompat.getFont(mainActivity,
+                R.font.poppins_semi_bold
+            )
         }
 
         // Today tab filters by today events
@@ -143,7 +146,7 @@ class HomeFragment : Fragment() {
         strings.add("asdf")
 
         // Network call through HomeViewMode
-        viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
+        viewModel.getAllEvents().observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
             }

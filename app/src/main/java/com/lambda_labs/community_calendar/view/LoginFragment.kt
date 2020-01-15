@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 import android.app.Dialog
 import android.content.Context
@@ -14,6 +14,8 @@ import com.auth0.android.provider.AuthCallback
 import com.auth0.android.provider.VoidCallback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
+import com.lambda_labs.community_calendar.App
+import com.lambda_labs.community_calendar.R
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
 
@@ -42,7 +44,9 @@ class LoginFragment : Fragment() {
                 override fun onSuccess(credentials: Credentials) {
 
 //                    Save and store user token when user logs in
-                    App.sharedPrefs.edit().putString(credentials.accessToken, App.TOKEN_KEY).apply()
+                    App.sharedPrefs.edit().putString(credentials.accessToken,
+                        App.TOKEN_KEY
+                    ).apply()
                     App.token = credentials.accessToken
 
 //                    upon successful login "Log In" nav button changes to the "Profile" button label
