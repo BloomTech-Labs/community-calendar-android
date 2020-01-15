@@ -49,7 +49,8 @@ class FilterFragment : Fragment() {
         }
 
         // Store the display attributes of the screen for calculations
-        val displayMetrics: DisplayMetrics = view.context.applicationContext.resources.displayMetrics
+        val displayMetrics: DisplayMetrics =
+            view.context.applicationContext.resources.displayMetrics
         val px: Int = ViewUtil.dpToPx(40, displayMetrics)
 
         // Populate the initial chip tags to be added to the included group
@@ -57,6 +58,9 @@ class FilterFragment : Fragment() {
             val chip: Chip = ViewUtil.generateChip(context!!, true, px)
             chip.text = tagText
             chip.id = index
+            chip.setOnCloseIconClickListener {
+                chip_group_fragment_filter_added.removeView(it)
+            }
             chip_group_fragment_filter_added.addView(chip)
         }
 
@@ -65,6 +69,16 @@ class FilterFragment : Fragment() {
             val chip: Chip = ViewUtil.generateChip(context!!, false, px)
             chip.text = tagText
             chip.id = index
+            chip.setOnCloseIconClickListener {
+                chip_group_fragment_filter_suggested.removeView(it)
+                val chipChange: Chip = ViewUtil.generateChip(context!!, true, px)
+                chipChange.text = (it as Chip).text
+                chipChange.id = chip_group_fragment_filter_added.childCount + 1
+                chipChange.setOnCloseIconClickListener {
+                    chip_group_fragment_filter_added.removeView(chipChange)
+                }
+                chip_group_fragment_filter_added.addView(chipChange)
+            }
             chip_group_fragment_filter_suggested.addView(chip)
         }
     }
