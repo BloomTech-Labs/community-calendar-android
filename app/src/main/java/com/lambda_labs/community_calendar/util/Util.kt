@@ -1,7 +1,5 @@
 package com.lambda_labs.community_calendar.util
 
-import android.util.TypedValue
-import com.lambda_labs.community_calendar.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -122,6 +120,11 @@ object Util {
         return "$year-$month-$day"
     }
 
+    fun negativeDate(): Date{
+        val date = "1998-03-12T23:00:00.000Z"
+        return stringToDate(date)
+    }
+
     // Takes in integer values for the date and then uses another function to get the string
     fun parseDate(year: Int, month: Int, day: Int): String {
         val cal = Calendar.getInstance()
@@ -129,5 +132,4 @@ object Util {
 
         return getSearchDate(cal.time)
     }
-
 }

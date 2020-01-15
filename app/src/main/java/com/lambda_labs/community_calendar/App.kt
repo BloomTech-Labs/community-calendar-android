@@ -10,11 +10,15 @@ class App: Application() {
         const val TOKEN_KEY = "token_key"
         lateinit var sharedPrefs: SharedPreferences
         var token: String? = null
+
+        lateinit var repository: Repository
     }
 
     override fun onCreate() {
         super.onCreate()
         sharedPrefs = getSharedPreferences("Token", Context.MODE_PRIVATE)
         token = sharedPrefs.getString(TOKEN_KEY, "")
+
+        repository = Repository(this)
     }
 }
