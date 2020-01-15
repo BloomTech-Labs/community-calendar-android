@@ -54,6 +54,18 @@ class SearchFragment : Fragment() {
         viewModel.searchList.observe(viewLifecycleOwner, Observer<MutableList<Search>> { recentSearches ->
             searches_recycler.adapter = RecentSearchRecycler(recentSearches)
         })
+
+
+        // Uncomment to test how it displays the chips
+        /*val fake = this.context as Context
+
+        val listTest = arrayListOf("Test","Test1","Test2","Test3","Test4","Test5","Test6")
+        createChipLayout(listTest, fake, chip_group_search)
+        chips.visibility = View.VISIBLE*/
+
+
+
+
     }
 
     override fun onDestroy() {
