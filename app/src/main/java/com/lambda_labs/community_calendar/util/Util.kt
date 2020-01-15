@@ -122,7 +122,7 @@ object Util {
         return "$year-$month-$day"
     }
 
-    // Takes in integer values for the date and then calls another function
+    // Takes in integer values for the date and then uses another function to get the string
     fun parseDate(year: Int, month: Int, day: Int): String {
         val cal = Calendar.getInstance()
         cal.set(year, month, day)
@@ -130,14 +130,4 @@ object Util {
         return getSearchDate(cal.time)
     }
 
-    // Takes in an integer in DP (Display Pixels) and converts it to regular pixels
-    fun dpToPx(dp: Int): Int {
-        val dimension = TypedValue.applyDimension(
-            TypedValue.COMPLEX_UNIT_DIP,
-            dp.toFloat(),
-            MainActivity.displayMetrics
-        )
-
-        return dimension.toInt()
-    }
 }

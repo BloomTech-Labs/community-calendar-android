@@ -27,9 +27,6 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         viewModel.getEvents()
-
-        // Store the display attributes of the current screen in the static variable
-        displayMetrics = applicationContext.resources.displayMetrics
     }
 
     override fun onSupportNavigateUp(): Boolean {
@@ -40,10 +37,5 @@ class MainActivity : AppCompatActivity() {
     private fun setupBottomNavMenu(navController: NavController) {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav?.setupWithNavController(navController)
-    }
-
-    companion object {
-        // Store the screen attributes to be accessible elsewhere
-        lateinit var displayMetrics: DisplayMetrics
     }
 }

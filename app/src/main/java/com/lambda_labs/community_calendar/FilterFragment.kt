@@ -1,17 +1,17 @@
 package com.lambda_labs.community_calendar
 
 import android.os.Bundle
+import android.util.DisplayMetrics
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
-import androidx.core.content.ContextCompat
-import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.lambda_labs.community_calendar.util.DatePickerFragment
 import com.lambda_labs.community_calendar.util.Util
+import com.lambda_labs.community_calendar.util.ViewUtil
 import kotlinx.android.synthetic.main.fragment_filter.*
 
 
@@ -48,9 +48,13 @@ class FilterFragment : Fragment() {
             datePicker.show(fragmentManager!!, "datePicker")
         }
 
+        // Store the display attributes of the screen for calculations
+        val displayMetrics: DisplayMetrics = view.context.applicationContext.resources.displayMetrics
+        val px: Int = ViewUtil.dpToPx(40, displayMetrics)
+
         // Populate the initial chip tags to be added to the included group
         resources.getStringArray(R.array.tags_added_array).forEachIndexed { index, tagText ->
-            val chip: Chip = generateChip()
+            val chip: Chip = ViewUtil.generateChip(context!!, true, px)
             chip.text = tagText
             chip.id = index
             chip_group_fragment_filter_added.addView(chip)
@@ -58,30 +62,10 @@ class FilterFragment : Fragment() {
 
         // Populate the initial chip tags to be added to the suggested group
         resources.getStringArray(R.array.tags_suggested_array).forEachIndexed { index, tagText ->
-            val chip: Chip = generateChip()
+            val chip: Chip = ViewUtil.generateChip(context!!, false, px)
             chip.text = tagText
             chip.id = index
             chip_group_fragment_filter_suggested.addView(chip)
-            //TODO: Change chip attributes for suggestions
         }
-    }
-
-    private fun generateChip(): Chip {
-        val chip: Chip = Chip(context)
-        chip.isClickable = false
-        chip.isCheckable = false
-        chip.isChipIconVisible = true
-        chip.isCloseIconVisible = true
-        chip.isCheckedIconVisible = false
-        chip.isCheckedIconVisible = false
-        chip.textSize = 13f
-        chip.typeface = ResourcesCompat.getFont(context!!, R.font.poppins_regular)
-        chip.layoutParams = ViewGroup.LayoutParams(ViewGroup.LayoutParams.WRAP_CONTENT, Util.dpToPx(40))
-        chip.setCloseIconTintResource(R.color.colorInactive)
-        chip.setCloseIconResource(R.drawable.ic_cancel_circle_24dp)
-        chip.setChipBackgroundColorResource(android.R.color.black)
-        chip.setTextColor(ContextCompat.getColor(context!!, android.R.color.white))
-
-        return chip
     }
 }
