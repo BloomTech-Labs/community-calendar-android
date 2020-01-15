@@ -81,5 +81,10 @@ class FilterFragment : Fragment() {
             }
             chip_group_fragment_filter_suggested.addView(chip)
         }
+
+        button_fragment_filter_apply.setOnClickListener {
+            Navigation.findNavController(it).popBackStack()
+            // TODO: Pass data to calling fragment
+        }
     }
 }
