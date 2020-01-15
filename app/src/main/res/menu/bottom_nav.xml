@@ -2,7 +2,7 @@
 <menu
     xmlns:android="http://schemas.android.com/apk/res/android">
     <item
-        android:id="@+id/home"
+        android:id="@id/home"
         android:icon="@drawable/home_icon"
         android:title="@string/home" />
 
@@ -22,7 +22,7 @@
         android:title="@string/saved" />
 
     <item
-        android:id="@+id/loginFragment"
+        android:id="@id/loginFragment"
         android:icon="@drawable/profile_icon"
         android:title="@string/login" />
 </menu>

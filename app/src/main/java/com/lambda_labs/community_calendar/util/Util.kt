@@ -116,12 +116,20 @@ object Util {
         if (day.length == 1) day = "0$day"
         var month = (cal.get(Calendar.MONTH) + 1).toString()
         if (month.length == 1) month = "0$month"
-        return "$year-$month-$day"
 
+        return "$year-$month-$day"
     }
 
     fun negativeDate(): Date{
         val date = "1998-03-12T23:00:00.000Z"
         return stringToDate(date)
+    }
+
+    // Takes in integer values for the date and then uses another function to get the string
+    fun parseDate(year: Int, month: Int, day: Int): String {
+        val cal = Calendar.getInstance()
+        cal.set(year, month, day)
+
+        return getSearchDate(cal.time)
     }
 }

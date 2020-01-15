@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+<navigation
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/nav_graph"
@@ -9,7 +10,11 @@
         android:id="@+id/home"
         android:name="com.lambda_labs.community_calendar.HomeFragment"
         android:label="fragment_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_home_to_filterFragment"
+            app:destination="@id/filterFragment" />
+    </fragment>
 
     <fragment
         android:id="@+id/loginFragment"
@@ -23,5 +28,17 @@
         android:label="fragment_search"
         tools:layout="@layout/fragment_search" />
 
+    <fragment
+        android:id="@+id/filterFragment"
+        android:name="com.lambda_labs.community_calendar.FilterFragment"
+        android:label="fragment_filter"
+        tools:layout="@layout/fragment_filter" >
+        <action
+            android:id="@+id/action_filterFragment_to_home"
+            app:destination="@id/home"
+            app:launchSingleTop="false"
+            app:popUpTo="@+id/home"
+            app:popUpToInclusive="true" />
+    </fragment>
 
 </navigation>
