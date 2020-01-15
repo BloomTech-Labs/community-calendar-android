@@ -1,20 +1,16 @@
 package com.lambda_labs.community_calendar
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
-import android.view.View
-import androidx.lifecycle.Observer
+import android.util.DisplayMetrics
+import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.findNavController
 import androidx.navigation.fragment.NavHostFragment
-import androidx.navigation.fragment.findNavController
-import androidx.navigation.ui.NavigationUI
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.activity_main.*
-import kotlinx.android.synthetic.main.fragment_home.*
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -31,15 +27,23 @@ class MainActivity : AppCompatActivity() {
 
         val viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
         viewModel.getEvents()
+
+        // Store the display attributes of the current screen in the static variable
+        displayMetrics = applicationContext.resources.displayMetrics
     }
 
     override fun onSupportNavigateUp(): Boolean {
         return findNavController(R.id.nav_host_fragment).navigateUp()
     }
 
-//    Setup bottom navigation bar
+    // Setup bottom navigation bar
     private fun setupBottomNavMenu(navController: NavController) {
         val bottomNav = findViewById<BottomNavigationView>(R.id.bottom_navigation)
         bottomNav?.setupWithNavController(navController)
+    }
+
+    companion object {
+        // Store the screen attributes to be accessible elsewhere
+        lateinit var displayMetrics: DisplayMetrics
     }
 }

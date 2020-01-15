@@ -1,5 +1,7 @@
 package com.lambda_labs.community_calendar.util
 
+import android.util.TypedValue
+import com.lambda_labs.community_calendar.MainActivity
 import java.text.SimpleDateFormat
 import java.util.*
 import kotlin.collections.ArrayList
@@ -126,5 +128,16 @@ object Util {
         cal.set(year, month, day)
 
         return getSearchDate(cal.time)
+    }
+
+    // Takes in an integer in DP (Display Pixels) and converts it to regular pixels
+    fun dpToPx(dp: Int): Int {
+        val dimension = TypedValue.applyDimension(
+            TypedValue.COMPLEX_UNIT_DIP,
+            dp.toFloat(),
+            MainActivity.displayMetrics
+        )
+
+        return dimension.toInt()
     }
 }
