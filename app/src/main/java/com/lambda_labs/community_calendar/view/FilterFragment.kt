@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 import android.os.Bundle
 import android.util.DisplayMetrics
@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
+import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.DatePickerFragment
 import com.lambda_labs.community_calendar.util.ViewUtil
 import com.lambda_labs.community_calendar.util.getSearchDate
@@ -27,6 +28,11 @@ class FilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Enable touch event on this fragment in order to prevent views beneath from responding
+        view.setOnTouchListener { v, event ->
+            return@setOnTouchListener true
+        }
 
         image_view_fragment_filter_cancel.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
