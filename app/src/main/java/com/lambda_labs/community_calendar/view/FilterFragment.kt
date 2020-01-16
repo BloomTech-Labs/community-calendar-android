@@ -10,10 +10,7 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.lambda_labs.community_calendar.R
-import com.lambda_labs.community_calendar.util.DatePickerFragment
-import com.lambda_labs.community_calendar.util.ViewUtil
-import com.lambda_labs.community_calendar.util.getSearchDate
-import com.lambda_labs.community_calendar.util.getToday
+import com.lambda_labs.community_calendar.util.*
 import kotlinx.android.synthetic.main.fragment_filter.*
 
 
@@ -35,6 +32,7 @@ class FilterFragment : Fragment() {
         }
 
         image_view_fragment_filter_cancel.setOnClickListener {
+            hideKeyboard(context as MainActivity)
             Navigation.findNavController(it).popBackStack()
         }
 
