@@ -66,6 +66,7 @@ class SearchFragment : Fragment() {
 
 
         btn_filters.setOnClickListener {
+            hideKeyboard(mainActivity)
             this.findNavController().navigate(R.id.action_searchFragment_to_filterFragment)
         }
 
