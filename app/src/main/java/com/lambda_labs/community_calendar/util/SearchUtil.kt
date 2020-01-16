@@ -1,12 +1,10 @@
 package com.lambda_labs.community_calendar.util
 
+import EventsQuery
 import android.annotation.SuppressLint
-import com.lambda_labs.community_calendar.SearchValue
-import com.lambda_labs.community_calendar.util.Util.getSearchDate
-import com.lambda_labs.community_calendar.util.Util.negativeDate
+import com.lambda_labs.community_calendar.model.Search
 
-object SearchUtil {
-    @SuppressLint("DefaultLocale")
+@SuppressLint("DefaultLocale")
     /*
         Takes in events list and filters the events by the values in searchValue
         filters by title, date, location name, location zipcode, and tags
@@ -14,15 +12,15 @@ object SearchUtil {
         events must match everything in the filters to be shown
         returns filtered event list
      */
-    fun searchEvents(events: ArrayList<EventsQuery.Event>, searchValue: SearchValue): ArrayList<EventsQuery.Event> {
+    fun searchEvents(events: ArrayList<EventsQuery.Event>, search: Search): ArrayList<EventsQuery.Event> {
         val filteredEvents = ArrayList<EventsQuery.Event>()
         events.forEach { event ->
-            if (searchValue.search.isNotEmpty()) {
+            if (search.searchText.isNotEmpty()) {
                 // Gets values to filter with or by
-                val lowerSearch = searchValue.search.toLowerCase()
+                val lowerSearch = search.searchText.toLowerCase()
                 val title = event.title().toLowerCase()
                 val date = event.start().toString()
-                val filterDate = getSearchDate(searchValue.date)
+                val filterDate = getSearchDate(search.date)
                 val noDate = getSearchDate(negativeDate())
 
                 // Checks if events contain whats in searchValue
@@ -31,17 +29,17 @@ object SearchUtil {
                 val dateCheck = (date.contains(filterDate) || filterDate.contains(noDate))
 
                 val location = event.locations()?.any { l1 ->
-                    l1.name().toLowerCase().contains(searchValue.location.toLowerCase())
+                    l1.name().toLowerCase().contains(search.location.toLowerCase())
                 } ?: true
                 val zipcode = event.locations()?.any { l2 ->
-                    l2.zipcode() == searchValue.zipcode || searchValue.zipcode == -1
+                    l2.zipcode() == search.zipcode || search.zipcode == -1
                 } ?: true
 
                 // Checks tags and if at least one matches returns true
                 fun tags(): Boolean {
                     var match = false
                     event.tags()?.forEach { tag ->
-                        searchValue.tags.forEach { searchTag ->
+                        search.tags.forEach { searchTag ->
                             val oneTag = tag.title().contains(searchTag)
                             if (oneTag) match = true
                         }
@@ -57,4 +55,3 @@ object SearchUtil {
         }
         return filteredEvents
     }
-}

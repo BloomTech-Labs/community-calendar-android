@@ -4,6 +4,8 @@
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="colorInactive">#ACAAAA</color>
+
+    <color name="chipBackground">#21242C</color>
     <color name="colorAdd">#21242C</color>
     <color name="colorSuggest">#E4E4E4</color>
 </resources>

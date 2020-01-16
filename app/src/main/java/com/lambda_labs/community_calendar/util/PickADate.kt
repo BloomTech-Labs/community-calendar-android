@@ -24,6 +24,6 @@ class DatePickerFragment : DialogFragment(), DatePickerDialog.OnDateSetListener 
     override fun onDateSet(view: DatePicker, year: Int, month: Int, day: Int) {
         // Show the date in the standard way in the text view within the parent
         parentFragment?.text_view_fragment_filter_date_shown?.text =
-            Util.parseDate(year, month, day)
+            parseDate(year, month, day)
     }
 }

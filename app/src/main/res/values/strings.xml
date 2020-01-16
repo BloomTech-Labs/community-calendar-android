@@ -17,6 +17,9 @@
     <string name="all_upcoming">All upcoming</string>
     <string name="see_all">See all</string>
     <string name="featured">Featured</string>
+    <string name="nearby">Nearby</string>
+    <string name="recent_searches">RECENT SEARCHES</string>
+    <string name="filters">Filters</string>
     <string name="filter_text_view_header">Filters</string>
     <string name="filter_text_view_title">Filters</string>
     <string name="filter_text_view_location">Location</string>

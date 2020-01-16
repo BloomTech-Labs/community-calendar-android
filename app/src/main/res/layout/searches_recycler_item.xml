@@ -1,15 +1,16 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout
+<com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    android:orientation="vertical"
+    app:cardElevation="0dp"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content">
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <TextView
+    <com.google.android.material.button.MaterialButton
         android:id="@+id/search_txt"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:textSize="14sp"
-        android:text="Let'sa go!"/>
+        style="@style/SearchPageItems"
+        app:icon="@drawable/recent"
 
-</LinearLayout>
+        />
+
+</com.google.android.material.card.MaterialCardView>

@@ -20,5 +20,6 @@ class App: Application() {
         token = sharedPrefs.getString(TOKEN_KEY, "")
 
         repository = Repository(this)
+
     }
 }

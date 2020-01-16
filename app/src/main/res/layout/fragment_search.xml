@@ -3,12 +3,79 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".SearchFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    tools:context=".view.SearchFragment">
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_filters"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+        android:text="@string/filters"
+        android:textColor="#80000000"
+        android:fontFamily="@font/poppins_light"
+        android:textAllCaps="false"
+        android:textAlignment="center"
+        app:cornerRadius="18dp"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <HorizontalScrollView
+        android:id="@+id/chips"
+        android:visibility="gone"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        app:layout_constraintTop_toBottomOf="@id/btn_filters">
+
+        <com.google.android.material.chip.ChipGroup
+            android:id="@+id/chip_group_search"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            app:singleLine="true">
+        </com.google.android.material.chip.ChipGroup>
+    </HorizontalScrollView>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_nearby"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="16dp"
+        style="@style/SearchPageItems"
+        app:icon="@drawable/nearby"
+        android:text="@string/nearby"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/chips"
+        />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_recent_searches"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:fontFamily="@font/poppins_medium"
+        android:textSize="10sp"
+        android:text="@string/recent_searches"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btn_nearby"
+        app:layout_constraintBottom_toTopOf="@id/searches_recycler"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/searches_recycler"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        tools:listitem="@layout/searches_recycler_item"/>
+        android:layout_height="0dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        tools:listitem="@layout/searches_recycler_item"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/txt_recent_searches"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

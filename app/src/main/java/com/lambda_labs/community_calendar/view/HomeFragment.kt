@@ -1,4 +1,4 @@
-package com.lambda_labs.community_calendar
+package com.lambda_labs.community_calendar.view
 
 
 import EventsQuery
@@ -8,24 +8,16 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import androidx.core.content.ContextCompat
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
-import androidx.navigation.Navigation
-import androidx.navigation.navOptions
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
-import com.lambda_labs.community_calendar.util.Util.displayTime
-import com.lambda_labs.community_calendar.util.Util.getDisplayDay
-import com.lambda_labs.community_calendar.util.Util.getSearchDate
-import com.lambda_labs.community_calendar.util.Util.getToday
-import com.lambda_labs.community_calendar.util.Util.getTomorrow
-import com.lambda_labs.community_calendar.util.Util.getWeekendDates
-import com.lambda_labs.community_calendar.util.Util.stringToDate
+import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
@@ -46,9 +38,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
 
-        activity?.let {
-            viewModel = ViewModelProviders.of(it).get(HomeViewModel::class.java)
-        }
+        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
     }
 
     override fun onCreateView(
@@ -95,9 +85,13 @@ class HomeFragment : Fragment() {
                 txt_events_all_upcoming
             )
             eventDates.forEach {
-                it.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_light)
+                it.typeface = ResourcesCompat.getFont(mainActivity,
+                    R.font.poppins_light
+                )
             }
-            view.typeface = ResourcesCompat.getFont(mainActivity, R.font.poppins_semi_bold)
+            view.typeface = ResourcesCompat.getFont(mainActivity,
+                R.font.poppins_semi_bold
+            )
         }
 
         // Today tab filters by today events
@@ -152,7 +146,7 @@ class HomeFragment : Fragment() {
         strings.add("asdf")
 
         // Network call through HomeViewMode
-        viewModel.events.observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
+        viewModel.getAllEvents().observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
             }
@@ -183,22 +177,6 @@ class HomeFragment : Fragment() {
             main_event_recycler.adapter = EventRecycler(filterList, false)
         }
 
-        // Associate animations for the Navigation Options when displaying the Filter fragment
-        val options = navOptions {
-            anim {
-                enter = R.anim.slide_bottom_up
-                exit = R.anim.stagnant
-                popEnter = R.anim.stagnant
-                popExit = R.anim.slide_bottom_down
-            }
-        }
-
-        // Show the Filter fragment when the Filter button is pushed
-        if (txt_see_all != null) {
-            txt_see_all.setOnClickListener {
-                Navigation.findNavController(it).navigate(R.id.action_home_to_filterFragment, null, options)
-            }
-        }
     }
 
 

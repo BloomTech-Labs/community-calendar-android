@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.lambda_labs.community_calendar.util.DatePickerFragment
-import com.lambda_labs.community_calendar.util.Util
 import com.lambda_labs.community_calendar.util.ViewUtil
+import com.lambda_labs.community_calendar.util.getSearchDate
+import com.lambda_labs.community_calendar.util.getToday
 import kotlinx.android.synthetic.main.fragment_filter.*
 
 
@@ -42,7 +43,7 @@ class FilterFragment : Fragment() {
         }
 
         // Show the Date Picker when the date control is engaged
-        text_view_fragment_filter_date_shown.text = Util.getSearchDate(Util.getToday())
+        text_view_fragment_filter_date_shown.text = getSearchDate(getToday())
         image_view_fragment_filter_date.setOnClickListener {
             val datePicker = DatePickerFragment()
             datePicker.show(fragmentManager!!, "datePicker")
