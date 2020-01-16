@@ -11,6 +11,7 @@ import androidx.constraintlayout.widget.ConstraintSet
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lambda_labs.community_calendar.R
@@ -63,6 +64,10 @@ class SearchFragment : Fragment() {
         createChipLayout(listTest, fake, chip_group_search)
         chips.visibility = View.VISIBLE*/
 
+
+        btn_filters.setOnClickListener {
+            this.findNavController().navigate(R.id.action_searchFragment_to_filterFragment)
+        }
 
 
 

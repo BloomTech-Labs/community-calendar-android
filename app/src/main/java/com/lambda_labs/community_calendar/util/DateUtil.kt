@@ -130,3 +130,11 @@ fun negativeDate(): Date {
     val date = "1998-03-12T23:00:00.000Z"
     return stringToDate(date)
 }
+
+// Takes in integer values for the date and then uses another function to get the string
+fun parseDate(year: Int, month: Int, day: Int): String {
+    val cal = Calendar.getInstance()
+    cal.set(year, month, day)
+
+    return getSearchDate(cal.time)
+}
