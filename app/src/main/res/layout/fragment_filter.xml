@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
 
-<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.cardview.widget.CardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:cardCornerRadius="16dp">
@@ -46,127 +48,17 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <TextView
-            android:id="@+id/text_view_fragment_filter_title"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="22dp"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:text="@string/filter_text_view_title"
-            android:textColor="#000000"
-            android:textSize="24sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/divider_view_fragment_filter_divider" />
-
-        <TextView
-            android:id="@+id/text_view_fragment_filter_location"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="20dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/filter_text_view_location"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
-
-        <Spinner
-            android:id="@+id/spinner_fragment_filter_location"
-            style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="189dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="14dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#C4C4C4"
-            android:fontFamily="@font/poppins_regular"
-            android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:textColor="#000000"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_title" />
-
-        <TextView
-            android:id="@+id/text_view_fragment_filter_zip_code"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/filter_text_view_zip_code"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_location" />
-
-        <EditText
-            android:id="@+id/edit_text_fragment_filter_zip_code"
-            android:layout_width="189dp"
-            android:layout_height="40dp"
-            android:layout_marginTop="5dp"
-            android:layout_marginEnd="16dp"
-            android:backgroundTint="#C4C4C4"
-            android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
-            android:hint="@string/filter_edit_text_zip_code_hint"
-            android:inputType="number"
-            android:textColor="#000000"
-            android:textSize="13sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_location" />
-
-        <TextView
-            android:id="@+id/text_view_fragment_filter_date"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
-            android:fontFamily="@font/poppins_regular"
-            android:text="@string/filter_text_view_date"
-            android:textColor="#000000"
-            android:textSize="14sp"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_zip_code" />
-
-        <FrameLayout
-            android:layout_width="189dp"
-            android:layout_height="24dp"
-            android:layout_marginTop="3dp"
-            android:layout_marginEnd="16dp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_zip_code">
-
-            <TextView
-                android:id="@+id/text_view_fragment_filter_date_shown"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:fontFamily="@font/poppins_regular"
-                android:textAlignment="center"
-                android:textColor="#000000"
-                android:textSize="13sp" />
-
-            <ImageView
-                android:id="@+id/image_view_fragment_filter_date"
-                style="@android:style/Widget.Material.Spinner.Underlined"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:backgroundTint="#C4C4C4" />
-
-        </FrameLayout>
-
-        <TextView
             android:id="@+id/text_view_fragment_filter_tags"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="17dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/filter_text_view_tags"
             android:textColor="#000000"
             android:textSize="14sp"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_date" />
+            app:layout_constraintTop_toBottomOf="@+id/divider_view_fragment_filter_divider" />
 
         <androidx.appcompat.widget.SearchView
             android:id="@+id/search_bar_fragment_filter"
@@ -190,7 +82,7 @@
             android:layout_width="match_parent"
             android:layout_height="80dp"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/search_bar_fragment_filter"
@@ -244,7 +136,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="16dp"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="16dp"
             android:fontFamily="@font/poppins_regular"
             android:text="@string/filter_text_view_suggested_tags"
             android:textColor="#000000"
@@ -360,6 +252,103 @@
 
         </ScrollView>
 
+        <TextView
+            android:id="@+id/text_view_fragment_filter_location"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="16dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/filter_text_view_location"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view_fragment_filter_suggested" />
+
+        <Spinner
+            android:id="@+id/spinner_fragment_filter_location"
+            style="@android:style/Widget.Material.Spinner.Underlined"
+            android:layout_width="189dp"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            android:fontFamily="@font/poppins_regular"
+            android:spinnerMode="dropdown"
+            android:textAlignment="center"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/scroll_view_fragment_filter_suggested" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_zip_code"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/filter_text_view_zip_code"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_location" />
+
+        <EditText
+            android:id="@+id/edit_text_fragment_filter_zip_code"
+            android:layout_width="189dp"
+            android:layout_height="40dp"
+
+            android:layout_marginEnd="16dp"
+            android:backgroundTint="#C4C4C4"
+            android:fontFamily="@font/poppins_regular"
+            android:gravity="center"
+            android:hint="@string/filter_edit_text_zip_code_hint"
+            android:inputType="number"
+            android:textColor="#000000"
+            android:textSize="13sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/spinner_fragment_filter_location" />
+
+        <TextView
+            android:id="@+id/text_view_fragment_filter_date"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="17dp"
+            android:fontFamily="@font/poppins_regular"
+            android:text="@string/filter_text_view_date"
+            android:textColor="#000000"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_zip_code" />
+
+        <FrameLayout
+            android:layout_width="189dp"
+            android:layout_height="24dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/edit_text_fragment_filter_zip_code">
+
+            <TextView
+                android:id="@+id/text_view_fragment_filter_date_shown"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:fontFamily="@font/poppins_regular"
+                android:textAlignment="center"
+                android:textColor="#000000"
+                android:textSize="13sp" />
+
+            <ImageView
+                android:id="@+id/image_view_fragment_filter_date"
+                style="@android:style/Widget.Material.Spinner.Underlined"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:backgroundTint="#C4C4C4" />
+
+        </FrameLayout>
+
         <Button
             android:id="@+id/button_fragment_filter_apply"
             android:layout_width="match_parent"
@@ -374,21 +363,6 @@
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            app:layout_constraintGuide_begin="161dp" />
-
-        <androidx.constraintlayout.widget.Guideline
-            android:id="@+id/guideline2"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            app:layout_constraintGuide_begin="205dp" />
-
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 
