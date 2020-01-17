@@ -1,7 +1,9 @@
 package com.lambda_labs.community_calendar.view
 
+import android.content.Context
 import android.os.Bundle
 import android.util.DisplayMetrics
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -16,6 +18,8 @@ import kotlinx.android.synthetic.main.fragment_filter.*
 
 class FilterFragment : Fragment() {
 
+    lateinit var fragContext: Context
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -26,19 +30,26 @@ class FilterFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
+        // Ensure the context is not null before assigning it
+        context?.let {
+            fragContext = it
+        } ?: run {
+            Log.e("FilterFragment", "Failed to assign context!")
+        }
+
         // Enable touch event on this fragment in order to prevent views beneath from responding
         view.setOnTouchListener { v, event ->
             return@setOnTouchListener true
         }
 
         image_view_fragment_filter_cancel.setOnClickListener {
-            hideKeyboard(context as MainActivity)
+            hideKeyboard(fragContext as MainActivity)
             Navigation.findNavController(it).popBackStack()
         }
 
         // Populate list of locations in the Spinner View
         ArrayAdapter.createFromResource(
-            view.context,
+            fragContext,
             R.array.filter_locations_array,
             android.R.layout.simple_spinner_item
         ).also { arrayAdapter ->
@@ -49,18 +60,18 @@ class FilterFragment : Fragment() {
         // Show the Date Picker when the date control is engaged
         text_view_fragment_filter_date_shown.text = getSearchDate(getToday())
         image_view_fragment_filter_date.setOnClickListener {
-            val datePicker = DatePickerFragment()
+            val datePicker = DatePickerFragment(fragContext)
             datePicker.show(fragmentManager!!, "datePicker")
         }
 
         // Store the display attributes of the screen for calculations
         val displayMetrics: DisplayMetrics =
-            view.context.applicationContext.resources.displayMetrics
+            fragContext.applicationContext.resources.displayMetrics
         val px: Int = ViewUtil.dpToPx(40, displayMetrics)
 
         // Populate the initial chip tags to be added to the included group
         resources.getStringArray(R.array.tags_added_array).forEachIndexed { index, tagText ->
-            val chip: Chip = ViewUtil.generateChip(context!!, true, px)
+            val chip: Chip = ViewUtil.generateChip(fragContext, true, px)
             chip.text = tagText
             chip.id = index
             chip.setOnCloseIconClickListener {
@@ -71,12 +82,12 @@ class FilterFragment : Fragment() {
 
         // Populate the initial chip tags to be added to the suggested group
         resources.getStringArray(R.array.tags_suggested_array).forEachIndexed { index, tagText ->
-            val chip: Chip = ViewUtil.generateChip(context!!, false, px)
+            val chip: Chip = ViewUtil.generateChip(fragContext, false, px)
             chip.text = tagText
             chip.id = index
             chip.setOnCloseIconClickListener {
                 chip_group_fragment_filter_suggested.removeView(it)
-                val chipChange: Chip = ViewUtil.generateChip(context!!, true, px)
+                val chipChange: Chip = ViewUtil.generateChip(fragContext, true, px)
                 chipChange.text = (it as Chip).text
                 chipChange.id = chip_group_fragment_filter_added.childCount + 1
                 chipChange.setOnCloseIconClickListener {
@@ -89,6 +100,7 @@ class FilterFragment : Fragment() {
 
         button_fragment_filter_apply.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
+            hideKeyboard(fragContext as MainActivity)
             // TODO: Pass data to calling fragment
         }
     }
