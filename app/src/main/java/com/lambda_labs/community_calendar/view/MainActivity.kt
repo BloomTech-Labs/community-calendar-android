@@ -15,8 +15,11 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.inject
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: MainActivityViewModel by inject()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -31,7 +34,6 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
         setupBottomNavMenu(navController)
 
-        val viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         viewModel.queryEvents()
         val events = ArrayList<EventsQuery.Event>()
         viewModel.getAllEvents().observe(this, Observer<List<EventsQuery.Event>> { list ->

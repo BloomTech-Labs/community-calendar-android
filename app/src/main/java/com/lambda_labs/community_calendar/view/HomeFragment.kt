@@ -24,6 +24,7 @@ import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
 import kotlinx.android.synthetic.main.event_recycler_item_list.view.*
 import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.get
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,7 +39,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
 
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = get()
     }
 
     override fun onCreateView(

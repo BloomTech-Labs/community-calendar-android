@@ -10,12 +10,15 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.Repository
 import com.lambda_labs.community_calendar.view.MainActivity
 
-class HomeViewModel: ViewModel() {
+class HomeViewModel(val repo: Repository): ViewModel() {
+
+
 
     fun getAllEvents(): LiveData<List<EventsQuery.Event>> {
-        return App.repository.events
+        return repo.events
     }
 
     fun setupRecyclers(orientation: Int, activity: FragmentActivity?, recycler: RecyclerView){

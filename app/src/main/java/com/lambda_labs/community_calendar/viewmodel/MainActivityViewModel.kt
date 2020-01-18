@@ -5,6 +5,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.lambda_labs.community_calendar.App
+import com.lambda_labs.community_calendar.Repository
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.util.searchEvents
@@ -12,7 +13,7 @@ import com.lambda_labs.community_calendar.view.MainActivity
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
-class MainActivityViewModel : ViewModel() {
+class MainActivityViewModel(val repo: Repository) : ViewModel() {
 
     // Creates LiveData to be observed on the HomeFragment
 
@@ -26,16 +27,16 @@ class MainActivityViewModel : ViewModel() {
     // For MainActivity, add a Recent Search to room's database
     fun addRecentSearch(search: Search){
         searchDisposable = Schedulers.io().createWorker().schedule {
-            App.repository.addRecentSearch(search)
+            repo.addRecentSearch(search)
         }
     }
 
     fun queryEvents(){
-        disposable = App.repository.getEvents()
+        disposable = repo.getEvents()
     }
 
     fun getAllEvents(): LiveData<List<EventsQuery.Event>> {
-        return App.repository.events
+        return repo.events
     }
 
     // Search actions

@@ -7,6 +7,7 @@ import androidx.appcompat.widget.SearchView
 // TODO: these will be things required in searchBar object, need DI
 // fun addSearchBarToLayout(){}
 // cancel Button Is Only Going To Be Inside Of Search Fragment And ResultsFragment(){}
+// REMEMBER MATCH_CONSTRAINT aka 0dp
 
 class SearchBar(context: Context): SearchView(context) {
     //        <androidx.appcompat.widget.SearchView

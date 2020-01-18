@@ -16,14 +16,14 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-class Repository(context: Context) {
+class Repository(app: App) {
 
     /*
         Room
     */
 
     private val recentSearchDatabase by lazy {
-        databaseBuilder(context, RecentSearchDatabase::class.java, "recent_search_db").build()
+        databaseBuilder(app, RecentSearchDatabase::class.java, "recent_search_db").build()
     }
 
     fun getRecentSearchList(): Flowable<MutableList<Search>>{

@@ -21,6 +21,7 @@ import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
+import org.koin.android.ext.android.get
 
 /**
  * A simple [Fragment] subclass.
@@ -46,7 +47,7 @@ class SearchFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        viewModel = get()
 
         searches_recycler.setHasFixedSize(true)
         searches_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
