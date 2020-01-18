@@ -3,6 +3,12 @@ package com.lambda_labs.community_calendar
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.lambda_labs.community_calendar.view.MainActivity
+import org.koin.android.ext.koin.androidContext
+import org.koin.core.context.startKoin
+import org.koin.core.logger.Level
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 // Set this class as our Application class to initialize the user's authentication Token at startup
 class App: Application() {
@@ -14,8 +20,21 @@ class App: Application() {
         lateinit var repository: Repository
     }
 
+    val modules: Module = module {
+        single { MainActivity() }
+        single { Repository(this@App) }
+    }
+
     override fun onCreate() {
         super.onCreate()
+
+        // Start Koin
+        startKoin {
+            androidContext(this@App)
+            printLogger(Level.INFO /*Also DEBUG and ERROR Levels*/)
+            modules(modules)
+        }
+
         sharedPrefs = getSharedPreferences("Token", Context.MODE_PRIVATE)
         token = sharedPrefs.getString(TOKEN_KEY, "")
 
