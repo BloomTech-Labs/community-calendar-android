@@ -18,8 +18,6 @@ import kotlinx.android.synthetic.main.fragment_filter.*
 
 class FilterFragment : Fragment() {
 
-    lateinit var fragContext: Context
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -29,6 +27,9 @@ class FilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Reserve a variable for the context
+        lateinit var fragContext: Context
 
         // Ensure the context is not null before assigning it
         context?.let {
@@ -42,6 +43,7 @@ class FilterFragment : Fragment() {
             return@setOnTouchListener true
         }
 
+        // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
             hideKeyboard(fragContext as MainActivity)
             Navigation.findNavController(it).popBackStack()
@@ -98,6 +100,7 @@ class FilterFragment : Fragment() {
             chip_group_fragment_filter_suggested.addView(chip)
         }
 
+        // Activate the Apply button, in effect to retain, saving selections
         button_fragment_filter_apply.setOnClickListener {
             Navigation.findNavController(it).popBackStack()
             hideKeyboard(fragContext as MainActivity)
