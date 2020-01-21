@@ -76,17 +76,18 @@ class SearchFragment : Fragment() {
     }
 
     override fun onDestroy() {
+        hideKeyboard(mainActivity)
+
+        /*
+        TODO: some of these properties still need to take place somewhere
         mainActivity.apply {
-            btn_cancel.visibility = View.GONE
             search_bar.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
-            val constraintSetHide = ConstraintSet()
-            constraintSetHide.clone(c_layout)
-            constraintSetHide.connect(search_bar.id, ConstraintSet.END, c_layout.id, ConstraintSet.END)
-            constraintSetHide.applyTo(c_layout)
             hideKeyboard(this)
             search_bar.clearFocus()
             search_bar.setQuery("", false)
         }
+         */
+
         super.onDestroy()
     }
 

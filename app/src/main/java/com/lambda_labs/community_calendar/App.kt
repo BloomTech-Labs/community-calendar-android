@@ -36,7 +36,7 @@ class App: Application() {
         token = sharedPrefs.getString(TOKEN_KEY, "")
 
     }
-    
+
     val modules: Module = module {
         single { this@App }
         viewModel { HomeViewModel(get()) }
