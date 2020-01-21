@@ -2,19 +2,23 @@ package com.lambda_labs.community_calendar.view
 
 import android.content.Context
 import android.os.Bundle
-import android.util.DisplayMetrics
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.core.view.forEach
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
+import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
-
+import java.util.*
 
 class FilterFragment : Fragment() {
 
@@ -45,35 +49,63 @@ class FilterFragment : Fragment() {
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
+            // Dismiss the soft keyboard if it is showing
             hideKeyboard(fragContext as MainActivity)
+            // Dismiss this fragment, after having saved any user selections
             Navigation.findNavController(it).popBackStack()
         }
 
         // Populate list of locations in the Spinner View
-        ArrayAdapter.createFromResource(
+        // TODO: Change this to locations from ViewModel's event list
+        val temporaryHardcodedListOfLocations = listOf<String>(
+            "",
+            "West Side",
+            "East Side",
+            "Southwest Detroit",
+            "Palmer Park Area",
+            "North End",
+            "New Center Area",
+            "Eastern Market Area",
+            "Midtown",
+            "Jefferson Corridor",
+            "Downtown",
+            "Corktown - Woodbridge"
+        )
+        val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
             fragContext,
-            R.array.filter_locations_array,
-            android.R.layout.simple_spinner_item
-        ).also { arrayAdapter ->
-            arrayAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
-            spinner_fragment_filter_location.adapter = arrayAdapter
+            android.R.layout.simple_spinner_item,
+            temporaryHardcodedListOfLocations
+        ).also {
+            it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
+            spinner_fragment_filter_location.adapter = it
         }
+
 
         // Show the Date Picker when the date control is engaged
-        text_view_fragment_filter_date_shown.text = getSearchDate(getToday())
         image_view_fragment_filter_date.setOnClickListener {
-            val datePicker = DatePickerFragment(fragContext)
-            datePicker.show(fragmentManager!!, "datePicker")
+            var selectedDate: String = text_view_fragment_filter_date_shown.text.toString()
+
+            // Ensure the date string has a valid value before passing it to the DatePicker
+            if (selectedDate.isBlank()) selectedDate = getSearchDate(getToday())
+
+            val date: Date = searchStringToDate(selectedDate)
+            val datePicker = DatePickerFragment(fragContext, toCalendar(date))
+            datePicker.show(childFragmentManager, "datePicker")
         }
 
-        // Store the display attributes of the screen for calculations
-        val displayMetrics: DisplayMetrics =
-            fragContext.applicationContext.resources.displayMetrics
-        val px: Int = ViewUtil.dpToPx(40, displayMetrics)
+
+        // Instantiate the shared ViewModel to allow user selections to persist after fragment destruction
+        val sharedFilterViewModel: SharedFilterViewModel =
+            ViewModelProviders.of(fragContext as MainActivity)[SharedFilterViewModel::class.java]
+        sharedFilterViewModel.getSharedData()
+            .observe(viewLifecycleOwner, Observer<Filter> { filter ->
+                setUpSelections(filter)
+            })
+
 
         // Populate the initial chip tags to be added to the included group
-        resources.getStringArray(R.array.tags_added_array).forEachIndexed { index, tagText ->
-            val chip: Chip = ViewUtil.generateChip(fragContext, true, px)
+        sharedFilterViewModel.getSharedData().value?.tags?.forEachIndexed { index, tagText ->
+            val chip: Chip = ViewUtil.generateChip(fragContext, true)
             chip.text = tagText
             chip.id = index
             chip.setOnCloseIconClickListener {
@@ -83,13 +115,27 @@ class FilterFragment : Fragment() {
         }
 
         // Populate the initial chip tags to be added to the suggested group
-        resources.getStringArray(R.array.tags_suggested_array).forEachIndexed { index, tagText ->
-            val chip: Chip = ViewUtil.generateChip(fragContext, false, px)
-            chip.text = tagText
-            chip.id = index
+        // TODO: Change this to tags from the ViewModel's event list
+        val temporaryHardcodedListOfTags = mutableListOf<String>(
+            "Tech",
+            "Entertainment",
+            "Gardening",
+            "Sewing",
+            "Sports",
+            "Outdoors",
+            "Music",
+            "Family",
+            "Fun",
+            "Eating"
+        )
+        temporaryHardcodedListOfTags.shuffle()
+        for (x in 0 until temporaryHardcodedListOfTags.size) {
+            val chip: Chip = ViewUtil.generateChip(fragContext, false)
+            chip.text = temporaryHardcodedListOfTags[x]
+            chip.id = x
             chip.setOnCloseIconClickListener {
                 chip_group_fragment_filter_suggested.removeView(it)
-                val chipChange: Chip = ViewUtil.generateChip(fragContext, true, px)
+                val chipChange: Chip = ViewUtil.generateChip(fragContext, true)
                 chipChange.text = (it as Chip).text
                 chipChange.id = chip_group_fragment_filter_added.childCount + 1
                 chipChange.setOnCloseIconClickListener {
@@ -102,9 +148,46 @@ class FilterFragment : Fragment() {
 
         // Activate the Apply button, in effect to retain, saving selections
         button_fragment_filter_apply.setOnClickListener {
-            Navigation.findNavController(it).popBackStack()
+            // Save current selections in the ViewModel to be retrieved later if necessary
+            val filter: Filter = Filter()
+            filter.location = spinner_fragment_filter_location.selectedItemId.toInt()
+            filter.zip = edit_text_fragment_filter_zip_code.text.toString()
+            filter.date = text_view_fragment_filter_date_shown.text.toString()
+            filter.tags = getSelectedTags()
+            sharedFilterViewModel.setSharedData(filter)
+
+            // Dismiss the soft keyboard if it is showing
             hideKeyboard(fragContext as MainActivity)
-            // TODO: Pass data to calling fragment
+            // Dismiss this fragment, after having saved any user selections
+            Navigation.findNavController(it).popBackStack()
         }
+    }
+
+    // Build up a list of strings representing each Chip tag
+    private fun getSelectedTags(): List<String> {
+        val tags: MutableList<String> = mutableListOf<String>()
+        chip_group_fragment_filter_added.forEach {
+            tags.add((it as Chip).text.toString())
+        }
+
+        return tags
+    }
+
+    // Change the values of the views to match the values in the Filter object
+    private fun setUpSelections(filter: Filter) {
+        if (filter.location < 0)
+            spinner_fragment_filter_location.setSelection(0)
+        else
+            spinner_fragment_filter_location.setSelection(filter.location)
+
+        if (filter.zip.isBlank())
+            edit_text_fragment_filter_zip_code.setText("")
+        else
+            edit_text_fragment_filter_zip_code.setText(filter.zip)
+
+        if (filter.date.isBlank())
+            text_view_fragment_filter_date_shown.text = ""
+        else
+            text_view_fragment_filter_date_shown.text = filter.date
     }
 }

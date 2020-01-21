@@ -93,40 +93,6 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
 
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_fragment_filter_added_tag1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Tech"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#000000"
-                    app:chipIconVisible="true"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_fragment_filter_added_tag2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Entertainment"
-                    android:textColor="#FFFFFF"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#000000"
-                    app:chipIconVisible="true"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
             </com.google.android.material.chip.ChipGroup>
 
         </ScrollView>
@@ -157,96 +123,6 @@
                 android:id="@+id/chip_group_fragment_filter_suggested"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content">
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_group_fragment_filter_suggested_tag1"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Tech"
-                    android:textColor="#ACAAAA"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#E4E4E4"
-                    app:chipIconVisible="true"
-                    app:closeIcon="@drawable/ic_add_circle_24dp"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_group_fragment_filter_suggested_tag2"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Music"
-                    android:textColor="#ACAAAA"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#E4E4E4"
-                    app:chipIconVisible="true"
-                    app:closeIcon="@drawable/ic_add_circle_24dp"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_group_fragment_filter_suggested_tag3"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Entertainment"
-                    android:textColor="#ACAAAA"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#E4E4E4"
-                    app:chipIconVisible="true"
-                    app:closeIcon="@drawable/ic_add_circle_24dp"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_group_fragment_filter_suggested_tag4"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Family"
-                    android:textColor="#ACAAAA"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#E4E4E4"
-                    app:chipIconVisible="true"
-                    app:closeIcon="@drawable/ic_add_circle_24dp"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
-
-                <com.google.android.material.chip.Chip
-                    android:id="@+id/chip_group_fragment_filter_suggested_tag5"
-                    android:layout_width="wrap_content"
-                    android:layout_height="40dp"
-                    android:checkable="false"
-                    android:clickable="false"
-                    android:fontFamily="@font/poppins_regular"
-                    android:text="Fun"
-                    android:textColor="#ACAAAA"
-                    android:textSize="14sp"
-                    app:checkedIconEnabled="true"
-                    app:checkedIconVisible="false"
-                    app:chipBackgroundColor="#E4E4E4"
-                    app:chipIconVisible="true"
-                    app:closeIcon="@drawable/ic_add_circle_24dp"
-                    app:closeIconTint="#ACAAAA"
-                    app:closeIconVisible="true" />
 
             </com.google.android.material.chip.ChipGroup>
 

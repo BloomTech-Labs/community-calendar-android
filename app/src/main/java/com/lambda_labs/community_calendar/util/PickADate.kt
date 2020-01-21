@@ -9,15 +9,14 @@ import androidx.fragment.app.DialogFragment
 import kotlinx.android.synthetic.main.fragment_filter.*
 import java.util.*
 
-class DatePickerFragment(val dialogContext: Context) : DialogFragment(),
+class DatePickerFragment(val dialogContext: Context, val cal: Calendar) : DialogFragment(),
     DatePickerDialog.OnDateSetListener {
 
     override fun onCreateDialog(savedInstanceState: Bundle?): Dialog {
-        // Use the current date as the default date in the picker
-        val c = Calendar.getInstance()
-        val year = c.get(Calendar.YEAR)
-        val month = c.get(Calendar.MONTH)
-        val day = c.get(Calendar.DAY_OF_MONTH)
+        // Split the Calendar object into its time components
+        val year: Int = cal.get(Calendar.YEAR)
+        val month: Int = cal.get(Calendar.MONTH)
+        val day: Int = cal.get(Calendar.DAY_OF_MONTH)
 
         // Create a new instance of DatePickerDialog and return it
         return DatePickerDialog(dialogContext, this, year, month, day)

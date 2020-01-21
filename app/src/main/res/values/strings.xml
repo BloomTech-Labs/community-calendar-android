@@ -30,36 +30,4 @@
     <string name="filter_search_view_hint">Search for tags</string>
     <string name="filter_text_view_suggested_tags">Suggested Tags</string>
     <string name="filter_button_apply">Apply</string>
-
-    <string-array name="filter_locations_array">
-        <item>West Side</item>
-        <item>East Side</item>
-        <item>Southwest Detroit</item>
-        <item>Palmer Park Area</item>
-        <item>North End</item>
-        <item>New Center Area</item>
-        <item>Eastern Market Area</item>
-        <item>Midtown</item>
-        <item>Jefferson Corridor</item>
-        <item>Downtown</item>
-        <item>Corktown - Woodbridge</item>
-    </string-array>
-
-    <string-array name="tags_added_array">
-        <item>Tech</item>
-        <item>Entertainment</item>
-        <item>Gardening</item>
-        <item>Sewing</item>
-        <item>Sports</item>
-        <item>Outdoors</item>
-    </string-array>
-
-    <string-array name="tags_suggested_array">
-        <item>Tech</item>
-        <item>Music</item>
-        <item>Entertainment</item>
-        <item>Family</item>
-        <item>Fun</item>
-        <item>Eating</item>
-    </string-array>
 </resources>

@@ -15,13 +15,12 @@ object ViewUtil {
      * Build a component from scratch with necessary values to create an Input Chip.
      * @param   context     The context where the Chip will be located
      * @param   added       Boolean value whether the Chip to create is a tag that has been added
-     * @param   pxHeight    Integer value of the pixel size that the height of the Chip should be
      * @return              The Chip component that has been created
      * @see Material        https://material.io/develop/android/components/chip/
      * @see Material        https://material.io/components/chips/
      * @see Medium          https://medium.com/over-engineering/hands-on-with-material-components-for-android-chips-21dc67c8b956
      */
-    fun generateChip(context: Context, added: Boolean, pxHeight: Int): Chip {
+    fun generateChip(context: Context, added: Boolean): Chip {
         val chip: Chip = Chip(context)
         chip.isClickable = false
         chip.isCheckable = false
@@ -33,7 +32,7 @@ object ViewUtil {
         chip.typeface = ResourcesCompat.getFont(context, R.font.poppins_regular)
         chip.layoutParams = ViewGroup.LayoutParams(
             ViewGroup.LayoutParams.WRAP_CONTENT,
-            pxHeight
+            105
         )
         chip.setCloseIconTintResource(R.color.colorInactive)
 
