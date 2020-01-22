@@ -1,11 +1,15 @@
 package com.lambda_labs.community_calendar.viewmodel
 
+import androidx.appcompat.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
+import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lambda_labs.community_calendar.App
+import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.Repository
 import com.lambda_labs.community_calendar.model.Search
+import com.lambda_labs.community_calendar.util.dpToPx
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -32,6 +36,25 @@ class SearchViewModel(val repo: Repository): ViewModel() {
 
     fun removeRecentSearch(search: Search){
         repo.removeRecentSearch(search)
+    }
+
+    fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, cancel: MaterialButton, filters: MaterialButton){
+        val dpToPx = dpToPx(10f, parent.context.resources)
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(parent)
+        // Search Bar
+        constraintSet.connect(search.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
+        constraintSet.connect(search.id, ConstraintSet.START, filters.id, ConstraintSet.START)
+        constraintSet.connect(search.id, ConstraintSet.END, cancel.id, ConstraintSet.START)
+        constraintSet.connect(filters.id, ConstraintSet.TOP, search.id, ConstraintSet.BOTTOM, dpToPx)
+
+        // Cancel Button
+        constraintSet.connect(cancel.id, ConstraintSet.TOP, search.id, ConstraintSet.TOP)
+        constraintSet.connect(cancel.id, ConstraintSet.BOTTOM, search.id, ConstraintSet.BOTTOM)
+        constraintSet.connect(cancel.id, ConstraintSet.START, search.id, ConstraintSet.END)
+        constraintSet.connect(cancel.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, dpToPx)
+
+        constraintSet.applyTo(parent)
     }
 
     override fun onCleared() {

@@ -8,10 +8,10 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import androidx.recyclerview.widget.StaggeredGridLayoutManager
@@ -25,6 +25,7 @@ import kotlinx.android.synthetic.main.event_recycler_item_list.view.*
 import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -50,8 +51,17 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    val searchBar: SearchView by inject()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (searchBar.parent != null){
+            (searchBar.parent as ViewGroup).removeView(searchBar)
+        }
+        home_layout.addView(searchBar)
+        setSearchBarProperties(searchBar, true)
+        viewModel.setupSearchBarConstraints(home_layout, searchBar, txt_featured_title)
 
         // event list
         val events = ArrayList<EventsQuery.Event>()
@@ -179,7 +189,6 @@ class HomeFragment : Fragment() {
         }
 
     }
-
 
     //    Recycler for Featured Events
     inner class FeaturedEventRecycler(private val events: ArrayList<String>) :

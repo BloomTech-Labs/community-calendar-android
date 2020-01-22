@@ -6,6 +6,7 @@ import android.view.View
 import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
+import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -29,19 +30,15 @@ class MainActivity : AppCompatActivity() {
 
     val mainModule: Module = module {
         single { SearchView(this@MainActivity) }
-        single { MaterialButton(this@MainActivity, null, R.style.Widget_MaterialComponents_Button_TextButton) }
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        setup app for searchBar and cancel button
         loadKoinModules(mainModule)
-
         val searchView: SearchView = get()
-        viewModel.setSearchBarProperties(searchView)
-        val cancelButton: MaterialButton = get()
-        viewModel.setCancelButtonPropetioes(cancelButton)
 
 //        Startup navigation component
         val host: NavHostFragment =
@@ -59,23 +56,10 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // Navigates out of SearchFragment to previous fragment.
-        // SearchFragment onDestroy has more logic to wrap this action up.
-        cancelButton.setOnClickListener {
-            navController.navigateUp()
-        }
-
         // Checks to see if search bar was selected and navigates accordingly
         searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus && navController.currentDestination?.id != R.id.searchFragment){
                 navController.navigate(R.id.searchFragment)
-
-                cancelButton.visibility = View.VISIBLE
-                searchView.layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
-                val constraintSetShow = ConstraintSet()
-                constraintSetShow.clone(c_layout)
-                constraintSetShow.connect(searchView.id, ConstraintSet.END, cancelButton.id, ConstraintSet.START)
-                constraintSetShow.applyTo(c_layout)
             }
         }
 
