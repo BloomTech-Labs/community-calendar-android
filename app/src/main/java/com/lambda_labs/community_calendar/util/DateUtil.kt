@@ -127,8 +127,19 @@ fun getSearchDate(date: Date): String {
 }
 
 fun negativeDate(): Date {
-    val date = "1998-03-12T23:00:00.000Z"
-    return stringToDate(date)
+    val date = "1998-03-12"
+    return searchStringToDate(date)
+}
+
+// Takes in a date and returns it as a string looking like 01-09-2020
+fun getRecentSearchDisplay(date: Date): String{
+    val splitDate = getSearchDate(date).split("-").toMutableList()
+    splitDate.add(splitDate[0])
+    splitDate.removeAt(0)
+    return splitDate.joinToString("-")
+
+
+
 }
 
 // Takes in integer values for the date and then uses another function to get the string
