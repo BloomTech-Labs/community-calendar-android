@@ -1,5 +1,6 @@
 package com.lambda_labs.community_calendar.view
 
+import EventsQuery
 import android.content.Context
 import android.os.Bundle
 import android.util.Log
@@ -19,6 +20,7 @@ import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
+import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
 import java.util.*
@@ -51,9 +53,20 @@ class FilterFragment : Fragment() {
             return@setOnTouchListener true
         }
 
-
-        //TODO: ViewModel access to events
-
+        // Instantiate this fragment's ViewModel to gain access to the data from the repository
+        val filterViewModel = ViewModelProviders.of(this).get(FilterViewModel::class.java)
+        val allTags: MutableSet<String> = mutableSetOf<String>()
+        val allLocations: MutableSet<String> = mutableSetOf<String>()
+        filterViewModel.getAllEvents().observe(this, Observer<List<EventsQuery.Event>> { list ->
+            list.forEach { event ->
+                event.tags()?.forEach { tag ->
+                    allTags.add(tag.title())
+                }
+                event.locations()?.forEach { location ->
+                    allLocations.add(location.name())
+                }
+            }
+        })
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
@@ -64,25 +77,28 @@ class FilterFragment : Fragment() {
         }
 
         // Populate list of locations in the Spinner View
-        // TODO: Change this to locations from ViewModel's event list
-        val temporaryHardcodedListOfLocations = listOf<String>(
-            "",
-            "West Side",
-            "East Side",
-            "Southwest Detroit",
-            "Palmer Park Area",
-            "North End",
-            "New Center Area",
-            "Eastern Market Area",
-            "Midtown",
-            "Jefferson Corridor",
-            "Downtown",
-            "Corktown - Woodbridge"
-        )
+        // TODO: Eliminate this block once ViewModel's event list is working
+        if (allLocations.isEmpty()) {
+            val tempLocations = listOf<String>(
+                "",
+                "West Side",
+                "East Side",
+                "Southwest Detroit",
+                "Palmer Park Area",
+                "North End",
+                "New Center Area",
+                "Eastern Market Area",
+                "Midtown",
+                "Jefferson Corridor",
+                "Downtown",
+                "Corktown - Woodbridge"
+            )
+            allLocations.addAll(tempLocations)
+        }
         val arrayAdapter: ArrayAdapter<String> = ArrayAdapter(
             fragContext,
             android.R.layout.simple_spinner_item,
-            temporaryHardcodedListOfLocations
+            allLocations.toList()
         ).also {
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner_fragment_filter_location.adapter = it
@@ -117,23 +133,31 @@ class FilterFragment : Fragment() {
         }
 
         // Populate the initial chip tags to be added to the suggested group
-        // TODO: Change this to tags from the ViewModel's event list
-        val temporaryHardcodedListOfTags = mutableListOf<String>(
-            "Tech",
-            "Entertainment",
-            "Gardening",
-            "Sewing",
-            "Sports",
-            "Outdoors",
-            "Music",
-            "Family",
-            "Fun",
-            "Eating"
-        )
-        temporaryHardcodedListOfTags.shuffle()
-        for (x in 0 until temporaryHardcodedListOfTags.size) {
+        // TODO: Eliminate this block once ViewModel's event list is working
+        if (allTags.isEmpty()) {
+            val tempTags = listOf<String>(
+                "Tech",
+                "Entertainment",
+                "Gardening",
+                "Sewing",
+                "Sports",
+                "Outdoors",
+                "Music",
+                "Family",
+                "Fun",
+                "Eating",
+                "Cooking"
+            )
+            allTags.addAll(tempTags)
+        }
+        // Randomize (shuffle) a maximum of 10 tags to be displayed
+        val shuffledTags = allTags.toMutableList()
+        shuffledTags.shuffle()
+        var randomTagCount = shuffledTags.size
+        if (shuffledTags.size > 10) randomTagCount = 10
+        for (x in 0 until randomTagCount) {
             val chip: Chip = ViewUtil.generateChip(fragContext, false)
-            chip.text = temporaryHardcodedListOfTags[x]
+            chip.text = shuffledTags[x]
             chip.id = x
             chip.setOnCloseIconClickListener {
                 chip_group_fragment_filter_suggested.removeView(it)
@@ -149,7 +173,6 @@ class FilterFragment : Fragment() {
         }
 
         // Populate the SearchView suggestions with a list of tags and when selected, gets added
-        // TODO: Change this to tags from the ViewModel's event list
         val searchAutoComplete =
             search_bar_fragment_filter.findViewById<View>(androidx.appcompat.R.id.search_src_text) as SearchAutoComplete
         searchAutoComplete.dropDownAnchor = R.id.search_bar_fragment_filter
@@ -164,7 +187,7 @@ class FilterFragment : Fragment() {
         ArrayAdapter<String>(
             fragContext,
             android.R.layout.simple_dropdown_item_1line,
-            temporaryHardcodedListOfTags
+            allTags.toList()
         ).also {
             searchAutoComplete.setAdapter(it)
         }
