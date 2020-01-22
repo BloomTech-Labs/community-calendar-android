@@ -41,5 +41,10 @@
         android:name="com.lambda_labs.community_calendar.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
+    <fragment
+        android:id="@+id/searchResultFragment"
+        android:name="com.lambda_labs.community_calendar.view.SearchResultFragment"
+        android:label="fragment_search_result"
+        tools:layout="@layout/fragment_search_result" />
 
 </navigation>

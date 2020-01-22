@@ -58,13 +58,11 @@
 
     <ImageView
         android:id="@+id/btn_list"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="47dp"
+        android:layout_marginEnd="41dp"
         android:fontFamily="@font/poppins_black"
-        android:paddingTop="5dp"
-        android:scaleType="fitCenter"
         android:src="@drawable/list_view_selected"
         app:layout_constraintBottom_toTopOf="@id/layout_main_event_filters"
         app:layout_constraintEnd_toEndOf="parent"
@@ -72,10 +70,10 @@
 
     <ImageView
         android:id="@+id/center_bar"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="1dp"
+        android:layout_height="30dp"
         android:layout_marginTop="6dp"
-        android:layout_marginEnd="34dp"
+        android:layout_marginEnd="36dp"
         android:src="@drawable/grid_and_list_divide"
         app:layout_constraintBottom_toTopOf="@id/layout_main_event_filters"
         app:layout_constraintEnd_toEndOf="parent"
@@ -83,12 +81,11 @@
 
     <ImageView
         android:id="@+id/btn_grid"
-        android:layout_width="26dp"
-        android:layout_height="26dp"
+        android:layout_width="16dp"
+        android:layout_height="16dp"
         android:layout_marginTop="6dp"
         android:layout_marginEnd="16dp"
         android:fontFamily="@font/poppins_black"
-        android:paddingTop="4dp"
         android:src="@drawable/grid_view_unselected"
         app:layout_constraintBottom_toTopOf="@id/layout_main_event_filters"
         app:layout_constraintEnd_toEndOf="parent"
