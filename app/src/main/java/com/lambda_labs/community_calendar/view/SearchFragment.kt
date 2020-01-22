@@ -5,9 +5,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
 import androidx.constraintlayout.widget.ConstraintSet
+import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -15,6 +17,7 @@ import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
@@ -22,9 +25,6 @@ import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 
-/**
- * A simple [Fragment] subclass.
- */
 class SearchFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
@@ -56,7 +56,6 @@ class SearchFragment : Fragment() {
             searches_recycler.adapter = RecentSearchRecycler(recentSearches)
         })
 
-
         // Uncomment to test how it displays the chips
         /*val fake = this.context as Context
 
@@ -69,9 +68,6 @@ class SearchFragment : Fragment() {
             hideKeyboard(mainActivity)
             this.findNavController().navigate(R.id.action_searchFragment_to_filterFragment)
         }
-
-
-
     }
 
     override fun onDestroy() {
@@ -103,11 +99,42 @@ class SearchFragment : Fragment() {
         override fun onBindViewHolder(holder: ViewHolder, position: Int) {
             val recentSearch = searches[position]
 
+            val image = holder.drop
+
             holder.searchText.text = recentSearch.searchText
+
+// Uncomment code below to test and change the recentSearch call in line 115 and 117 to fakeSearch
+            /*val tags = arrayListOf("Java", "Kotlin", "Android") as List<String>
+            val fakeSearch = Search("bob", "Utah", 84601, getToday(), tags)*/
+
+            val list = viewModel.searchToSearchList(recentSearch)
+
+            val hasNoFilters = viewModel.hasNoFilters(recentSearch)
+            if (hasNoFilters) holder.drop.visibility = View.GONE
+
+            var clicked = 0
+            image.setOnClickListener {
+                val layoutManager = LinearLayoutManager(activity)
+                holder.recyclerView.layoutManager = layoutManager
+                holder.recyclerView.adapter = RecentSearchRecyclerChild(list)
+                if (clicked == 0) {
+                    holder.recyclerView.visibility = View.VISIBLE
+                    image.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.drop_up))
+                    clicked = 1
+                }
+                else {
+                    holder.recyclerView.visibility = View.GONE
+                    image.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.drop_down))
+                    clicked = 0
+                }
+            }
         }
 
         inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
             val searchText: TextView = view.search_txt
+            val drop: ImageView = view.drop_down
+            val recyclerView: RecyclerView = view.recycler_recent_search
+
         }
     }
 }
