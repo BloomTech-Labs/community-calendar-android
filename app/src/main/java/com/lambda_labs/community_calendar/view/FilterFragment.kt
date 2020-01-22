@@ -7,18 +7,22 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import androidx.appcompat.widget.SearchView.SearchAutoComplete
 import androidx.core.view.forEach
+import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
+import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
 import java.util.*
+
 
 class FilterFragment : Fragment() {
 
@@ -46,6 +50,10 @@ class FilterFragment : Fragment() {
         view.setOnTouchListener { v, event ->
             return@setOnTouchListener true
         }
+
+
+        //TODO: ViewModel access to events
+
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
@@ -105,13 +113,7 @@ class FilterFragment : Fragment() {
 
         // Populate the initial chip tags to be added to the included group
         sharedFilterViewModel.getSharedData().value?.tags?.forEachIndexed { index, tagText ->
-            val chip: Chip = ViewUtil.generateChip(fragContext, true)
-            chip.text = tagText
-            chip.id = index
-            chip.setOnCloseIconClickListener {
-                chip_group_fragment_filter_added.removeView(it)
-            }
-            chip_group_fragment_filter_added.addView(chip)
+            addChip(fragContext, tagText, index)
         }
 
         // Populate the initial chip tags to be added to the suggested group
@@ -146,6 +148,27 @@ class FilterFragment : Fragment() {
             chip_group_fragment_filter_suggested.addView(chip)
         }
 
+        // Populate the SearchView suggestions with a list of tags and when selected, gets added
+        // TODO: Change this to tags from the ViewModel's event list
+        val searchAutoComplete =
+            search_bar_fragment_filter.findViewById<View>(androidx.appcompat.R.id.search_src_text) as SearchAutoComplete
+        searchAutoComplete.dropDownAnchor = R.id.search_bar_fragment_filter
+        searchAutoComplete.threshold = 1
+        searchAutoComplete.setOnItemClickListener { parent, view1, position, id ->
+            val selected: String = (view1 as MaterialTextView).text.toString()
+            search_bar_fragment_filter.setQuery("", false)
+            search_bar_fragment_filter.clearFocus()
+            addChip(fragContext, selected, chip_group_fragment_filter_added.size)
+            hideKeyboard(fragContext as MainActivity)
+        }
+        ArrayAdapter<String>(
+            fragContext,
+            android.R.layout.simple_dropdown_item_1line,
+            temporaryHardcodedListOfTags
+        ).also {
+            searchAutoComplete.setAdapter(it)
+        }
+
         // Activate the Apply button, in effect to retain, saving selections
         button_fragment_filter_apply.setOnClickListener {
             // Save current selections in the ViewModel to be retrieved later if necessary
@@ -161,6 +184,16 @@ class FilterFragment : Fragment() {
             // Dismiss this fragment, after having saved any user selections
             Navigation.findNavController(it).popBackStack()
         }
+    }
+
+    private fun addChip(fragContext: Context, tagText: String, index: Int) {
+        val chip: Chip = ViewUtil.generateChip(fragContext, true)
+        chip.text = tagText
+        chip.id = index
+        chip.setOnCloseIconClickListener {
+            chip_group_fragment_filter_added.removeView(it)
+        }
+        chip_group_fragment_filter_added.addView(chip)
     }
 
     // Build up a list of strings representing each Chip tag
