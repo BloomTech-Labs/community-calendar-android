@@ -8,6 +8,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ArrayAdapter
+import android.widget.Spinner
 import androidx.appcompat.widget.SearchView.SearchAutoComplete
 import androidx.core.view.forEach
 import androidx.core.view.size
@@ -196,7 +197,7 @@ class FilterFragment : Fragment() {
         button_fragment_filter_apply.setOnClickListener {
             // Save current selections in the ViewModel to be retrieved later if necessary
             val filter: Filter = Filter()
-            filter.location = spinner_fragment_filter_location.selectedItemId.toInt()
+            filter.location = spinner_fragment_filter_location.selectedItem.toString()
             filter.zip = edit_text_fragment_filter_zip_code.text.toString()
             filter.date = text_view_fragment_filter_date_shown.text.toString()
             filter.tags = getSelectedTags()
@@ -231,10 +232,15 @@ class FilterFragment : Fragment() {
 
     // Change the values of the views to match the values in the Filter object
     private fun setUpSelections(filter: Filter) {
-        if (filter.location < 0)
+        if (filter.location.isBlank())
             spinner_fragment_filter_location.setSelection(0)
         else
-            spinner_fragment_filter_location.setSelection(filter.location)
+            spinner_fragment_filter_location.setSelection(
+                getSpinnerItemPosition(
+                    spinner_fragment_filter_location,
+                    filter.location
+                )
+            )
 
         if (filter.zip.isBlank())
             edit_text_fragment_filter_zip_code.setText("")
@@ -245,5 +251,15 @@ class FilterFragment : Fragment() {
             text_view_fragment_filter_date_shown.text = ""
         else
             text_view_fragment_filter_date_shown.text = filter.date
+    }
+
+    // Find the index of the Spinner item which matches the passed in text
+    private fun getSpinnerItemPosition(spinner: Spinner, itemText: String): Int {
+        for (i in 0 until spinner.count) {
+            if (spinner.getItemAtPosition(i).toString().equals(itemText))
+                return i
+        }
+
+        return 0
     }
 }
