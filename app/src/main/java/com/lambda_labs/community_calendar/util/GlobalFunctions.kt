@@ -61,7 +61,7 @@ fun setSearchBarProperties(searchView: SearchView,
     val width = if (matchParentWidth){
         ConstraintLayout.LayoutParams.MATCH_PARENT
     }else{
-        ConstraintLayout.LayoutParams.WRAP_CONTENT
+        ConstraintLayout.LayoutParams.MATCH_CONSTRAINT
     }
     val height = ConstraintLayout.LayoutParams.WRAP_CONTENT
     val layoutParams = ConstraintLayout.LayoutParams(width, height)

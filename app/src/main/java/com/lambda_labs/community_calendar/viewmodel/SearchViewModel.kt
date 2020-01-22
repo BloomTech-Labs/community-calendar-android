@@ -39,25 +39,6 @@ class SearchViewModel(val repo: Repository): ViewModel() {
         repo.removeRecentSearch(search)
     }
 
-    fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, cancel: MaterialButton, filters: MaterialButton){
-        val dpToPx = dpToPx(10f, parent.context.resources)
-        val constraintSet = ConstraintSet()
-        constraintSet.clone(parent)
-        // Search Bar
-        constraintSet.connect(search.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
-        constraintSet.connect(search.id, ConstraintSet.START, filters.id, ConstraintSet.START)
-        constraintSet.connect(search.id, ConstraintSet.END, cancel.id, ConstraintSet.START)
-        constraintSet.connect(filters.id, ConstraintSet.TOP, search.id, ConstraintSet.BOTTOM, dpToPx)
-
-        // Cancel Button
-        constraintSet.connect(cancel.id, ConstraintSet.TOP, search.id, ConstraintSet.TOP)
-        constraintSet.connect(cancel.id, ConstraintSet.BOTTOM, search.id, ConstraintSet.BOTTOM)
-        constraintSet.connect(cancel.id, ConstraintSet.START, search.id, ConstraintSet.END)
-        constraintSet.connect(cancel.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, dpToPx)
-
-        constraintSet.applyTo(parent)
-    }
-
     /* Checks filters to see if the user changed any then adds them
     to a list which is used in RecentSearchRecycler */
     fun searchToSearchList(search: Search): ArrayList<Any> {
@@ -87,5 +68,24 @@ class SearchViewModel(val repo: Repository): ViewModel() {
             disposable?.dispose()
         }
         super.onCleared()
+    }
+
+    fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, cancel: MaterialButton, filters: MaterialButton){
+        val dpToPx = dpToPx(10f, parent.context.resources)
+        val constraintSet = ConstraintSet()
+        constraintSet.clone(parent)
+        // Search Bar
+        constraintSet.connect(search.id, ConstraintSet.TOP, ConstraintSet.PARENT_ID, ConstraintSet.TOP)
+        constraintSet.connect(search.id, ConstraintSet.START, filters.id, ConstraintSet.START, 0)
+        constraintSet.connect(search.id, ConstraintSet.END, cancel.id, ConstraintSet.START)
+        constraintSet.connect(filters.id, ConstraintSet.TOP, search.id, ConstraintSet.BOTTOM, dpToPx)
+
+        // Cancel Button
+        constraintSet.connect(cancel.id, ConstraintSet.TOP, search.id, ConstraintSet.TOP)
+        constraintSet.connect(cancel.id, ConstraintSet.BOTTOM, search.id, ConstraintSet.BOTTOM)
+        constraintSet.connect(cancel.id, ConstraintSet.START, search.id, ConstraintSet.END, dpToPx)
+        constraintSet.connect(cancel.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
+
+        constraintSet.applyTo(parent)
     }
 }

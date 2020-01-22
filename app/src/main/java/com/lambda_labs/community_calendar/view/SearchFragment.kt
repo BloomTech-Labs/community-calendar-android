@@ -55,7 +55,6 @@ class SearchFragment : Fragment() {
         }
         search_layout.addView(searchBar)
         setSearchBarProperties(searchBar, false, topMargin = 0f, endMargin = 0f)
-        searchBar.background = ContextCompat.getDrawable(mainActivity, R.drawable.small_search_box)
 
        viewModel.setupSearchBarConstraints(search_layout, searchBar, btn_cancel, btn_filters)
 
