@@ -73,7 +73,7 @@ class FilterFragment : Fragment() {
         image_view_fragment_filter_cancel.setOnClickListener {
             // Dismiss the soft keyboard if it is showing
             hideKeyboard(fragContext as MainActivity)
-            // Dismiss this fragment, after having saved any user selections
+            // Dismiss this fragment, ignoring any user selections
             Navigation.findNavController(it).popBackStack()
         }
 
