@@ -54,10 +54,10 @@ fun dpToPx(dp: Float, resources: Resources): Int{
 // Creates above xml code programmatically
 fun setSearchBarProperties(searchView: SearchView,
                            matchParentWidth: Boolean,
-                           startMargin: Float = 13f,
-                           endMargin: Float = 13f,
-                           topMargin: Float = 13f,
-                           bottomMargin: Float = 13f){
+                           startMargin: Float = 16f,
+                           endMargin: Float = 16f,
+                           topMargin: Float = 0f,
+                           bottomMargin: Float = 16f){
     val width = if (matchParentWidth){
         ConstraintLayout.LayoutParams.MATCH_PARENT
     }else{
