@@ -63,4 +63,7 @@
         <item>Eating</item>
     </string-array>
 
+    <string name="go_back">Go back</string>
+    <string name="results">Results</string>
+    <string name="searched">Searched</string>
 </resources>

@@ -2,7 +2,6 @@ package com.lambda_labs.community_calendar.util
 
 import android.app.Activity
 import android.content.res.Resources
-import android.util.TypedValue
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -10,7 +9,6 @@ import android.widget.LinearLayout
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.core.content.ContextCompat
-import androidx.core.view.setMargins
 import com.lambda_labs.community_calendar.R
 import kotlin.math.roundToInt
 

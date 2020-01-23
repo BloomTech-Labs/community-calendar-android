@@ -1,7 +1,6 @@
 package com.lambda_labs.community_calendar
 
 import EventsQuery
-import android.content.Context
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room.databaseBuilder

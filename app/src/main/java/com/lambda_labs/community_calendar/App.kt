@@ -3,7 +3,6 @@ package com.lambda_labs.community_calendar
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.lambda_labs.community_calendar.view.MainActivity
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel

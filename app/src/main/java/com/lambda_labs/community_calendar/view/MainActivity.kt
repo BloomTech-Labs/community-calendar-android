@@ -2,22 +2,15 @@ package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
-import androidx.constraintlayout.widget.ConstraintLayout
-import androidx.constraintlayout.widget.ConstraintSet
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
-import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.context.loadKoinModules

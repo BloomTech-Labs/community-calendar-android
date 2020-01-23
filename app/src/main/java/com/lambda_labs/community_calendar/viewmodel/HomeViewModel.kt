@@ -2,20 +2,16 @@ package com.lambda_labs.community_calendar.viewmodel
 
 import EventsQuery
 import android.util.TypedValue
-import android.widget.ImageView
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
-import androidx.core.content.ContextCompat
 import androidx.fragment.app.FragmentActivity
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
-import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.Repository
-import com.lambda_labs.community_calendar.view.MainActivity
 
 class HomeViewModel(val repo: Repository): ViewModel() {
 
@@ -25,19 +21,9 @@ class HomeViewModel(val repo: Repository): ViewModel() {
         return repo.events
     }
 
-    fun setupRecyclers(orientation: Int, activity: FragmentActivity?, recycler: RecyclerView){
+    fun setupRecyclers(orientation: Int, activity: FragmentActivity?, recycler: RecyclerView) {
         recycler.setHasFixedSize(true)
         recycler.layoutManager = LinearLayoutManager(activity, orientation, false)
-    }
-
-    fun selectListView(mainActivity: MainActivity, gridBtn: ImageView, listBtn: ImageView){
-        listBtn.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_selected))
-        gridBtn.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_unselected))
-    }
-
-    fun selectGridView(mainActivity: MainActivity, gridBtn: ImageView, listBtn: ImageView){
-        listBtn.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.list_view_unselected))
-        gridBtn.setImageDrawable(ContextCompat.getDrawable(mainActivity, R.drawable.grid_view_selected))
     }
 
     fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, materialText: MaterialTextView){
