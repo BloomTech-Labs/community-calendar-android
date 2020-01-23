@@ -65,6 +65,7 @@ class Repository(context: Context) {
                 }
 
                 override fun onError(e: Throwable) {
+                    _events.value = ArrayList()
                     println(e.message)
                 }
 
