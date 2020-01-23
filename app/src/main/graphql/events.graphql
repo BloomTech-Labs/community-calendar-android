@@ -2,20 +2,20 @@ query Events {
     events {
         id
         title
-      	description
+        description
         start
         end
-      	creator{
-          first_name
+        creator{
+          firstName
         }
-        event_images{
+        eventImages{
           url
         }
         locations {
           name
           zipcode
         }
-      	tags{
+        tags{
           title
         }
       }

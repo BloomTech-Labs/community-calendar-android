@@ -7,6 +7,7 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.view.WindowManager
 import android.widget.ArrayAdapter
 import android.widget.Spinner
 import androidx.appcompat.widget.SearchView.SearchAutoComplete
@@ -24,6 +25,7 @@ import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
+import org.koin.android.ext.android.get
 import java.util.*
 
 
@@ -54,7 +56,7 @@ class FilterFragment : Fragment() {
         }
 
         // Instantiate this fragment's ViewModel to gain access to the data from the repository
-        val filterViewModel = ViewModelProviders.of(fragActivity).get(FilterViewModel::class.java)
+        val filterViewModel: FilterViewModel = get()
 
         // Instantiate the shared ViewModel to allow user selections to persist after fragment destruction
         val sharedFilterViewModel: SharedFilterViewModel =
@@ -79,6 +81,9 @@ class FilterFragment : Fragment() {
         view.setOnTouchListener { v, event ->
             return@setOnTouchListener true
         }
+
+        // Reference attribute in Manifest to have proper behavior of this layout when keyboard shows
+        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
@@ -169,7 +174,7 @@ class FilterFragment : Fragment() {
             }
 
             // TODO: Eliminate this block once ViewModel's event list is working
-            allTags.addAll(
+            /*allTags.addAll(
                 listOf<String>(
                     "Tech",
                     "Entertainment",
@@ -183,10 +188,10 @@ class FilterFragment : Fragment() {
                     "Eating",
                     "Cooking"
                 )
-            )
+            )*/
 
             // TODO: Eliminate this block once ViewModel's event list is working
-            allLocations.addAll(
+            /*allLocations.addAll(
                 listOf<String>(
                     "",
                     "West Side",
@@ -201,7 +206,7 @@ class FilterFragment : Fragment() {
                     "Downtown",
                     "Corktown - Woodbridge"
                 )
-            )
+            )*/
 
             // Refresh the array adapters/chips with data retrieved from the repository
             arrayAdapterTagSearchView.addAll(allTags)

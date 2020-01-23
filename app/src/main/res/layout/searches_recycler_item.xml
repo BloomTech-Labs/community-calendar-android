@@ -1,16 +1,44 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
+    android:id="@+id/card_recent_search"
     xmlns:android="http://schemas.android.com/apk/res/android"
     app:cardElevation="0dp"
+    android:layout_marginBottom="8dp"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/search_txt"
-        style="@style/SearchPageItems"
-        app:icon="@drawable/recent"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/cl_recent_search"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
 
-        />
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/search_txt"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:insetBottom="0dp"
+            style="@style/SearchPageItems"
+            app:icon="@drawable/recent" />
+
+        <ImageView
+            android:id="@+id/drop_down"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/drop_down"
+            android:padding="16dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintBottom_toBottomOf="@id/search_txt"
+            />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recycler_recent_search"
+            android:visibility="gone"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintTop_toBottomOf="@id/search_txt" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+
 
 </com.google.android.material.card.MaterialCardView>

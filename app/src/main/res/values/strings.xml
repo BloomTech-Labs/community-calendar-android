@@ -30,4 +30,7 @@
     <string name="filter_search_view_hint">Search for tags</string>
     <string name="filter_text_view_suggested_tags">Suggested Tags</string>
     <string name="filter_button_apply">Apply</string>
+    <string name="go_back">Go back</string>
+    <string name="results">Results</string>
+    <string name="searched">Searched</string>
 </resources>

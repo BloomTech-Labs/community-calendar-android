@@ -8,38 +8,6 @@
     android:layout_height="match_parent"
     tools:context=".view.MainActivity">
 
-    <androidx.appcompat.widget.SearchView
-        android:id="@+id/search_bar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:background="@drawable/rectangle"
-        android:hint="@string/search_hint"
-        app:iconifiedByDefault="false"
-        app:queryBackground="@android:color/transparent"
-        app:queryHint="@string/search_hint"
-        app:searchHintIcon="@null"
-        app:searchIcon="@null"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"/>
-
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btn_cancel"
-        android:visibility="gone"
-        style="@style/Widget.MaterialComponents.Button.TextButton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/poppins_regular"
-        android:text="Cancel"
-        android:textSize="14sp"
-        android:textAllCaps="false"
-        android:textColor="#66000000"
-        app:layout_constraintBottom_toBottomOf="@id/search_bar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintLeft_toRightOf="@id/search_bar"
-        app:layout_constraintTop_toTopOf="@id/search_bar" />
-
     <fragment
         android:id="@+id/nav_host_fragment"
         android:name="androidx.navigation.fragment.NavHostFragment"

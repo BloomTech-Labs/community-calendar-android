@@ -316,6 +316,272 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "ticketMasterEvents",
+            "description": "",
+            "args": [
+              {
+                "name": "radius",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "unit",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "size",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "page",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "keyword",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "latlong",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "startDateTime",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "endDateTime",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "city",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "countryCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "stateCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "postalCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMResults",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ticketMasterEventsAlt",
+            "description": "",
+            "args": [
+              {
+                "name": "radius",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "unit",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "size",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Int",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "page",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "keyword",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "latlong",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "startDateTime",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "endDateTime",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "DateTime",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "city",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "countryCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "stateCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "postalCode",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMResultsAlt",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -486,7 +752,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -496,7 +762,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not",
+            "name": "firstName_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -506,7 +772,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_in",
+            "name": "firstName_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -524,7 +790,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_in",
+            "name": "firstName_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -542,7 +808,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_lt",
+            "name": "firstName_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -552,7 +818,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_lte",
+            "name": "firstName_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -562,7 +828,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_gt",
+            "name": "firstName_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -572,7 +838,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_gte",
+            "name": "firstName_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -582,7 +848,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_contains",
+            "name": "firstName_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -592,7 +858,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_contains",
+            "name": "firstName_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -602,7 +868,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_starts_with",
+            "name": "firstName_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -612,7 +878,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_starts_with",
+            "name": "firstName_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -622,7 +888,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_ends_with",
+            "name": "firstName_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -632,7 +898,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_ends_with",
+            "name": "firstName_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -642,7 +908,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -652,7 +918,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not",
+            "name": "lastName_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -662,7 +928,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_in",
+            "name": "lastName_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -680,7 +946,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_in",
+            "name": "lastName_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -698,7 +964,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_lt",
+            "name": "lastName_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -708,7 +974,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_lte",
+            "name": "lastName_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -718,7 +984,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_gt",
+            "name": "lastName_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -728,7 +994,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_gte",
+            "name": "lastName_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -738,7 +1004,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_contains",
+            "name": "lastName_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -748,7 +1014,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_contains",
+            "name": "lastName_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -758,7 +1024,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_starts_with",
+            "name": "lastName_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -768,7 +1034,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_starts_with",
+            "name": "lastName_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -778,7 +1044,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_ends_with",
+            "name": "lastName_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -788,7 +1054,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_ends_with",
+            "name": "lastName_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -798,7 +1064,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -808,7 +1074,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not",
+            "name": "auth0Id_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -818,7 +1084,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_in",
+            "name": "auth0Id_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -836,7 +1102,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_in",
+            "name": "auth0Id_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -854,7 +1120,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_lt",
+            "name": "auth0Id_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -864,7 +1130,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_lte",
+            "name": "auth0Id_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -874,7 +1140,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_gt",
+            "name": "auth0Id_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -884,7 +1150,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_gte",
+            "name": "auth0Id_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -894,7 +1160,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_contains",
+            "name": "auth0Id_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -904,7 +1170,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_contains",
+            "name": "auth0Id_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -914,7 +1180,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_starts_with",
+            "name": "auth0Id_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -924,7 +1190,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_starts_with",
+            "name": "auth0Id_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -934,7 +1200,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_ends_with",
+            "name": "auth0Id_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -944,7 +1210,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_ends_with",
+            "name": "auth0Id_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -1014,7 +1280,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for_every",
+            "name": "adminFor_every",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1024,7 +1290,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for_some",
+            "name": "adminFor_some",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1034,7 +1300,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for_none",
+            "name": "adminFor_none",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1044,7 +1310,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events_every",
+            "name": "createdEvents_every",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1054,7 +1320,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events_some",
+            "name": "createdEvents_some",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -1064,7 +1330,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events_none",
+            "name": "createdEvents_none",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -2694,6 +2960,62 @@
             "defaultValue": null
           },
           {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_not",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "TicketType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_not_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "TicketType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "creator",
             "description": "",
             "type": {
@@ -2704,31 +3026,31 @@
             "defaultValue": null
           },
           {
-            "name": "event_images_every",
+            "name": "eventImages_every",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageWhereInput",
+              "name": "EventImageWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images_some",
+            "name": "eventImages_some",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageWhereInput",
+              "name": "EventImageWhereInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images_none",
+            "name": "eventImages_none",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageWhereInput",
+              "name": "EventImageWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -2768,7 +3090,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlWhereInput",
+              "name": "EventUrlWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -2778,7 +3100,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlWhereInput",
+              "name": "EventUrlWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -2788,7 +3110,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlWhereInput",
+              "name": "EventUrlWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -2953,8 +3275,31 @@
         "possibleTypes": null
       },
       {
+        "kind": "ENUM",
+        "name": "TicketType",
+        "description": "",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": [
+          {
+            "name": "PAID",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "FREE",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "possibleTypes": null
+      },
+      {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageWhereInput",
+        "name": "EventImageWhereInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -3291,7 +3636,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereInput",
+                  "name": "EventImageWhereInput",
                   "ofType": null
                 }
               }
@@ -3309,7 +3654,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereInput",
+                  "name": "EventImageWhereInput",
                   "ofType": null
                 }
               }
@@ -3327,7 +3672,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereInput",
+                  "name": "EventImageWhereInput",
                   "ofType": null
                 }
               }
@@ -3341,7 +3686,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlWhereInput",
+        "name": "EventUrlWhereInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -3678,7 +4023,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereInput",
+                  "name": "EventUrlWhereInput",
                   "ofType": null
                 }
               }
@@ -3696,7 +4041,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereInput",
+                  "name": "EventUrlWhereInput",
                   "ofType": null
                 }
               }
@@ -3714,7 +4059,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereInput",
+                  "name": "EventUrlWhereInput",
                   "ofType": null
                 }
               }
@@ -4045,7 +4390,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4055,7 +4400,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not",
+            "name": "streetAddress_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4065,7 +4410,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_in",
+            "name": "streetAddress_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -4083,7 +4428,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_in",
+            "name": "streetAddress_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -4101,7 +4446,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_lt",
+            "name": "streetAddress_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4111,7 +4456,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_lte",
+            "name": "streetAddress_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4121,7 +4466,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_gt",
+            "name": "streetAddress_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4131,7 +4476,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_gte",
+            "name": "streetAddress_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4141,7 +4486,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_contains",
+            "name": "streetAddress_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4151,7 +4496,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_contains",
+            "name": "streetAddress_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4161,7 +4506,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_starts_with",
+            "name": "streetAddress_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4171,7 +4516,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_starts_with",
+            "name": "streetAddress_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4181,7 +4526,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_ends_with",
+            "name": "streetAddress_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4191,7 +4536,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_ends_with",
+            "name": "streetAddress_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4201,7 +4546,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4211,7 +4556,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not",
+            "name": "streetAddress2_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4221,7 +4566,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_in",
+            "name": "streetAddress2_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -4239,7 +4584,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_in",
+            "name": "streetAddress2_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -4257,7 +4602,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_lt",
+            "name": "streetAddress2_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4267,7 +4612,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_lte",
+            "name": "streetAddress2_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4277,7 +4622,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_gt",
+            "name": "streetAddress2_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4287,7 +4632,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_gte",
+            "name": "streetAddress2_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4297,7 +4642,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_contains",
+            "name": "streetAddress2_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4307,7 +4652,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_contains",
+            "name": "streetAddress2_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4317,7 +4662,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_starts_with",
+            "name": "streetAddress2_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4327,7 +4672,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_starts_with",
+            "name": "streetAddress2_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4337,7 +4682,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_ends_with",
+            "name": "streetAddress2_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4347,7 +4692,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_ends_with",
+            "name": "streetAddress2_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -4769,7 +5114,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4779,7 +5124,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4795,7 +5140,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -4813,7 +5158,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -4825,7 +5170,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4835,7 +5180,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4845,7 +5190,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4855,67 +5200,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4925,7 +5210,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4935,7 +5220,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4951,7 +5236,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -4969,7 +5254,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -4981,7 +5266,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -4991,7 +5276,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -5001,7 +5286,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -5011,67 +5296,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -5159,6 +5384,16 @@
         "kind": "SCALAR",
         "name": "Int",
         "description": "The `Int` scalar type represents non-fractional signed whole numeric values. Int can represent values between -(2^31) and 2^31 - 1.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Float",
+        "description": "The `Float` scalar type represents signed double-precision fractional values as specified by [IEEE 754](https://en.wikipedia.org/wiki/IEEE_floating_point).",
         "fields": null,
         "inputFields": null,
         "interfaces": null,
@@ -5328,11 +5563,11 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonWhereInput",
+              "name": "GeoJsonWhereInput",
               "ofType": null
             },
             "defaultValue": null
@@ -5428,7 +5663,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonWhereInput",
+        "name": "GeoJsonWhereInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -5589,7 +5824,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5599,7 +5834,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_not",
+            "name": "geoJson_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5609,7 +5844,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_in",
+            "name": "geoJson_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -5627,7 +5862,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_not_in",
+            "name": "geoJson_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -5645,7 +5880,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_lt",
+            "name": "geoJson_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5655,7 +5890,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_lte",
+            "name": "geoJson_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5665,7 +5900,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_gt",
+            "name": "geoJson_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5675,7 +5910,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_gte",
+            "name": "geoJson_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5685,7 +5920,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_contains",
+            "name": "geoJson_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5695,7 +5930,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_not_contains",
+            "name": "geoJson_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5705,7 +5940,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_starts_with",
+            "name": "geoJson_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5715,7 +5950,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_not_starts_with",
+            "name": "geoJson_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5725,7 +5960,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_ends_with",
+            "name": "geoJson_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5735,7 +5970,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json_not_ends_with",
+            "name": "geoJson_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -5765,7 +6000,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Geo_JsonWhereInput",
+                  "name": "GeoJsonWhereInput",
                   "ofType": null
                 }
               }
@@ -5783,7 +6018,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Geo_JsonWhereInput",
+                  "name": "GeoJsonWhereInput",
                   "ofType": null
                 }
               }
@@ -5801,7 +6036,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Geo_JsonWhereInput",
+                  "name": "GeoJsonWhereInput",
                   "ofType": null
                 }
               }
@@ -6241,37 +6476,37 @@
             "deprecationReason": null
           },
           {
-            "name": "first_name_ASC",
+            "name": "firstName_ASC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "first_name_DESC",
+            "name": "firstName_DESC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "last_name_ASC",
+            "name": "lastName_ASC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "last_name_DESC",
+            "name": "lastName_DESC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "auth0_id_ASC",
+            "name": "auth0Id_ASC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "auth0_id_DESC",
+            "name": "auth0Id_DESC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -6301,7 +6536,7 @@
             "deprecationReason": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "args": [],
             "type": {
@@ -6313,7 +6548,7 @@
             "deprecationReason": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "args": [],
             "type": {
@@ -6325,7 +6560,7 @@
             "deprecationReason": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "args": [],
             "type": {
@@ -6523,7 +6758,7 @@
             "deprecationReason": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "args": [
               {
@@ -6614,7 +6849,7 @@
             "deprecationReason": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "args": [
               {
@@ -7018,6 +7253,18 @@
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "ticketType_ASC",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "ticketType_DESC",
+            "description": "",
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "possibleTypes": null
@@ -7120,7 +7367,23 @@
             "deprecationReason": null
           },
           {
-            "name": "event_images",
+            "name": "ticketType",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "TicketType",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "eventImages",
             "description": "",
             "args": [
               {
@@ -7128,7 +7391,7 @@
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereInput",
+                  "name": "EventImageWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7138,7 +7401,7 @@
                 "description": "",
                 "type": {
                   "kind": "ENUM",
-                  "name": "Event_ImageOrderByInput",
+                  "name": "EventImageOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7202,7 +7465,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Event_Image",
+                  "name": "EventImage",
                   "ofType": null
                 }
               }
@@ -7310,7 +7573,7 @@
                 "description": "",
                 "type": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereInput",
+                  "name": "EventUrlWhereInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7320,7 +7583,7 @@
                 "description": "",
                 "type": {
                   "kind": "ENUM",
-                  "name": "Event_UrlOrderByInput",
+                  "name": "EventUrlOrderByInput",
                   "ofType": null
                 },
                 "defaultValue": null
@@ -7384,7 +7647,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "OBJECT",
-                  "name": "Event_Url",
+                  "name": "EventUrl",
                   "ofType": null
                 }
               }
@@ -7556,6 +7819,36 @@
                   "ofType": null
                 },
                 "defaultValue": null
+              },
+              {
+                "name": "userLatitude",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "userLongitude",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "Float",
+                  "ofType": null
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "distanceUnit",
+                "description": "",
+                "type": {
+                  "kind": "SCALAR",
+                  "name": "String",
+                  "ofType": null
+                },
+                "defaultValue": null
               }
             ],
             "type": {
@@ -7673,7 +7966,7 @@
       },
       {
         "kind": "ENUM",
-        "name": "Event_ImageOrderByInput",
+        "name": "EventImageOrderByInput",
         "description": "",
         "fields": null,
         "inputFields": null,
@@ -7708,7 +8001,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Event_Image",
+        "name": "EventImage",
         "description": "",
         "fields": [
           {
@@ -7767,7 +8060,7 @@
       },
       {
         "kind": "ENUM",
-        "name": "Event_UrlOrderByInput",
+        "name": "EventUrlOrderByInput",
         "description": "",
         "fields": null,
         "inputFields": null,
@@ -7802,7 +8095,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Event_Url",
+        "name": "EventUrl",
         "description": "",
         "fields": [
           {
@@ -7892,25 +8185,25 @@
             "deprecationReason": null
           },
           {
-            "name": "street_address_ASC",
+            "name": "streetAddress_ASC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "street_address_DESC",
+            "name": "streetAddress_DESC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "street_address_2_ASC",
+            "name": "streetAddress2_ASC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
           },
           {
-            "name": "street_address_2_DESC",
+            "name": "streetAddress2_DESC",
             "description": "",
             "isDeprecated": false,
             "deprecationReason": null
@@ -8016,7 +8309,7 @@
             "deprecationReason": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "args": [],
             "type": {
@@ -8032,7 +8325,7 @@
             "deprecationReason": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "args": [],
             "type": {
@@ -8097,7 +8390,7 @@
             "args": [],
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "isDeprecated": false,
@@ -8105,6 +8398,30 @@
           },
           {
             "name": "longitude",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "distanceFromUser",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "distanceUnit",
             "description": "",
             "args": [],
             "type": {
@@ -8171,7 +8488,7 @@
             "deprecationReason": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "args": [],
             "type": {
@@ -8179,7 +8496,7 @@
               "name": null,
               "ofType": {
                 "kind": "OBJECT",
-                "name": "Geo_Json",
+                "name": "GeoJson",
                 "ofType": null
               }
             },
@@ -8285,7 +8602,7 @@
       },
       {
         "kind": "OBJECT",
-        "name": "Geo_Json",
+        "name": "GeoJson",
         "description": "",
         "fields": [
           {
@@ -8305,7 +8622,7 @@
             "deprecationReason": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "args": [],
             "type": {
@@ -8518,7 +8835,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -8533,6 +8850,1592 @@
           }
         ],
         "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMResults",
+        "description": "",
+        "fields": [
+          {
+            "name": "page",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMPage",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "_links",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLink",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "_embedded",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMEvents",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMPage",
+        "description": "",
+        "fields": [
+          {
+            "name": "size",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "totalElements",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "totalPages",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "number",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLink",
+        "description": "",
+        "fields": [
+          {
+            "name": "self",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLinkSelf",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "next",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLinkNext",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "prev",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLinkPrev",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "last",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLinkLast",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLinkSelf",
+        "description": "",
+        "fields": [
+          {
+            "name": "href",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "templated",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Boolean",
+        "description": "The `Boolean` scalar type represents `true` or `false`.",
+        "fields": null,
+        "inputFields": null,
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLinkNext",
+        "description": "",
+        "fields": [
+          {
+            "name": "href",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "templated",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLinkPrev",
+        "description": "",
+        "fields": [
+          {
+            "name": "href",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "templated",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLinkLast",
+        "description": "",
+        "fields": [
+          {
+            "name": "href",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "templated",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMEvents",
+        "description": "",
+        "fields": [
+          {
+            "name": "events",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMEvent",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMEvent",
+        "description": "",
+        "fields": [
+          {
+            "name": "id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "url",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "images",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "LIST",
+                "name": null,
+                "ofType": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "OBJECT",
+                    "name": "TMImage",
+                    "ofType": null
+                  }
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "_embedded",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMEventEmbedded",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "info",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "additionalInfo",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "location",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLocation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "distance",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "dates",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMDate",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "place",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMPlace",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMImage",
+        "description": "",
+        "fields": [
+          {
+            "name": "ratio",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "url",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "width",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "height",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "Int",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "fallback",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Boolean",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMEventEmbedded",
+        "description": "",
+        "fields": [
+          {
+            "name": "venues",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMVenue",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMVenue",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "images",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMImage",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "distance",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "units",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "postalCode",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "city",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMCity",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMState",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "address",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMAddress",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "location",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMLocation",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMCity",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMState",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "stateCode",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMAddress",
+        "description": "",
+        "fields": [
+          {
+            "name": "line1",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "line2",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLocation",
+        "description": "",
+        "fields": [
+          {
+            "name": "longitude",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "latitude",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMDate",
+        "description": "",
+        "fields": [
+          {
+            "name": "start",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMDateObj",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "end",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMDateObj",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "timezone",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMDateObj",
+        "description": "",
+        "fields": [
+          {
+            "name": "localDate",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "localTime",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "dateTime",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMPlace",
+        "description": "",
+        "fields": [
+          {
+            "name": "area",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMPlaceArea",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "address",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMAddress",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "location",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMLocation",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "city",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMCity",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "OBJECT",
+              "name": "TMState",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "postalCode",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMPlaceArea",
+        "description": "",
+        "fields": [
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMResultsAlt",
+        "description": "",
+        "fields": [
+          {
+            "name": "page",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMPage",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "events",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "TMEventAlt",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMEventAlt",
+        "description": "",
+        "fields": [
+          {
+            "name": "id",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "title",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "start",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "end",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "description",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "info",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "eventImages",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMImage",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "urls",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMEventAltUrl",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "locations",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "OBJECT",
+                  "name": "TMLocationAlt",
+                  "ofType": null
+                }
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMEventAltUrl",
+        "description": "",
+        "fields": [
+          {
+            "name": "url",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "OBJECT",
+        "name": "TMLocationAlt",
+        "description": "",
+        "fields": [
+          {
+            "name": "neighborhood",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "name",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "streetAddress",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "streetAddress2",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "city",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "zipcode",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "state",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "latitude",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "longitude",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "String",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "distance",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "SCALAR",
+              "name": "Float",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
         "enumValues": null,
         "possibleTypes": null
       },
@@ -8568,78 +10471,6 @@
                 "name": "User",
                 "ofType": null
               }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "addEvent",
-            "description": "",
-            "args": [
-              {
-                "name": "data",
-                "description": "",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "EventCreateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "OBJECT",
-                "name": "Event",
-                "ofType": null
-              }
-            },
-            "isDeprecated": false,
-            "deprecationReason": null
-          },
-          {
-            "name": "updateEvent",
-            "description": "",
-            "args": [
-              {
-                "name": "data",
-                "description": "",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "EventUpdateInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              },
-              {
-                "name": "where",
-                "description": "",
-                "type": {
-                  "kind": "NON_NULL",
-                  "name": null,
-                  "ofType": {
-                    "kind": "INPUT_OBJECT",
-                    "name": "EventWhereUniqueInput",
-                    "ofType": null
-                  }
-                },
-                "defaultValue": null
-              }
-            ],
-            "type": {
-              "kind": "OBJECT",
-              "name": "Event",
-              "ofType": null
             },
             "isDeprecated": false,
             "deprecationReason": null
@@ -8724,6 +10555,114 @@
             },
             "isDeprecated": false,
             "deprecationReason": null
+          },
+          {
+            "name": "addEvent",
+            "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EventCreateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "images",
+                "description": "",
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Upload",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "OBJECT",
+                "name": "Event",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "updateEvent",
+            "description": "",
+            "args": [
+              {
+                "name": "data",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EventUpdateInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "where",
+                "description": "",
+                "type": {
+                  "kind": "NON_NULL",
+                  "name": null,
+                  "ofType": {
+                    "kind": "INPUT_OBJECT",
+                    "name": "EventWhereUniqueInput",
+                    "ofType": null
+                  }
+                },
+                "defaultValue": null
+              },
+              {
+                "name": "images",
+                "description": "",
+                "type": {
+                  "kind": "LIST",
+                  "name": null,
+                  "ofType": {
+                    "kind": "NON_NULL",
+                    "name": null,
+                    "ofType": {
+                      "kind": "SCALAR",
+                      "name": "Upload",
+                      "ofType": null
+                    }
+                  }
+                },
+                "defaultValue": null
+              }
+            ],
+            "type": {
+              "kind": "OBJECT",
+              "name": "Event",
+              "ofType": null
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
           }
         ],
         "inputFields": null,
@@ -8748,7 +10687,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -8758,7 +10697,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -8768,7 +10707,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -8802,7 +10741,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -8812,7 +10751,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -9079,21 +11018,35 @@
             "defaultValue": null
           },
           {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "TicketType",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "creator",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateOneWithoutCreated_eventsInput",
+              "name": "UserCreateOneWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "eventImages",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageCreateManyWithoutEventInput",
+              "name": "EventImageCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9103,7 +11056,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlCreateManyWithoutEventInput",
+              "name": "EventUrlCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9113,7 +11066,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateManyWithoutAdmin_forInput",
+              "name": "UserCreateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9145,7 +11098,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCreateOneWithoutCreated_eventsInput",
+        "name": "UserCreateOneWithoutCreatedEventsInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9154,7 +11107,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateWithoutCreated_eventsInput",
+              "name": "UserCreateWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9176,7 +11129,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCreateWithoutCreated_eventsInput",
+        "name": "UserCreateWithoutCreatedEventsInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9191,7 +11144,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -9201,7 +11154,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -9211,7 +11164,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -9245,7 +11198,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -9379,21 +11332,35 @@
             "defaultValue": null
           },
           {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "TicketType",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "creator",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateOneWithoutCreated_eventsInput",
+              "name": "UserCreateOneWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "eventImages",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageCreateManyWithoutEventInput",
+              "name": "EventImageCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9413,7 +11380,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlCreateManyWithoutEventInput",
+              "name": "EventUrlCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9445,7 +11412,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageCreateManyWithoutEventInput",
+        "name": "EventImageCreateManyWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9460,7 +11427,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageCreateWithoutEventInput",
+                  "name": "EventImageCreateWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -9478,7 +11445,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereUniqueInput",
+                  "name": "EventImageWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -9492,7 +11459,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageCreateWithoutEventInput",
+        "name": "EventImageCreateWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9527,7 +11494,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageWhereUniqueInput",
+        "name": "EventImageWhereUniqueInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9610,7 +11577,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -9620,7 +11587,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -9630,7 +11597,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -9654,7 +11621,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -9664,7 +11631,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -9798,11 +11765,25 @@
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "TicketType",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventImages",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageCreateManyWithoutEventInput",
+              "name": "EventImageCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9822,7 +11803,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlCreateManyWithoutEventInput",
+              "name": "EventUrlCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9832,7 +11813,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateManyWithoutAdmin_forInput",
+              "name": "UserCreateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -9864,7 +11845,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlCreateManyWithoutEventInput",
+        "name": "EventUrlCreateManyWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9879,7 +11860,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlCreateWithoutEventInput",
+                  "name": "EventUrlCreateWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -9897,7 +11878,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereUniqueInput",
+                  "name": "EventUrlWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -9911,7 +11892,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlCreateWithoutEventInput",
+        "name": "EventUrlCreateWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9946,7 +11927,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlWhereUniqueInput",
+        "name": "EventUrlWhereUniqueInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9967,7 +11948,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCreateManyWithoutAdmin_forInput",
+        "name": "UserCreateManyWithoutAdminForInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -9982,7 +11963,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserCreateWithoutAdmin_forInput",
+                  "name": "UserCreateWithoutAdminForInput",
                   "ofType": null
                 }
               }
@@ -10014,7 +11995,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserCreateWithoutAdmin_forInput",
+        "name": "UserCreateWithoutAdminForInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -10029,7 +12010,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -10039,7 +12020,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -10049,7 +12030,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -10083,7 +12064,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -10114,7 +12095,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -10206,7 +12187,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -10220,7 +12201,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -10276,7 +12257,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -10286,7 +12267,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -10354,14 +12335,14 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "NON_NULL",
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Geo_JsonCreateOneWithoutNeighborhoodInput",
+                "name": "GeoJsonCreateOneWithoutNeighborhoodInput",
                 "ofType": null
               }
             },
@@ -10374,7 +12355,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonCreateOneWithoutNeighborhoodInput",
+        "name": "GeoJsonCreateOneWithoutNeighborhoodInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -10383,7 +12364,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonCreateWithoutNeighborhoodInput",
+              "name": "GeoJsonCreateWithoutNeighborhoodInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10393,7 +12374,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonWhereUniqueInput",
+              "name": "GeoJsonWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10405,7 +12386,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonCreateWithoutNeighborhoodInput",
+        "name": "GeoJsonCreateWithoutNeighborhoodInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -10420,7 +12401,7 @@
             "defaultValue": null
           },
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "NON_NULL",
@@ -10440,7 +12421,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonWhereUniqueInput",
+        "name": "GeoJsonWhereUniqueInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -10637,6 +12618,31 @@
       },
       {
         "kind": "INPUT_OBJECT",
+        "name": "EventIdInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "id",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "ID",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
         "name": "EventCreateInput",
         "description": "",
         "fields": null,
@@ -10708,12 +12714,20 @@
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "eventImages",
             "description": "",
             "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "Event_ImageCreateManyWithoutEventInput",
-              "ofType": null
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "INPUT_OBJECT",
+                  "name": "EventCreateImageInput",
+                  "ofType": null
+                }
+              }
             },
             "defaultValue": null
           },
@@ -10732,7 +12746,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlCreateManyWithoutEventInput",
+              "name": "EventUrlCreateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10742,7 +12756,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateManyWithoutAdmin_forInput",
+              "name": "UserCreateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10774,6 +12788,45 @@
               }
             },
             "defaultValue": null
+          },
+          {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "ENUM",
+                "name": "TicketType",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
+          }
+        ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "INPUT_OBJECT",
+        "name": "EventCreateImageInput",
+        "description": "",
+        "fields": null,
+        "inputFields": [
+          {
+            "name": "url",
+            "description": "",
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "defaultValue": null
           }
         ],
         "interfaces": null,
@@ -10801,6 +12854,16 @@
             "defaultValue": null
           }
         ],
+        "interfaces": null,
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
+        "kind": "SCALAR",
+        "name": "Upload",
+        "description": "The `Upload` scalar type represents a file upload.",
+        "fields": null,
+        "inputFields": null,
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
@@ -10856,17 +12919,17 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneWithoutCreated_eventsInput",
+              "name": "UserUpdateOneWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "eventImages",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageUpdateManyWithoutEventInput",
+              "name": "EventImageUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10886,7 +12949,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlUpdateManyWithoutEventInput",
+              "name": "EventUrlUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10896,7 +12959,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateManyWithoutAdmin_forInput",
+              "name": "UserUpdateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10936,7 +12999,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpdateOneWithoutCreated_eventsInput",
+        "name": "UserUpdateOneWithoutCreatedEventsInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -10945,7 +13008,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserCreateWithoutCreated_eventsInput",
+              "name": "UserCreateWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10955,7 +13018,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateWithoutCreated_eventsDataInput",
+              "name": "UserUpdateWithoutCreatedEventsDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -10965,7 +13028,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpsertWithoutCreated_eventsInput",
+              "name": "UserUpsertWithoutCreatedEventsInput",
               "ofType": null
             },
             "defaultValue": null
@@ -11007,12 +13070,12 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpdateWithoutCreated_eventsDataInput",
+        "name": "UserUpdateWithoutCreatedEventsDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11022,7 +13085,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11032,7 +13095,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -11062,7 +13125,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -12586,21 +14649,31 @@
             "defaultValue": null
           },
           {
-            "name": "creator",
+            "name": "ticketType",
             "description": "",
             "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneWithoutCreated_eventsInput",
+              "kind": "ENUM",
+              "name": "TicketType",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "creator",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageUpdateManyWithoutEventInput",
+              "name": "UserUpdateOneWithoutCreatedEventsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventImages",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "EventImageUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -12610,7 +14683,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlUpdateManyWithoutEventInput",
+              "name": "EventUrlUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -12620,7 +14693,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateManyWithoutAdmin_forInput",
+              "name": "UserUpdateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -12652,7 +14725,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpdateManyWithoutEventInput",
+        "name": "EventImageUpdateManyWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -12667,7 +14740,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageCreateWithoutEventInput",
+                  "name": "EventImageCreateWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -12685,7 +14758,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereUniqueInput",
+                  "name": "EventImageWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -12703,7 +14776,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereUniqueInput",
+                  "name": "EventImageWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -12721,7 +14794,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereUniqueInput",
+                  "name": "EventImageWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -12739,7 +14812,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageWhereUniqueInput",
+                  "name": "EventImageWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -12757,7 +14830,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageUpdateWithWhereUniqueWithoutEventInput",
+                  "name": "EventImageUpdateWithWhereUniqueWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -12775,7 +14848,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageUpsertWithWhereUniqueWithoutEventInput",
+                  "name": "EventImageUpsertWithWhereUniqueWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -12793,7 +14866,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageScalarWhereInput",
+                  "name": "EventImageScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -12811,7 +14884,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageUpdateManyWithWhereNestedInput",
+                  "name": "EventImageUpdateManyWithWhereNestedInput",
                   "ofType": null
                 }
               }
@@ -12825,7 +14898,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpdateWithWhereUniqueWithoutEventInput",
+        "name": "EventImageUpdateWithWhereUniqueWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -12837,7 +14910,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageWhereUniqueInput",
+                "name": "EventImageWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -12851,7 +14924,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageUpdateWithoutEventDataInput",
+                "name": "EventImageUpdateWithoutEventDataInput",
                 "ofType": null
               }
             },
@@ -12864,7 +14937,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpdateWithoutEventDataInput",
+        "name": "EventImageUpdateWithoutEventDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -12885,7 +14958,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpsertWithWhereUniqueWithoutEventInput",
+        "name": "EventImageUpsertWithWhereUniqueWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -12897,7 +14970,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageWhereUniqueInput",
+                "name": "EventImageWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -12911,7 +14984,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageUpdateWithoutEventDataInput",
+                "name": "EventImageUpdateWithoutEventDataInput",
                 "ofType": null
               }
             },
@@ -12925,7 +14998,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageCreateWithoutEventInput",
+                "name": "EventImageCreateWithoutEventInput",
                 "ofType": null
               }
             },
@@ -12938,7 +15011,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageScalarWhereInput",
+        "name": "EventImageScalarWhereInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13265,7 +15338,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageScalarWhereInput",
+                  "name": "EventImageScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -13283,7 +15356,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageScalarWhereInput",
+                  "name": "EventImageScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -13301,7 +15374,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_ImageScalarWhereInput",
+                  "name": "EventImageScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -13315,7 +15388,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpdateManyWithWhereNestedInput",
+        "name": "EventImageUpdateManyWithWhereNestedInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13327,7 +15400,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageScalarWhereInput",
+                "name": "EventImageScalarWhereInput",
                 "ofType": null
               }
             },
@@ -13341,7 +15414,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_ImageUpdateManyDataInput",
+                "name": "EventImageUpdateManyDataInput",
                 "ofType": null
               }
             },
@@ -13354,7 +15427,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_ImageUpdateManyDataInput",
+        "name": "EventImageUpdateManyDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13375,7 +15448,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpdateManyWithoutEventInput",
+        "name": "EventUrlUpdateManyWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13390,7 +15463,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlCreateWithoutEventInput",
+                  "name": "EventUrlCreateWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -13408,7 +15481,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereUniqueInput",
+                  "name": "EventUrlWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -13426,7 +15499,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereUniqueInput",
+                  "name": "EventUrlWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -13444,7 +15517,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereUniqueInput",
+                  "name": "EventUrlWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -13462,7 +15535,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlWhereUniqueInput",
+                  "name": "EventUrlWhereUniqueInput",
                   "ofType": null
                 }
               }
@@ -13480,7 +15553,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlUpdateWithWhereUniqueWithoutEventInput",
+                  "name": "EventUrlUpdateWithWhereUniqueWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -13498,7 +15571,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlUpsertWithWhereUniqueWithoutEventInput",
+                  "name": "EventUrlUpsertWithWhereUniqueWithoutEventInput",
                   "ofType": null
                 }
               }
@@ -13516,7 +15589,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlScalarWhereInput",
+                  "name": "EventUrlScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -13534,7 +15607,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlUpdateManyWithWhereNestedInput",
+                  "name": "EventUrlUpdateManyWithWhereNestedInput",
                   "ofType": null
                 }
               }
@@ -13548,7 +15621,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpdateWithWhereUniqueWithoutEventInput",
+        "name": "EventUrlUpdateWithWhereUniqueWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13560,7 +15633,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlWhereUniqueInput",
+                "name": "EventUrlWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -13574,7 +15647,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlUpdateWithoutEventDataInput",
+                "name": "EventUrlUpdateWithoutEventDataInput",
                 "ofType": null
               }
             },
@@ -13587,7 +15660,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpdateWithoutEventDataInput",
+        "name": "EventUrlUpdateWithoutEventDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13608,7 +15681,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpsertWithWhereUniqueWithoutEventInput",
+        "name": "EventUrlUpsertWithWhereUniqueWithoutEventInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13620,7 +15693,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlWhereUniqueInput",
+                "name": "EventUrlWhereUniqueInput",
                 "ofType": null
               }
             },
@@ -13634,7 +15707,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlUpdateWithoutEventDataInput",
+                "name": "EventUrlUpdateWithoutEventDataInput",
                 "ofType": null
               }
             },
@@ -13648,7 +15721,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlCreateWithoutEventInput",
+                "name": "EventUrlCreateWithoutEventInput",
                 "ofType": null
               }
             },
@@ -13661,7 +15734,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlScalarWhereInput",
+        "name": "EventUrlScalarWhereInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -13988,7 +16061,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlScalarWhereInput",
+                  "name": "EventUrlScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -14006,7 +16079,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlScalarWhereInput",
+                  "name": "EventUrlScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -14024,7 +16097,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "Event_UrlScalarWhereInput",
+                  "name": "EventUrlScalarWhereInput",
                   "ofType": null
                 }
               }
@@ -14038,7 +16111,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpdateManyWithWhereNestedInput",
+        "name": "EventUrlUpdateManyWithWhereNestedInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -14050,7 +16123,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlScalarWhereInput",
+                "name": "EventUrlScalarWhereInput",
                 "ofType": null
               }
             },
@@ -14064,7 +16137,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Event_UrlUpdateManyDataInput",
+                "name": "EventUrlUpdateManyDataInput",
                 "ofType": null
               }
             },
@@ -14077,7 +16150,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Event_UrlUpdateManyDataInput",
+        "name": "EventUrlUpdateManyDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -14098,7 +16171,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpdateManyWithoutAdmin_forInput",
+        "name": "UserUpdateManyWithoutAdminForInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -14113,7 +16186,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserCreateWithoutAdmin_forInput",
+                  "name": "UserCreateWithoutAdminForInput",
                   "ofType": null
                 }
               }
@@ -14203,7 +16276,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserUpdateWithWhereUniqueWithoutAdmin_forInput",
+                  "name": "UserUpdateWithWhereUniqueWithoutAdminForInput",
                   "ofType": null
                 }
               }
@@ -14221,7 +16294,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "INPUT_OBJECT",
-                  "name": "UserUpsertWithWhereUniqueWithoutAdmin_forInput",
+                  "name": "UserUpsertWithWhereUniqueWithoutAdminForInput",
                   "ofType": null
                 }
               }
@@ -14271,7 +16344,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpdateWithWhereUniqueWithoutAdmin_forInput",
+        "name": "UserUpdateWithWhereUniqueWithoutAdminForInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -14297,7 +16370,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserUpdateWithoutAdmin_forDataInput",
+                "name": "UserUpdateWithoutAdminForDataInput",
                 "ofType": null
               }
             },
@@ -14310,12 +16383,12 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpdateWithoutAdmin_forDataInput",
+        "name": "UserUpdateWithoutAdminForDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14325,7 +16398,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14335,7 +16408,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14365,7 +16438,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -14638,11 +16711,21 @@
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventImages",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageUpdateManyWithoutEventInput",
+              "name": "EventImageUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -14662,7 +16745,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlUpdateManyWithoutEventInput",
+              "name": "EventUrlUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -14672,7 +16755,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "UserUpdateManyWithoutAdmin_forInput",
+              "name": "UserUpdateManyWithoutAdminForInput",
               "ofType": null
             },
             "defaultValue": null
@@ -14921,7 +17004,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14931,7 +17014,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14941,7 +17024,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -14961,7 +17044,7 @@
             "defaultValue": null
           },
           {
-            "name": "admin_for",
+            "name": "adminFor",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -14971,7 +17054,7 @@
             "defaultValue": null
           },
           {
-            "name": "created_events",
+            "name": "createdEvents",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
@@ -15244,21 +17327,31 @@
             "defaultValue": null
           },
           {
-            "name": "creator",
+            "name": "ticketType",
             "description": "",
             "type": {
-              "kind": "INPUT_OBJECT",
-              "name": "UserUpdateOneWithoutCreated_eventsInput",
+              "kind": "ENUM",
+              "name": "TicketType",
               "ofType": null
             },
             "defaultValue": null
           },
           {
-            "name": "event_images",
+            "name": "creator",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_ImageUpdateManyWithoutEventInput",
+              "name": "UserUpdateOneWithoutCreatedEventsInput",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "eventImages",
+            "description": "",
+            "type": {
+              "kind": "INPUT_OBJECT",
+              "name": "EventImageUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15278,7 +17371,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Event_UrlUpdateManyWithoutEventInput",
+              "name": "EventUrlUpdateManyWithoutEventInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15537,7 +17630,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -15547,7 +17640,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -15591,7 +17684,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -15601,7 +17694,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -15699,11 +17792,11 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonUpdateOneRequiredWithoutNeighborhoodInput",
+              "name": "GeoJsonUpdateOneRequiredWithoutNeighborhoodInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15715,7 +17808,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonUpdateOneRequiredWithoutNeighborhoodInput",
+        "name": "GeoJsonUpdateOneRequiredWithoutNeighborhoodInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -15724,7 +17817,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonCreateWithoutNeighborhoodInput",
+              "name": "GeoJsonCreateWithoutNeighborhoodInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15734,7 +17827,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonUpdateWithoutNeighborhoodDataInput",
+              "name": "GeoJsonUpdateWithoutNeighborhoodDataInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15744,7 +17837,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonUpsertWithoutNeighborhoodInput",
+              "name": "GeoJsonUpsertWithoutNeighborhoodInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15754,7 +17847,7 @@
             "description": "",
             "type": {
               "kind": "INPUT_OBJECT",
-              "name": "Geo_JsonWhereUniqueInput",
+              "name": "GeoJsonWhereUniqueInput",
               "ofType": null
             },
             "defaultValue": null
@@ -15766,12 +17859,12 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonUpdateWithoutNeighborhoodDataInput",
+        "name": "GeoJsonUpdateWithoutNeighborhoodDataInput",
         "description": "",
         "fields": null,
         "inputFields": [
           {
-            "name": "geo_json",
+            "name": "geoJson",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -15787,7 +17880,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "Geo_JsonUpsertWithoutNeighborhoodInput",
+        "name": "GeoJsonUpsertWithoutNeighborhoodInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -15799,7 +17892,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Geo_JsonUpdateWithoutNeighborhoodDataInput",
+                "name": "GeoJsonUpdateWithoutNeighborhoodDataInput",
                 "ofType": null
               }
             },
@@ -15813,7 +17906,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "Geo_JsonCreateWithoutNeighborhoodInput",
+                "name": "GeoJsonCreateWithoutNeighborhoodInput",
                 "ofType": null
               }
             },
@@ -15859,16 +17952,6 @@
             "defaultValue": null
           }
         ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Boolean",
-        "description": "The `Boolean` scalar type represents `true` or `false`.",
-        "fields": null,
-        "inputFields": null,
         "interfaces": null,
         "enumValues": null,
         "possibleTypes": null
@@ -16245,7 +18328,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16255,7 +18338,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not",
+            "name": "streetAddress_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16265,7 +18348,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_in",
+            "name": "streetAddress_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -16283,7 +18366,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_in",
+            "name": "streetAddress_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -16301,7 +18384,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_lt",
+            "name": "streetAddress_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16311,7 +18394,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_lte",
+            "name": "streetAddress_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16321,7 +18404,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_gt",
+            "name": "streetAddress_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16331,7 +18414,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_gte",
+            "name": "streetAddress_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16341,7 +18424,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_contains",
+            "name": "streetAddress_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16351,7 +18434,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_contains",
+            "name": "streetAddress_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16361,7 +18444,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_starts_with",
+            "name": "streetAddress_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16371,7 +18454,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_starts_with",
+            "name": "streetAddress_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16381,7 +18464,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_ends_with",
+            "name": "streetAddress_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16391,7 +18474,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_not_ends_with",
+            "name": "streetAddress_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16401,7 +18484,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16411,7 +18494,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not",
+            "name": "streetAddress2_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16421,7 +18504,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_in",
+            "name": "streetAddress2_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -16439,7 +18522,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_in",
+            "name": "streetAddress2_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -16457,7 +18540,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_lt",
+            "name": "streetAddress2_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16467,7 +18550,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_lte",
+            "name": "streetAddress2_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16477,7 +18560,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_gt",
+            "name": "streetAddress2_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16487,7 +18570,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_gte",
+            "name": "streetAddress2_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16497,7 +18580,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_contains",
+            "name": "streetAddress2_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16507,7 +18590,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_contains",
+            "name": "streetAddress2_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16517,7 +18600,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_starts_with",
+            "name": "streetAddress2_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16527,7 +18610,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_starts_with",
+            "name": "streetAddress2_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16537,7 +18620,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_ends_with",
+            "name": "streetAddress2_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16547,7 +18630,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2_not_ends_with",
+            "name": "streetAddress2_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -16969,7 +19052,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -16979,7 +19062,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -16995,7 +19078,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -17013,7 +19096,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -17025,7 +19108,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17035,7 +19118,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17045,7 +19128,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17055,67 +19138,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "latitude_not_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17125,7 +19148,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17135,7 +19158,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17151,7 +19174,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -17169,7 +19192,7 @@
                 "name": null,
                 "ofType": {
                   "kind": "SCALAR",
-                  "name": "String",
+                  "name": "Float",
                   "ofType": null
                 }
               }
@@ -17181,7 +19204,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17191,7 +19214,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17201,7 +19224,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17211,67 +19234,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_contains",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_starts_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
-              "ofType": null
-            },
-            "defaultValue": null
-          },
-          {
-            "name": "longitude_not_ends_with",
-            "description": "",
-            "type": {
-              "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17391,7 +19354,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address",
+            "name": "streetAddress",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -17401,7 +19364,7 @@
             "defaultValue": null
           },
           {
-            "name": "street_address_2",
+            "name": "streetAddress2",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -17445,7 +19408,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -17455,7 +19418,7 @@
             "description": "",
             "type": {
               "kind": "SCALAR",
-              "name": "String",
+              "name": "Float",
               "ofType": null
             },
             "defaultValue": null
@@ -18908,6 +20871,62 @@
             "defaultValue": null
           },
           {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_not",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "TicketType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType_not_in",
+            "description": "",
+            "type": {
+              "kind": "LIST",
+              "name": null,
+              "ofType": {
+                "kind": "NON_NULL",
+                "name": null,
+                "ofType": {
+                  "kind": "ENUM",
+                  "name": "TicketType",
+                  "ofType": null
+                }
+              }
+            },
+            "defaultValue": null
+          },
+          {
             "name": "AND",
             "description": "",
             "type": {
@@ -19047,6 +21066,16 @@
             "type": {
               "kind": "SCALAR",
               "name": "DateTime",
+              "ofType": null
+            },
+            "defaultValue": null
+          },
+          {
+            "name": "ticketType",
+            "description": "",
+            "type": {
+              "kind": "ENUM",
+              "name": "TicketType",
               "ofType": null
             },
             "defaultValue": null
@@ -19272,7 +21301,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19282,7 +21311,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not",
+            "name": "firstName_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19292,7 +21321,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_in",
+            "name": "firstName_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19310,7 +21339,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_in",
+            "name": "firstName_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19328,7 +21357,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_lt",
+            "name": "firstName_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19338,7 +21367,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_lte",
+            "name": "firstName_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19348,7 +21377,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_gt",
+            "name": "firstName_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19358,7 +21387,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_gte",
+            "name": "firstName_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19368,7 +21397,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_contains",
+            "name": "firstName_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19378,7 +21407,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_contains",
+            "name": "firstName_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19388,7 +21417,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_starts_with",
+            "name": "firstName_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19398,7 +21427,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_starts_with",
+            "name": "firstName_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19408,7 +21437,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_ends_with",
+            "name": "firstName_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19418,7 +21447,7 @@
             "defaultValue": null
           },
           {
-            "name": "first_name_not_ends_with",
+            "name": "firstName_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19428,7 +21457,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19438,7 +21467,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not",
+            "name": "lastName_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19448,7 +21477,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_in",
+            "name": "lastName_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19466,7 +21495,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_in",
+            "name": "lastName_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19484,7 +21513,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_lt",
+            "name": "lastName_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19494,7 +21523,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_lte",
+            "name": "lastName_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19504,7 +21533,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_gt",
+            "name": "lastName_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19514,7 +21543,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_gte",
+            "name": "lastName_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19524,7 +21553,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_contains",
+            "name": "lastName_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19534,7 +21563,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_contains",
+            "name": "lastName_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19544,7 +21573,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_starts_with",
+            "name": "lastName_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19554,7 +21583,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_starts_with",
+            "name": "lastName_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19564,7 +21593,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_ends_with",
+            "name": "lastName_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19574,7 +21603,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name_not_ends_with",
+            "name": "lastName_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19584,7 +21613,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19594,7 +21623,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not",
+            "name": "auth0Id_not",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19604,7 +21633,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_in",
+            "name": "auth0Id_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19622,7 +21651,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_in",
+            "name": "auth0Id_not_in",
             "description": "",
             "type": {
               "kind": "LIST",
@@ -19640,7 +21669,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_lt",
+            "name": "auth0Id_lt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19650,7 +21679,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_lte",
+            "name": "auth0Id_lte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19660,7 +21689,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_gt",
+            "name": "auth0Id_gt",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19670,7 +21699,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_gte",
+            "name": "auth0Id_gte",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19680,7 +21709,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_contains",
+            "name": "auth0Id_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19690,7 +21719,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_contains",
+            "name": "auth0Id_not_contains",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19700,7 +21729,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_starts_with",
+            "name": "auth0Id_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19710,7 +21739,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_starts_with",
+            "name": "auth0Id_not_starts_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19720,7 +21749,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_ends_with",
+            "name": "auth0Id_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19730,7 +21759,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id_not_ends_with",
+            "name": "auth0Id_not_ends_with",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19844,7 +21873,7 @@
         "fields": null,
         "inputFields": [
           {
-            "name": "first_name",
+            "name": "firstName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19854,7 +21883,7 @@
             "defaultValue": null
           },
           {
-            "name": "last_name",
+            "name": "lastName",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19864,7 +21893,7 @@
             "defaultValue": null
           },
           {
-            "name": "auth0_id",
+            "name": "auth0Id",
             "description": "",
             "type": {
               "kind": "SCALAR",
@@ -19933,7 +21962,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpsertWithWhereUniqueWithoutAdmin_forInput",
+        "name": "UserUpsertWithWhereUniqueWithoutAdminForInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -19959,7 +21988,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserUpdateWithoutAdmin_forDataInput",
+                "name": "UserUpdateWithoutAdminForDataInput",
                 "ofType": null
               }
             },
@@ -19973,7 +22002,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateWithoutAdmin_forInput",
+                "name": "UserCreateWithoutAdminForInput",
                 "ofType": null
               }
             },
@@ -20039,7 +22068,7 @@
       },
       {
         "kind": "INPUT_OBJECT",
-        "name": "UserUpsertWithoutCreated_eventsInput",
+        "name": "UserUpsertWithoutCreatedEventsInput",
         "description": "",
         "fields": null,
         "inputFields": [
@@ -20051,7 +22080,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserUpdateWithoutCreated_eventsDataInput",
+                "name": "UserUpdateWithoutCreatedEventsDataInput",
                 "ofType": null
               }
             },
@@ -20065,32 +22094,7 @@
               "name": null,
               "ofType": {
                 "kind": "INPUT_OBJECT",
-                "name": "UserCreateWithoutCreated_eventsInput",
-                "ofType": null
-              }
-            },
-            "defaultValue": null
-          }
-        ],
-        "interfaces": null,
-        "enumValues": null,
-        "possibleTypes": null
-      },
-      {
-        "kind": "INPUT_OBJECT",
-        "name": "EventIdInput",
-        "description": "",
-        "fields": null,
-        "inputFields": [
-          {
-            "name": "id",
-            "description": "",
-            "type": {
-              "kind": "NON_NULL",
-              "name": null,
-              "ofType": {
-                "kind": "SCALAR",
-                "name": "ID",
+                "name": "UserCreateWithoutCreatedEventsInput",
                 "ofType": null
               }
             },
@@ -20898,6 +22902,65 @@
         "possibleTypes": null
       },
       {
+        "kind": "OBJECT",
+        "name": "File",
+        "description": "",
+        "fields": [
+          {
+            "name": "filename",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "mimetype",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          },
+          {
+            "name": "encoding",
+            "description": "",
+            "args": [],
+            "type": {
+              "kind": "NON_NULL",
+              "name": null,
+              "ofType": {
+                "kind": "SCALAR",
+                "name": "String",
+                "ofType": null
+              }
+            },
+            "isDeprecated": false,
+            "deprecationReason": null
+          }
+        ],
+        "inputFields": null,
+        "interfaces": [],
+        "enumValues": null,
+        "possibleTypes": null
+      },
+      {
         "kind": "ENUM",
         "name": "CacheControlScope",
         "description": "",
@@ -20918,16 +22981,6 @@
             "deprecationReason": null
           }
         ],
-        "possibleTypes": null
-      },
-      {
-        "kind": "SCALAR",
-        "name": "Upload",
-        "description": "The `Upload` scalar type represents a file upload.",
-        "fields": null,
-        "inputFields": null,
-        "interfaces": null,
-        "enumValues": null,
         "possibleTypes": null
       }
     ],

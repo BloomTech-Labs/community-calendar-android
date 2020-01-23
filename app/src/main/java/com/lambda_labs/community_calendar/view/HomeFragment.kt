@@ -7,23 +7,21 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ImageView
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
-import androidx.recyclerview.widget.LinearLayoutManager
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.StaggeredGridLayoutManager
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.adapter.EventRecycler
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
-import com.squareup.picasso.Picasso
-import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
-import kotlinx.android.synthetic.main.event_recycler_item_list.view.*
 import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -38,7 +36,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
 
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = get()
     }
 
     override fun onCreateView(
@@ -49,8 +47,21 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    val searchBar: SearchView by inject()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (searchBar.parent != null){
+            (searchBar.parent as ViewGroup).removeView(searchBar)
+        }
+        home_layout.addView(searchBar)
+        setSearchBarProperties(searchBar, true)
+        viewModel.setupSearchBarConstraints(home_layout, searchBar, txt_featured_title)
+
+        txt_see_all.setOnClickListener {
+            findNavController().navigate(R.id.searchResultFragment)
+        }
 
         // event list
         val events = ArrayList<EventsQuery.Event>()
@@ -166,15 +177,11 @@ class HomeFragment : Fragment() {
 
 //        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
-            viewModel.selectGridView(mainActivity, btn_grid, btn_list)
-            main_event_recycler.layoutManager = StaggeredGridLayoutManager(2, RecyclerView.VERTICAL)
-            main_event_recycler.adapter = EventRecycler(filterList, true)
+            selectGridView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
         }
 
         btn_list.setOnClickListener {
-            viewModel.selectListView(mainActivity, btn_grid, btn_list)
-            main_event_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
-            main_event_recycler.adapter = EventRecycler(filterList, false)
+            selectListView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
         }
 
     }
@@ -203,68 +210,6 @@ class HomeFragment : Fragment() {
         }
     }
 
-    //    Recycler for General Events
-    inner class EventRecycler(
-        private val events: ArrayList<EventsQuery.Event>,
-        private val isGridViewSelected: Boolean
-    ) :
-        RecyclerView.Adapter<EventRecycler.ViewHolder>() {
 
-        override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
-
-            // Switch which layout is inflated based on whether list or grid view is selected
-            val view: View = if (isGridViewSelected) {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.event_recycler_item_grid, parent, false)
-            } else {
-                LayoutInflater.from(parent.context)
-                    .inflate(R.layout.event_recycler_item_list, parent, false)
-            }
-            return ViewHolder(view)
-        }
-
-        override fun getItemCount(): Int = events.size
-
-        override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-            val event = events[position]
-            event.event_images()?.let {
-                if (it.size > 0) {
-                    Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
-                }
-            }
-            holder.eventName.text = event.title()
-            holder.eventTime.text = displayTime(event.start(), event.end())
-            event.locations()?.let {
-                if (it.size > 0) {
-                    holder.eventCommunity.text = event.locations()?.get(0)?.name()
-                }
-            }
-        }
-
-        inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
-
-            // Change the variables from the grid's layout or list's layout variables depending up which is selected
-            val eventImage: ImageView = if (isGridViewSelected) {
-                view.img_event_grid
-            } else {
-                view.img_event
-            }
-            val eventName: MaterialTextView = if (isGridViewSelected) {
-                view.txt_event_name_grid
-            } else {
-                view.txt_event_name
-            }
-            val eventTime: MaterialTextView = if (isGridViewSelected) {
-                view.txt_event_time_grid
-            } else {
-                view.txt_event_time
-            }
-            val eventCommunity: MaterialTextView = if (isGridViewSelected) {
-                view.txt_community_grid
-            } else {
-                view.txt_community
-            }
-        }
-    }
 
 }
