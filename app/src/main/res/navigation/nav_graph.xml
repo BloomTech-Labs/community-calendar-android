@@ -38,7 +38,7 @@
 
     <fragment
         android:id="@+id/filterFragment"
-        android:name="com.lambda_labs.community_calendar.FilterFragment"
+        android:name="com.lambda_labs.community_calendar.view.FilterFragment"
         android:label="fragment_filter"
         tools:layout="@layout/fragment_filter" />
     <fragment

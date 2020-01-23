@@ -3,6 +3,7 @@ package com.lambda_labs.community_calendar
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
+import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
@@ -38,6 +39,7 @@ class App: Application() {
 
     val modules: Module = module {
         single { this@App }
+        viewModel { FilterViewModel(get()) }
         viewModel { HomeViewModel(get()) }
         viewModel { SearchViewModel(get()) }
         viewModel { MainActivityViewModel(get()) }

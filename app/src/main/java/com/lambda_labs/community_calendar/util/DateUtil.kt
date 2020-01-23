@@ -149,3 +149,11 @@ fun parseDate(year: Int, month: Int, day: Int): String {
 
     return getSearchDate(cal.time)
 }
+
+// Convert a Date object into a Calendar object
+fun toCalendar(date: Date): Calendar {
+    val calendar:Calendar = Calendar.getInstance()
+    calendar.time = date
+
+    return calendar
+}
