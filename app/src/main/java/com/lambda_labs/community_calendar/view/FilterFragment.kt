@@ -218,6 +218,11 @@ class FilterFragment : Fragment() {
         })
     }
 
+    override fun onDestroy() {
+        super.onDestroy()
+        (context as MainActivity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_RESIZE);
+    }
+
     // Create Chips with random tag names and then put them into the 'suggested' ChipGroup
     private fun addSuggestedChips(allTags: MutableSet<String>, context: Context) {
         val shuffledTags = allTags.toMutableList()
