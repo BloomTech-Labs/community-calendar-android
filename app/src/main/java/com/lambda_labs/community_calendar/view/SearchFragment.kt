@@ -56,14 +56,6 @@ class SearchFragment : Fragment() {
             searches_recycler.adapter = RecentSearchRecycler(recentSearches)
         })
 
-        // Uncomment to test how it displays the chips
-        /*val fake = this.context as Context
-
-        val listTest = arrayListOf("Test","Test1","Test2","Test3","Test4","Test5","Test6")
-        createChipLayout(listTest, fake, chip_group_search)
-        chips.visibility = View.VISIBLE*/
-
-
         btn_filters.setOnClickListener {
             hideKeyboard(mainActivity)
             this.findNavController().navigate(R.id.action_searchFragment_to_filterFragment)
@@ -102,10 +94,6 @@ class SearchFragment : Fragment() {
             val image = holder.drop
 
             holder.searchText.text = recentSearch.searchText
-
-// Uncomment code below to test and change the recentSearch call in line 115 and 117 to fakeSearch
-            /*val tags = arrayListOf("Java", "Kotlin", "Android") as List<String>
-            val fakeSearch = Search("bob", "Utah", 84601, getToday(), tags)*/
 
             val list = viewModel.searchToSearchList(recentSearch)
 
