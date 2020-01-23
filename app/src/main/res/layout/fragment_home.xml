@@ -1,5 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/home_layout"
+    android:layout_marginTop="16dp"
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,10 +10,12 @@
     tools:context=".view.HomeFragment">
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_title_featured"
+        android:id="@+id/txt_featured_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_margin="16dp"
+        android:layout_marginBottom="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginStart="16dp"
         android:fontFamily="@font/butler_bold"
         android:text="@string/featured"
         android:textColor="@android:color/black"
@@ -36,14 +41,14 @@
         android:layout_height="192dp"
         android:layout_marginStart="16dp"
         android:layout_marginEnd="16dp"
-        app:layout_constraintBottom_toTopOf="@id/txt_title_events"
+        app:layout_constraintBottom_toTopOf="@id/txt_events_title"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/txt_title_featured"
+        app:layout_constraintTop_toBottomOf="@id/txt_featured_title"
         tools:listitem="@layout/featured_event_recycler_item" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_title_events"
+        android:id="@+id/txt_events_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -101,7 +106,7 @@
         android:layout_marginEnd="16dp"
         app:layout_constraintBottom_toTopOf="@id/txt_event_date"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/txt_title_events">
+        app:layout_constraintTop_toBottomOf="@+id/txt_events_title">
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_events_today"

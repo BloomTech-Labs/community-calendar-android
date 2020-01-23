@@ -6,13 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
-import android.widget.LinearLayout
 import android.widget.TextView
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -20,10 +18,12 @@ import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.hideKeyboard
+import com.lambda_labs.community_calendar.util.setSearchBarProperties
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 
 class SearchFragment : Fragment() {
 
@@ -43,10 +43,27 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
+    private val searchBar: SearchView by inject()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        viewModel = ViewModelProviders.of(this).get(SearchViewModel::class.java)
+        viewModel = get()
+
+        if (searchBar.parent != null){
+            (searchBar.parent as ViewGroup).removeView(searchBar)
+        }
+        search_layout.addView(searchBar)
+        setSearchBarProperties(searchBar, false, topMargin = 0f, endMargin = 0f)
+
+       viewModel.setupSearchBarConstraints(search_layout, searchBar, btn_cancel, btn_filters)
+
+        // Navigates out of SearchFragment to previous fragment.
+        // onDestroy has more logic to wrap this action up.
+        btn_cancel.setOnClickListener {
+            findNavController().navigateUp()
+        }
+
 
         searches_recycler.setHasFixedSize(true)
         searches_recycler.layoutManager = LinearLayoutManager(activity, RecyclerView.VERTICAL, false)
@@ -63,17 +80,10 @@ class SearchFragment : Fragment() {
     }
 
     override fun onDestroy() {
-        mainActivity.apply {
-            btn_cancel.visibility = View.GONE
-            search_bar.layoutParams.width = LinearLayout.LayoutParams.MATCH_PARENT
-            val constraintSetHide = ConstraintSet()
-            constraintSetHide.clone(c_layout)
-            constraintSetHide.connect(search_bar.id, ConstraintSet.END, c_layout.id, ConstraintSet.END)
-            constraintSetHide.applyTo(c_layout)
-            hideKeyboard(this)
-            search_bar.clearFocus()
-            search_bar.setQuery("", false)
-        }
+        hideKeyboard(mainActivity)
+        searchBar.clearFocus()
+        searchBar.setQuery("", false)
+
         super.onDestroy()
     }
 

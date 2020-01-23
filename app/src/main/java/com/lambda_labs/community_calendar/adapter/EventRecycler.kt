@@ -37,9 +37,9 @@ class EventRecycler(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val event = events[position]
-        event.event_images()?.let {
+        event.eventImages()?.let {
             if (it.size > 0) {
-                Picasso.get().load(event.event_images()?.get(0)?.url()).into(holder.eventImage)
+                Picasso.get().load(event.eventImages()?.get(0)?.url()).into(holder.eventImage)
             }
         }
         holder.eventName.text = event.title()

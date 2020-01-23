@@ -7,10 +7,10 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.appcompat.widget.SearchView
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
@@ -20,6 +20,8 @@ import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -34,7 +36,7 @@ class HomeFragment : Fragment() {
 
         mainActivity = context as MainActivity
 
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java)
+        viewModel = get()
     }
 
     override fun onCreateView(
@@ -45,8 +47,17 @@ class HomeFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
 
+    val searchBar: SearchView by inject()
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        if (searchBar.parent != null){
+            (searchBar.parent as ViewGroup).removeView(searchBar)
+        }
+        home_layout.addView(searchBar)
+        setSearchBarProperties(searchBar, true)
+        viewModel.setupSearchBarConstraints(home_layout, searchBar, txt_featured_title)
 
         txt_see_all.setOnClickListener {
             findNavController().navigate(R.id.searchResultFragment)

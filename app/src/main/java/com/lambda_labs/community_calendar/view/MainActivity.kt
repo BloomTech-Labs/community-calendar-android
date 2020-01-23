@@ -2,27 +2,36 @@ package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.os.Bundle
-import android.view.View
-import android.widget.LinearLayout
 import androidx.appcompat.app.AppCompatActivity
-import androidx.constraintlayout.widget.ConstraintSet
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
-import kotlinx.android.synthetic.main.activity_main.*
+import org.koin.android.ext.android.get
+import org.koin.android.ext.android.inject
+import org.koin.core.context.loadKoinModules
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 class MainActivity : AppCompatActivity() {
+
+    private val viewModel: MainActivityViewModel by inject()
+
+    val mainModule: Module = module {
+        single { SearchView(this@MainActivity) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-
+//        setup app for searchBar and cancel button
+        loadKoinModules(mainModule)
+        val searchView: SearchView = get()
 
 //        Startup navigation component
         val host: NavHostFragment =
@@ -31,7 +40,6 @@ class MainActivity : AppCompatActivity() {
         val navController = host.navController
         setupBottomNavMenu(navController)
 
-        val viewModel = ViewModelProviders.of(this).get(MainActivityViewModel::class.java)
         viewModel.queryEvents()
         val events = ArrayList<EventsQuery.Event>()
         viewModel.getAllEvents().observe(this, Observer<List<EventsQuery.Event>> { list ->
@@ -41,28 +49,15 @@ class MainActivity : AppCompatActivity() {
             }
         })
 
-        // Navigates out of SearchFragment to previous fragment.
-        // SearchFragment onDestroy has more logic to wrap this action up.
-        btn_cancel.setOnClickListener {
-            navController.navigateUp()
-        }
-
         // Checks to see if search bar was selected and navigates accordingly
-        search_bar.setOnQueryTextFocusChangeListener { _, hasFocus ->
+        searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus && navController.currentDestination?.id != R.id.searchFragment){
                 navController.navigate(R.id.searchFragment)
-
-                btn_cancel.visibility = View.VISIBLE
-                search_bar.layoutParams.width = LinearLayout.LayoutParams.WRAP_CONTENT
-                val constraintSetShow = ConstraintSet()
-                constraintSetShow.clone(c_layout)
-                constraintSetShow.connect(search_bar.id, ConstraintSet.END, btn_cancel.id, ConstraintSet.START)
-                constraintSetShow.applyTo(c_layout)
             }
         }
 
         // Adds searches to room db
-        viewModel.searchNSave(search_bar, events)
+        viewModel.searchNSave(searchView, events)
     }
 
 //    Setup bottom navigation bar
