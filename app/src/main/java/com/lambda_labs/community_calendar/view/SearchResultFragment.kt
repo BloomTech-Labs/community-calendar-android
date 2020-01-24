@@ -62,9 +62,5 @@ class SearchResultFragment : Fragment() {
                 result_recycler_view, eventList, view.context, result_btn_grid, result_btn_list
             )
         }
-
-
-
     }
-
 }

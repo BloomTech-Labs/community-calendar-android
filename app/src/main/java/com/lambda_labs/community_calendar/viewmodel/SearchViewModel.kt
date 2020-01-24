@@ -22,16 +22,21 @@ import io.reactivex.schedulers.Schedulers
 class SearchViewModel(val repo: Repository): ViewModel() {
     // Database call will be done in viewmodel
     private var disposable: Disposable? = null
+    private var searchDisposable: Disposable? = null
     private val recentSearchList: MutableLiveData<MutableList<Search>> = MutableLiveData(
         mutableListOf())
     val searchList: LiveData<MutableList<Search>> = recentSearchList
+
+    fun getAllEvents(): LiveData<List<EventsQuery.Event>> {
+        return repo.events
+    }
 
     // Retrieves searches stored in database and saves them to recentSearchList to pass to searchList for fragment
     fun getRecentSearches(){
         disposable = repo.getRecentSearchList().subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread()).subscribe{ searches: MutableList<Search> ->
                 recentSearchList.value?.clear()
-                recentSearchList.value?.addAll(searches)
+                recentSearchList.value = searches
             }
     }
 
@@ -78,12 +83,14 @@ class SearchViewModel(val repo: Repository): ViewModel() {
 
     }
 
-    override fun onCleared() {
-        if (disposable != null){
-            disposable?.dispose()
+    // For MainActivity, add a Recent Search to room's database
+    fun addRecentSearch(search: Search){
+        searchDisposable = Schedulers.io().createWorker().schedule {
+            repo.addRecentSearch(search)
         }
-        super.onCleared()
     }
+
+
 
     fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, cancel: MaterialButton, filters: MaterialButton){
         val dpToPx = dpToPx(10f, parent.context.resources)
@@ -102,5 +109,16 @@ class SearchViewModel(val repo: Repository): ViewModel() {
         constraintSet.connect(cancel.id, ConstraintSet.END, ConstraintSet.PARENT_ID, ConstraintSet.END, 0)
 
         constraintSet.applyTo(parent)
+    }
+
+    // Disposes of the disposable to prevent memory leak
+    override fun onCleared() {
+        if (disposable != null){
+            disposable?.dispose()
+        }
+        if (searchDisposable != null){
+            searchDisposable?.dispose()
+        }
+        super.onCleared()
     }
 }

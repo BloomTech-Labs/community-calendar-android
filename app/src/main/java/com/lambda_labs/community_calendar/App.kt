@@ -3,10 +3,7 @@ package com.lambda_labs.community_calendar
 import android.app.Application
 import android.content.Context
 import android.content.SharedPreferences
-import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
-import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
-import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
-import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
+import com.lambda_labs.community_calendar.viewmodel.*
 import org.koin.android.ext.koin.androidContext
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.core.context.startKoin
@@ -43,6 +40,7 @@ class App: Application() {
         viewModel { HomeViewModel(get()) }
         viewModel { SearchViewModel(get()) }
         viewModel { MainActivityViewModel(get()) }
+        single { SharedFilterViewModel() }
         single { Repository(get()) }
     }
 }

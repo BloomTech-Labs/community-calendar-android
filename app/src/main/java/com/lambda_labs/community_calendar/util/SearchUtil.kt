@@ -41,11 +41,17 @@ import com.lambda_labs.community_calendar.model.Search
                     event.tags()?.forEach { tag ->
                         search.tags.forEach { searchTag ->
                             val oneTag = tag.title().contains(searchTag)
+                            val tagg = tag.title()
+                            val taggg = searchTag
+                            val j = 0
                             if (oneTag) match = true
                         }
                     }
                     return match
                 }
+                val tagies = tags()
+
+                val i = 0
 
                 // Must all return true to be added to the filteredEvents
                 if (titleCheck && dateCheck && location && zipcode && tags()) {

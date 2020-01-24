@@ -22,6 +22,9 @@ import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.core.context.loadKoinModules
+import org.koin.core.module.Module
+import org.koin.dsl.module
 import java.util.*
 import kotlin.collections.ArrayList
 
@@ -35,6 +38,14 @@ class HomeFragment : Fragment() {
         super.onAttach(context)
 
         mainActivity = context as MainActivity
+
+
+        val mainModule: Module = module {
+            single { SearchView(mainActivity) }
+        }
+
+//        setup app for searchBar
+        loadKoinModules(mainModule)
 
         viewModel = get()
     }
@@ -51,6 +62,13 @@ class HomeFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
+        // Checks to see if search bar was selected and navigates accordingly
+        searchBar.setOnQueryTextFocusChangeListener { _, hasFocus ->
+            if (hasFocus && findNavController().currentDestination?.id != R.id.searchFragment){
+                findNavController().navigate(R.id.searchFragment)
+            }
+        }
 
         if (searchBar.parent != null){
             (searchBar.parent as ViewGroup).removeView(searchBar)
