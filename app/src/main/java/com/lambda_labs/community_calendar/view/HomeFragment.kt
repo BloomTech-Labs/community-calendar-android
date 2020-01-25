@@ -1,6 +1,5 @@
 package com.lambda_labs.community_calendar.view
 
-
 import EventsQuery
 import android.content.Context
 import android.os.Bundle
@@ -16,10 +15,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.EventRecycler
-import com.lambda_labs.community_calendar.adapter.FeaturedEventRecycler
+import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
-import kotlinx.android.synthetic.main.featured_event_recycler_item.view.*
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -64,11 +62,12 @@ class HomeFragment : Fragment() {
             findNavController().navigate(R.id.searchResultFragment)
         }
 
-        // event list
+        // Event list
         val events = ArrayList<EventsQuery.Event>()
+        val featuredList=ArrayList<EventsQuery.Event>()
         val filterList = ArrayList<EventsQuery.Event>()
 
-        // Checks to see if filterList is empty the displays a message if empty
+        // Checks to see if the filterList is empty then displays a message if empty
         fun isEmpty(message: String){
             if(filterList.isNullOrEmpty()) {
                 txt_no_events.visibility = View.VISIBLE
@@ -77,6 +76,34 @@ class HomeFragment : Fragment() {
             } else {
                 txt_no_events.visibility = View.INVISIBLE
             }
+        }
+
+        // Checks to see if the featuredList is empty then displays a message if empty
+        fun isFeaturedEmpty() {
+            if (featuredList.isNullOrEmpty()) {
+                txt_no_featured_events.visibility = View.VISIBLE
+                val displayText = "There are no featured events :("
+                txt_no_featured_events.text = displayText
+            } else {
+                txt_no_featured_events.visibility = View.INVISIBLE
+            }
+        }
+
+        // Get the subset of events that are specified as being featured
+        fun grabFeaturedEvents() {
+            // Ensure a blank list
+            featuredList.clear()
+
+            // Temporarily mixing up the events randomly until a Feature flag has been set
+            val shuffledEvents: MutableList<EventsQuery.Event> = events.toMutableList()
+            shuffledEvents.shuffle()
+            val max: Int = 10 // Maximum number of events to show
+            var shuffledEventsCount: Int = shuffledEvents.size
+            if (shuffledEventsCount > max) shuffledEventsCount = max
+            for (i: Int in 0 until shuffledEventsCount) {
+                featuredList.add(shuffledEvents[i])
+            }
+            featured_event_recycler.adapter?.notifyDataSetChanged()
         }
 
         // Used by today tab and tomorrow tab to remove some boiler plate code
@@ -152,12 +179,7 @@ class HomeFragment : Fragment() {
             txt_event_date.text = yearText
         }
 
-//        Dummy data for recycler views
-        val strings: ArrayList<String> =
-            arrayListOf("Strings", "The Stuff", "Run", "Strings", "The Stuff", "Run")
-        strings.add("asdf")
-
-        // Network call through HomeViewMode
+        // Network call through HomeViewModel
         viewModel.getAllEvents().observe(viewLifecycleOwner, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
@@ -166,17 +188,22 @@ class HomeFragment : Fragment() {
             isEmpty("today")
             main_event_recycler.adapter?.notifyDataSetChanged()
             pb_events.visibility = View.INVISIBLE
+
+            grabFeaturedEvents()
+            isFeaturedEmpty()
+            featured_event_recycler.adapter?.notifyDataSetChanged()
+            pb_featured_events.visibility = View.INVISIBLE
         })
 
-//        Setup Featured event recycler
+        // Setup Featured events recycler view
         viewModel.setupRecyclers(RecyclerView.HORIZONTAL, activity, featured_event_recycler)
-        featured_event_recycler.adapter = FeaturedEventRecycler(strings)
+        featured_event_recycler.adapter = FeaturedRecycler(featuredList)
 
-//        Setup General events recycler view in list view format
+        // Setup General events recycler view in list view format
         viewModel.setupRecyclers(RecyclerView.VERTICAL, activity, main_event_recycler)
         main_event_recycler.adapter = EventRecycler(filterList, false)
 
-//        Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
+        // Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
             selectGridView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
         }
@@ -184,6 +211,5 @@ class HomeFragment : Fragment() {
         btn_list.setOnClickListener {
             selectListView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
         }
-
     }
 }

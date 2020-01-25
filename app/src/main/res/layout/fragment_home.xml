@@ -47,6 +47,25 @@
         app:layout_constraintTop_toBottomOf="@id/txt_featured_title"
         tools:listitem="@layout/featured_event_recycler_item" />
 
+    <ProgressBar
+        android:id="@+id/pb_featured_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@id/featured_event_recycler"
+        app:layout_constraintTop_toTopOf="@id/featured_event_recycler" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/txt_no_featured_events"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:visibility="invisible"
+        android:fontFamily="@font/poppins_light"
+        android:textColor="@android:color/black"
+        app:layout_constraintTop_toTopOf="@id/featured_event_recycler"
+        android:textAlignment="center"
+        android:textSize="18sp"/>
+
+
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/txt_events_title"
         android:layout_width="wrap_content"
