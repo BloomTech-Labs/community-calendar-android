@@ -1,20 +1,27 @@
 package com.lambda_labs.community_calendar.view
 
 import EventsQuery
+import android.Manifest
 import android.content.Context
+import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import android.widget.Toast
 import androidx.appcompat.widget.SearchView
+import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.google.android.gms.location.FusedLocationProviderClient
+import com.google.android.gms.location.LocationServices
+import com.google.android.material.snackbar.Snackbar
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
 import com.lambda_labs.community_calendar.model.Filter
@@ -32,6 +39,7 @@ class SearchFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var viewModel: SearchViewModel
     private lateinit var events: ArrayList<EventsQuery.Event>
+    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -133,7 +141,25 @@ class SearchFragment : Fragment() {
             }
         })
 
-
+        btn_nearby.setOnClickListener {
+            val permission = ActivityCompat.checkSelfPermission(mainActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
+            if (permission == PERMISSION_GRANTED) {
+                fusedLocationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
+                fusedLocationClient.lastLocation.addOnSuccessListener {
+                    if (it != null){
+                        val bundle = Bundle()
+                        bundle.putDouble("Latitude", it.latitude)
+                        bundle.putDouble("Longitude", it.longitude)
+                        bundle.putString("search", "Location")
+                        findNavController().navigate(R.id.searchResultFragment, bundle)
+                    }else{
+                        Toast.makeText(mainActivity, "Location may be turned off or permission denied. Change permissions in settings.", Toast.LENGTH_SHORT).show()
+                    }
+                }
+            } else {
+                ActivityCompat.requestPermissions(mainActivity, arrayOf(Manifest.permission.ACCESS_COARSE_LOCATION), 12)
+            }
+        }
 
 
     }

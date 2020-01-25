@@ -40,6 +40,7 @@ class App: Application() {
         viewModel { HomeViewModel(get()) }
         viewModel { SearchViewModel(get()) }
         viewModel { MainActivityViewModel(get()) }
+        viewModel { ResultsViewModel(get()) }
         single { SharedFilterViewModel() }
         single { Repository(get()) }
     }

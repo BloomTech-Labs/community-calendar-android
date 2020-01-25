@@ -1,5 +1,6 @@
 package com.lambda_labs.community_calendar
 
+import EventsByLocationQuery
 import EventsQuery
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -70,5 +71,26 @@ class Repository(app: App) {
 
             })
 
+    }
+
+    private val _locationEvents = MutableLiveData<List<EventsByLocationQuery.Event>>()
+    val locationEvents: LiveData<List<EventsByLocationQuery.Event>> = _locationEvents
+
+    fun getEventsByLocation(latitude: Double, longitude: Double): Disposable {
+        return ApolloClient.client().rxQuery(EventsByLocationQuery(latitude, longitude))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object: DisposableObserver<Response<EventsByLocationQuery.Data>>(){
+                override fun onComplete() {  }
+
+                override fun onNext(response: Response<EventsByLocationQuery.Data>) {
+                    response.data()?.events()?.sortedBy { it.locations()?.get(0)?.distanceFromUser() }
+                    _locationEvents.value = response.data()?.events()
+                }
+
+                override fun onError(e: Throwable) {
+                    _locationEvents.value = ArrayList()
+                }
+            })
     }
 }
