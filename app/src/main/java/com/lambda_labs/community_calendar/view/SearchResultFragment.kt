@@ -54,19 +54,23 @@ class SearchResultFragment : Fragment() {
             eventList = filteredList as ArrayList<EventsQuery.Event>
             val searched = arguments?.getString("search") ?: "N/A"
             txt_searched_by.text = recentSearchDisplayText("by", searched)
-            latitude = arguments?.getDouble("Latitude") ?: 40.7704094
-            longitude = arguments?.getDouble("Longitude") ?: -111.8934245
+            latitude = arguments?.getDouble("Latitude", 40.7704094) ?: 40.7704094
+            longitude = arguments?.getDouble("Longitude", -111.8934245) ?: -111.8934245
         } else eventList = ArrayList()
 
         if (latitude != 40.7704094 && latitude != -1.0){
             viewModel.getEventsByLocation(latitude, longitude)
+            viewModel.getLiveDataEventListByLocation().observe(this, androidx.lifecycle.Observer {eventsByLocation ->
+                viewModel.convertQuery(eventsByLocation).forEach {
+                    eventList.add(it)
+                }
+                result_recycler_view.adapter?.notifyDataSetChanged()
+            })
         }
 
         result_recycler_view.layoutManager = LinearLayoutManager(view.context)
         result_recycler_view.adapter = EventRecycler(eventList, false)
-        viewModel.getLiveDataEventListByLocation().observe(this, androidx.lifecycle.Observer {eventsByLocation ->
-            result_recycler_view.adapter = EventRecycler(viewModel.convertQuery(eventsByLocation), false)
-        })
+        result_recycler_view.adapter?.notifyDataSetChanged()
 
         result_btn_list.setOnClickListener {
             selectListView(
@@ -79,5 +83,9 @@ class SearchResultFragment : Fragment() {
                 result_recycler_view, eventList, view.context, result_btn_grid, result_btn_list
             )
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
     }
 }

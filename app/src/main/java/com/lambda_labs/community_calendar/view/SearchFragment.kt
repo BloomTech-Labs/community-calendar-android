@@ -161,7 +161,7 @@ class SearchFragment : Fragment() {
             }
         }
 
-
+        searchBar.requestFocus()
     }
 
     override fun onDestroy() {
