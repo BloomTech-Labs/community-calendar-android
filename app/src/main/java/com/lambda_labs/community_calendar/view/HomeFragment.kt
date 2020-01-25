@@ -19,34 +19,20 @@ import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
-import org.koin.core.context.loadKoinModules
-import org.koin.core.module.Module
-import org.koin.dsl.module
 import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var viewModel: HomeViewModel
+    private val viewModel: HomeViewModel by inject()
+    private val searchBar: SearchView by inject()
 
     //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
         super.onAttach(context)
-
         mainActivity = context as MainActivity
-
-
-        val mainModule: Module = module {
-            single { SearchView(mainActivity) }
-        }
-
-//        setup app for searchBar
-        loadKoinModules(mainModule)
-
-        viewModel = get()
     }
 
     override fun onCreateView(
@@ -56,8 +42,6 @@ class HomeFragment : Fragment() {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_home, container, false)
     }
-
-    val searchBar: SearchView by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)

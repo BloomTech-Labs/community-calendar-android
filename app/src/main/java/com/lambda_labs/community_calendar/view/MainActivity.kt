@@ -3,6 +3,7 @@ package com.lambda_labs.community_calendar.view
 import EventsQuery
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.navigation.NavController
 import androidx.navigation.fragment.NavHostFragment
@@ -11,17 +12,24 @@ import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import org.koin.android.ext.android.inject
+import org.koin.core.context.loadKoinModules
+import org.koin.core.module.Module
+import org.koin.dsl.module
 
 class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by inject()
 
-
+    private val mainModule: Module = module {
+        single { SearchView(this@MainActivity) }
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        setup app for searchBar
+        loadKoinModules(mainModule)
 
 //        Startup navigation component
         val host: NavHostFragment =
