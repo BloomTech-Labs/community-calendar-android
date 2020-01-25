@@ -1,4 +1,4 @@
-query Events {
+query EventsByLocation($latitude: Float!, $longitude: Float!) {
     events {
         id
         title
@@ -11,8 +11,8 @@ query Events {
         eventImages{
           url
         }
-        locations {
-          distanceFromUser
+        locations(userLatitude: $latitude, userLongitude: $longitude) {
+            distanceFromUser
           name
           zipcode
         }

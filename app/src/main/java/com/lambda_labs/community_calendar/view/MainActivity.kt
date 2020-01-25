@@ -11,7 +11,6 @@ import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
-import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import org.koin.core.context.loadKoinModules
 import org.koin.core.module.Module
@@ -21,7 +20,7 @@ class MainActivity : AppCompatActivity() {
 
     private val viewModel: MainActivityViewModel by inject()
 
-    val mainModule: Module = module {
+    private val mainModule: Module = module {
         single { SearchView(this@MainActivity) }
     }
 
@@ -29,9 +28,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-//        setup app for searchBar and cancel button
+//        setup app for searchBar
         loadKoinModules(mainModule)
-        val searchView: SearchView = get()
 
 //        Startup navigation component
         val host: NavHostFragment =
@@ -45,19 +43,8 @@ class MainActivity : AppCompatActivity() {
         viewModel.getAllEvents().observe(this, Observer<List<EventsQuery.Event>> { list ->
             list.forEach { event ->
                 events.add(event)
-                println(event.title())
             }
         })
-
-        // Checks to see if search bar was selected and navigates accordingly
-        searchView.setOnQueryTextFocusChangeListener { _, hasFocus ->
-            if (hasFocus && navController.currentDestination?.id != R.id.searchFragment){
-                navController.navigate(R.id.searchFragment)
-            }
-        }
-
-        // Adds searches to room db
-        viewModel.searchNSave(searchView, events)
     }
 
 //    Setup bottom navigation bar

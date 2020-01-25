@@ -15,12 +15,12 @@ import androidx.core.view.forEach
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.Navigation
 import com.google.android.material.chip.Chip
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.model.Filter
+import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
@@ -59,8 +59,7 @@ class FilterFragment : Fragment() {
         val filterViewModel: FilterViewModel = get()
 
         // Instantiate the shared ViewModel to allow user selections to persist after fragment destruction
-        val sharedFilterViewModel: SharedFilterViewModel =
-            ViewModelProviders.of(fragActivity)[SharedFilterViewModel::class.java]
+        val sharedFilterViewModel: SharedFilterViewModel = get()
 
         // Populate the initial chip tags to be added to the included group
         sharedFilterViewModel.getSharedData().value?.tags?.forEachIndexed { index, tagText ->
@@ -98,9 +97,12 @@ class FilterFragment : Fragment() {
         button_fragment_filter_apply.setOnClickListener {
             // Save current selections in the ViewModel to be retrieved later if necessary
             val filter: Filter = Filter()
+            val search = Search("")
             spinner_fragment_filter_location.selectedItem?.let {
                 filter.location = spinner_fragment_filter_location.selectedItem.toString()
             }
+//            val zipET = edit_text_fragment_filter_zip_code.text.toString()
+//            var zip = if (zipET.isNotEmpty())
             filter.zip = edit_text_fragment_filter_zip_code.text.toString()
             filter.date = text_view_fragment_filter_date_shown.text.toString()
             filter.tags = getSelectedTags()
@@ -259,12 +261,11 @@ class FilterFragment : Fragment() {
     }
 
     // Build up a list of strings representing each Chip tag
-    private fun getSelectedTags(): List<String> {
-        val tags: MutableList<String> = mutableListOf<String>()
+    private fun getSelectedTags(): ArrayList<String> {
+        val tags: ArrayList<String> = arrayListOf()
         chip_group_fragment_filter_added.forEach {
             tags.add((it as Chip).text.toString())
         }
-
         return tags
     }
 

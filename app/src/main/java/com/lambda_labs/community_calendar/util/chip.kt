@@ -31,7 +31,7 @@ private fun createChip(text: String, context: Context): Chip {
 }
 
 // Takes in a list of tag names turns them into chips and adds them
-fun createChipLayout(tags: ArrayList<String>, context: Context, chipParent: ChipGroup){
+fun createChipLayout(tags: List<String>, context: Context, chipParent: ChipGroup){
     tags.forEach {tagName ->
         val chip = createChip(tagName, context)
         chipParent.addView(chip)

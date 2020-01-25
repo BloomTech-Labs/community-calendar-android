@@ -3,7 +3,6 @@ package com.lambda_labs.community_calendar.viewmodel
 import EventsQuery
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
-import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.Repository
 
 class FilterViewModel(val repo: Repository) : ViewModel() {
