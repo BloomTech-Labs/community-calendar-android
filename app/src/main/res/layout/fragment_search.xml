@@ -16,7 +16,7 @@
         android:layout_height="wrap_content"
         android:minWidth="0dp"
         android:fontFamily="@font/poppins_regular"
-        android:text="Cancel"
+        android:text="@string/cancel"
         android:textSize="14sp"
         android:textAllCaps="false"
         android:textColor="#66000000"

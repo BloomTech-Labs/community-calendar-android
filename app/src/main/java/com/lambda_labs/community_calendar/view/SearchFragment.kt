@@ -119,18 +119,18 @@ class SearchFragment : Fragment() {
             }
             return Search("", location, zipcode, date, tags)
         }
-        val search = convertFilterToSearch(filter)
 
         // Search actions
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                val search = convertFilterToSearch(filter)
+                // Function connects to repository (see above function)
+                search.searchText = query ?: ""
+                val filteredList = searchEvents(events, search)
+                viewModel.addRecentSearch(search)
+                val bundle = viewModel.createBundle(filteredList, search.searchText)
+                findNavController().navigate(R.id.searchResultFragment, bundle)
                 if (query != null){
-                    // Function connects to repository (see above function)
-                    search.searchText = query
-                    val filteredList = searchEvents(events, search)
-                    viewModel.addRecentSearch(search)
-                    val bundle = viewModel.createBundle(filteredList, search.searchText)
-                    findNavController().navigate(R.id.searchResultFragment, bundle)
                 }
                 hideKeyboard(searchBar.context as MainActivity)
                 return true

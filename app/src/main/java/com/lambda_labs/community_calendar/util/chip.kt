@@ -35,5 +35,11 @@ fun createChipLayout(tags: List<String>, context: Context, chipParent: ChipGroup
     tags.forEach {tagName ->
         val chip = createChip(tagName, context)
         chipParent.addView(chip)
+        chip.setOnCloseIconClickListener {
+            chipParent.removeView(it)
+            it as Chip
+            tags as MutableList<String>
+            tags.remove(it.text)
+        }
     }
 }
