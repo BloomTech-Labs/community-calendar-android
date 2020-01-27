@@ -57,6 +57,5 @@ class ResultsViewModel(val repo: Repository): ViewModel() {
         if (disposable != null){
             disposable?.dispose()
         }
-
     }
 }

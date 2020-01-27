@@ -5,6 +5,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,7 +20,6 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
@@ -32,11 +32,13 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class SearchFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var viewModel: SearchViewModel
+    private val viewModel: SearchViewModel by viewModel()
     private lateinit var events: ArrayList<EventsQuery.Event>
 
     override fun onAttach(context: Context) {
@@ -52,12 +54,10 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
-    private val searchBar: SearchView by inject()
+    private val searchBar: CustomSearchView by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = get()
 
         events = ArrayList()
         // Network call through HomeViewMode
@@ -131,10 +131,8 @@ class SearchFragment : Fragment() {
                 val filteredList = searchEvents(events, search)
                 viewModel.addRecentSearch(search)
                 val bundle = viewModel.createBundle(filteredList, search.searchText)
-                findNavController().navigate(R.id.searchResultFragment, bundle)
-                if (query != null){
-                }
                 hideKeyboard(searchBar.context as MainActivity)
+                findNavController().navigate(R.id.searchResultFragment, bundle)
                 return true
             }
 

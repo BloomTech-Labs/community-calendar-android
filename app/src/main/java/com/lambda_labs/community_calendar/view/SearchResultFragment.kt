@@ -1,7 +1,6 @@
 package com.lambda_labs.community_calendar.view
 
 
-import EventsByLocationQuery
 import EventsQuery
 import android.os.Bundle
 import android.os.Parcelable
@@ -17,17 +16,15 @@ import com.lambda_labs.community_calendar.util.recentSearchDisplayText
 import com.lambda_labs.community_calendar.util.selectGridView
 import com.lambda_labs.community_calendar.util.selectListView
 import com.lambda_labs.community_calendar.viewmodel.ResultsViewModel
-import io.reactivex.disposables.Disposable
 import kotlinx.android.synthetic.main.fragment_search_result.*
-import org.koin.android.ext.android.inject
-import java.util.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import kotlin.collections.ArrayList
 
 @Suppress("UNCHECKED_CAST")
 class SearchResultFragment : Fragment() {
 
     private lateinit var eventList: ArrayList<EventsQuery.Event>
-    private val viewModel: ResultsViewModel by inject()
+    private val viewM: ResultsViewModel by viewModel()
     private var latitude: Double = -1.0
     private var longitude: Double = -1.0
 
@@ -58,10 +55,12 @@ class SearchResultFragment : Fragment() {
         } else eventList = ArrayList()
 
         if (latitude != 40.7704094 && latitude != -1.0){
-            viewModel.getEventsByLocation(latitude, longitude)
-            viewModel.getLiveDataEventListByLocation().observe(viewLifecycleOwner, androidx.lifecycle.Observer {eventsByLocation ->
+            progress_bar.visibility = View.VISIBLE
+            viewM.getEventsByLocation(latitude, longitude)
+            viewM.getLiveDataEventListByLocation().observe(viewLifecycleOwner, androidx.lifecycle.Observer { eventsByLocation ->
+                progress_bar.visibility = View.GONE
                 eventList.clear()
-                viewModel.convertQuery(eventsByLocation).forEach {
+                viewM.convertQuery(eventsByLocation).forEach {
                     eventList.add(it)
                 }
                 result_recycler_view.adapter?.notifyDataSetChanged()

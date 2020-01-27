@@ -23,14 +23,15 @@ import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
-    private val viewModel: HomeViewModel by inject()
-    private val searchBar: SearchView by inject()
+    private val viewModel: HomeViewModel by viewModel()
+    private val searchBar: CustomSearchView by inject()
 
     //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
