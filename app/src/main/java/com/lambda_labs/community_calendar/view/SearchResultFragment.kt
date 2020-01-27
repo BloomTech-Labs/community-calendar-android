@@ -28,7 +28,6 @@ class SearchResultFragment : Fragment() {
 
     private lateinit var eventList: ArrayList<EventsQuery.Event>
     private val viewModel: ResultsViewModel by inject()
-    private var disposable: Disposable? = null
     private var latitude: Double = -1.0
     private var longitude: Double = -1.0
 
@@ -60,7 +59,8 @@ class SearchResultFragment : Fragment() {
 
         if (latitude != 40.7704094 && latitude != -1.0){
             viewModel.getEventsByLocation(latitude, longitude)
-            viewModel.getLiveDataEventListByLocation().observe(this, androidx.lifecycle.Observer {eventsByLocation ->
+            viewModel.getLiveDataEventListByLocation().observe(viewLifecycleOwner, androidx.lifecycle.Observer {eventsByLocation ->
+                eventList.clear()
                 viewModel.convertQuery(eventsByLocation).forEach {
                     eventList.add(it)
                 }
@@ -83,9 +83,5 @@ class SearchResultFragment : Fragment() {
                 result_recycler_view, eventList, view.context, result_btn_grid, result_btn_list
             )
         }
-    }
-
-    override fun onDestroy() {
-        super.onDestroy()
     }
 }

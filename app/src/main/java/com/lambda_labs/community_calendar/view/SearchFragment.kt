@@ -154,6 +154,7 @@ class SearchFragment : Fragment() {
                         bundle.putDouble("Latitude", it.latitude)
                         bundle.putDouble("Longitude", it.longitude)
                         bundle.putString("search", "Location")
+                        hideKeyboard(mainActivity)
                         findNavController().navigate(R.id.searchResultFragment, bundle)
                     }else{
                         Toast.makeText(mainActivity, "Location may be turned off or permission denied. Change permissions in settings.", Toast.LENGTH_SHORT).show()
