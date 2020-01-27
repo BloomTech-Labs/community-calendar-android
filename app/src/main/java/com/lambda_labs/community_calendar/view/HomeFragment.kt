@@ -107,7 +107,9 @@ class HomeFragment : Fragment() {
         // Used by today tab and tomorrow tab to remove some boiler plate code
         fun changeDay(date: Date) {
             filterList.clear()
-            filterList.addAll(events.filter { it.start().toString().contains(getSearchDate(date)) })
+            filterList.addAll(events.filter {
+                getSearchDate(stringToDate(it.start().toString())).contains(getSearchDate(date))
+            })
             main_event_recycler.adapter?.notifyDataSetChanged()
             txt_event_date.text = getDisplayDay(date)
         }
@@ -152,7 +154,7 @@ class HomeFragment : Fragment() {
             filterList.clear()
             getWeekendDates().forEach { date ->
                 filterList.addAll(events.filter {
-                    it.start().toString().contains(getSearchDate(date))
+                    getSearchDate(stringToDate(it.start().toString())).contains(getSearchDate(date))
                 })
             }
             isEmpty("this weekend")

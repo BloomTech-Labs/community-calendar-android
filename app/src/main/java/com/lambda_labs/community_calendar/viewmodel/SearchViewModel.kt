@@ -13,10 +13,12 @@ import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.Repository
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.dpToPx
+import com.lambda_labs.community_calendar.util.getSearchDate
 import com.lambda_labs.community_calendar.util.negativeDate
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
+import java.lang.StringBuilder
 
 @Suppress("UNCHECKED_CAST")
 class SearchViewModel(val repo: Repository): ViewModel() {
@@ -30,6 +32,33 @@ class SearchViewModel(val repo: Repository): ViewModel() {
     fun getAllEvents(): LiveData<List<EventsQuery.Event>> {
         return repo.events
     }
+
+    // For MainActivity, add a Recent Search to room's database
+    fun addRecentSearch(search: Search){
+        fun searchToString(theSearch: Search): String{
+            val ourSearchString = StringBuilder()
+            ourSearchString.append(theSearch.zipcode.toString())
+            ourSearchString.append(theSearch.searchText)
+            ourSearchString.append(theSearch.tags.toString())
+            ourSearchString.append(theSearch.location)
+            ourSearchString.append(getSearchDate(theSearch.date))
+            return ourSearchString.toString()
+        }
+
+        var didAnyItemsMatch = false
+        recentSearchList.value?.forEach {
+            if (searchToString(search).equals(searchToString(it), ignoreCase = true)){
+                didAnyItemsMatch = true
+            }
+        }
+        if (!didAnyItemsMatch){
+            searchDisposable = Schedulers.io().createWorker().schedule {
+                repo.addRecentSearch(search)
+            }
+        }
+    }
+
+
 
     // Retrieves searches stored in database and saves them to recentSearchList to pass to searchList for fragment
     fun getRecentSearches(){
@@ -81,13 +110,6 @@ class SearchViewModel(val repo: Repository): ViewModel() {
         bundle.putString("search", searched)
         return bundle
 
-    }
-
-    // For MainActivity, add a Recent Search to room's database
-    fun addRecentSearch(search: Search){
-        searchDisposable = Schedulers.io().createWorker().schedule {
-            repo.addRecentSearch(search)
-        }
     }
 
 
