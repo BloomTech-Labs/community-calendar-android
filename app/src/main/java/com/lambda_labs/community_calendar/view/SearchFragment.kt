@@ -38,7 +38,6 @@ class SearchFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private lateinit var viewModel: SearchViewModel
     private lateinit var events: ArrayList<EventsQuery.Event>
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -147,7 +146,7 @@ class SearchFragment : Fragment() {
         btn_nearby.setOnClickListener {
             val permission = ActivityCompat.checkSelfPermission(mainActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
             if (permission == PERMISSION_GRANTED) {
-                fusedLocationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
+                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
                 fusedLocationClient.lastLocation.addOnSuccessListener {
                     if (it != null){
                         val bundle = Bundle()
