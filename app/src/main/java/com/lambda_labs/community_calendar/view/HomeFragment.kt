@@ -60,10 +60,6 @@ class HomeFragment : Fragment() {
         setSearchBarProperties(searchBar, true)
         viewModel.setupSearchBarConstraints(home_layout, searchBar, txt_featured_title)
 
-        txt_see_all.setOnClickListener {
-            findNavController().navigate(R.id.searchResultFragment)
-        }
-
         // Event list
         val events = ArrayList<EventsQuery.Event>()
         val featuredList=ArrayList<EventsQuery.Event>()
@@ -207,11 +203,11 @@ class HomeFragment : Fragment() {
 
         // Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
-            selectGridView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
+            selectGridView(main_event_recycler, filterList, mainActivity, btn_grid, btn_list)
         }
 
         btn_list.setOnClickListener {
-            selectListView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
+            selectListView(main_event_recycler, filterList, mainActivity, btn_grid, btn_list)
         }
     }
 }
