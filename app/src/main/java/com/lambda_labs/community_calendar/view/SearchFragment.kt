@@ -21,7 +21,6 @@ import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.snackbar.Snackbar
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
 import com.lambda_labs.community_calendar.model.Filter
@@ -101,10 +100,14 @@ class SearchFragment : Fragment() {
         val sharedFilterViewModel: SharedFilterViewModel = get()
 
         val filter: Filter? = sharedFilterViewModel.getSharedData().value
-        // Populate the initial chip tags to be added to the included group
-        val chipList = filter?.tags ?: arrayListOf()
-        if (chipList.isNotEmpty()) chips.visibility = View.VISIBLE
-        createChipLayout(chipList, mainActivity, chip_group_search)
+
+        // Displays filter count if filters are applied to search
+        val filterCount = viewModel.getFilterCount(filter)
+        if (filterCount > 0){
+            filter_count.visibility = View.VISIBLE
+            val filterText = "Filters ($filterCount)"
+            filter_count.text = filterText
+        }
 
         fun convertFilterToSearch(filter: Filter?): Search {
             var date = negativeDate()

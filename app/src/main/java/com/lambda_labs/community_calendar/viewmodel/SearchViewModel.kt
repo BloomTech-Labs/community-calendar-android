@@ -11,6 +11,7 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.Repository
+import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.dpToPx
 import com.lambda_labs.community_calendar.util.getSearchDate
@@ -112,6 +113,16 @@ class SearchViewModel(val repo: Repository): ViewModel() {
 
     }
 
+    fun getFilterCount(filter: Filter?): Int{
+        var filterCount = 0
+        if (filter != null){
+            if (filter.tags.isNotEmpty()) filter.tags.forEach { filterCount++ }
+            if (filter.date.isNotEmpty()) filterCount++
+            if (filter.location.isNotEmpty()) filterCount++
+            if (filter.zip.isNotEmpty()) filterCount++
+        }
+        return filterCount
+    }
 
 
     fun setupSearchBarConstraints(parent: ConstraintLayout, search: SearchView, cancel: MaterialButton, filters: MaterialButton){

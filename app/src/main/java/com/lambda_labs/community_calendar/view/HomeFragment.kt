@@ -16,9 +16,12 @@ import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.EventRecycler
 import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
+import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
 import java.util.*
 import kotlin.collections.ArrayList
@@ -49,6 +52,8 @@ class HomeFragment : Fragment() {
         // Checks to see if search bar was selected and navigates accordingly
         searchBar.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus && findNavController().currentDestination?.id != R.id.searchFragment){
+                val filterVM: SharedFilterViewModel = get()
+                filterVM.setSharedData(Filter())
                 findNavController().navigate(R.id.searchFragment)
             }
         }
