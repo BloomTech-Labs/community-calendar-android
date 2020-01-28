@@ -5,6 +5,7 @@ import android.Manifest
 import android.content.Context
 import android.content.pm.PackageManager.PERMISSION_GRANTED
 import android.os.Bundle
+import android.view.KeyEvent
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -19,9 +20,7 @@ import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import com.google.android.material.snackbar.Snackbar
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.RecentSearchRecyclerChild
 import com.lambda_labs.community_calendar.model.Filter
@@ -33,13 +32,14 @@ import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
+
 
 class SearchFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
-    private lateinit var viewModel: SearchViewModel
+    private val viewModel: SearchViewModel by viewModel()
     private lateinit var events: ArrayList<EventsQuery.Event>
-    private lateinit var fusedLocationClient: FusedLocationProviderClient
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -54,12 +54,10 @@ class SearchFragment : Fragment() {
         return inflater.inflate(R.layout.fragment_search, container, false)
     }
 
-    private val searchBar: SearchView by inject()
+    private val searchBar: CustomSearchView by inject()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        viewModel = get()
 
         events = ArrayList()
         // Network call through HomeViewMode
@@ -101,10 +99,14 @@ class SearchFragment : Fragment() {
         val sharedFilterViewModel: SharedFilterViewModel = get()
 
         val filter: Filter? = sharedFilterViewModel.getSharedData().value
-        // Populate the initial chip tags to be added to the included group
-        val chipList = filter?.tags ?: arrayListOf()
-        if (chipList.isNotEmpty()) chips.visibility = View.VISIBLE
-        createChipLayout(chipList, mainActivity, chip_group_search)
+
+        // Displays filter count if filters are applied to search
+        val filterCount = viewModel.getFilterCount(filter)
+        if (filterCount > 0){
+            filter_count.visibility = View.VISIBLE
+            val filterText = "Filters ($filterCount)"
+            filter_count.text = filterText
+        }
 
         fun convertFilterToSearch(filter: Filter?): Search {
             var date = negativeDate()
@@ -119,20 +121,31 @@ class SearchFragment : Fragment() {
             }
             return Search("", location, zipcode, date, tags)
         }
-        val search = convertFilterToSearch(filter)
 
         // Search actions
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
-                if (query != null){
-                    // Function connects to repository (see above function)
+                val search = convertFilterToSearch(filter)
+                // Function connects to repository (see above function)
+                hideKeyboard(searchBar.context as MainActivity)
+
+                if (!query.isNullOrEmpty()){
+                    if (query.length > 36){
+                        Toast.makeText(mainActivity, "Character limit is 35", Toast.LENGTH_SHORT).show()
+                        return false
+                    }
                     search.searchText = query
                     val filteredList = searchEvents(events, search)
                     viewModel.addRecentSearch(search)
                     val bundle = viewModel.createBundle(filteredList, search.searchText)
                     findNavController().navigate(R.id.searchResultFragment, bundle)
+                }else{
+                    search.searchText = "Filters ($filterCount)"
+                    val filteredList = searchEvents(events, search)
+                    viewModel.addRecentSearch(search)
+                    val bundle = viewModel.createBundle(filteredList, search.searchText)
+                    findNavController().navigate(R.id.searchResultFragment, bundle)
                 }
-                hideKeyboard(searchBar.context as MainActivity)
                 return true
             }
 
@@ -144,13 +157,14 @@ class SearchFragment : Fragment() {
         btn_nearby.setOnClickListener {
             val permission = ActivityCompat.checkSelfPermission(mainActivity, Manifest.permission.ACCESS_COARSE_LOCATION)
             if (permission == PERMISSION_GRANTED) {
-                fusedLocationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
+                val fusedLocationClient = LocationServices.getFusedLocationProviderClient(mainActivity)
                 fusedLocationClient.lastLocation.addOnSuccessListener {
                     if (it != null){
                         val bundle = Bundle()
                         bundle.putDouble("Latitude", it.latitude)
                         bundle.putDouble("Longitude", it.longitude)
                         bundle.putString("search", "Location")
+                        hideKeyboard(mainActivity)
                         findNavController().navigate(R.id.searchResultFragment, bundle)
                     }else{
                         Toast.makeText(mainActivity, "Location may be turned off or permission denied. Change permissions in settings.", Toast.LENGTH_SHORT).show()

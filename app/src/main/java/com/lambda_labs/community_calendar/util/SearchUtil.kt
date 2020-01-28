@@ -15,48 +15,46 @@ import com.lambda_labs.community_calendar.model.Search
     fun searchEvents(events: ArrayList<EventsQuery.Event>, search: Search): ArrayList<EventsQuery.Event> {
         val filteredEvents = ArrayList<EventsQuery.Event>()
         events.forEach { event ->
-            if (search.searchText.isNotEmpty()) {
-                // Gets values to filter with or by
-                val lowerSearch = search.searchText.toLowerCase()
-                val title = event.title().toLowerCase()
-                val date = event.start().toString()
-                val filterDate = getSearchDate(search.date)
-                val noDate = getSearchDate(negativeDate())
+            // Gets values to filter with or by
+            val lowerSearch = search.searchText.toLowerCase()
+            val title = event.title().toLowerCase()
+            val date = event.start().toString()
+            val filterDate = getSearchDate(search.date)
+            val noDate = getSearchDate(negativeDate())
 
-                // Checks if events contain whats in searchValue
-                val titleCheck = title.contains(lowerSearch)
+            // Checks if events contain whats in searchValue
+            val titleCheck = (title.contains(lowerSearch) || lowerSearch.contains("filters ("))
 
-                val dateCheck = (date.contains(filterDate) || filterDate.contains(noDate))
+            val dateCheck = (date.contains(filterDate) || filterDate.contains(noDate))
 
-                val location = event.locations()?.any { l1 ->
-                    l1.name().toLowerCase().contains(search.location.toLowerCase())
-                } ?: true
-                val zipcode = event.locations()?.any { l2 ->
-                    l2.zipcode() == search.zipcode || search.zipcode == -1
-                } ?: true
+            val location = event.locations()?.any { l1 ->
+                l1.name().toLowerCase().contains(search.location.toLowerCase())
+            } ?: true
+            val zipcode = event.locations()?.any { l2 ->
+                l2.zipcode() == search.zipcode || search.zipcode == -1
+            } ?: true
 
-                // Checks tags and if at least one matches returns true
-                fun tags(): Boolean {
-                    var match = false
-                    event.tags()?.forEach { tag ->
-                        search.tags.forEach { searchTag ->
-                            val oneTag = tag.title().contains(searchTag)
-                            val tagg = tag.title()
-                            val taggg = searchTag
-                            val j = 0
-                            if (oneTag) match = true
-                        }
+            // Checks tags and if at least one matches returns true
+            fun tags(): Boolean {
+                var match = false
+                event.tags()?.forEach { tag ->
+                    search.tags.forEach { searchTag ->
+                        val oneTag = tag.title().contains(searchTag)
+                        val tagg = tag.title()
+                        val taggg = searchTag
+                        val j = 0
+                        if (oneTag) match = true
                     }
-                    return match
                 }
-                val tagies = tags()
+                return match
+            }
+            val tagies = tags()
 
-                val i = 0
+            val i = 0
 
-                // Must all return true to be added to the filteredEvents
-                if (titleCheck && dateCheck && location && zipcode && tags()) {
-                    filteredEvents.add(event)
-                }
+            // Must all return true to be added to the filteredEvents
+            if (titleCheck && dateCheck && location && zipcode && tags()) {
+                filteredEvents.add(event)
             }
         }
         return filteredEvents
