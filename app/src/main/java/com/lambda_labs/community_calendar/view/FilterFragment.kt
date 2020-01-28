@@ -2,16 +2,21 @@ package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.view.WindowManager
+import android.widget.AdapterView
 import android.widget.ArrayAdapter
 import android.widget.Spinner
+import android.widget.TextView
 import androidx.appcompat.widget.SearchView.SearchAutoComplete
+import androidx.core.content.ContextCompat
 import androidx.core.view.forEach
+import androidx.core.view.get
 import androidx.core.view.size
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
@@ -30,7 +35,13 @@ import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
-class FilterFragment : Fragment() {
+class FilterFragment : Fragment(), AdapterView.OnItemSelectedListener {
+
+    // Reserve a variable for the context
+    lateinit var fragContext: Context
+
+    // Store the context variable as an activity too
+    lateinit var fragActivity: MainActivity
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -41,12 +52,6 @@ class FilterFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        // Reserve a variable for the context
-        lateinit var fragContext: Context
-
-        // Store the context variable as an activity too
-        lateinit var fragActivity: MainActivity
 
         // Ensure the context is not null before assigning it
         context?.let {
@@ -75,7 +80,8 @@ class FilterFragment : Fragment() {
 
         // The Set collections to store all of the unique tags and locations
         val allTags: MutableSet<String> = mutableSetOf<String>()
-        val allLocations: MutableSet<String> = mutableSetOf<String>("")
+        val allLocations: MutableSet<String> =
+            mutableSetOf<String>(getString(R.string.filter_location_hint))
 
         // Enable touch event on this fragment in order to prevent views beneath from responding
         view.setOnTouchListener { v, event ->
@@ -83,7 +89,7 @@ class FilterFragment : Fragment() {
         }
 
         // Reference attribute in Manifest to have proper behavior of this layout when keyboard shows
-        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
+        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
@@ -99,13 +105,16 @@ class FilterFragment : Fragment() {
             // Save current selections in the ViewModel to be retrieved later if necessary
             val filter: Filter = Filter()
             val search = Search("")
-            spinner_fragment_filter_location.selectedItem?.let {
-                filter.location = spinner_fragment_filter_location.selectedItem.toString()
-            }
-//            val zipET = edit_text_fragment_filter_zip_code.text.toString()
-//            var zip = if (zipET.isNotEmpty())
+            filter.location = if (spinner_fragment_filter_location.selectedItemId == 0L)
+                ""
+            else
+                spinner_fragment_filter_location.selectedItem.toString()
             filter.zip = edit_text_fragment_filter_zip_code.text.toString()
-            filter.date = text_view_fragment_filter_date_shown.text.toString()
+            filter.date =
+                if (text_view_fragment_filter_date_shown.text.toString() == getString(R.string.filter_date_hint)) {
+                    ""
+                } else
+                    text_view_fragment_filter_date_shown.text.toString()
             filter.tags = getSelectedTags()
             sharedFilterViewModel.setSharedData(filter)
 
@@ -122,7 +131,8 @@ class FilterFragment : Fragment() {
             var selectedDate: String = text_view_fragment_filter_date_shown.text.toString()
 
             // Ensure the date string has a valid value before passing it to the DatePicker
-            if (selectedDate.isBlank()) selectedDate = getSearchDate(getToday())
+            if (selectedDate == getString(R.string.filter_date_hint)) selectedDate =
+                getSearchDate(getToday())
 
             // Convert the string value into an actual Date object
             val date: Date = searchStringToDate(selectedDate)
@@ -135,12 +145,13 @@ class FilterFragment : Fragment() {
         // Set up the ArrayAdapter and assign it to the Spinner which holds the locations
         val arrayAdapterLocationSpinner: ArrayAdapter<String> = ArrayAdapter(
             fragContext,
-            android.R.layout.simple_spinner_item,
+            /*android.R.layout.simple_spinner_item*/R.layout.spinner_locations,
             allLocations.toMutableList()
         ).also {
             it.setNotifyOnChange(true)
             it.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item)
             spinner_fragment_filter_location.adapter = it
+            spinner_fragment_filter_location.onItemSelectedListener = this
         }
 
         // Populate the SearchView suggestions with a list of tags and when selected added as a Chip
@@ -213,8 +224,8 @@ class FilterFragment : Fragment() {
 
             // Refresh the array adapters/chips with data retrieved from the repository
             arrayAdapterTagSearchView.addAll(allTags)
-            arrayAdapterLocationSpinner.remove("")
             arrayAdapterLocationSpinner.addAll(allLocations)
+            arrayAdapterLocationSpinner.remove(getString(R.string.filter_location_hint)) // Duplicate
 
             // Randomize (shuffle) a maximum of 10 tags to be displayed
             addSuggestedChips(allTags, fragContext)
@@ -223,7 +234,7 @@ class FilterFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        (context as MainActivity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
+        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
     }
 
     // Create Chips with random tag names and then put them into the 'suggested' ChipGroup
@@ -284,10 +295,18 @@ class FilterFragment : Fragment() {
         else
             edit_text_fragment_filter_zip_code.setText(filter.zip)
 
-        if (filter.date.isBlank())
-            text_view_fragment_filter_date_shown.text = ""
-        else
+        if (filter.date.isBlank()) {
+            text_view_fragment_filter_date_shown.text = getString(R.string.filter_date_hint)
+            text_view_fragment_filter_date_shown.setTextColor(
+                ContextCompat.getColor(
+                    fragContext,
+                    R.color.colorHint
+                )
+            )
+        } else {
             text_view_fragment_filter_date_shown.text = filter.date
+            text_view_fragment_filter_date_shown.setTextColor(Color.BLACK)
+        }
     }
 
     // Find the index of the Spinner item which matches the passed in text
@@ -298,5 +317,18 @@ class FilterFragment : Fragment() {
         }
 
         return 0
+    }
+
+    override fun onNothingSelected(parent: AdapterView<*>?) {}
+
+    override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
+        if (view != null) {
+            if (position == 0) {
+                (parent?.get(0) as TextView).setTextColor(
+                    ContextCompat.getColor(fragContext, R.color.colorHint)
+                )
+            } else
+                (parent?.get(0) as TextView).setTextColor(Color.BLACK)
+        }
     }
 }

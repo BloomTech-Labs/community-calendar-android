@@ -24,10 +24,12 @@
     <string name="filter_text_view_title">Filters</string>
     <string name="filter_text_view_location">Location</string>
     <string name="filter_text_view_zip_code">Zip code</string>
-    <string name="filter_edit_text_zip_code_hint">zip code</string>
+    <string name="filter_edit_text_zip_code_hint">Zip code</string>
     <string name="filter_text_view_date">Date</string>
     <string name="filter_text_view_tags">Tags</string>
     <string name="filter_search_view_hint">Search for tags</string>
+    <string name="filter_date_hint">Date</string>
+    <string name="filter_location_hint">Location</string>
     <string name="filter_text_view_suggested_tags">Suggested Tags</string>
     <string name="filter_button_apply">Apply</string>
     <string name="go_back">Go back</string>
