@@ -3,7 +3,6 @@
 <androidx.cardview.widget.CardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     app:cardCornerRadius="16dp">
@@ -144,15 +143,15 @@
         <Spinner
             android:id="@+id/spinner_fragment_filter_location"
             style="@android:style/Widget.Material.Spinner.Underlined"
-            android:layout_width="189dp"
+            android:layout_width="230dp"
             android:layout_height="wrap_content"
             android:layout_marginTop="6dp"
             android:layout_marginEnd="16dp"
             android:backgroundTint="#C4C4C4"
             android:fontFamily="@font/poppins_regular"
             android:spinnerMode="dropdown"
-            android:textAlignment="center"
-            android:textColor="#000000"
+            android:textAlignment="textStart"
+            android:textColor="@color/colorHint"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@+id/scroll_view_fragment_filter_suggested" />
@@ -172,15 +171,15 @@
 
         <EditText
             android:id="@+id/edit_text_fragment_filter_zip_code"
-            android:layout_width="189dp"
+            android:layout_width="230dp"
             android:layout_height="40dp"
-
             android:layout_marginEnd="16dp"
             android:backgroundTint="#C4C4C4"
             android:fontFamily="@font/poppins_regular"
-            android:gravity="center"
+            android:gravity="left"
             android:hint="@string/filter_edit_text_zip_code_hint"
             android:inputType="number"
+            android:paddingStart="16dp"
             android:textColor="#000000"
             android:textSize="13sp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -200,8 +199,8 @@
             app:layout_constraintTop_toBottomOf="@+id/text_view_fragment_filter_zip_code" />
 
         <FrameLayout
-            android:layout_width="189dp"
-            android:layout_height="24dp"
+            android:layout_width="230dp"
+            android:layout_height="30dp"
             android:layout_marginTop="8dp"
             android:layout_marginEnd="16dp"
             app:layout_constraintEnd_toEndOf="parent"
@@ -210,10 +209,12 @@
             <TextView
                 android:id="@+id/text_view_fragment_filter_date_shown"
                 android:layout_width="match_parent"
-                android:layout_height="match_parent"
+                android:layout_height="30dp"
+                android:layout_gravity="top"
                 android:fontFamily="@font/poppins_regular"
                 android:paddingStart="16dp"
-                android:textColor="#000000"
+                android:text="@string/filter_date_hint"
+                android:textColor="@color/colorHint"
                 android:textSize="14sp" />
 
             <ImageView
@@ -221,6 +222,7 @@
                 style="@android:style/Widget.Material.Spinner.Underlined"
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
+                android:layout_marginTop="4dp"
                 android:backgroundTint="#C4C4C4" />
 
         </FrameLayout>
