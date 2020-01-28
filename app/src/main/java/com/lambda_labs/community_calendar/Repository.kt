@@ -84,8 +84,8 @@ class Repository(app: App) {
                 override fun onComplete() {  }
 
                 override fun onNext(response: Response<EventsByLocationQuery.Data>) {
-                    response.data()?.events()?.sortedBy { it.locations()?.get(0)?.distanceFromUser() }
-                    _locationEvents.value = response.data()?.events()
+                    val sortedList = response.data()?.events()?.sortedBy { it.locations()?.get(0)?.distanceFromUser() }
+                    _locationEvents.value = sortedList
                 }
 
                 override fun onError(e: Throwable) {
