@@ -23,7 +23,7 @@ import com.lambda_labs.community_calendar.model.Search
             val noDate = getSearchDate(negativeDate())
 
             // Checks if events contain whats in searchValue
-            val titleCheck = title.contains(lowerSearch)
+            val titleCheck = (title.contains(lowerSearch) || lowerSearch.contains("filters ("))
 
             val dateCheck = (date.contains(filterDate) || filterDate.contains(noDate))
 

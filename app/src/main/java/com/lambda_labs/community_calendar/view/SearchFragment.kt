@@ -127,12 +127,25 @@ class SearchFragment : Fragment() {
             override fun onQueryTextSubmit(query: String?): Boolean {
                 val search = convertFilterToSearch(filter)
                 // Function connects to repository (see above function)
-                search.searchText = query ?: ""
-                val filteredList = searchEvents(events, search)
-                viewModel.addRecentSearch(search)
-                val bundle = viewModel.createBundle(filteredList, search.searchText)
                 hideKeyboard(searchBar.context as MainActivity)
-                findNavController().navigate(R.id.searchResultFragment, bundle)
+
+                if (!query.isNullOrEmpty()){
+                    if (query.length > 36){
+                        Toast.makeText(mainActivity, "Character limit is 35", Toast.LENGTH_SHORT).show()
+                        return false
+                    }
+                    search.searchText = query
+                    val filteredList = searchEvents(events, search)
+                    viewModel.addRecentSearch(search)
+                    val bundle = viewModel.createBundle(filteredList, search.searchText)
+                    findNavController().navigate(R.id.searchResultFragment, bundle)
+                }else{
+                    search.searchText = "Filters ($filterCount)"
+                    val filteredList = searchEvents(events, search)
+                    viewModel.addRecentSearch(search)
+                    val bundle = viewModel.createBundle(filteredList, search.searchText)
+                    findNavController().navigate(R.id.searchResultFragment, bundle)
+                }
                 return true
             }
 
