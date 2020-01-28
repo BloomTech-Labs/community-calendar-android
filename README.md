@@ -17,7 +17,7 @@ You can find the deployed project at [CommCal](http://www.google.com/). Code for
 
 [Vision Doc](https://www.notion.so/Vision-Problem-Objectives-46b01d5cdbfe428397ca4e1ddb7c4086)
 
-[Deployed Project](https://play.google.com/store/apps/details?id=com.lambda_labs.community_calendar&ah=6FZqwYQYGMe9wo2UDufuP7BMhig)
+[Deployed Project](In testing...)
 
 [Trello Board](https://trello.com/b/itLFz188/labs19-community-calendar)
 
