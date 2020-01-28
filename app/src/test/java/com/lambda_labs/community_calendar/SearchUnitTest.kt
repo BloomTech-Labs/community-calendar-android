@@ -43,21 +43,21 @@ class SearchUnitTest {
 
     @Test
     fun eventByZip() {
-        val search = Search("free code class", zipcode = 84601)
+        val search = Search("", zipcode = 84601)
         val list = searchEvents(events, search)
         assertEquals(1, list.size)
     }
 
     @Test
     fun eventByLocationName() {
-        val search = Search("free code class", location = "Utah")
+        val search = Search("", location = "Utah")
         val list = searchEvents(events, search)
         assertEquals(1, list.size)
     }
 
     @Test
     fun eventByTagName() {
-        val search = Search("free code class", tags = arrayListOf("batman"))
+        val search = Search("", tags = arrayListOf("batman"))
         val list = searchEvents(events, search)
         assertEquals(1, list.size)
     }

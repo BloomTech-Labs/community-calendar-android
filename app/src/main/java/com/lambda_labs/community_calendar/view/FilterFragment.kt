@@ -26,6 +26,7 @@ import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
@@ -56,7 +57,7 @@ class FilterFragment : Fragment() {
         }
 
         // Instantiate this fragment's ViewModel to gain access to the data from the repository
-        val filterViewModel: FilterViewModel = get()
+        val filterViewModel: FilterViewModel by viewModel()
 
         // Instantiate the shared ViewModel to allow user selections to persist after fragment destruction
         val sharedFilterViewModel: SharedFilterViewModel = get()
@@ -82,7 +83,7 @@ class FilterFragment : Fragment() {
         }
 
         // Reference attribute in Manifest to have proper behavior of this layout when keyboard shows
-        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN);
+        fragActivity.window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_PAN)
 
         // Activate the image of the X in the upper left, in effect to cancel, discarding changes
         image_view_fragment_filter_cancel.setOnClickListener {
@@ -222,7 +223,7 @@ class FilterFragment : Fragment() {
 
     override fun onDestroy() {
         super.onDestroy()
-        (context as MainActivity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING);
+        (context as MainActivity).window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_ADJUST_NOTHING)
     }
 
     // Create Chips with random tag names and then put them into the 'suggested' ChipGroup

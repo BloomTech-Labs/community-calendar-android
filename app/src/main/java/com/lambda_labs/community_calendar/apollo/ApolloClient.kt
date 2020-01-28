@@ -7,7 +7,7 @@ object ApolloClient {
     fun client(): ApolloClient {
 
         // Base url of are GraphQL server
-        val BASE_URL = "https://ccstaging.herokuapp.com/graphql"
+        val BASE_URL = "https://ccapollo-production.herokuapp.com/"
 
         // Building a OkHttpClient to use with Apollo
         val okHttp = OkHttpClient
