@@ -38,20 +38,16 @@ import com.lambda_labs.community_calendar.model.Search
                 // Checks tags and if at least one matches returns true
                 fun tags(): Boolean {
                     var match = false
+                    if (event.tags() == null) return true
                     event.tags()?.forEach { tag ->
                         search.tags.forEach { searchTag ->
-                            val oneTag = tag.title().contains(searchTag)
-                            val tagg = tag.title()
-                            val taggg = searchTag
-                            val j = 0
+                            val tagTitle = tag.title().toLowerCase()
+                            val oneTag = tagTitle.contains(searchTag.toLowerCase())
                             if (oneTag) match = true
                         }
                     }
                     return match
                 }
-                val tagies = tags()
-
-                val i = 0
 
                 // Must all return true to be added to the filteredEvents
                 if (titleCheck && dateCheck && location && zipcode && tags()) {
