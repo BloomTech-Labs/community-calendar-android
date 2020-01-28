@@ -18,7 +18,6 @@ import com.lambda_labs.community_calendar.util.selectListView
 import com.lambda_labs.community_calendar.viewmodel.ResultsViewModel
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
-import kotlin.collections.ArrayList
 
 @Suppress("UNCHECKED_CAST")
 class SearchResultFragment : Fragment() {
