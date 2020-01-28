@@ -48,6 +48,10 @@ TBD
 
 [Room](https://developer.android.com/topic/libraries/architecture/room) is a data persistence library that uses SQLite locally to store data.
 
+### Koin
+
+[Koin](https://insert-koin.io/) is a library for dependency injection.
+
 ## Requirements
 
 -   Android Studio 3.5 and above
