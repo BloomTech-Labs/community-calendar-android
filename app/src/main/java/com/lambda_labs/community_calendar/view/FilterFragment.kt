@@ -26,6 +26,7 @@ import com.lambda_labs.community_calendar.viewmodel.FilterViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_filter.*
 import org.koin.android.ext.android.get
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 
 
@@ -56,7 +57,7 @@ class FilterFragment : Fragment() {
         }
 
         // Instantiate this fragment's ViewModel to gain access to the data from the repository
-        val filterViewModel: FilterViewModel = get()
+        val filterViewModel: FilterViewModel by viewModel()
 
         // Instantiate the shared ViewModel to allow user selections to persist after fragment destruction
         val sharedFilterViewModel: SharedFilterViewModel = get()

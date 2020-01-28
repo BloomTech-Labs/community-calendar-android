@@ -16,18 +16,22 @@ import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.EventRecycler
 import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
+import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
+import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
+import org.koin.androidx.viewmodel.ext.android.viewModel
 import java.util.*
 import kotlin.collections.ArrayList
 
 class HomeFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
-    private val viewModel: HomeViewModel by inject()
-    private val searchBar: SearchView by inject()
+    private val viewModel: HomeViewModel by viewModel()
+    private val searchBar: CustomSearchView by inject()
 
     //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
@@ -49,6 +53,8 @@ class HomeFragment : Fragment() {
         // Checks to see if search bar was selected and navigates accordingly
         searchBar.setOnQueryTextFocusChangeListener { _, hasFocus ->
             if (hasFocus && findNavController().currentDestination?.id != R.id.searchFragment){
+                val filterVM: SharedFilterViewModel = get()
+                filterVM.setSharedData(Filter())
                 findNavController().navigate(R.id.searchFragment)
             }
         }
@@ -59,10 +65,6 @@ class HomeFragment : Fragment() {
         home_layout.addView(searchBar)
         setSearchBarProperties(searchBar, true)
         viewModel.setupSearchBarConstraints(home_layout, searchBar, txt_featured_title)
-
-        txt_see_all.setOnClickListener {
-            findNavController().navigate(R.id.searchResultFragment)
-        }
 
         // Event list
         val events = ArrayList<EventsQuery.Event>()
@@ -111,7 +113,9 @@ class HomeFragment : Fragment() {
         // Used by today tab and tomorrow tab to remove some boiler plate code
         fun changeDay(date: Date) {
             filterList.clear()
-            filterList.addAll(events.filter { it.start().toString().contains(getSearchDate(date)) })
+            filterList.addAll(events.filter {
+                getSearchDate(stringToDate(it.start().toString())).contains(getSearchDate(date))
+            })
             main_event_recycler.adapter?.notifyDataSetChanged()
             txt_event_date.text = getDisplayDay(date)
         }
@@ -156,7 +160,7 @@ class HomeFragment : Fragment() {
             filterList.clear()
             getWeekendDates().forEach { date ->
                 filterList.addAll(events.filter {
-                    it.start().toString().contains(getSearchDate(date))
+                    getSearchDate(stringToDate(it.start().toString())).contains(getSearchDate(date))
                 })
             }
             isEmpty("this weekend")
@@ -207,11 +211,11 @@ class HomeFragment : Fragment() {
 
         // Buttons switch user between List View and Grid View, change to light and dark version of images based on view selection
         btn_grid.setOnClickListener {
-            selectGridView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
+            selectGridView(main_event_recycler, filterList, mainActivity, btn_grid, btn_list)
         }
 
         btn_list.setOnClickListener {
-            selectListView(main_event_recycler, events, mainActivity, btn_grid, btn_list)
+            selectListView(main_event_recycler, filterList, mainActivity, btn_grid, btn_list)
         }
     }
 }
