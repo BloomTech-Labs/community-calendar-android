@@ -17,7 +17,7 @@ You can find the deployed project at [CommCal](http://www.google.com/). Code for
 
 [Vision Doc](https://www.notion.so/Vision-Problem-Objectives-46b01d5cdbfe428397ca4e1ddb7c4086)
 
-[Deployed Project](Deployment Status is Pending...)
+[Deployed Project](In testing...)
 
 [Trello Board](https://trello.com/b/itLFz188/labs19-community-calendar)
 
@@ -29,19 +29,28 @@ Community Calendar is a project aimed to enable communities to better inform the
 
 ### Features
 
--    Display Events
+-    Display Event Lists
+-    Search, Sort, and Filter Events
 
 ### Auth0
 
 [Auth0](https://auth0.com/docs/libraries/auth0-android) is an authentication API that enables users to connect to the app with existing Google and Facebook accounts.
 
-### Payment API here
+### Payment API
 
 TBD
 
 ### Apollo-Android
 
 [Apollo-Android](https://github.com/apollographql/apollo-android) is a GraphQL compliant client that generates Java and Kotlin models from standard GraphQL queries.
+
+### Room Persistence Library
+
+[Room](https://developer.android.com/topic/libraries/architecture/room) is a data persistence library that uses SQLite locally to store data.
+
+### Koin
+
+[Koin](https://insert-koin.io/) is a library for dependency injection.
 
 ## Requirements
 
