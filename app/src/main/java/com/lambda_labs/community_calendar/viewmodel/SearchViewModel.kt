@@ -19,7 +19,6 @@ import com.lambda_labs.community_calendar.util.negativeDate
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
-import java.lang.StringBuilder
 
 @Suppress("UNCHECKED_CAST")
 class SearchViewModel(val repo: Repository): ViewModel() {

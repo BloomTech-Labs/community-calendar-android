@@ -1,6 +1,7 @@
 package com.lambda_labs.community_calendar.viewmodel
 
 import EventsByLocationQuery
+import EventsQuery
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.ViewModel
 import com.lambda_labs.community_calendar.Repository
