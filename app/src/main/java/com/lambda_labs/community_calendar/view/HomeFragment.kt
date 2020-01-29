@@ -2,6 +2,8 @@ package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.content.Context
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -148,14 +150,27 @@ class HomeFragment : Fragment() {
 
         // Tomorrow tab filters by tomorrows events
         txt_events_tomorrow.setOnClickListener {
-            changeColor(it)
+
+            // Maps Intent
+            val encodedLatitude="49.2758"
+            val encodedLongitude="-123.1200"
+            val encodedLocationName="Yaletown, Vancouver BC"
+
+            val uri: Uri = Uri.parse("geo:$encodedLatitude,$encodedLongitude?z=0&q=$encodedLocationName")
+            val intent:Intent=Intent(Intent.ACTION_VIEW,uri)
+            startActivity(intent)
+
+
+
+            /*changeColor(it)
             changeDay(getTomorrow())
-            isEmpty("tomorrow")
+            isEmpty("tomorrow")*/
         }
 
         // Weekend tab filters by events this weekend
         txt_events_this_weekend.setOnClickListener {
-            changeColor(it)
+
+            /*changeColor(it)
             filterList.clear()
             getWeekendDates().forEach { date ->
                 filterList.addAll(events.filter {
@@ -166,7 +181,7 @@ class HomeFragment : Fragment() {
             main_event_recycler.adapter?.notifyDataSetChanged()
             val displayWeekend =
                 "${getDisplayDay(getWeekendDates()[0])} - ${getDisplayDay(getWeekendDates()[2])}"
-            txt_event_date.text = displayWeekend
+            txt_event_date.text = displayWeekend*/
         }
 
         // All upcoming filters by dates after today
