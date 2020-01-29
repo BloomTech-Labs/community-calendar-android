@@ -5,7 +5,9 @@ query Events {
         description
         start
         end
+      	ticketPrice
         creator{
+          profileImage
           firstName
         }
         eventImages{
@@ -15,6 +17,8 @@ query Events {
           distanceFromUser
           name
           zipcode
+          latitude
+          longitude
         }
         tags{
           title
