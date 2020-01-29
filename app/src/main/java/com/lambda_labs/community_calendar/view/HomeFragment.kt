@@ -5,6 +5,7 @@ import android.content.Context
 import android.content.Intent
 import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -154,9 +155,10 @@ class HomeFragment : Fragment() {
             // Maps Intent
             val encodedLatitude="49.2758"
             val encodedLongitude="-123.1200"
-            val encodedLocationName="Yaletown, Vancouver BC"
+            val encodedLocationName=Uri.encode("Yaletown, Vancouver BC")
 
             val uri: Uri = Uri.parse("geo:$encodedLatitude,$encodedLongitude?z=0&q=$encodedLocationName")
+            //val uri: Uri = Uri.parse("google.streetview:cbll=$encodedLatitude,$encodedLongitude")
             val intent:Intent=Intent(Intent.ACTION_VIEW,uri)
             startActivity(intent)
 
@@ -169,6 +171,31 @@ class HomeFragment : Fragment() {
 
         // Weekend tab filters by events this weekend
         txt_events_this_weekend.setOnClickListener {
+
+            // Calendar
+            val eventStart: Long = Calendar.getInstance().run {
+                set(2020, 1, 29, 13, 30)
+                timeInMillis
+            }
+            val eventEnd: Long = Calendar.getInstance().run {
+                set(2020, 1, 29, 14, 30)
+                timeInMillis
+            }
+            val eventName="Ice Skating"
+            val eventDescription="Seasonal ice skating"
+            val eventCoordinates = "49.2758, -123.1200"
+            val intent = Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, eventStart)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, eventEnd)
+                .putExtra(CalendarContract.Events.TITLE, eventName)
+                .putExtra(CalendarContract.Events.DESCRIPTION, eventDescription)
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, eventCoordinates)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+                .putExtra(Intent.EXTRA_EMAIL, "bob@cool.net,cool@bob.tv")
+            startActivity(intent)
+
+
 
             /*changeColor(it)
             filterList.clear()
