@@ -29,7 +29,7 @@ class ResultsViewModel(val repo: Repository): ViewModel() {
                 eventImageList.add(eventImage)
             }
             it.locations()?.forEach { loc ->
-                val eventLocation = EventsQuery.Location(loc.__typename(), loc.distanceFromUser(), loc.name(), loc.zipcode())
+                val eventLocation = EventsQuery.Location(loc.__typename(), loc.distanceFromUser(), loc.name(), loc.zipcode(), loc.latitude(), loc.longitude())
                 locationsList.add(eventLocation)
             }
             it.tags()?.forEach { aTag ->
@@ -43,7 +43,8 @@ class ResultsViewModel(val repo: Repository): ViewModel() {
                 it.description(),
                 it.start(),
                 it.end(),
-                EventsQuery.Creator(it.creator()?.__typename() ?: "User", it.creator()?.firstName()),
+                it.ticketPrice(),
+                EventsQuery.Creator(it.creator()?.__typename() ?: "User", it.creator()?.profileImage() ,it.creator()?.firstName()),
                 eventImageList,
                 locationsList,
                 tagsList
