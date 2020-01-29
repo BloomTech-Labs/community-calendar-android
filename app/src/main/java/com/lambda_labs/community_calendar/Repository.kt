@@ -2,10 +2,12 @@ package com.lambda_labs.community_calendar
 
 import EventsByLocationQuery
 import EventsQuery
+import RSVPMutation
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room.databaseBuilder
 import com.apollographql.apollo.api.Response
+import com.apollographql.apollo.rx2.rxMutate
 import com.apollographql.apollo.rx2.rxQuery
 import com.lambda_labs.community_calendar.apollo.ApolloClient
 import com.lambda_labs.community_calendar.model.Search
@@ -92,5 +94,21 @@ class Repository(app: App) {
                     _locationEvents.value = ArrayList()
                 }
             })
+    }
+
+    private val _isRsvp = MutableLiveData<Boolean>()
+    val isRsvp: LiveData<Boolean> = _isRsvp
+
+    // Takes in user auth token and the id of an event and adds event to user rsvp's
+    fun rsvpForEvent(token: String, eventId: String): Disposable{
+        return ApolloClient.authClient(token).rxMutate(RSVPMutation(eventId))
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .doOnError { t -> println(t.message) }
+            .doOnSuccess { response ->
+                _isRsvp.value = response.data()?.rsvpEvent()
+            }
+            .subscribe()
+
     }
 }
