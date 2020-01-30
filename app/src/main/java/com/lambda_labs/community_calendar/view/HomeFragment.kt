@@ -18,6 +18,7 @@ import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
 import com.lambda_labs.community_calendar.model.Filter
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
+import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
@@ -215,6 +216,14 @@ class HomeFragment : Fragment() {
 
         btn_list.setOnClickListener {
             selectListView(main_event_recycler, filterList, mainActivity, btn_grid, btn_list)
+        }
+
+        // Show all of the featured events
+        txt_see_all.setOnClickListener {
+            val customMessage = "All Featured Events"
+            val viewModel: SearchViewModel by viewModel()
+            val bundle:Bundle = viewModel.createBundle(featuredList, customMessage)
+            findNavController().navigate(R.id.searchResultFragment, bundle)
         }
     }
 }
