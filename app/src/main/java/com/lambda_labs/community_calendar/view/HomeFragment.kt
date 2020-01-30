@@ -152,16 +152,22 @@ class HomeFragment : Fragment() {
         // Tomorrow tab filters by tomorrows events
         txt_events_tomorrow.setOnClickListener {
 
-            // Maps Intent
-            val encodedLatitude="49.2758"
-            val encodedLongitude="-123.1200"
-            val encodedLocationName=Uri.encode("Yaletown, Vancouver BC")
+            // Pass event location to external maps app
+            // Get the values from the selected event details
+            val eventID=4
+            val encodedLatitude= Uri.encode(events[eventID].locations()?.get(0)?.latitude().toString())
+            val encodedLongitude= Uri.encode(events[eventID].locations()?.get(0)?.longitude().toString())
+            val encodedLocationName=Uri.encode(events[eventID].locations()?.get(0)?.name())
 
-            val uri: Uri = Uri.parse("geo:$encodedLatitude,$encodedLongitude?z=0&q=$encodedLocationName")
-            //val uri: Uri = Uri.parse("google.streetview:cbll=$encodedLatitude,$encodedLongitude")
-            val intent:Intent=Intent(Intent.ACTION_VIEW,uri)
+            // By Name
+            //val uriMaps: Uri = Uri.parse("geo:0,0?z=17&q=$encodedLocationName")
+
+            // By Coordinates
+            val uriMaps: Uri = Uri.parse("geo:0,0?q=$encodedLatitude,$encodedLongitude($encodedLocationName)&z=17")
+
+            // Create the Intent object to have the OS decide how to show the place on the Map
+            val intent:Intent=Intent(Intent.ACTION_VIEW,uriMaps)
             startActivity(intent)
-
 
 
             /*changeColor(it)
@@ -172,27 +178,37 @@ class HomeFragment : Fragment() {
         // Weekend tab filters by events this weekend
         txt_events_this_weekend.setOnClickListener {
 
-            // Calendar
-            val eventStart: Long = Calendar.getInstance().run {
-                set(2020, 1, 29, 13, 30)
-                timeInMillis
-            }
-            val eventEnd: Long = Calendar.getInstance().run {
-                set(2020, 1, 29, 14, 30)
-                timeInMillis
-            }
-            val eventName="Ice Skating"
-            val eventDescription="Seasonal ice skating"
-            val eventCoordinates = "49.2758, -123.1200"
-            val intent = Intent(Intent.ACTION_INSERT)
+            // Pass the event date and time to external calendar app
+            // Convert the times from a String to a Date to a Calendar and into epoch milliseconds
+            val eventID=4
+            // Start time
+            var timeToString: String =events[eventID].start().toString()
+            var stringToDate: Date = stringToDate(timeToString)
+            var dateToCalendar: Calendar = toCalendar(stringToDate)
+            val startTimeMilliseconds: Long =dateToCalendar.timeInMillis
+
+            // End time
+            timeToString =events[eventID].end().toString()
+            stringToDate = stringToDate(timeToString)
+            dateToCalendar = toCalendar(stringToDate)
+            val endTimeMilliseconds: Long =dateToCalendar.timeInMillis
+
+            // Extract the event information for the calendar entry
+            val eventName=events[eventID].title()
+            val eventDescription=events[eventID].description()
+            val eventLatitude=events[eventID].locations()?.get(0)?.latitude()
+            val eventLongitude=events[eventID].locations()?.get(0)?.longitude()
+            val eventCoordinates = "$eventLatitude,$eventLongitude"
+
+            // Create the Intent object with extras of event info to launch externally
+            val intent:Intent = Intent(Intent.ACTION_INSERT)
                 .setData(CalendarContract.Events.CONTENT_URI)
-                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, eventStart)
-                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, eventEnd)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMilliseconds)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMilliseconds)
                 .putExtra(CalendarContract.Events.TITLE, eventName)
                 .putExtra(CalendarContract.Events.DESCRIPTION, eventDescription)
                 .putExtra(CalendarContract.Events.EVENT_LOCATION, eventCoordinates)
                 .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
-                .putExtra(Intent.EXTRA_EMAIL, "bob@cool.net,cool@bob.tv")
             startActivity(intent)
 
 
