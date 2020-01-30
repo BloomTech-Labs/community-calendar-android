@@ -1,13 +1,17 @@
 package com.lambda_labs.community_calendar.adapter
 
 import EventsQuery
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.util.JsonUtil.eventJsonKey
+import com.lambda_labs.community_calendar.util.JsonUtil.eventToJson
 import com.lambda_labs.community_calendar.util.displayTime
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.event_recycler_item_grid.view.*
@@ -49,11 +53,24 @@ class EventRecycler(
                 holder.eventCommunity.text = event.locations()?.get(0)?.name()
             }
         }
+
+        holder.cardView.setOnClickListener {
+            val bundle = Bundle()
+            val eventJson = eventToJson(event)
+            bundle.putString(eventJsonKey(), eventJson)
+            //it.findNavController().navigate(*Put Event Page Id here*, bundle)
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
 
         // Change the variables from the grid's layout or list's layout variables depending up which is selected
+        val cardView: CardView = if (isGridViewSelected) {
+            view.card_view_grid
+        } else {
+            view.card_view
+        }
+
         val eventImage: ImageView = if (isGridViewSelected) {
             view.img_event_grid
         } else {

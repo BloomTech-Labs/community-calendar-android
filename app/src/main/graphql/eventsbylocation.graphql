@@ -16,6 +16,9 @@ query EventsByLocation($latitude: Float!, $longitude: Float!) {
         locations(userLatitude: $latitude, userLongitude: $longitude) {
             distanceFromUser
             name
+            streetAddress
+            state
+            city
             zipcode
             latitude
             longitude

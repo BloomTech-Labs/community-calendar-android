@@ -106,6 +106,10 @@ dependencies {
 
     implementation 'androidx.legacy:legacy-support-v4:1.0.0'
 
+    // Moshi
+    implementation "com.squareup.moshi:moshi-kotlin:1.9.2"
+
+
     // Testing
     testImplementation 'junit:junit:4.12'
     testImplementation 'androidx.test:core:1.2.0'
