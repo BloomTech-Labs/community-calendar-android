@@ -7,6 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import androidx.cardview.widget.CardView
+import androidx.navigation.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
@@ -58,7 +59,7 @@ class EventRecycler(
             val bundle = Bundle()
             val eventJson = eventToJson(event)
             bundle.putString(eventJsonKey(), eventJson)
-            //it.findNavController().navigate(*Put Event Page Id here*, bundle)
+            it.findNavController().navigate(R.id.eventDetailsFragment, bundle)
         }
     }
 

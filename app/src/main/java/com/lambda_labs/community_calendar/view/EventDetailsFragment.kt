@@ -2,15 +2,14 @@ package com.lambda_labs.community_calendar.view
 
 
 import android.os.Bundle
-import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.fragment.app.Fragment
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.util.JsonUtil.eventJsonKey
+import com.lambda_labs.community_calendar.util.JsonUtil.jsonToEvent
 
-/**
- * A simple [Fragment] subclass.
- */
 class EventDetailsFragment : Fragment() {
 
     override fun onCreateView(
@@ -19,6 +18,17 @@ class EventDetailsFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_event_details, container, false)
+    }
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+
+        val jsonEvent = arguments?.getString(eventJsonKey(), "") ?: ""
+
+        val event = jsonToEvent(jsonEvent)
+
+        println(event?.title())
     }
 
 
