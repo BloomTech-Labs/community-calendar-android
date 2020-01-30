@@ -16,6 +16,9 @@ query Events {
         locations {
           distanceFromUser
           name
+          streetAddress
+          state
+          city
           zipcode
           latitude
           longitude

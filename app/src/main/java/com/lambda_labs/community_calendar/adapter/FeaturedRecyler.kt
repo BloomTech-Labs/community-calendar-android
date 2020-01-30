@@ -1,13 +1,16 @@
 package com.lambda_labs.community_calendar.adapter
 
 import EventsQuery
+import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
+import androidx.cardview.widget.CardView
 import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.util.JsonUtil
 import com.lambda_labs.community_calendar.util.displayTime
 import com.lambda_labs.community_calendar.util.getDisplayDay
 import com.lambda_labs.community_calendar.util.stringToDate
@@ -37,9 +40,17 @@ class FeaturedRecycler(private val events: ArrayList<EventsQuery.Event>) :
         holder.date.text = getDisplayDay(stringToDate(event.start().toString()))
         holder.title.text = event.title()
         holder.time.text = displayTime(event.start(), event.end())
+
+        holder.card.setOnClickListener {
+            val bundle = Bundle()
+            val eventJson = JsonUtil.eventToJson(event)
+            bundle.putString(JsonUtil.eventJsonKey(), eventJson)
+            //it.findNavController().navigate(*Put Event Page Id here*, bundle)
+        }
     }
 
     inner class ViewHolder(view: View) : RecyclerView.ViewHolder(view) {
+        val card: CardView = view.featured_event_card_view
         val image: ImageView = view.img_featured
         val date: MaterialTextView = view.txt_featured_date
         val title: MaterialTextView = view.txt_featured_name
