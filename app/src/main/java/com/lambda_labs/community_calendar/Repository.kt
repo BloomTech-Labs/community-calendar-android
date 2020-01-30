@@ -13,6 +13,7 @@ import com.lambda_labs.community_calendar.apollo.ApolloClient
 import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.room.RecentSearchDatabase
 import io.reactivex.Flowable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
@@ -96,19 +97,14 @@ class Repository(app: App) {
             })
     }
 
-    private val _isRsvp = MutableLiveData<Boolean>()
-    val isRsvp: LiveData<Boolean> = _isRsvp
+
 
     // Takes in user auth token and the id of an event and adds event to user rsvp's
-    fun rsvpForEvent(token: String, eventId: String): Disposable{
+    fun rsvpForEvent(token: String, eventId: String): Single<Response<RSVPMutation.Data>> {
         return ApolloClient.authClient(token).rxMutate(RSVPMutation(eventId))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-            .doOnError { t -> println(t.message) }
-            .doOnSuccess { response ->
-                _isRsvp.value = response.data()?.rsvpEvent()
-            }
-            .subscribe()
+
 
     }
 }

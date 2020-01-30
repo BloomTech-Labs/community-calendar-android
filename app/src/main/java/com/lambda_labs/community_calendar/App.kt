@@ -41,6 +41,7 @@ class App: Application() {
         viewModel { SearchViewModel(get()) }
         viewModel { MainActivityViewModel(get()) }
         viewModel { ResultsViewModel(get()) }
+        viewModel { EventDetailsViewModel(get()) }
         single { SharedFilterViewModel() }
         single { Repository(get()) }
     }
