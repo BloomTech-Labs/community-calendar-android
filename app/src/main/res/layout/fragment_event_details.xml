@@ -68,7 +68,6 @@
         android:id="@+id/c_hosted_by"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:background="@drawable/textbox_background"
         app:layout_constraintTop_toBottomOf="@+id/dark_text_background"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toStartOf="@id/c_time">
@@ -127,14 +126,13 @@
         android:id="@+id/c_time"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/textbox_background"
         app:layout_constraintTop_toBottomOf="@+id/dark_text_background"
         app:layout_constraintStart_toEndOf="@id/c_hosted_by"
-        app:layout_constraintEnd_toStartOf="@id/txt_ticket_type"
+        app:layout_constraintEnd_toStartOf="@id/c_ticket_type"
         app:layout_constraintBottom_toBottomOf="@+id/c_hosted_by">
 
         <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/txt_time_header"
+            android:id="@+id/header_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
@@ -159,28 +157,55 @@
             android:textAlignment="center"
             android:textSize="14sp"
             android:text="3:30 pm\n-\n5:30 pm"
-            app:layout_constraintTop_toBottomOf="@+id/txt_time_header"
+            app:layout_constraintTop_toBottomOf="@+id/header_time"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"/>
 
-
-
     </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/txt_ticket_type"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/c_ticket_type"
         android:layout_width="0dp"
         android:layout_height="0dp"
-        android:background="@drawable/textbox_background"
         android:fontFamily="@font/poppins_light"
         android:textSize="14sp"
         android:maxLines="1"
+        android:textAlignment="center"
         android:text="This Address"
         app:layout_constraintTop_toBottomOf="@+id/dark_text_background"
         app:layout_constraintStart_toEndOf="@id/c_time"
         app:layout_constraintEnd_toStartOf="@id/btn_follow"
-        app:layout_constraintBottom_toBottomOf="@id/c_time"/>
+        app:layout_constraintBottom_toBottomOf="@id/c_time">
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/header_ticket_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="35dp"
+            android:fontFamily="@font/poppins_regular"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:text="Ticket Type:"
+            app:layout_constraintTop_toTopOf="parent"
+            app:layout_constraintBottom_toTopOf="@id/txt_ticket_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+        <com.google.android.material.textview.MaterialTextView
+            android:id="@+id/txt_ticket_type"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="@font/poppins_medium"
+            android:textAlignment="center"
+            android:textSize="14sp"
+            android:text="Free"
+            android:textColor="#FF6768"
+            app:layout_constraintTop_toBottomOf="@id/header_ticket_type"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/btn_follow"
@@ -197,8 +222,8 @@
         android:textColor="#FFFFFF"
         android:text="Follow\nHost"
         app:layout_constraintTop_toBottomOf="@+id/dark_text_background"
-        app:layout_constraintBottom_toBottomOf="@id/txt_ticket_type"
-        app:layout_constraintStart_toEndOf="@id/txt_ticket_type"
+        app:layout_constraintBottom_toBottomOf="@id/c_ticket_type"
+        app:layout_constraintStart_toEndOf="@id/c_ticket_type"
         app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
