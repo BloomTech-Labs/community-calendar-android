@@ -37,4 +37,14 @@
     <string name="searched">Searched</string>
     <string name="cancel">Cancel</string>
     <string name="view">View</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget mi proin sed libero enim sed faucibus turpis in. Urna et pharetra pharetra massa massa ultricies mi quis. Accumsan tortor posuere ac ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Urna et pharetra pharetra massa massa ultricies mi quis. Accumsan tortor posuere ac ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam........</string>
+    <string name="event_details">Event Details</string>
+    <string name="free">Free</string>
+    <string name="ticket_type">Ticket Type:</string>
+    <string name="this_address">This Address</string>
+    <string name="time">Time:</string>
+    <string name="cici">Cici</string>
+    <string name="hosted_by">Hosted by</string>
+    <string name="the_date">The Date</string>
+    <string name="hi_there">Hi there</string>
 </resources>
