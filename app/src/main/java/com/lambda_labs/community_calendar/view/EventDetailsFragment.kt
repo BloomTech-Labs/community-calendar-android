@@ -43,7 +43,7 @@ class EventDetailsFragment : Fragment() {
         details_layout.addView(searchBar)
         setSearchBarProperties(searchBar, true)
         searchBar.id = View.generateViewId()
-        //viewModel.setupSearchBarConstraints(details_layout, searchBar, event_image)
+        viewModel.setupSearchBarConstraints(details_layout, searchBar, event_image)
 
 
         val jsonEvent = arguments?.getString(eventJsonKey(), "") ?: ""

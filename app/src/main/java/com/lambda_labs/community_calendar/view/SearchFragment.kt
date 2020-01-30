@@ -77,6 +77,7 @@ class SearchFragment : Fragment() {
         // Navigates out of SearchFragment to previous fragment.
         // onDestroy has more logic to wrap this action up.
         btn_cancel.setOnClickListener {
+            searchBar.clearFocus()
             findNavController().navigateUp()
         }
 
@@ -124,6 +125,7 @@ class SearchFragment : Fragment() {
         // Search actions
         searchBar.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
             override fun onQueryTextSubmit(query: String?): Boolean {
+                searchBar.clearFocus()
                 val search = convertFilterToSearch(filter)
                 // Function connects to repository (see above function)
                 hideKeyboard(searchBar.context as MainActivity)
@@ -179,9 +181,7 @@ class SearchFragment : Fragment() {
 
     override fun onDestroy() {
         hideKeyboard(mainActivity)
-        searchBar.clearFocus()
         searchBar.setQuery("", false)
-
         super.onDestroy()
     }
 
@@ -216,6 +216,8 @@ class SearchFragment : Fragment() {
             holder.searchText.setOnClickListener {
                 val filterEvents = searchEvents(events, recentSearch)
                 val bundle = viewModel.createBundle(filterEvents, recentSearch.searchText)
+                // Clear focus to prevent searchBars focus listener from triggering
+                searchBar.clearFocus()
                 findNavController().navigate(R.id.searchResultFragment, bundle)
             }
 
