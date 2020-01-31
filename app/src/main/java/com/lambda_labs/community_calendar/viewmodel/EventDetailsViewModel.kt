@@ -1,5 +1,6 @@
 package com.lambda_labs.community_calendar.viewmodel
 
+import UserQuery
 import android.util.TypedValue
 import android.view.View
 import androidx.appcompat.widget.SearchView
@@ -18,12 +19,15 @@ class EventDetailsViewModel(private val repo: Repository): ViewModel() {
     private val _isRsvp = MutableLiveData<Boolean>()
     private val isRsvp: LiveData<Boolean> = _isRsvp
 
-    fun rsvpForEvent(token: String, eventId: String) : LiveData<Boolean> {
+    fun rsvpForEvent(token: String, eventId: String){
         disposable = repo.rsvpForEvent(token, eventId)
             .subscribe(
             {_isRsvp.value = it.data()?.rsvpEvent()},
             {println(it.message)}
         )
+    }
+
+    fun isRsvp(): LiveData<Boolean> {
         return isRsvp
     }
 

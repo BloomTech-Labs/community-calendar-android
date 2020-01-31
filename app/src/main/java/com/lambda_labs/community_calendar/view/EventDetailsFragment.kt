@@ -1,14 +1,14 @@
 package com.lambda_labs.community_calendar.view
 
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
-import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.util.JsonUtil.eventJsonKey
@@ -67,6 +67,9 @@ class EventDetailsFragment : Fragment() {
 
         // Sets the attend button to correct text if user previously RSVP'd
         val userToken = viewModel.getToken()
+        val eventId = event?.id()
+
+
         if (userToken != null){
             viewModel.startUserRetrieval(userToken)
             viewModel.getUser().observe(viewLifecycleOwner, Observer { user ->
@@ -77,16 +80,24 @@ class EventDetailsFragment : Fragment() {
         }
 
 
+        viewModel.isRsvp().observe(viewLifecycleOwner, Observer { rsvpd ->
+            val text = if (rsvpd) "Unattend" else "Attend"
+            btn_attend.text = text
+            pb_details.visibility = View.GONE
+            details_layout.overlay.clear()
+        })
+
+
         btn_attend.setOnClickListener {
-            val eventId = event?.id()
+
             if (!eventId.isNullOrEmpty() && !userToken.isNullOrEmpty()) {
-                val rsvp = viewModel.rsvpForEvent(userToken, eventId)
-                rsvp.observe(viewLifecycleOwner, Observer { rsvpd ->
-                    val text = if (rsvpd) "Hello there" else "General Kenobi"
-                    Toast.makeText(it.context, text, Toast.LENGTH_SHORT).show()
-                    it as MaterialButton
-                    it.text = text
-                })
+                viewModel.rsvpForEvent(userToken, eventId)
+                val dim = ColorDrawable(Color.BLACK)
+                dim.setBounds(0,0,details_layout.width, details_layout.height)
+                dim.alpha = 177
+                pb_details.visibility = View.VISIBLE
+                details_layout.overlay.add(dim)
+
             }
             else if (userToken.isNullOrEmpty()) {
                 Toast.makeText(it.context, "Please Login :)", Toast.LENGTH_SHORT).show()

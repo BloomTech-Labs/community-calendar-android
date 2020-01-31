@@ -105,8 +105,6 @@ class Repository(val app: App) {
         return ApolloClient.authClient(token).rxMutate(RSVPMutation(eventId))
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
-
-
     }
 
     private val _user = MutableLiveData<UserQuery.User>()
