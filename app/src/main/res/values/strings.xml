@@ -49,5 +49,6 @@
     <string name="hi_there">Hi there</string>
     <string name="read_more">Read more</string>
     <string name="attend">Attend</string>
+    <string name="unattend">Unattend</string>
     <string name="follow_nhost">Follow Host</string>
 </resources>

@@ -1,8 +1,11 @@
 package com.lambda_labs.community_calendar.view
 
+import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
+import android.net.Uri
 import android.os.Bundle
+import android.provider.CalendarContract
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -18,6 +21,7 @@ import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.fragment_event_details.*
 import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
+import java.util.*
 
 class EventDetailsFragment : Fragment() {
 
@@ -74,14 +78,19 @@ class EventDetailsFragment : Fragment() {
             viewModel.startUserRetrieval(userToken)
             viewModel.getUser().observe(viewLifecycleOwner, Observer { user ->
                 user.rsvps()?.forEach {rsvp ->
-                    if (rsvp.title() == event?.title()) btn_attend.text = "Unattend"
+                    if (rsvp.title() == event?.title())
+                    {
+                        btn_attend.text = getString(R.string.attend)
+                        btn_calendar.visibility = View.VISIBLE
+                    }
                 }
             })
         }
 
 
         viewModel.isRsvp().observe(viewLifecycleOwner, Observer { rsvpd ->
-            val text = if (rsvpd) "Unattend" else "Attend"
+            val text = if (rsvpd) getString(R.string.unattend) else getString(R.string.attend)
+            btn_calendar.visibility = if (rsvpd) View.VISIBLE else View.GONE
             btn_attend.text = text
             pb_details.visibility = View.GONE
             details_layout.overlay.clear()
@@ -102,6 +111,61 @@ class EventDetailsFragment : Fragment() {
             else if (userToken.isNullOrEmpty()) {
                 Toast.makeText(it.context, "Please Login :)", Toast.LENGTH_SHORT).show()
             }
+        }
+
+        btn_map.setOnClickListener {
+            // Pass event location to external maps app
+
+            // Get the values from the selected event details
+            val encodedLatitude= Uri.encode(event?.locations()?.get(0)?.latitude().toString())
+            val encodedLongitude= Uri.encode(event?.locations()?.get(0)?.longitude().toString())
+            val encodedLocationName= Uri.encode(event?.locations()?.get(0)?.name())
+
+            // By Name
+            //val uriMaps: Uri = Uri.parse("geo:0,0?z=17&q=$encodedLocationName")
+
+            // By Coordinates
+            val uriMaps: Uri = Uri.parse("geo:0,0?q=$encodedLatitude,$encodedLongitude($encodedLocationName)&z=17")
+
+            // Create the Intent object to have the OS decide how to show the place on the Map
+            val intent: Intent = Intent(Intent.ACTION_VIEW,uriMaps)
+            startActivity(intent)
+        }
+
+        btn_calendar.setOnClickListener {
+            // Pass the event date and time to external calendar app
+
+            // Convert the times from a String to a Date to a Calendar and into epoch milliseconds
+
+            // Start time
+            var timeToString: String =event?.start().toString()
+            var stringToDate: Date = stringToDate(timeToString)
+            var dateToCalendar: Calendar = toCalendar(stringToDate)
+            val startTimeMilliseconds: Long =dateToCalendar.timeInMillis
+
+            // End time
+            timeToString =event?.end().toString()
+            stringToDate = stringToDate(timeToString)
+            dateToCalendar = toCalendar(stringToDate)
+            val endTimeMilliseconds: Long =dateToCalendar.timeInMillis
+
+            // Extract the event information for the calendar entry
+            val eventName=event?.title()
+            val eventDescription=event?.description()
+            val eventLatitude=event?.locations()?.get(0)?.latitude()
+            val eventLongitude=event?.locations()?.get(0)?.longitude()
+            val eventCoordinates = "$eventLatitude,$eventLongitude"
+
+            // Create the Intent object with extras of event info to launch externally
+            val intent:Intent = Intent(Intent.ACTION_INSERT)
+                .setData(CalendarContract.Events.CONTENT_URI)
+                .putExtra(CalendarContract.EXTRA_EVENT_BEGIN_TIME, startTimeMilliseconds)
+                .putExtra(CalendarContract.EXTRA_EVENT_END_TIME, endTimeMilliseconds)
+                .putExtra(CalendarContract.Events.TITLE, eventName)
+                .putExtra(CalendarContract.Events.DESCRIPTION, eventDescription)
+                .putExtra(CalendarContract.Events.EVENT_LOCATION, eventCoordinates)
+                .putExtra(CalendarContract.Events.AVAILABILITY, CalendarContract.Events.AVAILABILITY_BUSY)
+            startActivity(intent)
         }
     }
 }
