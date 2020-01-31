@@ -25,6 +25,7 @@ object ApolloClient {
         val authOkHttp = okHttp.addInterceptor {
             val request = it.request()
                 .newBuilder()
+                .removeHeader("Authorization")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
             it.proceed(request)

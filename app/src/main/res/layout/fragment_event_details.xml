@@ -52,7 +52,6 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/butler_bold"
             android:textSize="24sp"
-            android:maxLines="1"
             android:textColor="#FFFFFF"
             android:text="@string/hi_there"/>
 
@@ -64,7 +63,6 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_semi_bold"
             android:textSize="14sp"
-            android:maxLines="1"
             android:textColor="#FFFFFF"
             android:text="@string/the_date"/>
 
@@ -77,7 +75,6 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="@font/poppins_light"
             android:textSize="14sp"
-            android:maxLines="1"
             android:textColor="#FFFFFF"
             android:text="@string/this_address"/>
     </LinearLayout>
@@ -327,7 +324,7 @@
                 android:layout_marginEnd="16dp"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:background="@drawable/attend_button_outline"
-                android:text="Open in maps"
+                android:text="@string/open_in_maps"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#21242C"
                 android:textAllCaps="false"
@@ -342,7 +339,7 @@
                 android:visibility="gone"
                 style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:background="@drawable/attend_button_outline"
-                android:text="Save in Calendar"
+                android:text="@string/save_in_calendar"
                 android:textColor="#FFFFFF"
                 android:backgroundTint="#21242C"
                 android:textAllCaps="false"
