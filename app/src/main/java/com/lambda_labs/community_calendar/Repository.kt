@@ -3,6 +3,9 @@ package com.lambda_labs.community_calendar
 import EventsByLocationQuery
 import EventsQuery
 import RSVPMutation
+import UserQuery
+import android.content.Context
+import android.content.SharedPreferences
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.room.Room.databaseBuilder
@@ -19,7 +22,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 
-class Repository(app: App) {
+class Repository(val app: App) {
 
     /*
         Room
@@ -97,8 +100,6 @@ class Repository(app: App) {
             })
     }
 
-
-
     // Takes in user auth token and the id of an event and adds event to user rsvp's
     fun rsvpForEvent(token: String, eventId: String): Single<Response<RSVPMutation.Data>> {
         return ApolloClient.authClient(token).rxMutate(RSVPMutation(eventId))
@@ -106,5 +107,48 @@ class Repository(app: App) {
             .observeOn(AndroidSchedulers.mainThread())
 
 
+    }
+
+    private val _user = MutableLiveData<UserQuery.User>()
+    val user: LiveData<UserQuery.User> = _user
+
+    // Helps us get user for the sake of seeing if they have previously rsvp'd an event when clicked
+    // Or helps setup profile page
+    fun getUser(token: String): Disposable{
+        return ApolloClient.authClient(token).rxQuery(UserQuery())
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribeWith(object : DisposableObserver<Response<UserQuery.Data>>(){
+                override fun onComplete() {}
+
+                override fun onNext(t: Response<UserQuery.Data>) {
+                    _user.value = t.data()?.user()
+                }
+
+                override fun onError(e: Throwable) {
+                }
+            })
+    }
+
+    lateinit var sharedPrefs: SharedPreferences
+    private val tokenKey = "token_key"
+    // For the sake of using
+    var token: String? = null
+
+    // So user can stay logged in if they exit the app and re-enter (Tokens expire in an hour)
+    // Function should only ever be used before a user manually logs in to check for token
+    fun getOldToken(): String?{
+        sharedPrefs = app.getSharedPreferences("Token", Context.MODE_PRIVATE)
+        token = sharedPrefs.getString(tokenKey, "")
+        return token
+    }
+
+    // Saves the token when the user logs in
+    fun saveToken(userToken: String?){
+        token = userToken
+        if (userToken != null){
+            sharedPrefs = app.getSharedPreferences("Token", Context.MODE_PRIVATE)
+            sharedPrefs.edit().putString(userToken, tokenKey).apply()
+        }
     }
 }

@@ -6,7 +6,7 @@ import androidx.lifecycle.ViewModel
 import com.lambda_labs.community_calendar.Repository
 import io.reactivex.disposables.Disposable
 
-class MainActivityViewModel(val repo: Repository) : ViewModel() {
+class MainActivityViewModel(private val repo: Repository) : ViewModel() {
 
     // Creates LiveData to be observed on the HomeFragment
 

@@ -16,14 +16,17 @@ import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
 import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginFragment : Fragment() {
 
     lateinit var auth0: Auth0
     lateinit var mainActivity: MainActivity
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -44,10 +47,7 @@ class LoginFragment : Fragment() {
                 override fun onSuccess(credentials: Credentials) {
 
 //                    Save and store user token when user logs in
-                    App.sharedPrefs.edit().putString(credentials.accessToken,
-                        App.TOKEN_KEY
-                    ).apply()
-                    App.token = credentials.accessToken
+                    viewModel.saveToken(credentials.accessToken)
 
 //                    upon successful login "Log In" nav button changes to the "Profile" button label
                     mainActivity.runOnUiThread {

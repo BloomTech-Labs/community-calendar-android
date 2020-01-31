@@ -21,7 +21,7 @@ import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 @Suppress("UNCHECKED_CAST")
-class SearchViewModel(val repo: Repository): ViewModel() {
+class SearchViewModel(private val repo: Repository): ViewModel() {
     // Database call will be done in viewmodel
     private var disposable: Disposable? = null
     private var searchDisposable: Disposable? = null

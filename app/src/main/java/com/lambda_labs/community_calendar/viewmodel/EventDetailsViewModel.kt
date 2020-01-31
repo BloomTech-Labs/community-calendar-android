@@ -11,9 +11,10 @@ import androidx.lifecycle.ViewModel
 import com.lambda_labs.community_calendar.Repository
 import io.reactivex.disposables.Disposable
 
-class EventDetailsViewModel(val repo: Repository): ViewModel() {
+class EventDetailsViewModel(private val repo: Repository): ViewModel() {
 
     private var disposable: Disposable? = null
+    private var userDisposable: Disposable? = null
     private val _isRsvp = MutableLiveData<Boolean>()
     private val isRsvp: LiveData<Boolean> = _isRsvp
 
@@ -38,9 +39,22 @@ class EventDetailsViewModel(val repo: Repository): ViewModel() {
         constraintSet.applyTo(parent)
     }
 
+    fun getToken(): String?{
+        return repo.token
+    }
+
+    fun startUserRetrieval(token: String) {
+        userDisposable = repo.getUser(token)
+    }
+
+    fun getUser(): LiveData<UserQuery.User>{
+        return repo.user
+    }
+
     override fun onCleared() {
         super.onCleared()
         disposable?.dispose()
+        userDisposable?.dispose()
     }
 
 }

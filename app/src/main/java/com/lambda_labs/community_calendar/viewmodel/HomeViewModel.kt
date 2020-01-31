@@ -13,7 +13,7 @@ import androidx.recyclerview.widget.RecyclerView
 import com.google.android.material.textview.MaterialTextView
 import com.lambda_labs.community_calendar.Repository
 
-class HomeViewModel(val repo: Repository): ViewModel() {
+class HomeViewModel(private val repo: Repository): ViewModel() {
 
 
 

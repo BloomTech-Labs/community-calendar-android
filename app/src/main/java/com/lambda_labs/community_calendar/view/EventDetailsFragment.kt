@@ -1,15 +1,14 @@
 package com.lambda_labs.community_calendar.view
 
-
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
+import androidx.lifecycle.LifecycleOwner
 import androidx.lifecycle.Observer
 import com.google.android.material.button.MaterialButton
-import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.util.JsonUtil.eventJsonKey
@@ -35,6 +34,7 @@ class EventDetailsFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+
 
         if (searchBar.parent != null){
             (searchBar.parent as ViewGroup).removeView(searchBar)
@@ -65,12 +65,22 @@ class EventDetailsFragment : Fragment() {
         txt_ticket_type.text = if (price == 0.0) "Free" else "Paid"
         txt_event_details.text = event?.description()
 
+        // Sets the attend button to correct text if user previously RSVP'd
+        val userToken = viewModel.getToken()
+        if (userToken != null){
+            viewModel.startUserRetrieval(userToken)
+            viewModel.getUser().observe(viewLifecycleOwner, Observer { user ->
+                user.rsvps()?.forEach {rsvp ->
+                    if (rsvp.title() == event?.title()) btn_attend.text = "Unattend"
+                }
+            })
+        }
+
 
         btn_attend.setOnClickListener {
             val eventId = event?.id()
-            val token = App.token
-            if (!eventId.isNullOrEmpty() && !token.isNullOrEmpty()) {
-                val rsvp = viewModel.rsvpForEvent(token, eventId)
+            if (!eventId.isNullOrEmpty() && !userToken.isNullOrEmpty()) {
+                val rsvp = viewModel.rsvpForEvent(userToken, eventId)
                 rsvp.observe(viewLifecycleOwner, Observer { rsvpd ->
                     val text = if (rsvpd) "Hello there" else "General Kenobi"
                     Toast.makeText(it.context, text, Toast.LENGTH_SHORT).show()
@@ -78,16 +88,9 @@ class EventDetailsFragment : Fragment() {
                     it.text = text
                 })
             }
-            else if (token.isNullOrEmpty()) {
+            else if (userToken.isNullOrEmpty()) {
                 Toast.makeText(it.context, "Please Login :)", Toast.LENGTH_SHORT).show()
             }
         }
-
-
-
-
-
     }
-
-
 }
