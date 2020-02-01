@@ -9,6 +9,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import com.google.android.material.button.MaterialButton
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.util.JsonUtil.eventJsonKey
@@ -64,6 +65,27 @@ class EventDetailsFragment : Fragment() {
         // String.format("$%.2f", price)
         txt_ticket_type.text = if (price == 0.0) "Free" else "Paid"
         txt_event_details.text = event?.description()
+
+        // Handles logic for how to display btn_read_more,
+        txt_event_details.post {
+            val defaultDescriptionLineCount = 6
+            var withinDefaultLineCount = defaultDescriptionLineCount >= txt_event_details.lineCount
+            if (withinDefaultLineCount)
+                btn_read_more.visibility = View.GONE
+            txt_event_details.maxLines = defaultDescriptionLineCount
+            btn_read_more.setOnClickListener {
+                val readSelection = it as MaterialButton
+                if (withinDefaultLineCount){
+                    txt_event_details.maxLines = defaultDescriptionLineCount
+                    withinDefaultLineCount = false
+                    readSelection.text = getString(R.string.read_more)
+                }else {
+                    txt_event_details.maxLines = Integer.MAX_VALUE
+                    withinDefaultLineCount = true
+                    readSelection.text = getString(R.string.read_less)
+                }
+            }
+        }
 
         // Sets the attend button to correct text if user previously RSVP'd
         val userToken = viewModel.getToken()
