@@ -98,7 +98,7 @@ class EventDetailsFragment : Fragment() {
                 user.rsvps()?.forEach {rsvp ->
                     if (rsvp.title() == event?.title())
                     {
-                        btn_attend.text = getString(R.string.attend)
+                        btn_attend.text = getString(R.string.unattend)
                         btn_calendar.visibility = View.VISIBLE
                     }
                 }
