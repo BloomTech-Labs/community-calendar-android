@@ -37,16 +37,6 @@ class EventDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        if (searchBar.parent != null){
-            (searchBar.parent as ViewGroup).removeView(searchBar)
-        }
-
-        details_layout.addView(searchBar)
-        setSearchBarProperties(searchBar, true)
-        searchBar.id = View.generateViewId()
-        viewModel.setupSearchBarConstraints(details_layout, searchBar, event_image)
-
-
         val jsonEvent = arguments?.getString(eventJsonKey(), "") ?: ""
 
         val event = jsonToEvent(jsonEvent)
