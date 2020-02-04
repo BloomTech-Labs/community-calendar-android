@@ -2,7 +2,6 @@ package com.lambda_labs.community_calendar.viewmodel
 
 import EventsQuery
 import android.os.Bundle
-import android.os.Parcelable
 import androidx.appcompat.widget.SearchView
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
@@ -103,13 +102,10 @@ class SearchViewModel(private val repo: Repository): ViewModel() {
 
 
     // Creates a bundle of a filtered events from search and a string to display what was searched
-    fun createBundle(eventList: ArrayList<EventsQuery.Event>, searched: String): Bundle{
-        eventList as ArrayList<Parcelable>
+    fun createBundle(searched: String): Bundle{
         val bundle = Bundle()
-        bundle.putParcelableArrayList("list", eventList)
         bundle.putString("search", searched)
         return bundle
-
     }
 
     fun getFilterCount(filter: Filter?): Int{

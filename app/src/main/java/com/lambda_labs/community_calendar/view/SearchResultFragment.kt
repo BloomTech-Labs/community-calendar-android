@@ -3,11 +3,12 @@ package com.lambda_labs.community_calendar.view
 
 import EventsQuery
 import android.os.Bundle
-import android.os.Parcelable
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lambda_labs.community_calendar.R
@@ -16,6 +17,7 @@ import com.lambda_labs.community_calendar.util.recentSearchDisplayText
 import com.lambda_labs.community_calendar.util.selectGridView
 import com.lambda_labs.community_calendar.util.selectListView
 import com.lambda_labs.community_calendar.viewmodel.ResultsViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedSearchViewModel
 import kotlinx.android.synthetic.main.fragment_search_result.*
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
@@ -24,6 +26,7 @@ class SearchResultFragment : Fragment() {
 
     private lateinit var eventList: ArrayList<EventsQuery.Event>
     private val viewM: ResultsViewModel by viewModel()
+    private val sharedSearchViewModel: SharedSearchViewModel by activityViewModels()
     private var latitude: Double = -1.0
     private var longitude: Double = -1.0
 
@@ -42,11 +45,16 @@ class SearchResultFragment : Fragment() {
             findNavController().navigateUp()
         }
 
+        eventList = ArrayList()
+        sharedSearchViewModel.getFilteredList().observe(viewLifecycleOwner, Observer { events ->
+            events.forEach { event ->
+                eventList.add(event)
+            }
+            result_recycler_view.adapter?.notifyDataSetChanged()
+        })
+
         // gets bundle from SearchFragment and sets them to correct variables
         if (arguments != null) {
-            val filteredList = arguments?.getParcelableArrayList<Parcelable>("list")
-                ?: ArrayList<EventsQuery.Event>()
-            eventList = filteredList as ArrayList<EventsQuery.Event>
             val searched = arguments?.getString("search") ?: "N/A"
             txt_searched_by.text = recentSearchDisplayText("by", searched)
             latitude = arguments?.getDouble("Latitude", 40.7704094) ?: 40.7704094
