@@ -68,7 +68,7 @@ class EventDetailsFragment : Fragment() {
 
         // Handles logic for how to display btn_read_more,
         txt_event_details.post {
-            val defaultDescriptionLineCount = 6
+            val defaultDescriptionLineCount = 2
             var withinDefaultLineCount = defaultDescriptionLineCount >= txt_event_details.lineCount
             if (withinDefaultLineCount)
                 btn_read_more.visibility = View.GONE

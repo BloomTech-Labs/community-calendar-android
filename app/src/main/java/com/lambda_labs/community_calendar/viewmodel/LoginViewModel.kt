@@ -7,4 +7,8 @@ class LoginViewModel(private val repo: Repository): ViewModel() {
     fun saveToken(string: String?) {
         repo.saveToken(string)
     }
+
+    fun getToken(): String?{
+        return repo.token
+    }
 }

@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <com.google.android.material.card.MaterialCardView
     android:id="@+id/card_view_grid"
+    app:cardElevation="0dp"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="165dp"
@@ -20,7 +21,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent">
 
-            <ImageView
+            <androidx.appcompat.widget.AppCompatImageView
                 android:id="@+id/img_event_grid"
                 android:layout_width="165dp"
                 android:layout_height="100dp"
@@ -38,7 +39,7 @@
             android:fontFamily="@font/poppins_light"
             android:maxLength="34"
             android:maxLines="1"
-            android:text="MISSION DISTRICT"
+            android:text="@string/mission_district"
             android:textSize="10sp"
             app:layout_constraintBottom_toTopOf="@id/txt_event_name_grid"
             app:layout_constraintStart_toStartOf="parent"
@@ -51,7 +52,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_semi_bold"
             android:maxLines="1"
-            android:text="Event 1"
+            android:text="@string/event_1"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/txt_event_time_grid"
             app:layout_constraintStart_toStartOf="parent"
@@ -65,7 +66,7 @@
             android:ellipsize="end"
             android:fontFamily="@font/poppins_light"
             android:maxLines="1"
-            android:text="6:00pm - 10:00pm"
+            android:text="@string/_6_00pm_10_00pm"
             android:textSize="12sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"

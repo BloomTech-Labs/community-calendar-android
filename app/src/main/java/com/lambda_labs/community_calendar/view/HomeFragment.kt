@@ -101,7 +101,7 @@ class HomeFragment : Fragment() {
             // Temporarily mixing up the events randomly until a Feature flag has been set
             val shuffledEvents: MutableList<EventsQuery.Event> = events.toMutableList()
             shuffledEvents.shuffle()
-            val max: Int = 10 // Maximum number of events to show
+            val max = 10 // Maximum number of events to show
             var shuffledEventsCount: Int = shuffledEvents.size
             if (shuffledEventsCount > max) shuffledEventsCount = max
             for (i: Int in 0 until shuffledEventsCount) {
@@ -180,8 +180,7 @@ class HomeFragment : Fragment() {
             })
             isEmpty("upcoming")
             main_event_recycler.adapter?.notifyDataSetChanged()
-            val year = Calendar.getInstance().get(Calendar.YEAR)
-            val yearText = "$year - ${year+1}"
+            val yearText = "${getDisplayDay(getToday())}+"
             txt_event_date.text = yearText
         }
 

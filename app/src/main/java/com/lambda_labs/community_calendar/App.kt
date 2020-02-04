@@ -19,7 +19,7 @@ class App: Application() {
         // Start Koin
         startKoin {
             androidContext(this@App)
-            printLogger(Level.INFO /*Also DEBUG and ERROR Levels*/)
+            //printLogger(Level.INFO /*Also DEBUG and ERROR Levels*/)
             modules(modules)
         }
     }
