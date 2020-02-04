@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedSearchViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private val viewModel: HomeViewModel by viewModel()
     private val searchBar: CustomSearchView by inject()
+    private val sharedSearchViewModel: SharedSearchViewModel by activityViewModels()
 
     //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
@@ -221,7 +224,8 @@ class HomeFragment : Fragment() {
         txt_see_all.setOnClickListener {
             val customMessage = "All Featured Events"
             val viewModel: SearchViewModel by viewModel()
-            val bundle:Bundle = viewModel.createBundle(featuredList, customMessage)
+            val bundle:Bundle = viewModel.createBundle(customMessage)
+            sharedSearchViewModel.addList(featuredList)
             findNavController().navigate(R.id.searchResultFragment, bundle)
         }
     }
