@@ -100,14 +100,6 @@ class SearchViewModel(private val repo: Repository): ViewModel() {
         return checkLocation && checkZipcode && checkDate && checkTags
     }
 
-
-    // Creates a bundle of a filtered events from search and a string to display what was searched
-    fun createBundle(searched: String): Bundle{
-        val bundle = Bundle()
-        bundle.putString("search", searched)
-        return bundle
-    }
-
     fun getFilterCount(filter: Filter?): Int{
         var filterCount = 0
         if (filter != null){

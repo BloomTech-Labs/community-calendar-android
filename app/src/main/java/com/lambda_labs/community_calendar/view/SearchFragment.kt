@@ -142,14 +142,14 @@ class SearchFragment : Fragment() {
                     val filteredList = searchEvents(events, search)
                     viewModel.addRecentSearch(search)
                     sharedSearchViewModel.addList(filteredList)
-                    val bundle = viewModel.createBundle(search.searchText)
+                    val bundle = createBundle(search.searchText)
                     findNavController().navigate(R.id.searchResultFragment, bundle)
                 }else{
                     search.searchText = "Filters ($filterCount)"
                     val filteredList = searchEvents(events, search)
                     sharedSearchViewModel.addList(filteredList)
                     viewModel.addRecentSearch(search)
-                    val bundle = viewModel.createBundle(search.searchText)
+                    val bundle = createBundle(search.searchText)
                     findNavController().navigate(R.id.searchResultFragment, bundle)
                 }
                 return true
@@ -220,7 +220,7 @@ class SearchFragment : Fragment() {
 
             holder.searchText.setOnClickListener {
                 val filterEvents = searchEvents(events, recentSearch)
-                val bundle = viewModel.createBundle(recentSearch.searchText)
+                val bundle = createBundle(recentSearch.searchText)
                 sharedSearchViewModel.addList(filterEvents)
                 // Clear focus to prevent searchBars focus listener from triggering
                 searchBar.clearFocus()

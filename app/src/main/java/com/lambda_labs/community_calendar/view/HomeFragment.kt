@@ -223,8 +223,7 @@ class HomeFragment : Fragment() {
         // Show all of the featured events
         txt_see_all.setOnClickListener {
             val customMessage = "All Featured Events"
-            val viewModel: SearchViewModel by viewModel()
-            val bundle:Bundle = viewModel.createBundle(customMessage)
+            val bundle:Bundle = createBundle(customMessage)
             sharedSearchViewModel.addList(events)
             findNavController().navigate(R.id.searchResultFragment, bundle)
         }
