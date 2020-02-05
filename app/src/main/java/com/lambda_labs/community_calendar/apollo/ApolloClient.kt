@@ -5,7 +5,7 @@ import okhttp3.OkHttpClient
 
 object ApolloClient {
     // Base url of are GraphQL server
-    private val BASE_URL = "https://ccstaging.herokuapp.com/"
+    private val BASE_URL = "https://ccapollo-production.herokuapp.com/"
     // Building a OkHttpClient to use with Apollo
     private val okHttp = OkHttpClient.Builder()
     private val apolloClient = ApolloClient.builder().serverUrl(BASE_URL)
@@ -25,6 +25,7 @@ object ApolloClient {
         val authOkHttp = okHttp.addInterceptor {
             val request = it.request()
                 .newBuilder()
+                .removeHeader("Authorization")
                 .addHeader("Authorization", "Bearer $token")
                 .build()
             it.proceed(request)

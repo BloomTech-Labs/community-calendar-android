@@ -14,7 +14,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent">
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/img_featured"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
@@ -22,7 +22,7 @@
             android:scaleType="centerCrop"
             android:src="@drawable/sample_featured" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/gradient_top"
             android:layout_width="match_parent"
             android:layout_height="20dp"
@@ -30,7 +30,7 @@
             app:layout_constraintBottom_toTopOf="@id/gradient_bottom"
             app:layout_constraintStart_toStartOf="parent" />
 
-        <ImageView
+        <androidx.appcompat.widget.AppCompatImageView
             android:id="@+id/gradient_bottom"
             android:layout_width="match_parent"
             android:layout_height="0dp"
@@ -47,7 +47,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginTop="8dp"
             android:fontFamily="@font/poppins_light"
-            android:text="DECEMBER 20, FRIDAY"
+            android:text="@string/december_20_friday"
             android:textColor="@android:color/white"
             android:textSize="8sp"
             app:layout_constraintBottom_toTopOf="@id/txt_featured_name"
@@ -55,11 +55,12 @@
 
         <com.google.android.material.textview.MaterialTextView
             android:id="@+id/txt_featured_name"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="12dp"
+            android:layout_marginEnd="12dp"
             android:fontFamily="@font/butler_bold"
-            android:text="Tech Talk"
+            android:text="@string/tech_talk"
             android:textColor="@android:color/white"
             android:textSize="14sp"
             app:layout_constraintBottom_toTopOf="@id/txt_featured_time"
@@ -72,7 +73,7 @@
             android:layout_marginStart="12dp"
             android:layout_marginBottom="16dp"
             android:fontFamily="@font/poppins_light"
-            android:text="6:00pm - 10:00pm"
+            android:text="@string/_6_00pm_10_00pm"
             android:textColor="@android:color/white"
             android:textSize="8sp"
             app:layout_constraintBottom_toBottomOf="parent"

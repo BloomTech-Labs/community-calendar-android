@@ -19,6 +19,7 @@ import com.lambda_labs.community_calendar.util.hideKeyboard
 import com.lambda_labs.community_calendar.viewmodel.MainActivityViewModel
 import org.koin.androidx.viewmodel.ext.android.viewModel
 import org.koin.core.context.loadKoinModules
+import org.koin.core.context.unloadKoinModules
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
@@ -79,5 +80,10 @@ class MainActivity : AppCompatActivity() {
             }
         }
         super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+    }
+
+    override fun onDestroy() {
+        unloadKoinModules(mainModule)
+        super.onDestroy()
     }
 }

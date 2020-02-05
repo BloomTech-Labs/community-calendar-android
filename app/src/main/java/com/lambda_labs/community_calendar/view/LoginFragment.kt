@@ -2,6 +2,7 @@ package com.lambda_labs.community_calendar.view
 
 import android.app.Dialog
 import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -14,16 +15,18 @@ import com.auth0.android.provider.AuthCallback
 import com.auth0.android.provider.VoidCallback
 import com.auth0.android.provider.WebAuthProvider
 import com.auth0.android.result.Credentials
-import com.lambda_labs.community_calendar.App
 import com.lambda_labs.community_calendar.R
+import com.lambda_labs.community_calendar.viewmodel.LoginViewModel
 import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_login.*
+import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
 class LoginFragment : Fragment() {
 
     lateinit var auth0: Auth0
     lateinit var mainActivity: MainActivity
+    private val viewModel: LoginViewModel by viewModel()
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
@@ -36,41 +39,44 @@ class LoginFragment : Fragment() {
         auth0 = Auth0(mainActivity)
         auth0.isOIDCConformant = true
 
+
+        if (viewModel.getToken() == null) {
 //        Take user to login page when login or profile button is selected
-        WebAuthProvider.login(auth0)
-            .withScheme("demo")
-            .withAudience(getString(R.string.audience))
-            .start(mainActivity, object : AuthCallback {
-                override fun onSuccess(credentials: Credentials) {
+            WebAuthProvider.login(auth0)
+                .withScheme("demo")
+                .withAudience(getString(R.string.audience))
+                .start(mainActivity, object : AuthCallback {
+                    override fun onSuccess(credentials: Credentials) {
 
 //                    Save and store user token when user logs in
-                    App.sharedPrefs.edit().putString(credentials.accessToken,
-                        App.TOKEN_KEY
-                    ).apply()
-                    App.token = credentials.accessToken
+                        viewModel.saveToken(credentials.accessToken)
 
 //                    upon successful login "Log In" nav button changes to the "Profile" button label
-                    mainActivity.runOnUiThread {
-                        val item = mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
-                        item.title = getString(R.string.profile)
+                        mainActivity.runOnUiThread {
+                            val item =
+                                mainActivity.bottom_navigation.menu.findItem(R.id.loginFragment)
+                            item.title = getString(R.string.profile)
+                        }
                     }
-                }
 
-                override fun onFailure(dialog: Dialog) {
-                    println("Fail Dialog")
-                }
+                    override fun onFailure(dialog: Dialog) {
+                        println("Fail Dialog")
+                    }
 
-                override fun onFailure(exception: AuthenticationException?) {
-                    println(exception?.message)
-                }
-            })
+                    override fun onFailure(exception: AuthenticationException?) {
+                        println(exception?.message)
+                    }
+                })
+        }
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
 //        logout user when
-        blank_logout.setOnClickListener {
+        logout.setOnClickListener {
+            // This will clear the token when the user logs out
+            viewModel.saveToken(null)
 
             WebAuthProvider.logout(auth0)
                 .withScheme("demo")

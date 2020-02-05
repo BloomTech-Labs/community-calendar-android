@@ -35,7 +35,6 @@ fun displayTime(start: Any, end: Any): String {
     // Formats the strings to dates
     val resultStart = stringToDate(start.toString())
     val resultEnd = stringToDate(end.toString())
-
     // Gets the time from the date in 12 hour format
     fun getTime(date: Date): String {
         val calender = Calendar.getInstance()
@@ -44,19 +43,21 @@ fun displayTime(start: Any, end: Any): String {
         val normal = calender.get(Calendar.HOUR)
         var minutes = calender.get(Calendar.MINUTE).toString()
         if (minutes == "0") minutes = "00"
-        return when {
-            military < 12 -> {
+        return when (military) {
+            in 1..11 -> {
                 "${normal}:${minutes}AM"
             }
-            military == 12 -> {
+            12 -> {
                 "12:${minutes}PM"
+            }
+            0 -> {
+                "12:${minutes}AM"
             }
             else -> {
                 "${normal}:${minutes}PM"
             }
         }
     }
-
     val begin = getTime(resultStart)
     val finish = getTime(resultEnd)
     return "$begin - $finish"

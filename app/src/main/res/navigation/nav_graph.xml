@@ -46,5 +46,10 @@
         android:name="com.lambda_labs.community_calendar.view.SearchResultFragment"
         android:label="fragment_search_result"
         tools:layout="@layout/fragment_search_result" />
+    <fragment
+        android:id="@+id/eventDetailsFragment"
+        android:name="com.lambda_labs.community_calendar.view.EventDetailsFragment"
+        android:label="fragment_event_details"
+        tools:layout="@layout/fragment_event_details" />
 
 </navigation>

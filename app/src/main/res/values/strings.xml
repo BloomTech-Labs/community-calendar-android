@@ -10,7 +10,7 @@
     <string name="login">Log In</string>
     <string name="com_auth0_client_id">@string/client_id</string>
     <string name="com_auth0_domain">@string/domain</string>
-    <string name="audience">https://communitycalendar-staging.auth0.com/api/v2/</string>
+    <string name="audience">https://community-calendar.auth0.com/api/v2/</string>
     <string name="today">Today</string>
     <string name="tomorrow">Tomorrow</string>
     <string name="this_weekend">This weekend</string>
@@ -37,4 +37,26 @@
     <string name="searched">Searched</string>
     <string name="cancel">Cancel</string>
     <string name="view">View</string>
+    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Eget mi proin sed libero enim sed faucibus turpis in. Urna et pharetra massa ultricies mi quis. Accumsan tortor posuere ac ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. Urna et pharetra massa ultricies mi quis. Accumsan tortor posuere ac ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam. Vestibulum lorem sed risus ultricies tristique nulla aliquet. ut consequat semper viverra nam........</string>
+    <string name="event_details">Event Details</string>
+    <string name="free">Free</string>
+    <string name="ticket_type">Ticket Type:</string>
+    <string name="this_address">This Address</string>
+    <string name="time">Time:</string>
+    <string name="cici">Cici</string>
+    <string name="hosted_by">Hosted by</string>
+    <string name="the_date">The Date</string>
+    <string name="hi_there">Hi there</string>
+    <string name="read_more">Read more</string>
+    <string name="attend">Attend</string>
+    <string name="unattend">Unattend</string>
+    <string name="follow_nhost">Follow\nHost</string>
+    <string name="open_in_maps">Open in maps</string>
+    <string name="save_in_calendar">Save in Calendar</string>
+    <string name="read_less">Read less</string>
+    <string name="mission_district">MISSION DISTRICT</string>
+    <string name="event_1">Event 1</string>
+    <string name="_6_00pm_10_00pm">6:00pm - 10:00pm</string>
+    <string name="december_20_friday">DECEMBER 20, FRIDAY</string>
+    <string name="tech_talk">Tech Talk</string>
 </resources>

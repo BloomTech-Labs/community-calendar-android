@@ -7,7 +7,7 @@ import androidx.lifecycle.ViewModel
 import com.lambda_labs.community_calendar.Repository
 import io.reactivex.disposables.Disposable
 
-class ResultsViewModel(val repo: Repository): ViewModel() {
+class ResultsViewModel(private val repo: Repository): ViewModel() {
     private var disposable: Disposable? = null
 
     fun getEventsByLocation(latitude: Double, longitude: Double) {

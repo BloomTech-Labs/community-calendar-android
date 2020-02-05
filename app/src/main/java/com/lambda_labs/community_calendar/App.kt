@@ -11,13 +11,7 @@ import org.koin.core.logger.Level
 import org.koin.core.module.Module
 import org.koin.dsl.module
 
-// Set this class as our Application class to initialize the user's authentication Token at startup
 class App: Application() {
-    companion object{
-        const val TOKEN_KEY = "token_key"
-        lateinit var sharedPrefs: SharedPreferences
-        var token: String? = null
-    }
 
     override fun onCreate() {
         super.onCreate()
@@ -25,15 +19,12 @@ class App: Application() {
         // Start Koin
         startKoin {
             androidContext(this@App)
-            printLogger(Level.INFO /*Also DEBUG and ERROR Levels*/)
+            //printLogger(Level.INFO /*Also DEBUG and ERROR Levels*/)
             modules(modules)
         }
-
-        sharedPrefs = getSharedPreferences("Token", Context.MODE_PRIVATE)
-        token = sharedPrefs.getString(TOKEN_KEY, "")
-
     }
 
+    // Starts Dependency Injection for app viewmodels
     val modules: Module = module {
         single { this@App }
         viewModel { FilterViewModel(get()) }
@@ -41,6 +32,8 @@ class App: Application() {
         viewModel { SearchViewModel(get()) }
         viewModel { MainActivityViewModel(get()) }
         viewModel { ResultsViewModel(get()) }
+        viewModel { EventDetailsViewModel(get()) }
+        viewModel { LoginViewModel(get()) }
         single { SharedFilterViewModel() }
         single { Repository(get()) }
     }
