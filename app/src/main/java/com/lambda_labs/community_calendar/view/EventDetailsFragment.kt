@@ -37,16 +37,6 @@ class EventDetailsFragment : Fragment() {
         super.onViewCreated(view, savedInstanceState)
 
 
-        if (searchBar.parent != null){
-            (searchBar.parent as ViewGroup).removeView(searchBar)
-        }
-
-        details_layout.addView(searchBar)
-        setSearchBarProperties(searchBar, true)
-        searchBar.id = View.generateViewId()
-        viewModel.setupSearchBarConstraints(details_layout, searchBar, event_image)
-
-
         val jsonEvent = arguments?.getString(eventJsonKey(), "") ?: ""
 
         val event = jsonToEvent(jsonEvent)
@@ -68,7 +58,7 @@ class EventDetailsFragment : Fragment() {
 
         // Handles logic for how to display btn_read_more,
         txt_event_details.post {
-            val defaultDescriptionLineCount = 6
+            val defaultDescriptionLineCount = 2
             var withinDefaultLineCount = defaultDescriptionLineCount >= txt_event_details.lineCount
             if (withinDefaultLineCount)
                 btn_read_more.visibility = View.GONE

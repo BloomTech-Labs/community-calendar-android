@@ -27,6 +27,8 @@ You can find the deployed project at [CommCal](http://www.google.com/). Code for
 
 Community Calendar is a project aimed to enable communities to better inform the community of upcoming events and the community to more easily access information about upcoming events in the community. The Android version is more particularly aimed to provide an interface individuals can use to see upcoming community events.
 
+For those coming to work on this project, you will need the environment variables you can get [here](http://auth0.com/) when you login with the project account.
+
 ### Features
 
 -    Display Event Lists

@@ -15,6 +15,7 @@ import androidx.appcompat.widget.SearchView
 import androidx.core.app.ActivityCompat
 import androidx.core.content.ContextCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -27,6 +28,7 @@ import com.lambda_labs.community_calendar.model.Search
 import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedSearchViewModel
 import kotlinx.android.synthetic.main.fragment_search.*
 import kotlinx.android.synthetic.main.searches_recycler_item.view.*
 import org.koin.android.ext.android.get
@@ -38,6 +40,7 @@ class SearchFragment : Fragment() {
 
     private lateinit var mainActivity: MainActivity
     private val viewModel: SearchViewModel by viewModel()
+    private val sharedSearchViewModel: SharedSearchViewModel by activityViewModels()
     private lateinit var events: ArrayList<EventsQuery.Event>
 
     override fun onAttach(context: Context) {
@@ -138,13 +141,15 @@ class SearchFragment : Fragment() {
                     search.searchText = query
                     val filteredList = searchEvents(events, search)
                     viewModel.addRecentSearch(search)
-                    val bundle = viewModel.createBundle(filteredList, search.searchText)
+                    sharedSearchViewModel.addList(filteredList)
+                    val bundle = createBundle(search.searchText)
                     findNavController().navigate(R.id.searchResultFragment, bundle)
                 }else{
                     search.searchText = "Filters ($filterCount)"
                     val filteredList = searchEvents(events, search)
+                    sharedSearchViewModel.addList(filteredList)
                     viewModel.addRecentSearch(search)
-                    val bundle = viewModel.createBundle(filteredList, search.searchText)
+                    val bundle = createBundle(search.searchText)
                     findNavController().navigate(R.id.searchResultFragment, bundle)
                 }
                 return true
@@ -215,7 +220,8 @@ class SearchFragment : Fragment() {
 
             holder.searchText.setOnClickListener {
                 val filterEvents = searchEvents(events, recentSearch)
-                val bundle = viewModel.createBundle(filterEvents, recentSearch.searchText)
+                val bundle = createBundle(recentSearch.searchText)
+                sharedSearchViewModel.addList(filterEvents)
                 // Clear focus to prevent searchBars focus listener from triggering
                 searchBar.clearFocus()
                 findNavController().navigate(R.id.searchResultFragment, bundle)

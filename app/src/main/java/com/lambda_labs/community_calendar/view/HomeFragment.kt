@@ -8,6 +8,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.core.content.res.ResourcesCompat
 import androidx.fragment.app.Fragment
+import androidx.fragment.app.activityViewModels
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
@@ -20,6 +21,7 @@ import com.lambda_labs.community_calendar.util.*
 import com.lambda_labs.community_calendar.viewmodel.HomeViewModel
 import com.lambda_labs.community_calendar.viewmodel.SearchViewModel
 import com.lambda_labs.community_calendar.viewmodel.SharedFilterViewModel
+import com.lambda_labs.community_calendar.viewmodel.SharedSearchViewModel
 import kotlinx.android.synthetic.main.fragment_home.*
 import org.koin.android.ext.android.get
 import org.koin.android.ext.android.inject
@@ -32,6 +34,7 @@ class HomeFragment : Fragment() {
     private lateinit var mainActivity: MainActivity
     private val viewModel: HomeViewModel by viewModel()
     private val searchBar: CustomSearchView by inject()
+    private val sharedSearchViewModel: SharedSearchViewModel by activityViewModels()
 
     //    Setup a way to directly call MainActivity's context for changing button highlighted in grid and list views
     override fun onAttach(context: Context) {
@@ -101,7 +104,7 @@ class HomeFragment : Fragment() {
             // Temporarily mixing up the events randomly until a Feature flag has been set
             val shuffledEvents: MutableList<EventsQuery.Event> = events.toMutableList()
             shuffledEvents.shuffle()
-            val max: Int = 10 // Maximum number of events to show
+            val max = 10 // Maximum number of events to show
             var shuffledEventsCount: Int = shuffledEvents.size
             if (shuffledEventsCount > max) shuffledEventsCount = max
             for (i: Int in 0 until shuffledEventsCount) {
@@ -180,8 +183,7 @@ class HomeFragment : Fragment() {
             })
             isEmpty("upcoming")
             main_event_recycler.adapter?.notifyDataSetChanged()
-            val year = Calendar.getInstance().get(Calendar.YEAR)
-            val yearText = "$year - ${year+1}"
+            val yearText = "${getDisplayDay(getToday())}+"
             txt_event_date.text = yearText
         }
 
@@ -221,8 +223,8 @@ class HomeFragment : Fragment() {
         // Show all of the featured events
         txt_see_all.setOnClickListener {
             val customMessage = "All Featured Events"
-            val viewModel: SearchViewModel by viewModel()
-            val bundle:Bundle = viewModel.createBundle(featuredList, customMessage)
+            val bundle:Bundle = createBundle(customMessage)
+            sharedSearchViewModel.addList(events)
             findNavController().navigate(R.id.searchResultFragment, bundle)
         }
     }

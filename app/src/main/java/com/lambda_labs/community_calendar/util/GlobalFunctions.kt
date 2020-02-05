@@ -2,6 +2,7 @@ package com.lambda_labs.community_calendar.util
 
 import android.app.Activity
 import android.content.res.Resources
+import android.os.Bundle
 import android.view.View
 import android.view.inputmethod.InputMethodManager
 import android.widget.ImageView
@@ -73,4 +74,13 @@ fun setSearchBarProperties(searchView: SearchView,
     image.layoutParams = LinearLayout.LayoutParams(0, 0)
     searchView.findViewById<View>(androidx.appcompat.R.id.search_plate).background = null
     searchView.id = View.generateViewId()
+}
+
+
+
+// Creates a bundle of a filtered events from search and a string to display what was searched
+fun createBundle(searched: String): Bundle {
+    val bundle = Bundle()
+    bundle.putString("search", searched)
+    return bundle
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout
+    android:id="@+id/details_layout"
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
@@ -7,98 +8,93 @@
     tools:context=".view.EventDetailsFragment"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
-    <ProgressBar
-        android:id="@+id/pb_details"
-        android:visibility="gone"
-        android:elevation="10dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent"
-        />
-
-    <androidx.constraintlayout.widget.ConstraintLayout
-        android:id="@+id/details_layout"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/event_image"
-        android:layout_width="match_parent"
-        android:layout_height="130dp"
-        android:src="@drawable/base_photo"
-        android:scaleType="centerInside"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"/>
-
-    <LinearLayout
-        android:id="@+id/dark_text_background"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="vertical"
-        android:background="#21242C"
-        app:layout_constraintTop_toBottomOf="@+id/event_image"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent">
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/event_title"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:layout_marginBottom="9dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/butler_bold"
-            android:textSize="24sp"
-            android:textColor="#FFFFFF"
-            android:text="@string/hi_there"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/event_date"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_semi_bold"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:text="@string/the_date"/>
-
-        <com.google.android.material.textview.MaterialTextView
-            android:id="@+id/event_address"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="16dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:fontFamily="@font/poppins_light"
-            android:textSize="14sp"
-            android:textColor="#FFFFFF"
-            android:text="@string/this_address"/>
-    </LinearLayout>
-
     <ScrollView
         android:id="@+id/scrollview"
         android:layout_width="match_parent"
         android:layout_height="0dp"
-        app:layout_constraintTop_toBottomOf="@+id/dark_text_background"
-        app:layout_constraintBottom_toBottomOf="parent"
-        android:fillViewport="true">
+        android:fadeScrollbars="false"
+        android:fillViewport="true"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent">
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/scrollview_constraint"
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
 
+            <ProgressBar
+                android:id="@+id/pb_details"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:elevation="10dp"
+                android:visibility="gone"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/event_image"
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:scaleType="centerCrop"
+                android:src="@drawable/base_photo"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <LinearLayout
+                android:id="@+id/dark_text_background"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="#21242C"
+                android:orientation="vertical"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/event_image">
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/event_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="9dp"
+                    android:fontFamily="@font/butler_bold"
+                    android:text="@string/hi_there"
+                    android:textColor="#FFFFFF"
+                    android:textSize="24sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/event_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:fontFamily="@font/poppins_semi_bold"
+                    android:text="@string/the_date"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+
+                <com.google.android.material.textview.MaterialTextView
+                    android:id="@+id/event_address"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginBottom="16dp"
+                    android:fontFamily="@font/poppins_light"
+                    android:text="@string/this_address"
+                    android:textColor="#FFFFFF"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
             <androidx.constraintlayout.widget.ConstraintLayout
                 android:id="@+id/c_hosted_by"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                app:layout_constraintTop_toTopOf="parent"
+                app:layout_constraintEnd_toStartOf="@id/c_time"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintEnd_toStartOf="@id/c_time">
+                app:layout_constraintTop_toBottomOf="@id/dark_text_background">
 
                 <androidx.cardview.widget.CardView
                     android:id="@+id/cardview"
@@ -108,17 +104,17 @@
                     android:layout_marginBottom="8dp"
                     app:cardCornerRadius="25dp"
                     app:cardPreventCornerOverlap="false"
-                    app:layout_constraintTop_toTopOf="parent"
                     app:layout_constraintBottom_toTopOf="@+id/txt_hosted_by"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent">
+                    app:layout_constraintTop_toTopOf="parent">
 
                     <androidx.appcompat.widget.AppCompatImageView
                         android:id="@+id/img_host"
-                        android:src="@drawable/base_photo"
-                        android:scaleType="fitCenter"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"/>
+                        android:layout_height="wrap_content"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/base_photo" />
                 </androidx.cardview.widget.CardView>
 
                 <com.google.android.material.textview.MaterialTextView
@@ -126,29 +122,29 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_regular"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:text="@string/hosted_by"
+                    android:textAlignment="center"
                     android:textColor="#ACAAAA"
-                    app:layout_constraintTop_toBottomOf="@+id/cardview"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/txt_host"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/cardview" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_host"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:maxLines="1"
                     android:text="@string/cici"
+                    android:textAlignment="center"
                     android:textColor="#000000"
-                    app:layout_constraintTop_toBottomOf="@+id/txt_hosted_by"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/txt_hosted_by" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -156,10 +152,10 @@
                 android:id="@+id/c_time"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/c_hosted_by"
+                app:layout_constraintBottom_toBottomOf="@+id/c_hosted_by"
                 app:layout_constraintEnd_toStartOf="@id/c_ticket_type"
-                app:layout_constraintBottom_toBottomOf="@+id/c_hosted_by">
+                app:layout_constraintStart_toEndOf="@id/c_hosted_by"
+                app:layout_constraintTop_toBottomOf="@id/dark_text_background">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/header_time"
@@ -167,16 +163,16 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="10dp"
                     android:fontFamily="@font/poppins_light"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:maxLines="1"
-                    android:text="@string/time"
-                    android:textColor="#ACAAAA"
                     android:minHeight="0dp"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:text="@string/time"
+                    android:textAlignment="center"
+                    android:textColor="#ACAAAA"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@+id/txt_event_time"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_event_time"
@@ -184,14 +180,14 @@
                     android:layout_height="wrap_content"
                     android:layout_marginBottom="8dp"
                     android:fontFamily="@font/poppins_medium"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:text="3:30 pm\n-\n5:30 pm"
+                    android:textAlignment="center"
                     android:textColor="#000000"
-                    app:layout_constraintTop_toBottomOf="@+id/header_time"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toBottomOf="parent"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@+id/header_time" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
@@ -200,14 +196,14 @@
                 android:layout_width="0dp"
                 android:layout_height="0dp"
                 android:fontFamily="@font/poppins_light"
-                android:textSize="14sp"
                 android:maxLines="1"
-                android:textAlignment="center"
                 android:text="@string/this_address"
-                app:layout_constraintTop_toTopOf="parent"
-                app:layout_constraintStart_toEndOf="@id/c_time"
+                android:textAlignment="center"
+                android:textSize="14sp"
+                app:layout_constraintBottom_toBottomOf="@id/c_time"
                 app:layout_constraintEnd_toStartOf="@id/btn_follow"
-                app:layout_constraintBottom_toBottomOf="@id/c_time">
+                app:layout_constraintStart_toEndOf="@id/c_time"
+                app:layout_constraintTop_toBottomOf="@id/dark_text_background">
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/header_ticket_type"
@@ -215,48 +211,48 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="35dp"
                     android:fontFamily="@font/poppins_regular"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:text="@string/ticket_type"
+                    android:textAlignment="center"
                     android:textColor="#ACAAAA"
-                    app:layout_constraintTop_toTopOf="parent"
+                    android:textSize="14sp"
                     app:layout_constraintBottom_toTopOf="@id/txt_ticket_type"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <com.google.android.material.textview.MaterialTextView
                     android:id="@+id/txt_ticket_type"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="@font/poppins_medium"
-                    android:textAlignment="center"
-                    android:textSize="14sp"
                     android:text="@string/free"
+                    android:textAlignment="center"
                     android:textColor="#FF6768"
-                    app:layout_constraintTop_toBottomOf="@id/header_ticket_type"
+                    android:textSize="14sp"
+                    app:layout_constraintEnd_toEndOf="parent"
                     app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"/>
+                    app:layout_constraintTop_toBottomOf="@id/header_ticket_type" />
 
             </androidx.constraintlayout.widget.ConstraintLayout>
 
-            <com.google.android.material.button.MaterialButton
+            <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/btn_follow"
                 android:layout_width="0dp"
                 android:layout_height="0dp"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                android:background="#21242C"
+                android:fontFamily="@font/poppins_semi_bold"
                 android:insetTop="0dp"
                 android:insetBottom="0dp"
-                app:cornerRadius="0dp"
-                android:textAllCaps="false"
-                android:backgroundTint="#21242C"
-                android:fontFamily="@font/poppins_semi_bold"
-                android:textSize="14sp"
-                android:textColor="#FFFFFF"
+                android:gravity="center"
                 android:text="@string/follow_nhost"
-                app:layout_constraintTop_toTopOf="parent"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="14sp"
+                app:cornerRadius="0dp"
                 app:layout_constraintBottom_toBottomOf="@id/c_ticket_type"
+                app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toEndOf="@id/c_ticket_type"
-                app:layout_constraintEnd_toEndOf="parent" />
+                app:layout_constraintTop_toBottomOf="@id/dark_text_background" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/header_event_details"
@@ -264,89 +260,85 @@
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginTop="21dp"
-                android:textSize="14sp"
                 android:fontFamily="@font/poppins_semi_bold"
                 android:text="@string/event_details"
                 android:textColor="#000000"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="14sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/c_hosted_by"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/c_hosted_by" />
 
             <com.google.android.material.textview.MaterialTextView
                 android:id="@+id/txt_event_details"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="4dp"
-                android:textSize="12sp"
+                android:layout_marginEnd="16dp"
                 android:fontFamily="@font/open_sans_light"
                 android:text="@string/lorem_ipsum"
                 android:textColor="#21242C"
-                app:layout_constraintStart_toStartOf="parent"
+                android:textSize="12sp"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/header_event_details"/>
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/header_event_details" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_read_more"
+                style="@style/Widget.MaterialComponents.Button.TextButton"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginEnd="16dp"
-                android:minHeight="0dp"
                 android:minWidth="0dp"
-                android:textAllCaps="false"
+                android:minHeight="0dp"
                 android:text="@string/read_more"
+                android:textAllCaps="false"
                 android:textSize="8sp"
-                style="@style/Widget.MaterialComponents.Button.TextButton"
+                app:layout_constraintBottom_toTopOf="@+id/btn_attend"
                 app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintTop_toBottomOf="@+id/txt_event_details"
-                app:layout_constraintBottom_toTopOf="@+id/btn_attend"/>
+                app:layout_constraintTop_toBottomOf="@+id/txt_event_details" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_attend"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
-                android:layout_marginEnd="16dp"
                 android:layout_marginTop="10dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:background="@drawable/attend_button_outline"
+                android:layout_marginEnd="16dp"
                 android:text="@string/attend"
-                android:textColor="#21242C"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@+id/btn_read_more"/>
+                android:textColor="#21242C"
+                app:layout_constraintTop_toBottomOf="@+id/btn_read_more"
+                app:strokeColor="#FF6768" />
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_map"
-                android:layout_width="match_parent"
+                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:background="@drawable/attend_button_outline"
-                android:text="@string/open_in_maps"
-                android:textColor="#FFFFFF"
                 android:backgroundTint="#21242C"
+                android:text="@string/open_in_maps"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@+id/btn_attend"/>
+                android:textColor="#FFFFFF"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_attend"
+                app:layout_constraintEnd_toStartOf="@id/btn_calendar"/>
 
             <com.google.android.material.button.MaterialButton
                 android:id="@+id/btn_calendar"
-                android:layout_width="match_parent"
+                android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="16dp"
                 android:layout_marginEnd="16dp"
-                android:visibility="gone"
-                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                android:background="@drawable/attend_button_outline"
                 android:text="@string/save_in_calendar"
-                android:textColor="#FFFFFF"
-                android:backgroundTint="#21242C"
                 android:textAllCaps="false"
-                app:layout_constraintTop_toBottomOf="@+id/btn_map"/>
-
+                android:textColor="#FFFFFF"
+                android:visibility="gone"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/btn_attend"
+                app:layout_constraintStart_toEndOf="@id/btn_map"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </ScrollView>
-
-    </androidx.constraintlayout.widget.ConstraintLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

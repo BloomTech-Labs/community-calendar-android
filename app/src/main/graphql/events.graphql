@@ -1,5 +1,5 @@
 query Events {
-    events {
+    events(orderBy : start_ASC) {
         id
         title
         description
