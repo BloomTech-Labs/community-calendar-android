@@ -11,6 +11,7 @@ import androidx.test.filters.LargeTest
 import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.adapter.EventRecycler
 import com.lambda_labs.community_calendar.adapter.FeaturedRecycler
+import com.lambda_labs.community_calendar.util.ImageViewMatcher
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -78,6 +79,25 @@ class HomeFragmentTest {
         onView(withId(R.id.event_image)).check(matches(isCompletelyDisplayed()))
         onView(withId(R.id.btn_follow))
             .check(matches(withText(R.string.follow_nhost)))
+        Thread.sleep(2000)
+    }
+
+    @Test
+    fun check_See_All_Events() {
+        Thread.sleep(2000)
+        onView(withId(R.id.txt_see_all))
+            .perform(click())
+        Thread.sleep(2000)
+
+        onView(withId(R.id.txt_searched_by))
+            .check(matches(withText("by \"All Featured Events\"")))
+        onView(withId(R.id.result_back_button))
+            .perform(click())
+        Thread.sleep(2000)
+
+        onView(withId(R.id.btn_list))
+            .check(matches(isDisplayed()))
+            .check(matches(ImageViewMatcher.withDrawable(R.drawable.list_view_selected)))
         Thread.sleep(2000)
     }
 }
