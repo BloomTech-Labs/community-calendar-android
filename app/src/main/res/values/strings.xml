@@ -50,7 +50,7 @@
     <string name="read_more">Read more</string>
     <string name="attend">Attend</string>
     <string name="unattend">Unattend</string>
-    <string name="follow_nhost">Follow Host</string>
+    <string name="follow_nhost">Follow\nHost</string>
     <string name="open_in_maps">Open in maps</string>
     <string name="save_in_calendar">Save in Calendar</string>
     <string name="read_less">Read less</string>

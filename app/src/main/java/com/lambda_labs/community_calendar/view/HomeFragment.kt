@@ -225,7 +225,7 @@ class HomeFragment : Fragment() {
             val customMessage = "All Featured Events"
             val viewModel: SearchViewModel by viewModel()
             val bundle:Bundle = viewModel.createBundle(customMessage)
-            sharedSearchViewModel.addList(featuredList)
+            sharedSearchViewModel.addList(events)
             findNavController().navigate(R.id.searchResultFragment, bundle)
         }
     }
