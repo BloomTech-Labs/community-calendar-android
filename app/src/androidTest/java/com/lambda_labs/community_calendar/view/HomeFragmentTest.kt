@@ -76,7 +76,8 @@ class HomeFragmentTest {
             )
         Thread.sleep(2000)
 
-        onView(withId(R.id.event_image)).check(matches(isCompletelyDisplayed()))
+        onView(withId(R.id.event_image))
+            .check(matches(isCompletelyDisplayed()))
         onView(withId(R.id.btn_follow))
             .check(matches(withText(R.string.follow_nhost)))
         Thread.sleep(2000)
