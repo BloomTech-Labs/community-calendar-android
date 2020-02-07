@@ -21,7 +21,7 @@ import org.junit.runner.RunWith
 class SearchFragmentTest {
 
     @Rule // Rule for JUnit
-    @JvmField //For Kotlin compatibility
+    @JvmField // For Kotlin compatibility
     var activityScenarioRule: ActivityScenarioRule<MainActivity> =
         ActivityScenarioRule(MainActivity::class.java) // To wrap up the activity
 
