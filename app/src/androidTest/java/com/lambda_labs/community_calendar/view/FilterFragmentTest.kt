@@ -1,11 +1,13 @@
 package com.lambda_labs.community_calendar.view
 
 import android.view.View
+import android.widget.DatePicker
 import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
+import androidx.test.espresso.contrib.PickerActions
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
 import androidx.test.ext.junit.runners.AndroidJUnit4
@@ -19,6 +21,7 @@ import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
+import java.util.*
 import kotlin.random.Random
 
 
@@ -108,6 +111,42 @@ class FilterFragmentTest {
 
         onView(isRoot())
             .perform(closeSoftKeyboard())
+        Thread.sleep(1000)
+
+        onView(withId(R.id.button_fragment_filter_apply))
+            .perform(click())
+        Thread.sleep(2000)
+
+        onView(withId(R.id.filter_count))
+            .check(matches(withText(APPLIED_FILTER_COUNT_TEXT)))
+        Thread.sleep(1000)
+    }
+
+    @Test
+    fun pick_a_date_from_the_picker_and_apply() {
+        onView(withId(R.id.image_view_fragment_filter_date))
+            .perform(click())
+        Thread.sleep(1000)
+
+        val randomCal: Calendar = Calendar.getInstance()
+        randomCal.isLenient = true
+        randomCal.set(Calendar.YEAR, Random.nextInt(1900, 2022))
+        randomCal.set(Calendar.MONTH, Random.nextInt(0, 11))
+        randomCal.set(Calendar.DAY_OF_MONTH, Random.nextInt(1, 31))
+
+        val datePickerMatcher: Matcher<View> =
+            withClassName(Matchers.equalTo(DatePicker::class.java.name))
+        onView(datePickerMatcher)
+            .perform(
+                PickerActions.setDate(
+                    randomCal.get(Calendar.YEAR),
+                    randomCal.get(Calendar.MONTH),
+                    randomCal.get(Calendar.DAY_OF_MONTH)
+                )
+            )
+
+        onView(withId(android.R.id.button1))
+            .perform(click())
         Thread.sleep(1000)
 
         onView(withId(R.id.button_fragment_filter_apply))
