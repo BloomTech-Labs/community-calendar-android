@@ -1,6 +1,7 @@
 package com.lambda_labs.community_calendar.view
 
 import android.view.View
+import androidx.test.espresso.Espresso.onData
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
 import androidx.test.espresso.action.ViewActions.*
@@ -13,6 +14,7 @@ import com.lambda_labs.community_calendar.R
 import com.lambda_labs.community_calendar.util.ClickChipCloseIcon
 import com.lambda_labs.community_calendar.util.Extra.getChildAtPosition
 import org.hamcrest.Matcher
+import org.hamcrest.Matchers
 import org.junit.Before
 import org.junit.Rule
 import org.junit.Test
@@ -28,6 +30,10 @@ class FilterFragmentTest {
     @JvmField // For Kotlin compatibility
     var activityScenarioRule: ActivityScenarioRule<MainActivity> =
         ActivityScenarioRule(MainActivity::class.java) // To wrap up the activity
+
+    companion object {
+        private const val APPLIED_FILTER_COUNT_TEXT = "Filters (1)"
+    }
 
     @Before
     fun navigate_to_the_filter_fragment() {
@@ -69,7 +75,28 @@ class FilterFragmentTest {
         Thread.sleep(2000)
 
         onView(withId(R.id.filter_count))
-            .check(matches(withText("Filters (1)")))
+            .check(matches(withText(APPLIED_FILTER_COUNT_TEXT)))
+        Thread.sleep(1000)
+    }
+
+    @Test
+    fun select_a_location_and_apply() {
+        onView(withId(R.id.spinner_fragment_filter_location))
+            .perform(click())
+
+        val className = "android.widget.PopupWindow\$PopupBackgroundView"
+        onData(Matchers.anything())
+            .inAdapterView(getChildAtPosition(withClassName(Matchers.`is`(className)), 0))
+            .atPosition(1)
+            .perform(click())
+        Thread.sleep(1000)
+
+        onView(withId(R.id.button_fragment_filter_apply))
+            .perform(click())
+        Thread.sleep(2000)
+
+        onView(withId(R.id.filter_count))
+            .check(matches(withText(APPLIED_FILTER_COUNT_TEXT)))
         Thread.sleep(1000)
     }
 
@@ -88,7 +115,7 @@ class FilterFragmentTest {
         Thread.sleep(2000)
 
         onView(withId(R.id.filter_count))
-            .check(matches(withText("Filters (1)")))
+            .check(matches(withText(APPLIED_FILTER_COUNT_TEXT)))
         Thread.sleep(1000)
     }
 }
