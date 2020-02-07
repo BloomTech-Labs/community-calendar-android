@@ -3,7 +3,7 @@ package com.lambda_labs.community_calendar.view
 import android.view.View
 import androidx.test.espresso.Espresso.onView
 import androidx.test.espresso.ViewAction
-import androidx.test.espresso.action.ViewActions.click
+import androidx.test.espresso.action.ViewActions.*
 import androidx.test.espresso.assertion.ViewAssertions.matches
 import androidx.test.espresso.matcher.ViewMatchers.*
 import androidx.test.ext.junit.rules.ActivityScenarioRule
@@ -70,6 +70,25 @@ class FilterFragmentTest {
 
         onView(withId(R.id.filter_count))
             .check(matches(withText("Filters (1)")))
+        Thread.sleep(1000)
+    }
+
+    @Test
+    fun type_in_a_zip_code_and_apply() {
+        onView(withId(R.id.edit_text_fragment_filter_zip_code))
+            .perform(typeText("98207"))
+        Thread.sleep(1000)
+
+        onView(isRoot())
+            .perform(closeSoftKeyboard())
+        Thread.sleep(1000)
+
+        onView(withId(R.id.button_fragment_filter_apply))
+            .perform(click())
         Thread.sleep(2000)
+
+        onView(withId(R.id.filter_count))
+            .check(matches(withText("Filters (1)")))
+        Thread.sleep(1000)
     }
 }
