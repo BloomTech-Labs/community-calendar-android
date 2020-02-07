@@ -157,4 +157,6 @@ class FilterFragmentTest {
             .check(matches(withText(APPLIED_FILTER_COUNT_TEXT)))
         Thread.sleep(1000)
     }
+
+    //TODO: Test needed for testing the 'Search for Tags' search bar
 }
