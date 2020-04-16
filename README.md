@@ -103,6 +103,9 @@ Remember that this project is licensed under the MIT license, and by submitting 
 
 These contribution guidelines have been adapted from [this good-Contributing.md-template](https://gist.github.com/PurpleBooth/b24679402957c63ec426).
 
+### Screenshots
+
+[<img src="images/screenshot1.png" width = "265" />](images/screenshot1.png)&nbsp;&nbsp;&nbsp;&nbsp;[<img src="images/screenshot2.png" width = "265" />](images/screenshot2.png)&nbsp;&nbsp;&nbsp;&nbsp;[<img src="images/screenshot3.png" width = "265" />](images/screenshot3.png)&nbsp;&nbsp;&nbsp;&nbsp;[<img src="images/screenshot4.png" width = "265" />](images/screenshot4.png)&nbsp;&nbsp;&nbsp;&nbsp;[<img src="images/screenshot5.png" width = "265" />](images/screenshot5.png)&nbsp;&nbsp;&nbsp;&nbsp;[<img src="images/screenshot6.png" width = "265" />](images/screenshot6.png)&nbsp;&nbsp;&nbsp;&nbsp;
 
 ## Documentation
 
