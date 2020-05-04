@@ -17,7 +17,7 @@ You can find the deployed project in the [Google Play Store](https://play.google
 
 [Vision Doc](https://www.notion.so/Vision-Problem-Objectives-46b01d5cdbfe428397ca4e1ddb7c4086)
 
-[Deployed Project](In testing...)
+[Deployed Project](https://play.google.com/store/apps/details?id=com.lambda_school.community_calendar)
 
 [Trello Board](https://trello.com/b/itLFz188/labs19-community-calendar)
 
