@@ -1,6 +1,6 @@
 # Community Calendar
 
-You can find the deployed project at [CommCal](http://www.google.com/). Code for other teams: [Web frontend](https://github.com/Lambda-School-Labs/community-calendar-fe), [Backend](https://github.com/Lambda-School-Labs/community-calendar-be), and [iOS](https://github.com/Lambda-School-Labs/community-calendar-ios)
+You can find the deployed project in the [Google Play Store](https://play.google.com/store/apps/details?id=com.lambda_school.community_calendar). Code for other teams: [Web frontend](https://github.com/Lambda-School-Labs/community-calendar-fe), [Backend](https://github.com/Lambda-School-Labs/community-calendar-be), and [iOS](https://github.com/Lambda-School-Labs/community-calendar-ios)
 
 ## 3️⃣ Contributors
 
